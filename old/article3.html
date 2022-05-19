@@ -1,0 +1,131 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta charset="utf-8" /> 
+		<title>Tutoriel - Monitoring OpenBSD 6.9</title>
+		<link rel="stylesheet" href="template.css" />
+		<link rel="alternate" href="atom.xml" type="application/atom+xml" title="Atom Feed" />
+	</head>
+	<body>
+		<header>
+			<h1><a href="index.html">v2 Simple Blog</a></h1>
+			<nav class="sblg-nav">
+				<span class="prevnext ">
+					<a href="article1.html">&lt;-newer</a>
+				</span>
+				<span class="prevnext sblg-next-has">
+					<a href="article2.html">older-&gt;</a>
+				</span>
+			</nav>
+		</header>
+		<section>
+			<p>
+				<q>Tutoriel - Monitoring OpenBSD 6.9</q>
+			</p>
+			<p>
+				Published by 
+				<span class="name">Evgueni CHKOURINE echkourine@icloud.com</span>
+				on
+				<time datetime="2021-09-09">2021-09-09</time>
+			</p>
+			<article data-sblg-article="1" data-sblg-tags="need-to-put-tags-here">
+ <header>
+  <h2>Tutoriel - Monitoring OpenBSD 6.9</h2>
+  <aside>Tutoriel - Monitoring OpenBSD 6.9</aside>
+  <address>Evgueni CHKOURINE echkourine@icloud.com</address>
+ </header>
+
+ 
+
+<section>
+<h1>1. Installation de slant</h1>
+
+<section>
+<h2>1.1. Sur le serveur et le client</h2>
+
+<pre>
+pkg_add slant
+</pre>
+
+</section>
+<section>
+<h2>1.2. Sur le serveur</h2>
+
+<pre>
+vi .slantrc
+
+waittime 60 ;
+servers
+	http://localhost/cgi-bin/slant-cgi
+	http://192.168.1.108/cgi-bin/slant-cgi
+	;
+           layout {
+             header ;
+             errlog 10 ;
+             host {
+               cpu qmin_bars qmin hour ;
+               mem qmin_bars qmin hour ;
+               nprocs qmin_bars qmin hour ;
+               net qmin hour ;
+               disc qmin hour ;
+               link ip state access ;
+               rprocs qmin ;
+               host record ;
+             } ;
+           } ;
+</pre>
+
+</section>
+<section>
+<h2>1.3. Sur le serveur et les clients</h2>
+
+<pre>
+vi /etc/httpd.conf
+
+server "localhost" {
+	listen on * port 80
+		root "/htdocs"
+	location "/cgi-bin/*"{
+		root "/"
+		fastcgi socket "/run/slowcgi.sock"
+	}
+}
+
+rcctl enable slowcgi
+rcctl start slowcgi
+rcctl enable slant_collectd
+rcctl start slant_collectd
+
+</pre>
+
+</section>
+<section>
+<h2>1.4. Monitoring sur le serveur</h2>
+
+<pre>
+slant -f ~/.slantrc
+</pre>
+
+</section>
+</section>
+</article>
+			<p class="tags">
+				Tags: <span class="sblg-tag">need-to-put-tags-here</span>.
+			</p>
+		</section>
+		<nav>
+			<span class="prevnext ">
+				<a href="article1.html">&lt;-newer</a>
+			</span>
+			<span class="prevnext sblg-next-has">
+				<a href="article2.html">older-&gt;</a>
+			</span>
+		</nav>
+		<footer>
+			<a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">
+				CC BY-SA 4.0</a> | powered by <a href="https://kristaps.bsd.lv/sblg">sblg</a>
+		</footer>
+	</body>
+</html>

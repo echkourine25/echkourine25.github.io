@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta charset="utf-8" /> 
+		<title>Installation d'un serveur de clonage</title>
+		<link rel="stylesheet" href="template.css" />
+		<link rel="alternate" href="atom.xml" type="application/atom+xml" title="Atom Feed" />
+	</head>
+	<body>
+		<header>
+			<h1><a href="index.html">v2 Simple Blog</a></h1>
+			<nav class="sblg-nav">
+				<span class="prevnext sblg-prev-has">
+					<a href="article3.html">&lt;-newer</a>
+				</span>
+				<span class="prevnext sblg-next-has">
+					<a href="article1.html">older-&gt;</a>
+				</span>
+			</nav>
+		</header>
+		<section>
+			<p>
+				<q>Tutoriel sur comment installer son propre serveur de clonage avec fog server</q>
+			</p>
+			<p>
+				Published by 
+				<span class="name">Evgueni CHKOURINE</span>
+				on
+				<time datetime="2021-08-23">2021-08-23</time>
+			</p>
+			<article data-sblg-article="1" data-sblg-tags="Clonage informatique tutoriel">
+ <header>
+  <h2>Installation d'un serveur de clonage</h2>
+  <aside>Tutoriel sur comment installer son propre serveur de clonage avec fog server</aside>
+  <address>Evgueni CHKOURINE</address>
+  <time datetime="2021-08-23">2021-08-23</time>
+ </header>
+	<h3>Introduction</h3>
+	<h4>Prérequis</h4>
+	<h5>Compétences nécessaires</h5>
+	<ul>
+	<li>Être à l'aise avec l'invite de commande</li>
+	<li>Savoir modifier des fichiers de configuration GNU/Linux</li>
+	</ul>
+	<h5>Matériel nécessaire</h5>
+	<ul>
+	<li>Avoir au moins connecté en LAN un serveur debian avec une connexion internet avec un espace de stockage conséquent</li>
+	</ul>
+	<h3>Déploiement</h3>
+	<h4>Installation de FOG Project</h4>
+	<h5>1. Téléchargez et vérifiez l'archive sur le serveur</h5>
+	<code>wget https://github.com/FOGProject/fogproject/archive/1.5.7.tar.gz</code>
+	<h5>2. Décompressez l'archive et lancer l'installation</h5>
+	<code>tar xvzf 1.5.7.tar.gz
+	<br/>cd fogproject-1.5.7/bin
+	<br/>sudo ./installfog.sh</code>
+	<h5>Suivez les instructions d'installation</h5>
+	<ul><li>Déclarez une carte réseau préférée et refusez tout en rapport avec DHCP</li>
+	<li>Le serveur MariaDB (base de donnée) n'a pas de mot de passe par défaut.</li></ul>
+	<h4>Installation et configuration de dnsmasq</h4>
+	<h5>1. Installez le paquet</h5>
+	<code>sudo apt-get install dnsmasq</code>
+	<h5>2. Créez le fichier /etc/dnsmasq.d/ltsp.conf</h5>
+	<code>
+# Don't function as a DNS server:<br/>
+port=0<br/>
+# Log lots of extra information about DHCP transactions.<br/>
+log-dhcp<br/>
+# Set the root directory for files available via FTP.<br/>
+tftp-root=/tftpboot<br/>
+# The boot filename, Server name, Server Ip Address<br/>
+dhcp-boot=undionly.kpxe,,192.168.1.49<br/>
+# Disable re-use of the DHCP servername and filename fields as extra<br/>
+# option space. That's to avoid confusing some old or broken DHCP clients.<br/>
+dhcp-no-override<br/>
+# inspect the vendor class string and match the text to set the tag<br/>
+dhcp-vendorclass=BIOS,PXEClient:Arch:00000<br/>
+dhcp-vendorclass=UEFI32,PXEClient:Arch:00006<br/>
+dhcp-vendorclass=UEFI,PXEClient:Arch:00007<br/>
+dhcp-vendorclass=UEFI64,PXEClient:Arch:00009<br/>
+# Set the boot file name based on the matching tag from the vendor class (above)<br/>
+dhcp-boot=net:UEFI32,i386-efi/ipxe.efi,,192.168.1.49<br/>
+dhcp-boot=net:UEFI,ipxe.efi,,192.168.1.49<br/>
+dhcp-boot=net:UEFI64,ipxe.efi,,192.168.1.49<br/>
+# PXE menu. The first part is the text displayed to the user. The second is the timeout, in seconds.<br/>
+pxe-prompt="Booting FOG Client", 1<br/>
+# The known types are x86PC, PC98, IA64_EFI, Alpha, Arc_x86,<br/>
+# Intel_Lean_Client, IA32_EFI, BC_EFI, Xscale_EFI and X86-64_EFI<br/>
+# This option is first and will be the default if there is no input from the user.<br/>
+pxe-service=X86PC, "Boot to FOG", undionly.kpxe<br/>
+pxe-service=X86-64_EFI, "Boot to FOG UEFI", ipxe.efi<br/>
+pxe-service=BC_EFI, "Boot to FOG UEFI PXE-BC", ipxe.efi<br/>
+dhcp-range=192.168.1.49,proxy<br/>
+</code>
+	<h5>3. Remplacez dans ltsp.conf toutes les occurences de 192.168.1.49 par l'adresse ip de votre serveur</h5>
+	<h5>4. Relancez dnsmasq</h5>
+	<code>sudo service dnsmasq restart</code>
+	<h3>Conclusion</h3>
+	<p>Le serveur est prêt et l'interface web d'administration et le mot de passe sont fournis lors de l'installation de FOG Serveur.</p>
+	<p>Retrouvez-moi dans un autre tutoriel pour apprendre à piloter l'interface d'administration de FOG Project et cloner un disque dur.</p>
+</article>
+			<p class="tags">
+				Tags: <span class="sblg-tag">Clonage</span><span class="sblg-tag">informatique</span><span class="sblg-tag">tutoriel</span>.
+			</p>
+		</section>
+		<nav>
+			<span class="prevnext sblg-prev-has">
+				<a href="article3.html">&lt;-newer</a>
+			</span>
+			<span class="prevnext sblg-next-has">
+				<a href="article1.html">older-&gt;</a>
+			</span>
+		</nav>
+		<footer>
+			<a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">
+				CC BY-SA 4.0</a> | powered by <a href="https://kristaps.bsd.lv/sblg">sblg</a>
+		</footer>
+	</body>
+</html>
