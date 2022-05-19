@@ -3,20 +3,21 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Blog | v2 Blog</title>
+<title>Monitoring OpenBSD 6.9 | v2 Blog</title>
 <meta name="generator" content="Jekyll v4.2.2" />
-<meta property="og:title" content="Blog" />
+<meta property="og:title" content="Monitoring OpenBSD 6.9" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description." />
-<meta property="og:description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description." />
-<link rel="canonical" href="/blog.html" />
-<meta property="og:url" content="/blog.html" />
+<meta name="description" content="Tutoriel - Monitoring OpenBSD 6.9" />
+<meta property="og:description" content="Tutoriel - Monitoring OpenBSD 6.9" />
+<link rel="canonical" href="/sysadmin/2022/05/19/Monitoring-OpenBSD-6.9.html" />
+<meta property="og:url" content="/sysadmin/2022/05/19/Monitoring-OpenBSD-6.9.html" />
 <meta property="og:site_name" content="v2 Blog" />
-<meta property="og:type" content="website" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-05-19T01:13:00+02:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Blog" />
+<meta property="twitter:title" content="Monitoring OpenBSD 6.9" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.","headline":"Blog","url":"/blog.html"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-05-19T01:13:00+02:00","datePublished":"2022-05-19T01:13:00+02:00","description":"Tutoriel - Monitoring OpenBSD 6.9","headline":"Monitoring OpenBSD 6.9","mainEntityOfPage":{"@type":"WebPage","@id":"/sysadmin/2022/05/19/Monitoring-OpenBSD-6.9.html"},"url":"/sysadmin/2022/05/19/Monitoring-OpenBSD-6.9.html"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="v2 Blog" /></head>
 <body><header class="site-header" role="banner">
@@ -36,35 +37,79 @@
 </header>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <h1>Latest Posts</h1>
+        <article class="post">
 
-<ul>
-  
-    <li>
-      <h2><a href="/dev/2022/05/19/C++-mask-file-Generator-for-Linux.html">C++ mask file Generator for Linux</a></h2>
-      <h2 id="c-mask-file-generator-for-linux">C++ mask file generator for Linux</h2>
+  <header class="post-header">
+    <h1 class="post-title">Monitoring OpenBSD 6.9</h1>
+  </header>
 
-    </li>
-  
-    <li>
-      <h2><a href="/sysadmin/2022/05/19/Utilisation-et-pilotage-d'un-serveur-de-clonage-informatique-FOG-Server.html">Utilisation et pilotage d'un serveur de clonage informatique FOG Server</a></h2>
-      <h1 id="1-introduction">1. Introduction</h1>
+  <div class="post-content">
+    <p>Tutoriel - Monitoring OpenBSD 6.9</p>
 
-    </li>
-  
-    <li>
-      <h2><a href="/sysadmin/2022/05/19/Monitoring-OpenBSD-6.9.html">Monitoring OpenBSD 6.9</a></h2>
-      <p>Tutoriel - Monitoring OpenBSD 6.9</p>
+<p>Published by Evgueni CHKOURINE echkourine@icloud.com on 2021-09-09</p>
 
-    </li>
-  
-    <li>
-      <h2><a href="/sysadmin/2022/05/19/Comment-installer-son-propre-serveur-de-clonage-avec-fog-server.html">Comment installer son propre serveur de clonage avec fog server</a></h2>
-      <p>Tutoriel sur comment installer son propre serveur de clonage avec fog server</p>
+<h2 id="tutoriel---monitoring-openbsd-69">Tutoriel - Monitoring OpenBSD 6.9</h2>
 
-    </li>
-  
-</ul>
+<p>Tutoriel - Monitoring OpenBSD 6.9</p>
+
+<p>Evgueni CHKOURINE echkourine@icloud.com</p>
+
+<h1 id="1-installation-de-slant">1. Installation de slant</h1>
+
+<h2 id="11-sur-le-serveur-et-le-client">1.1. Sur le serveur et le client</h2>
+
+<p>pkg_add slant</p>
+
+<h2 id="12-sur-le-serveur">1.2. Sur le serveur</h2>
+
+<p>vi .slantrc</p>
+
+<p>waittime 60 ;
+servers
+	http://localhost/cgi-bin/slant-cgi
+	http://192.168.1.108/cgi-bin/slant-cgi
+	;
+           layout {
+             header ;
+             errlog 10 ;
+             host {
+               cpu qmin_bars qmin hour ;
+               mem qmin_bars qmin hour ;
+               nprocs qmin_bars qmin hour ;
+               net qmin hour ;
+               disc qmin hour ;
+               link ip state access ;
+               rprocs qmin ;
+               host record ;
+             } ;
+           } ;</p>
+
+<h2 id="13-sur-le-serveur-et-les-clients">1.3. Sur le serveur et les clients</h2>
+
+<p>vi /etc/httpd.conf</p>
+
+<p>server “localhost” {
+	listen on * port 80
+		root “/htdocs”
+	location “/cgi-bin/*”{
+		root “/”
+		fastcgi socket “/run/slowcgi.sock”
+	}
+}</p>
+
+<p>rcctl enable slowcgi
+rcctl start slowcgi
+rcctl enable slant_collectd
+rcctl start slant_collectd</p>
+
+<h2 id="14-monitoring-sur-le-serveur">1.4. Monitoring sur le serveur</h2>
+
+<p>slant -f ~/.slantrc</p>
+
+  </div>
+
+</article>
+
       </div>
     </main><footer class="site-footer h-card">
   <data class="u-url" href="/"></data>
