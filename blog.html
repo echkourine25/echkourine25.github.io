@@ -40,58 +40,18 @@
   
     <li>
       <h2><a href="/dev/2022/05/19/C++-mask-file-Generator-for-Linux.html">C++ mask file Generator for Linux</a></h2>
-      <p>C++ mask file Generator for Linux
-```
-#include <iostream>
-#include <string>
-#include <fstream>
-#include <sstream>
-#include <vector>
-#include <cstring>
-#include <algorithm>
-#include <typeinfo>
-#include <unistd.h>
-using namespace std;
-int main(){
-	string action;
-	int error=0;
-    char mychar[1];
-    char mychar2[1];
-    fstream fout2;
-    fout2.open("temp.bin", ios::out |ios::app);
-	ifstream urandom;
-	urandom.open("/dev/urandom", ios::in | ios::binary);
-	//ss &lt;&lt; getline(urandom, byte, length);
-        string s;
-    const string maskName="temp.bin";
-    while(error!=1){
-	while(!(cin.get(mychar[0]) &amp;&amp; urandom.get(mychar2[0]))){
-		error = 1;
-		break;</unistd.h></typeinfo></algorithm></cstring></vector></sstream></fstream></string></iostream></p>
-
     </li>
   
     <li>
       <h2><a href="/sysadmin/2022/05/19/Utilisation-et-pilotage-d'un-serveur-de-clonage-informatique-FOG-Server.html">Utilisation et pilotage d'un serveur de clonage informatique FOG Server</a></h2>
-      <p>Utilisation et pilotage d’un serveur de clonage informatique FOG Server
-1. Introduction
-================</p>
-
     </li>
   
     <li>
       <h2><a href="/sysadmin/2022/05/19/Monitoring-OpenBSD-6.9.html">Monitoring OpenBSD 6.9</a></h2>
-      <p>Monitoring OpenBSD 6.9
-1. Installation de slant
-=========================</p>
-
     </li>
   
     <li>
       <h2><a href="/sysadmin/2022/05/19/Comment-installer-son-propre-serveur-de-clonage-avec-fog-server.html">Comment installer son propre serveur de clonage avec fog server</a></h2>
-      <p>Comment installer son propre serveur de clonage avec fog server</p>
-<h3 id="introduction">Introduction</h3>
-
     </li>
   
 </ul>
