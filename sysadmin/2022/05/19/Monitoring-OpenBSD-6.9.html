@@ -7,8 +7,8 @@
 <meta name="generator" content="Jekyll v4.2.2" />
 <meta property="og:title" content="Monitoring OpenBSD 6.9" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Monitoring OpenBSD 6.9 1. Installation de slant =========================" />
-<meta property="og:description" content="Monitoring OpenBSD 6.9 1. Installation de slant =========================" />
+<meta name="description" content="Monitoring Ressources Systèmes Centralisé OpenBSD 6.9 1. Installation de slant =========================" />
+<meta property="og:description" content="Monitoring Ressources Systèmes Centralisé OpenBSD 6.9 1. Installation de slant =========================" />
 <link rel="canonical" href="/sysadmin/2022/05/19/Monitoring-OpenBSD-6.9.html" />
 <meta property="og:url" content="/sysadmin/2022/05/19/Monitoring-OpenBSD-6.9.html" />
 <meta property="og:site_name" content="Evgueni CHKOURINE" />
@@ -17,7 +17,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Monitoring OpenBSD 6.9" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-05-19T01:13:00+02:00","datePublished":"2022-05-19T01:13:00+02:00","description":"Monitoring OpenBSD 6.9 1. Installation de slant =========================","headline":"Monitoring OpenBSD 6.9","mainEntityOfPage":{"@type":"WebPage","@id":"/sysadmin/2022/05/19/Monitoring-OpenBSD-6.9.html"},"url":"/sysadmin/2022/05/19/Monitoring-OpenBSD-6.9.html"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-05-19T01:13:00+02:00","datePublished":"2022-05-19T01:13:00+02:00","description":"Monitoring Ressources Systèmes Centralisé OpenBSD 6.9 1. Installation de slant =========================","headline":"Monitoring OpenBSD 6.9","mainEntityOfPage":{"@type":"WebPage","@id":"/sysadmin/2022/05/19/Monitoring-OpenBSD-6.9.html"},"url":"/sysadmin/2022/05/19/Monitoring-OpenBSD-6.9.html"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Evgueni CHKOURINE" /></head>
 <body><header class="site-header" role="banner">
@@ -40,7 +40,7 @@
         <h1>Monitoring OpenBSD 6.9</h1>
 <p>19 May 2022 - </p>
 
-<p>Monitoring OpenBSD 6.9
+<p>Monitoring Ressources Systèmes Centralisé OpenBSD 6.9
 1. Installation de slant
 =========================</p>
 
@@ -50,9 +50,9 @@
 
 <h2 id="12-sur-le-serveur">1.2. Sur le serveur</h2>
 
-<p>vi .slantrc</p>
+<p><code class="language-plaintext highlighter-rouge">vi .slantrc</code></p>
 
-<p>waittime 60 ;
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>waittime 60 ;
 servers
 	http://localhost/cgi-bin/slant-cgi
 	http://192.168.1.108/cgi-bin/slant-cgi
@@ -61,38 +61,41 @@ servers
              header ;
              errlog 10 ;
              host {
-               cpu qmin_bars qmin hour ;
-               mem qmin_bars qmin hour ;
-               nprocs qmin_bars qmin hour ;
+               cpu qmin\_bars qmin hour ;
+               mem qmin\_bars qmin hour ;
+               nprocs qmin\_bars qmin hour ;
                net qmin hour ;
                disc qmin hour ;
                link ip state access ;
                rprocs qmin ;
                host record ;
              } ;
-           } ;</p>
+           } ;
+</code></pre></div></div>
 
 <h2 id="13-sur-le-serveur-et-les-clients">1.3. Sur le serveur et les clients</h2>
 
-<p>vi /etc/httpd.conf</p>
+<p><code class="language-plaintext highlighter-rouge">vi /etc/httpd.conf</code></p>
 
-<p>server “localhost” {
-	listen on * port 80
-		root “/htdocs”
-	location “/cgi-bin/*”{
-		root “/”
-		fastcgi socket “/run/slowcgi.sock”
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>server "localhost" {
+	listen on \* port 80
+		root "/htdocs"
+	location "/cgi-bin/\*"{
+		root "/"
+		fastcgi socket "/run/slowcgi.sock"
 	}
-}</p>
+}
+</code></pre></div></div>
 
-<p>rcctl enable slowcgi
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rcctl enable slowcgi
 rcctl start slowcgi
-rcctl enable slant_collectd
-rcctl start slant_collectd</p>
+rcctl enable slant\_collectd
+rcctl start slant\_collectd
+</code></pre></div></div>
+<p>1.4. Monitoring sur le serveur
+——————————</p>
 
-<h2 id="14-monitoring-sur-le-serveur">1.4. Monitoring sur le serveur</h2>
-
-<p>slant -f ~/.slantrc</p>
+<p><code class="language-plaintext highlighter-rouge">slant -f ~/.slantrc</code></p>
 
       </div>
     </main><footer class="site-footer h-card">

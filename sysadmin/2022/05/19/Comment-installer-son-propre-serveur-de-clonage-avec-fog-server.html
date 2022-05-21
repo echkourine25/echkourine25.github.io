@@ -85,7 +85,36 @@
 
 <h5 id="2-créez-le-fichier-etcdnsmasqdltspconf">2. Créez le fichier /etc/dnsmasq.d/ltsp.conf</h5>
 
-<p><code class="language-plaintext highlighter-rouge"># Don't function as a DNS server:   port=0   # Log lots of extra information about DHCP transactions.   log-dhcp   # Set the root directory for files available via FTP.   tftp-root=/tftpboot   # The boot filename, Server name, Server Ip Address   dhcp-boot=undionly.kpxe,,192.168.1.49   # Disable re-use of the DHCP servername and filename fields as extra   # option space. That's to avoid confusing some old or broken DHCP clients.   dhcp-no-override   # inspect the vendor class string and match the text to set the tag   dhcp-vendorclass=BIOS,PXEClient:Arch:00000   dhcp-vendorclass=UEFI32,PXEClient:Arch:00006   dhcp-vendorclass=UEFI,PXEClient:Arch:00007   dhcp-vendorclass=UEFI64,PXEClient:Arch:00009   # Set the boot file name based on the matching tag from the vendor class (above)   dhcp-boot=net:UEFI32,i386-efi/ipxe.efi,,192.168.1.49   dhcp-boot=net:UEFI,ipxe.efi,,192.168.1.49   dhcp-boot=net:UEFI64,ipxe.efi,,192.168.1.49   # PXE menu. The first part is the text displayed to the user. The second is the timeout, in seconds.   pxe-prompt="Booting FOG Client", 1   # The known types are x86PC, PC98, IA64_EFI, Alpha, Arc_x86,   # Intel_Lean_Client, IA32_EFI, BC_EFI, Xscale_EFI and X86-64_EFI   # This option is first and will be the default if there is no input from the user.   pxe-service=X86PC, "Boot to FOG", undionly.kpxe   pxe-service=X86-64_EFI, "Boot to FOG UEFI", ipxe.efi   pxe-service=BC_EFI, "Boot to FOG UEFI PXE-BC", ipxe.efi   dhcp-range=192.168.1.49,proxy   </code></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Don't function as a DNS server:   
+port=0   
+# Log lots of extra information about DHCP transactions.   
+log-dhcp   
+# Set the root directory for files available via FTP.   
+tftp-root=/tftpboot   
+# The boot filename, Server name, Server Ip Address   
+dhcp-boot=undionly.kpxe,,192.168.1.49   
+# Disable re-use of the DHCP servername and filename fields as extra   
+# option space. That's to avoid confusing some old or broken DHCP clients.   
+dhcp-no-override   
+# inspect the vendor class string and match the text to set the tag   
+dhcp-vendorclass=BIOS,PXEClient:Arch:00000   
+dhcp-vendorclass=UEFI32,PXEClient:Arch:00006   
+dhcp-vendorclass=UEFI,PXEClient:Arch:00007   
+dhcp-vendorclass=UEFI64,PXEClient:Arch:00009   
+# Set the boot file name based on the matching tag from the vendor class (above)   
+dhcp-boot=net:UEFI32,i386-efi/ipxe.efi,,192.168.1.49   
+dhcp-boot=net:UEFI,ipxe.efi,,192.168.1.49   
+dhcp-boot=net:UEFI64,ipxe.efi,,192.168.1.49   
+# PXE menu. The first part is the text displayed to the user. The second is the timeout, in seconds.
+pxe-prompt="Booting FOG Client", 1   
+# The known types are x86PC, PC98, IA64_EFI, Alpha, Arc_x86,   
+# Intel_Lean_Client, IA32_EFI, BC_EFI, Xscale_EFI and X86-64_EFI   
+# This option is first and will be the default if there is no input from the user.   
+pxe-service=X86PC, "Boot to FOG", undionly.kpxe   
+pxe-service=X86-64_EFI, "Boot to FOG UEFI", ipxe.efi   
+pxe-service=BC_EFI, "Boot to FOG UEFI PXE-BC", ipxe.efi   
+dhcp-range=192.168.1.49,proxy   
+</code></pre></div></div>
 
 <h5 id="3-remplacez-dans-ltspconf-toutes-les-occurences-de-192168149-par-ladresse-ip-de-votre-serveur">3. Remplacez dans ltsp.conf toutes les occurences de 192.168.1.49 par l’adresse ip de votre serveur</h5>
 
