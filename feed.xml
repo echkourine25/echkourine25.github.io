@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2022-06-27T23:42:34+02:00</updated><id>/feed.xml</id><title type="html">Evgueni CHKOURINE</title><subtitle></subtitle><entry><title type="html">Activer le versionning de fichier sur Windows 11</title><link href="/sysadmin/2022/05/21/Activer-le-versionning-de-fichier-sur-Windows-11.html" rel="alternate" type="text/html" title="Activer le versionning de fichier sur Windows 11" /><published>2022-05-21T08:12:00+02:00</published><updated>2022-05-21T08:12:00+02:00</updated><id>/sysadmin/2022/05/21/Activer%20le%20versionning%20de%20fichier%20sur%20Windows%2011</id><content type="html" xml:base="/sysadmin/2022/05/21/Activer-le-versionning-de-fichier-sur-Windows-11.html"><![CDATA[<h2 id="pourquoi-faire-">Pourquoi faire ?</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2022-06-27T23:45:56+02:00</updated><id>/feed.xml</id><title type="html">Evgueni CHKOURINE</title><subtitle></subtitle><entry><title type="html">Activer le versionning de fichier sur Windows 11</title><link href="/sysadmin/2022/05/21/Activer-le-versionning-de-fichier-sur-Windows-11.html" rel="alternate" type="text/html" title="Activer le versionning de fichier sur Windows 11" /><published>2022-05-21T08:12:00+02:00</published><updated>2022-05-21T08:12:00+02:00</updated><id>/sysadmin/2022/05/21/Activer%20le%20versionning%20de%20fichier%20sur%20Windows%2011</id><content type="html" xml:base="/sysadmin/2022/05/21/Activer-le-versionning-de-fichier-sur-Windows-11.html"><![CDATA[<h2 id="pourquoi-faire-">Pourquoi faire ?</h2>
 
 <p>Une fois de plus je viens de perdre la derniere version d’un fichier. Travaillé presque deux jours dessus et je n’avais pas suffisament fait de sauvegarde.</p>
 
@@ -23,24 +23,7 @@ Sélectionnez le lecteur sur lequel enregistrer les sauvegardes et cliquez sur a
 <p>Touche Windows/Menu démarrer <br />
 Tapez “Restaurer vos fichiers à l’aide de l’Historique de fichiers”</p>
 
-<p>Une fenêtre s’ouvre avec vos fichiers restaurable.</p>]]></content><author><name></name></author><category term="SysAdmin" /><summary type="html"><![CDATA[Pourquoi faire ?]]></summary></entry><entry><title type="html">Streaming F1 22 at twitch.tv/cevgueni</title><link href="/dev/2022/05/19/Twitch.tv.html" rel="alternate" type="text/html" title="Streaming F1 22 at twitch.tv/cevgueni" /><published>2022-05-19T23:46:05+02:00</published><updated>2022-05-19T23:46:05+02:00</updated><id>/dev/2022/05/19/Twitch.tv</id><content type="html" xml:base="/dev/2022/05/19/Twitch.tv.html"><![CDATA[<p>Streaming F1 22 at twitch.tv/cevgueni
- <!-- Add a placeholder for the Twitch embed -->
-    &lt;div id="twitch-embed"&gt;&lt;/div&gt;</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;!-- Load the Twitch embed JavaScript file --&gt;
-&lt;script src="https://embed.twitch.tv/embed/v1.js"&gt;&lt;/script&gt;
-
-&lt;!-- Create a Twitch.Embed object that will render within the "twitch-embed" element --&gt;
-&lt;script type="text/javascript"&gt;
-  new Twitch.Embed("twitch-embed", {
-    width: 854,
-    height: 480,
-    channel: "cevgueni",
-    // Only needed if this page is going to be embedded on other websites
-    parent: ["embed.example.com", "othersite.example.com"]
-  });
-&lt;/script&gt;
-</code></pre></div></div>]]></content><author><name></name></author><category term="Dev" /><summary type="html"><![CDATA[Streaming F1 22 at twitch.tv/cevgueni &lt;div id="twitch-embed"&gt;&lt;/div&gt;]]></summary></entry><entry><title type="html">C++ mask file Generator for Linux</title><link href="/dev/2022/05/19/C++-mask-file-Generator-for-Linux.html" rel="alternate" type="text/html" title="C++ mask file Generator for Linux" /><published>2022-05-19T23:46:05+02:00</published><updated>2022-05-19T23:46:05+02:00</updated><id>/dev/2022/05/19/C++%20mask%20file%20Generator%20for%20Linux</id><content type="html" xml:base="/dev/2022/05/19/C++-mask-file-Generator-for-Linux.html"><![CDATA[<p>C++ mask file Generator for Linux</p>
+<p>Une fenêtre s’ouvre avec vos fichiers restaurable.</p>]]></content><author><name></name></author><category term="SysAdmin" /><summary type="html"><![CDATA[Pourquoi faire ?]]></summary></entry><entry><title type="html">C++ mask file Generator for Linux</title><link href="/dev/2022/05/19/C++-mask-file-Generator-for-Linux.html" rel="alternate" type="text/html" title="C++ mask file Generator for Linux" /><published>2022-05-19T23:46:05+02:00</published><updated>2022-05-19T23:46:05+02:00</updated><id>/dev/2022/05/19/C++%20mask%20file%20Generator%20for%20Linux</id><content type="html" xml:base="/dev/2022/05/19/C++-mask-file-Generator-for-Linux.html"><![CDATA[<p>C++ mask file Generator for Linux</p>
 <div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
 #include</span> <span class="cpf">&lt;string&gt;</span><span class="cp">
 #include</span> <span class="cpf">&lt;fstream&gt;</span><span class="cp">
