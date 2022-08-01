@@ -1,0 +1,8 @@
+global:
+  english: English
+  french: French
+  russian: Russian
+
+pages:
+  home: home
+  about: about
