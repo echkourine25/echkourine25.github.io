@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" hreflang="en" /><updated>2022-08-02T01:37:26+02:00</updated><id>/feed.xml</id><title type="html">Evgueni CHKOURINE</title><subtitle></subtitle><entry><title type="html">C++ mask file Generator for Linux</title><link href="/dev/2022/05/19/C++-mask-file-Generator-for-Linux.html" rel="alternate" type="text/html" title="C++ mask file Generator for Linux" /><published>2022-05-19T23:46:05+02:00</published><updated>2022-05-19T23:46:05+02:00</updated><id>/dev/2022/05/19/C++%20mask%20file%20Generator%20for%20Linux</id><content type="html" xml:base="/dev/2022/05/19/C++-mask-file-Generator-for-Linux.html"><![CDATA[<p>C++ mask file Generator for Linux</p>
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;fstream&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;sstream&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;cstring&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;algorithm&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;typeinfo&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+	<span class="n">string</span> <span class="n">action</span><span class="p">;</span>
+	<span class="kt">int</span> <span class="n">error</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+    <span class="kt">char</span> <span class="n">mychar</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+    <span class="kt">char</span> <span class="n">mychar2</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+    <span class="n">fstream</span> <span class="n">fout2</span><span class="p">;</span>
+    <span class="n">fout2</span><span class="p">.</span><span class="n">open</span><span class="p">(</span><span class="s">"temp.bin"</span><span class="p">,</span> <span class="n">ios</span><span class="o">::</span><span class="n">out</span> <span class="o">|</span><span class="n">ios</span><span class="o">::</span><span class="n">app</span><span class="p">);</span>
+	<span class="n">ifstream</span> <span class="n">urandom</span><span class="p">;</span>
+	<span class="n">urandom</span><span class="p">.</span><span class="n">open</span><span class="p">(</span><span class="s">"/dev/urandom"</span><span class="p">,</span> <span class="n">ios</span><span class="o">::</span><span class="n">in</span> <span class="o">|</span> <span class="n">ios</span><span class="o">::</span><span class="n">binary</span><span class="p">);</span>
+	<span class="c1">//ss &lt;&lt; getline(urandom, byte, length);</span>
+        <span class="n">string</span> <span class="n">s</span><span class="p">;</span>
+    <span class="k">const</span> <span class="n">string</span> <span class="n">maskName</span><span class="o">=</span><span class="s">"temp.bin"</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">error</span><span class="o">!=</span><span class="mi">1</span><span class="p">){</span>
+	<span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">cin</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">mychar</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="n">urandom</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">mychar2</span><span class="p">[</span><span class="mi">0</span><span class="p">]))){</span>
+		<span class="n">error</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+		<span class="k">break</span><span class="p">;</span>
+
+	<span class="p">}</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">error</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
+		<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="kt">char</span><span class="p">)(</span><span class="n">mychar</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">^</span> <span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="n">mychar2</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+		<span class="n">fout2</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="n">mychar2</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+	<span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">fout2</span><span class="p">.</span><span class="n">close</span><span class="p">();</span>
+    <span class="k">const</span> <span class="n">string</span> <span class="n">s2</span><span class="o">=</span><span class="s">"mv temp.bin $(shasum temp.bin | awk '{print $1}')"</span><span class="p">;</span>
+    <span class="c1">//rename (maskName.c_str(), s3.c_str());</span>
+    <span class="n">system</span><span class="p">(</span><span class="n">s2</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
+
+<span class="p">}</span>
+
+</code></pre></div></div>]]></content><author><name></name></author><category term="Dev" /><summary type="html"><![CDATA[C++ mask file Generator for Linux ```c++ #include #include #include #include #include #include #include #include #include using namespace std; int main(){ string action; int error=0; char mychar[1]; char mychar2[1]; fstream fout2; fout2.open("temp.bin", ios::out |ios::app); ifstream urandom; urandom.open("/dev/urandom", ios::in | ios::binary); //ss &lt;&lt; getline(urandom, byte, length); string s; const string maskName="temp.bin"; while(error!=1){ while(!(cin.get(mychar[0]) &amp;&amp; urandom.get(mychar2[0]))){ error = 1; break;]]></summary></entry></feed>
