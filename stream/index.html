@@ -3,20 +3,20 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>About | Evgueni CHKOURINE</title>
+<title>Streaming | Evgueni CHKOURINE</title>
 <meta name="generator" content="Jekyll v4.2.2" />
-<meta property="og:title" content="About" />
+<meta property="og:title" content="Streaming" />
 <meta property="og:locale" content="fr" />
 <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description." />
 <meta property="og:description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description." />
-<link rel="canonical" href="/about/" />
-<meta property="og:url" content="/about/" />
+<link rel="canonical" href="/stream/" />
+<meta property="og:url" content="/stream/" />
 <meta property="og:site_name" content="Evgueni CHKOURINE" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="About" />
+<meta property="twitter:title" content="Streaming" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","description":"Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.","headline":"About","name":"Evgueni CHKOURINE","url":"/about/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.","headline":"Streaming","url":"/stream/"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Evgueni CHKOURINE" /></head>
 <body><header class="site-header" role="banner">
@@ -39,14 +39,23 @@
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">About</h1>
+    <h1 class="post-title">Streaming</h1>
   </header>
 
   <div class="post-content">
-    <p>Hey, je m’appelle Evgueni CHKOURINE, je viens du Kazakhstan et j’habite en France.
-Je suis SysAdmin, NetAdmin, ainsi que Developpeur sur debian et OpenBSD Windows11 et MacOS X depuis 2008.
-Je m’interesse au nouvelles technologies liées à l’informatique et aux jeux vidéo. Je suis également musicien de temps en temps :)</p>
+    <div id="twitch-embed"></div>
 
+<!-- Load the Twitch embed JavaScript file -->
+<script src="https://embed.twitch.tv/embed/v1.js"></script>
+
+<!-- Create a Twitch.Embed object that will render within the "twitch-embed" element -->
+<script type="text/javascript">
+  new Twitch.Embed("twitch-embed", {
+    width: 1630,
+    height: 720,
+    channel: "cevgueni",
+  });
+</script>
   </div>
 
 </article>
