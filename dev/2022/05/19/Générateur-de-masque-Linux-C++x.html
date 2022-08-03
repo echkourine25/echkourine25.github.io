@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>C++ Générateur de masques Linux</title>
+  </head>
+  <body>
+    <h1>C++ Générateur de masques Linux</h1>
+<p>19 May 2022 - </p>
+
+<p>C++ Générateur de masques Linux</p>
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;fstream&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;sstream&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;cstring&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;algorithm&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;typeinfo&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+	<span class="n">string</span> <span class="n">action</span><span class="p">;</span>
+	<span class="kt">int</span> <span class="n">error</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+    <span class="kt">char</span> <span class="n">mychar</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+    <span class="kt">char</span> <span class="n">mychar2</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+    <span class="n">fstream</span> <span class="n">fout2</span><span class="p">;</span>
+    <span class="n">fout2</span><span class="p">.</span><span class="n">open</span><span class="p">(</span><span class="s">"temp.bin"</span><span class="p">,</span> <span class="n">ios</span><span class="o">::</span><span class="n">out</span> <span class="o">|</span><span class="n">ios</span><span class="o">::</span><span class="n">app</span><span class="p">);</span>
+	<span class="n">ifstream</span> <span class="n">urandom</span><span class="p">;</span>
+	<span class="n">urandom</span><span class="p">.</span><span class="n">open</span><span class="p">(</span><span class="s">"/dev/urandom"</span><span class="p">,</span> <span class="n">ios</span><span class="o">::</span><span class="n">in</span> <span class="o">|</span> <span class="n">ios</span><span class="o">::</span><span class="n">binary</span><span class="p">);</span>
+	<span class="c1">//ss &lt;&lt; getline(urandom, byte, length);</span>
+        <span class="n">string</span> <span class="n">s</span><span class="p">;</span>
+    <span class="k">const</span> <span class="n">string</span> <span class="n">maskName</span><span class="o">=</span><span class="s">"temp.bin"</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">error</span><span class="o">!=</span><span class="mi">1</span><span class="p">){</span>
+	<span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">cin</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">mychar</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="n">urandom</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">mychar2</span><span class="p">[</span><span class="mi">0</span><span class="p">]))){</span>
+		<span class="n">error</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+		<span class="k">break</span><span class="p">;</span>
+
+	<span class="p">}</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">error</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
+		<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="kt">char</span><span class="p">)(</span><span class="n">mychar</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">^</span> <span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="n">mychar2</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+		<span class="n">fout2</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="n">mychar2</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+	<span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">fout2</span><span class="p">.</span><span class="n">close</span><span class="p">();</span>
+    <span class="k">const</span> <span class="n">string</span> <span class="n">s2</span><span class="o">=</span><span class="s">"mv temp.bin $(shasum temp.bin | awk '{print $1}')"</span><span class="p">;</span>
+    <span class="c1">//rename (maskName.c_str(), s3.c_str());</span>
+    <span class="n">system</span><span class="p">(</span><span class="n">s2</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
+
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+  </body>
+</html>

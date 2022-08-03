@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Monitoring OpenBSD 6.9</title>
+  </head>
+  <body>
+    <h1>Monitoring OpenBSD 6.9</h1>
+<p>19 May 2022 - </p>
+
+<p>Monitoring Ressources Systèmes Centralisé OpenBSD 6.9
+1. Installation de slant
+=========================</p>
+
+<h2 id="11-sur-le-serveur-et-le-client">1.1. Sur le serveur et le client</h2>
+
+<p>pkg_add slant</p>
+
+<h2 id="12-sur-le-serveur">1.2. Sur le serveur</h2>
+
+<p><code class="language-plaintext highlighter-rouge">vi .slantrc</code></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>waittime 60 ;
+servers
+	http://localhost/cgi-bin/slant-cgi
+	http://192.168.1.108/cgi-bin/slant-cgi
+	;
+           layout {
+             header ;
+             errlog 10 ;
+             host {
+               cpu qmin\_bars qmin hour ;
+               mem qmin\_bars qmin hour ;
+               nprocs qmin\_bars qmin hour ;
+               net qmin hour ;
+               disc qmin hour ;
+               link ip state access ;
+               rprocs qmin ;
+               host record ;
+             } ;
+           } ;
+</code></pre></div></div>
+
+<h2 id="13-sur-le-serveur-et-les-clients">1.3. Sur le serveur et les clients</h2>
+
+<p><code class="language-plaintext highlighter-rouge">vi /etc/httpd.conf</code></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>server "localhost" {
+	listen on \* port 80
+		root "/htdocs"
+	location "/cgi-bin/\*"{
+		root "/"
+		fastcgi socket "/run/slowcgi.sock"
+	}
+}
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rcctl enable slowcgi
+rcctl start slowcgi
+rcctl enable slant\_collectd
+rcctl start slant\_collectd
+</code></pre></div></div>
+<p>1.4. Monitoring sur le serveur
+——————————</p>
+
+<p><code class="language-plaintext highlighter-rouge">slant -f ~/.slantrc</code></p>
+
+  </body>
+</html>

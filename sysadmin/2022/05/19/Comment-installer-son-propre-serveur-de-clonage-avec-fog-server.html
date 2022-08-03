@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Comment installer son propre serveur de clonage avec fog server</title>
+  </head>
+  <body>
+    <h1>Comment installer son propre serveur de clonage avec fog server</h1>
+<p>19 May 2022 - </p>
+
+<p>Comment installer son propre serveur de clonage avec fog server</p>
+<h3 id="introduction">Introduction</h3>
+
+<h4 id="prérequis">Prérequis</h4>
+
+<h5 id="compétences-nécessaires">Compétences nécessaires</h5>
+
+<ul>
+  <li>Être à l’aise avec l’invite de commande</li>
+  <li>Savoir modifier des fichiers de configuration GNU/Linux</li>
+</ul>
+
+<h5 id="matériel-nécessaire">Matériel nécessaire</h5>
+
+<ul>
+  <li>Avoir au moins connecté en LAN un serveur debian avec une connexion internet avec un espace de stockage conséquent</li>
+</ul>
+
+<h3 id="déploiement">Déploiement</h3>
+
+<h4 id="installation-de-fog-project">Installation de FOG Project</h4>
+
+<h5 id="1-téléchargez-et-vérifiez-larchive-sur-le-serveur">1. Téléchargez et vérifiez l’archive sur le serveur</h5>
+
+<p><code class="language-plaintext highlighter-rouge">wget https://github.com/FOGProject/fogproject/archive/1.5.7.tar.gz</code></p>
+
+<h5 id="2-décompressez-larchive-et-lancer-linstallation">2. Décompressez l’archive et lancer l’installation</h5>
+
+<p><code class="language-plaintext highlighter-rouge">tar xvzf 1.5.7.tar.gz   cd fogproject-1.5.7/bin   sudo ./installfog.sh</code></p>
+
+<h5 id="suivez-les-instructions-dinstallation">Suivez les instructions d’installation</h5>
+
+<ul>
+  <li>Déclarez une carte réseau préférée et refusez tout en rapport avec DHCP</li>
+  <li>Le serveur MariaDB (base de donnée) n’a pas de mot de passe par défaut.</li>
+</ul>
+
+<h4 id="installation-et-configuration-de-dnsmasq">Installation et configuration de dnsmasq</h4>
+
+<h5 id="1-installez-le-paquet">1. Installez le paquet</h5>
+
+<p><code class="language-plaintext highlighter-rouge">sudo apt-get install dnsmasq</code></p>
+
+<h5 id="2-créez-le-fichier-etcdnsmasqdltspconf">2. Créez le fichier /etc/dnsmasq.d/ltsp.conf</h5>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Don't function as a DNS server:   
+port=0   
+# Log lots of extra information about DHCP transactions.   
+log-dhcp   
+# Set the root directory for files available via FTP.   
+tftp-root=/tftpboot   
+# The boot filename, Server name, Server Ip Address   
+dhcp-boot=undionly.kpxe,,192.168.1.49   
+# Disable re-use of the DHCP servername and filename fields as extra   
+# option space. That's to avoid confusing some old or broken DHCP clients.   
+dhcp-no-override   
+# inspect the vendor class string and match the text to set the tag   
+dhcp-vendorclass=BIOS,PXEClient:Arch:00000   
+dhcp-vendorclass=UEFI32,PXEClient:Arch:00006   
+dhcp-vendorclass=UEFI,PXEClient:Arch:00007   
+dhcp-vendorclass=UEFI64,PXEClient:Arch:00009   
+# Set the boot file name based on the matching tag from the vendor class (above)   
+dhcp-boot=net:UEFI32,i386-efi/ipxe.efi,,192.168.1.49   
+dhcp-boot=net:UEFI,ipxe.efi,,192.168.1.49   
+dhcp-boot=net:UEFI64,ipxe.efi,,192.168.1.49   
+# PXE menu. The first part is the text displayed to the user. The second is the timeout, in seconds.
+pxe-prompt="Booting FOG Client", 1   
+# The known types are x86PC, PC98, IA64_EFI, Alpha, Arc_x86,   
+# Intel_Lean_Client, IA32_EFI, BC_EFI, Xscale_EFI and X86-64_EFI   
+# This option is first and will be the default if there is no input from the user.   
+pxe-service=X86PC, "Boot to FOG", undionly.kpxe   
+pxe-service=X86-64_EFI, "Boot to FOG UEFI", ipxe.efi   
+pxe-service=BC_EFI, "Boot to FOG UEFI PXE-BC", ipxe.efi   
+dhcp-range=192.168.1.49,proxy   
+</code></pre></div></div>
+
+<h5 id="3-remplacez-dans-ltspconf-toutes-les-occurences-de-192168149-par-ladresse-ip-de-votre-serveur">3. Remplacez dans ltsp.conf toutes les occurences de 192.168.1.49 par l’adresse ip de votre serveur</h5>
+
+<h5 id="4-relancez-dnsmasq">4. Relancez dnsmasq</h5>
+
+<p><code class="language-plaintext highlighter-rouge">sudo service dnsmasq restart</code></p>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>Le serveur est prêt et l’interface web d’administration et le mot de passe sont fournis lors de l’installation de FOG Serveur.</p>
+
+<p>Retrouvez-moi dans un autre tutoriel pour apprendre à piloter l’interface d’administration de FOG Project et cloner un disque dur.</p>
+
+  </body>
+</html>
