@@ -1,4 +1,35 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2022-08-03T09:36:37+02:00</updated><id>/feed.xml</id><title type="html">Evgueni CHKOURINE</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry xml:lang="fr"><title type="html">Activer l’historique de fichier sur Windows 11</title><link href="/sysadmin/2022/05/21/Activer-le-versionning-de-fichier-sur-Windows-11.html" rel="alternate" type="text/html" title="Activer l’historique de fichier sur Windows 11" /><published>2022-05-21T08:12:00+02:00</published><updated>2022-05-21T08:12:00+02:00</updated><id>/sysadmin/2022/05/21/Activer%20le%20versionning%20de%20fichier%20sur%20Windows%2011</id><content type="html" xml:base="/sysadmin/2022/05/21/Activer-le-versionning-de-fichier-sur-Windows-11.html"><![CDATA[<h2 id="pourquoi-faire-">Pourquoi faire ?</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2022-08-16T07:11:11+02:00</updated><id>/feed.xml</id><title type="html">Evgueni CHKOURINE</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">Best incremental game</title><link href="/2022/08/16/Best-Incremental-Game.html" rel="alternate" type="text/html" title="Best incremental game" /><published>2022-08-16T00:00:00+02:00</published><updated>2022-08-16T00:00:00+02:00</updated><id>/2022/08/16/Best%20Incremental%20Game</id><content type="html" xml:base="/2022/08/16/Best-Incremental-Game.html"><![CDATA[<hr />
+<p>layout: post
+title:  Best Incremental Game
+date:   2022-08-16 07:00:00 +0200
+categories: Games
+lang: en
+ref: Best Incremental Game</p>
+
+<p>Hey, there today I present you a new game called Idle Research
+Out on August 1 2022 it’s almost recent.</p>
+
+<p>I’m always looking for new games, new concepts etc … 
+I tried a tycoon market game that was funny for a moment but not enough good to make a post for it. And it is a bit pay 2 win.</p>
+
+<p>It was my first incremental game then a made a couple of research and find some incremental games that i tried but nothing exceptionnal.</p>
+
+<p>And then I found Idle Research.</p>
+
+<p>This game is butifull have a decent game time perdiod etheir i do not finished it cause it bore me a bit now. Wanna look for something new.</p>
+
+<p>In Iddle research you craft flask of different colors. You start with red flask. Each flask you have make energy per second that you can spend to unlock something.
+Once you have enough red flask you can craft orange wich is made of red flask. And it increse the power of red flasks.</p>
+
+<p>When you go a bit further you unlock awesome capacity like auto crafting and automation mechanism.</p>
+
+<p>Then you unlock fire flask, fuel flask, gold flask and ice flask. Wich are specific flask and have too be crafted a different way.</p>
+
+<p>For exemple gold flask are earned by resetting the game. But when you do this you gain some multiplicators on crafting speed then comes automation.</p>
+
+<p>After this comes tubes but i only unlocked ice flask so can’t tell you much more about the game.</p>
+
+<p>Have a look it’s free and available on iOS, Android, web, and Steam.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[layout: post title: Best Incremental Game date: 2022-08-16 07:00:00 +0200 categories: Games lang: en ref: Best Incremental Game]]></summary></entry><entry xml:lang="fr"><title type="html">Activer l’historique de fichier sur Windows 11</title><link href="/sysadmin/2022/05/21/Activer-le-versionning-de-fichier-sur-Windows-11.html" rel="alternate" type="text/html" title="Activer l’historique de fichier sur Windows 11" /><published>2022-05-21T08:12:00+02:00</published><updated>2022-05-21T08:12:00+02:00</updated><id>/sysadmin/2022/05/21/Activer%20le%20versionning%20de%20fichier%20sur%20Windows%2011</id><content type="html" xml:base="/sysadmin/2022/05/21/Activer-le-versionning-de-fichier-sur-Windows-11.html"><![CDATA[<h2 id="pourquoi-faire-">Pourquoi faire ?</h2>
 
 <p>Une fois de plus je viens de perdre la derniere version d’un fichier. Travaillé presque deux jours dessus et je n’avais pas suffisament fait de sauvegarde.</p>
 
