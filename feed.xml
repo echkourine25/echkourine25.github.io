@@ -1,4 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2022-08-16T19:13:44+02:00</updated><id>/feed.xml</id><title type="html">Evgueni CHKOURINE</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry xml:lang="en"><title type="html">Geometry Dash</title><link href="/games/2022/08/16/Geometry-Dash.html" rel="alternate" type="text/html" title="Geometry Dash" /><published>2022-08-16T13:10:00+02:00</published><updated>2022-08-16T13:10:00+02:00</updated><id>/games/2022/08/16/Geometry%20Dash</id><content type="html" xml:base="/games/2022/08/16/Geometry-Dash.html"><![CDATA[<video width="640" height="360" autoplay="" controls="">
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2022-08-17T16:19:08+02:00</updated><id>/feed.xml</id><title type="html">Evgueni CHKOURINE</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry xml:lang="ru"><title type="html">Potion Craft</title><link href="/games/2022/08/17/Potion-Craft.html" rel="alternate" type="text/html" title="Potion Craft" /><published>2022-08-17T16:18:00+02:00</published><updated>2022-08-17T16:18:00+02:00</updated><id>/games/2022/08/17/Potion%20Craft</id><content type="html" xml:base="/games/2022/08/17/Potion-Craft.html"><![CDATA[<video width="640" height="360" autoplay="" controls="">
+  <source src="/potion-craft.mp4" type="video/mp4" />
+Your browser does not support the video tag.
+</video>]]></content><author><name></name></author><category term="Games" /><summary type="html"><![CDATA[Your browser does not support the video tag.]]></summary></entry><entry xml:lang="en"><title type="html">Geometry Dash</title><link href="/games/2022/08/16/Geometry-Dash.html" rel="alternate" type="text/html" title="Geometry Dash" /><published>2022-08-16T13:10:00+02:00</published><updated>2022-08-16T13:10:00+02:00</updated><id>/games/2022/08/16/Geometry%20Dash</id><content type="html" xml:base="/games/2022/08/16/Geometry-Dash.html"><![CDATA[<video width="640" height="360" autoplay="" controls="">
   <source src="/geometry-dash.mp4" type="video/mp4" />
 Your browser does not support the video tag.
 </video>
@@ -67,48 +70,7 @@ Sélectionnez le lecteur sur lequel enregistrer les sauvegardes et cliquez sur a
 <p>Touche Windows/Menu démarrer <br />
 Tapez “Restaurer vos fichiers à l’aide de l’Historique de fichiers”</p>
 
-<p>Une fenêtre s’ouvre avec vos fichiers restaurable.</p>]]></content><author><name></name></author><category term="SysAdmin" /><summary type="html"><![CDATA[Your browser does not support the video tag.]]></summary></entry><entry xml:lang="en"><title type="html">C++ mask file Generator for Linux</title><link href="/dev/2022/05/19/C++-mask-file-Generator-for-Linux.html" rel="alternate" type="text/html" title="C++ mask file Generator for Linux" /><published>2022-05-19T23:46:05+02:00</published><updated>2022-05-19T23:46:05+02:00</updated><id>/dev/2022/05/19/C++%20mask%20file%20Generator%20for%20Linux</id><content type="html" xml:base="/dev/2022/05/19/C++-mask-file-Generator-for-Linux.html"><![CDATA[<p>C++ mask file Generator for Linux</p>
-<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
-#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp">
-#include</span> <span class="cpf">&lt;fstream&gt;</span><span class="cp">
-#include</span> <span class="cpf">&lt;sstream&gt;</span><span class="cp">
-#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp">
-#include</span> <span class="cpf">&lt;cstring&gt;</span><span class="cp">
-#include</span> <span class="cpf">&lt;algorithm&gt;</span><span class="cp">
-#include</span> <span class="cpf">&lt;typeinfo&gt;</span><span class="cp">
-#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
-</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
-<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
-	<span class="n">string</span> <span class="n">action</span><span class="p">;</span>
-	<span class="kt">int</span> <span class="n">error</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
-    <span class="kt">char</span> <span class="n">mychar</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
-    <span class="kt">char</span> <span class="n">mychar2</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
-    <span class="n">fstream</span> <span class="n">fout2</span><span class="p">;</span>
-    <span class="n">fout2</span><span class="p">.</span><span class="n">open</span><span class="p">(</span><span class="s">"temp.bin"</span><span class="p">,</span> <span class="n">ios</span><span class="o">::</span><span class="n">out</span> <span class="o">|</span><span class="n">ios</span><span class="o">::</span><span class="n">app</span><span class="p">);</span>
-	<span class="n">ifstream</span> <span class="n">urandom</span><span class="p">;</span>
-	<span class="n">urandom</span><span class="p">.</span><span class="n">open</span><span class="p">(</span><span class="s">"/dev/urandom"</span><span class="p">,</span> <span class="n">ios</span><span class="o">::</span><span class="n">in</span> <span class="o">|</span> <span class="n">ios</span><span class="o">::</span><span class="n">binary</span><span class="p">);</span>
-	<span class="c1">//ss &lt;&lt; getline(urandom, byte, length);</span>
-        <span class="n">string</span> <span class="n">s</span><span class="p">;</span>
-    <span class="k">const</span> <span class="n">string</span> <span class="n">maskName</span><span class="o">=</span><span class="s">"temp.bin"</span><span class="p">;</span>
-    <span class="k">while</span><span class="p">(</span><span class="n">error</span><span class="o">!=</span><span class="mi">1</span><span class="p">){</span>
-	<span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">cin</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">mychar</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="n">urandom</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">mychar2</span><span class="p">[</span><span class="mi">0</span><span class="p">]))){</span>
-		<span class="n">error</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-		<span class="k">break</span><span class="p">;</span>
-
-	<span class="p">}</span>
-        <span class="k">if</span><span class="p">(</span><span class="n">error</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
-		<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="kt">char</span><span class="p">)(</span><span class="n">mychar</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">^</span> <span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="n">mychar2</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
-		<span class="n">fout2</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="n">mychar2</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
-	<span class="p">}</span>
-    <span class="p">}</span>
-    <span class="n">fout2</span><span class="p">.</span><span class="n">close</span><span class="p">();</span>
-    <span class="k">const</span> <span class="n">string</span> <span class="n">s2</span><span class="o">=</span><span class="s">"mv temp.bin $(shasum temp.bin | awk '{print $1}')"</span><span class="p">;</span>
-    <span class="c1">//rename (maskName.c_str(), s3.c_str());</span>
-    <span class="n">system</span><span class="p">(</span><span class="n">s2</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
-
-<span class="p">}</span>
-
-</code></pre></div></div>]]></content><author><name></name></author><category term="Dev" /><summary type="html"><![CDATA[C++ mask file Generator for Linux ```c++ #include #include #include #include #include #include #include #include #include using namespace std; int main(){ string action; int error=0; char mychar[1]; char mychar2[1]; fstream fout2; fout2.open("temp.bin", ios::out |ios::app); ifstream urandom; urandom.open("/dev/urandom", ios::in | ios::binary); //ss &lt;&lt; getline(urandom, byte, length); string s; const string maskName="temp.bin"; while(error!=1){ while(!(cin.get(mychar[0]) &amp;&amp; urandom.get(mychar2[0]))){ error = 1; break;]]></summary></entry><entry xml:lang="fr"><title type="html">C++ Générateur de masques Linux</title><link href="/dev/2022/05/19/G%C3%A9n%C3%A9rateur-de-masque-Linux-C++x.html" rel="alternate" type="text/html" title="C++ Générateur de masques Linux" /><published>2022-05-19T23:46:05+02:00</published><updated>2022-05-19T23:46:05+02:00</updated><id>/dev/2022/05/19/G%C3%A9n%C3%A9rateur%20de%20masque%20Linux%20C++x</id><content type="html" xml:base="/dev/2022/05/19/G%C3%A9n%C3%A9rateur-de-masque-Linux-C++x.html"><![CDATA[<p>C++ Générateur de masques Linux</p>
+<p>Une fenêtre s’ouvre avec vos fichiers restaurable.</p>]]></content><author><name></name></author><category term="SysAdmin" /><summary type="html"><![CDATA[Your browser does not support the video tag.]]></summary></entry><entry xml:lang="fr"><title type="html">C++ Générateur de masques Linux</title><link href="/dev/2022/05/19/G%C3%A9n%C3%A9rateur-de-masque-Linux-C++x.html" rel="alternate" type="text/html" title="C++ Générateur de masques Linux" /><published>2022-05-19T23:46:05+02:00</published><updated>2022-05-19T23:46:05+02:00</updated><id>/dev/2022/05/19/G%C3%A9n%C3%A9rateur%20de%20masque%20Linux%20C++x</id><content type="html" xml:base="/dev/2022/05/19/G%C3%A9n%C3%A9rateur-de-masque-Linux-C++x.html"><![CDATA[<p>C++ Générateur de masques Linux</p>
 <div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
 #include</span> <span class="cpf">&lt;string&gt;</span><span class="cp">
 #include</span> <span class="cpf">&lt;fstream&gt;</span><span class="cp">
@@ -190,7 +152,48 @@ Tapez “Restaurer vos fichiers à l’aide de l’Historique de fichiers”</p>
 
 <span class="p">}</span>
 
-</code></pre></div></div>]]></content><author><name></name></author><category term="Dev" /><summary type="html"><![CDATA[Генератор файлов масок C++ для Linux ```c++ #include #include #include #include #include #include #include #include #include using namespace std; int main(){ string action; int error=0; char mychar[1]; char mychar2[1]; fstream fout2; fout2.open("temp.bin", ios::out |ios::app); ifstream urandom; urandom.open("/dev/urandom", ios::in | ios::binary); //ss &lt;&lt; getline(urandom, byte, length); string s; const string maskName="temp.bin"; while(error!=1){ while(!(cin.get(mychar[0]) &amp;&amp; urandom.get(mychar2[0]))){ error = 1; break;]]></summary></entry><entry xml:lang="fr"><title type="html">Comment installer son propre serveur de clonage avec fog server</title><link href="/sysadmin/2022/05/19/Comment-installer-son-propre-serveur-de-clonage-avec-fog-server.html" rel="alternate" type="text/html" title="Comment installer son propre serveur de clonage avec fog server" /><published>2022-05-19T01:13:00+02:00</published><updated>2022-05-19T01:13:00+02:00</updated><id>/sysadmin/2022/05/19/Comment%20installer%20son%20propre%20serveur%20de%20clonage%20avec%20fog%20server</id><content type="html" xml:base="/sysadmin/2022/05/19/Comment-installer-son-propre-serveur-de-clonage-avec-fog-server.html"><![CDATA[<p>Comment installer son propre serveur de clonage avec fog server</p>
+</code></pre></div></div>]]></content><author><name></name></author><category term="Dev" /><summary type="html"><![CDATA[Генератор файлов масок C++ для Linux ```c++ #include #include #include #include #include #include #include #include #include using namespace std; int main(){ string action; int error=0; char mychar[1]; char mychar2[1]; fstream fout2; fout2.open("temp.bin", ios::out |ios::app); ifstream urandom; urandom.open("/dev/urandom", ios::in | ios::binary); //ss &lt;&lt; getline(urandom, byte, length); string s; const string maskName="temp.bin"; while(error!=1){ while(!(cin.get(mychar[0]) &amp;&amp; urandom.get(mychar2[0]))){ error = 1; break;]]></summary></entry><entry xml:lang="en"><title type="html">C++ mask file Generator for Linux</title><link href="/dev/2022/05/19/C++-mask-file-Generator-for-Linux.html" rel="alternate" type="text/html" title="C++ mask file Generator for Linux" /><published>2022-05-19T23:46:05+02:00</published><updated>2022-05-19T23:46:05+02:00</updated><id>/dev/2022/05/19/C++%20mask%20file%20Generator%20for%20Linux</id><content type="html" xml:base="/dev/2022/05/19/C++-mask-file-Generator-for-Linux.html"><![CDATA[<p>C++ mask file Generator for Linux</p>
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;fstream&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;sstream&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;cstring&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;algorithm&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;typeinfo&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+	<span class="n">string</span> <span class="n">action</span><span class="p">;</span>
+	<span class="kt">int</span> <span class="n">error</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+    <span class="kt">char</span> <span class="n">mychar</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+    <span class="kt">char</span> <span class="n">mychar2</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+    <span class="n">fstream</span> <span class="n">fout2</span><span class="p">;</span>
+    <span class="n">fout2</span><span class="p">.</span><span class="n">open</span><span class="p">(</span><span class="s">"temp.bin"</span><span class="p">,</span> <span class="n">ios</span><span class="o">::</span><span class="n">out</span> <span class="o">|</span><span class="n">ios</span><span class="o">::</span><span class="n">app</span><span class="p">);</span>
+	<span class="n">ifstream</span> <span class="n">urandom</span><span class="p">;</span>
+	<span class="n">urandom</span><span class="p">.</span><span class="n">open</span><span class="p">(</span><span class="s">"/dev/urandom"</span><span class="p">,</span> <span class="n">ios</span><span class="o">::</span><span class="n">in</span> <span class="o">|</span> <span class="n">ios</span><span class="o">::</span><span class="n">binary</span><span class="p">);</span>
+	<span class="c1">//ss &lt;&lt; getline(urandom, byte, length);</span>
+        <span class="n">string</span> <span class="n">s</span><span class="p">;</span>
+    <span class="k">const</span> <span class="n">string</span> <span class="n">maskName</span><span class="o">=</span><span class="s">"temp.bin"</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">error</span><span class="o">!=</span><span class="mi">1</span><span class="p">){</span>
+	<span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">cin</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">mychar</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="n">urandom</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">mychar2</span><span class="p">[</span><span class="mi">0</span><span class="p">]))){</span>
+		<span class="n">error</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+		<span class="k">break</span><span class="p">;</span>
+
+	<span class="p">}</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">error</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
+		<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="kt">char</span><span class="p">)(</span><span class="n">mychar</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">^</span> <span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="n">mychar2</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+		<span class="n">fout2</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="n">mychar2</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+	<span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">fout2</span><span class="p">.</span><span class="n">close</span><span class="p">();</span>
+    <span class="k">const</span> <span class="n">string</span> <span class="n">s2</span><span class="o">=</span><span class="s">"mv temp.bin $(shasum temp.bin | awk '{print $1}')"</span><span class="p">;</span>
+    <span class="c1">//rename (maskName.c_str(), s3.c_str());</span>
+    <span class="n">system</span><span class="p">(</span><span class="n">s2</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
+
+<span class="p">}</span>
+
+</code></pre></div></div>]]></content><author><name></name></author><category term="Dev" /><summary type="html"><![CDATA[C++ mask file Generator for Linux ```c++ #include #include #include #include #include #include #include #include #include using namespace std; int main(){ string action; int error=0; char mychar[1]; char mychar2[1]; fstream fout2; fout2.open("temp.bin", ios::out |ios::app); ifstream urandom; urandom.open("/dev/urandom", ios::in | ios::binary); //ss &lt;&lt; getline(urandom, byte, length); string s; const string maskName="temp.bin"; while(error!=1){ while(!(cin.get(mychar[0]) &amp;&amp; urandom.get(mychar2[0]))){ error = 1; break;]]></summary></entry><entry xml:lang="fr"><title type="html">Comment installer son propre serveur de clonage avec fog server</title><link href="/sysadmin/2022/05/19/Comment-installer-son-propre-serveur-de-clonage-avec-fog-server.html" rel="alternate" type="text/html" title="Comment installer son propre serveur de clonage avec fog server" /><published>2022-05-19T01:13:00+02:00</published><updated>2022-05-19T01:13:00+02:00</updated><id>/sysadmin/2022/05/19/Comment%20installer%20son%20propre%20serveur%20de%20clonage%20avec%20fog%20server</id><content type="html" xml:base="/sysadmin/2022/05/19/Comment-installer-son-propre-serveur-de-clonage-avec-fog-server.html"><![CDATA[<p>Comment installer son propre serveur de clonage avec fog server</p>
 <h3 id="introduction">Introduction</h3>
 
 <h4 id="prérequis">Prérequis</h4>
