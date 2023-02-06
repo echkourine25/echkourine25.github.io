@@ -33,6 +33,9 @@ var tab_mois_annee=new Array(
 10=Minutes changement d'hooraire 2
 11=Règle de changement d'horraire (0 europe) 2*/
 var tab_utc_region=new Array();
+tab_utc_region[10]=new Array(
+'Almaty','UTC+6',
++06,+06,0,0,-1,0,0,0,-1);
 tab_utc_region[0]=new Array(
  'Paris',
  'Europe/Paris',
@@ -76,6 +79,7 @@ tab_utc_region[8]=new Array(
 // Tableau fonction qui retourne l'id associé à une région
 function get_id_region(region){
  var tab_utc_region_id=new Array();
+ tab_utc_region_id['test']			=10;
  tab_utc_region_id['Paris']			=0;
  tab_utc_region_id['Guadeloupe']		=1;
  tab_utc_region_id['Guyane']			=2;
@@ -181,7 +185,7 @@ function time_refresh(i){
 }
 document.write('<TABLE cellpadding="5px" align="center" border="1"; style="border-collapse:collapse;width:800px;"><caption><b><u>Horloges</u></b></caption>');
 document.write('<TR align="center" style="background-color:#000000;color:white;"><TH style="width:25%;">Région</TH><TH style="width:25%;">Timezone</TH><!-- <TH style="width:15%;">Heure d&#39;hiver</TH><TH style="width:15%">Heure d&#39;été</TH> --> <TH style="width:25%;">Date</TH></TH><TH style="width:25%;">Heure</TH></TR>');
-    for(var i=0,j=0;i<10;i++){
+    for(var i=0,j=0;i<11;i++){
 	if(j==0){
 	 document.write('<TR style="background-color:#FFFFFF;">');
 	 j++;
