@@ -1,0 +1,136 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>m - Clock</title>
+    </head>
+    <body>
+        <div class="myBody" id="myBody">
+            <fieldset>
+                <legend>Réglez votre horloge :</legend>
+                <table><tr><td>Heure : </td><td><input type="number" id="hours" name="hours" min="0" max="23"/>
+                </td></tr><tr><td>Minutes  : </td><td><input type="number" id="minutes" name="minutes" min="0" max="59"/>
+                </td></tr><tr><td>Secondes : </td><td><input type="number" id="seconds" name="seconds" min="0" max="59"/>
+                </td></tr><tr><td></td><td id="myButton"><button>Régler</button>
+                </td></tr></table>
+            </fieldset>
+        </div>
+        
+    </body>
+    <style>
+
+        .clock {
+                 border-radius: 50%;
+                 background: #fff;
+                 border: 5px solid white;
+                 box-shadow: inset 2px 3px 8px 0 rgba(0, 0, 0, 0.1);
+        }
+        
+        .wrap {
+                 position: relative;
+                 width: 175px;
+                 height: 175px;
+        }
+        
+        .minute, .heure {
+                 position: absolute;
+                 height: 50px; width: 3px;
+                 margin: auto;
+                 top: -27%; left: 0;    bottom: 0; right: 0;
+                 transform-origin: bottom center;
+                 transform: rotate(0deg);
+                 box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
+             background: black;
+        }
+        
+        .minute {
+                 position: absolute;
+                 height: 65px;
+                 width: 2px;
+                 top: -38%;
+                 left: 0;
+                 box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
+                 transform: rotate(90deg);
+        }
+        
+        .seconde {
+                 position: absolute;
+                 height: 45px;
+                 width: 1px;
+                 margin: auto;
+                 top: -26%;
+                 left: 0;
+                 bottom: 0;
+                 right: 0;
+                 border-radius: 4px;
+                 background: #ff4b3e;
+                 transform-origin: bottom center;
+                 transform: rotate(180deg);
+        }
+        
+        .dot {
+                 position: absolute;
+                 top: 0;
+                 left: 0;
+                 right: 0;
+                 bottom: 0;
+                 width: 6px;
+                 height: 6px;
+                 border-radius: 50%;
+                 background: white;
+                 border: 2px solid #1b1b1b;
+                 border-radius: 50%;
+                 margin: auto;
+        }
+        
+        </style>
+    <script>
+        var btn = document.querySelector('button');
+        btn.onclick = function() {
+            var  hours = document.getElementById("hours").value;
+            var minutes = document.getElementById("minutes").value;
+            var seconds = document.getElementById("seconds").value;
+            var dt=new Date("1970,01,01,"+hours+":"+minutes+":"+seconds);
+        
+            function clock() {
+                dt.setSeconds(dt.getSeconds() + 1);
+                hours=dt.getHours();
+                minutes=dt.getMinutes();
+                seconds=dt.getSeconds();
+                if(seconds < 10){
+                    seconds = "0"+seconds;
+                }if(hours < 10){
+                    hours = "0"+hours;
+                }if(minutes < 10){
+                    minutes = "0"+minutes
+                }
+                hour = hours * 30;
+                minute = minutes * 6;
+                second = seconds * 6;
+                document.querySelector('.heure').style.transform = `rotate(${hour}deg)`;
+                document.querySelector('.minute').style.transform = `rotate(${minute}deg)`;
+                document.querySelector('.seconde').style.transform = `rotate(${second}deg)`;
+                document.querySelector('.myTime').innerHTML = hours + ":" + minutes + ":" + seconds;
+            }
+            myButton=document.getElementById("myButton");
+            myButton.innerHTML = "";
+            myBody=document.getElementById("myBody");
+                myBody.innerHTML = `
+                    <div style="text-align:center;height:245px;width:208px;">
+                        <div class="tz">
+                        </div>
+                        <div class="clock">
+                            <div class="wrap">
+                                <span class="heure"></span>
+                                <span class="minute"></span>
+                                <span class="seconde"></span>
+                                <span class="dot"></span>
+                            </div>
+                        </div>
+                        <div class="myTime">
+                        </div>
+                    </div>
+                `;
+            setInterval(clock, 1000);
+        }
+    </script>
+</html>
