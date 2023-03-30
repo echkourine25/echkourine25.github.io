@@ -3,6 +3,10 @@
         <meta charset="UTF-8">
         <title>m - Clock</title>
     </head>
+    <manifest>
+        <application android:theme="@style/Theme.AppCompat">
+        </application>
+    </manifest>
     <body>
         <div class="myBody" id="myBody">
             <fieldset>
@@ -14,7 +18,37 @@
                 </td></tr></table>
             </fieldset>
         </div>
-        
+        <div>
+            <input type="radio" id="0" checked><label for="0">Défault</label>
+        </div>
+        <div>
+            <button id="reveilBtn">Arrêter réveil</button>
+        </div>
+        <div class="addwakeup">
+            <fieldset>
+                <legend>Ajoutez un réveil :</legend>
+                <table><tr><td>Heure : </td><td><input type="number" id="wuhours" name="hours" min="0" max="23"/>
+                </td></tr><tr><td>Minutes  : </td><td><input type="number" id="wuminutes" name="minutes" min="0" max="59"/>
+                </td></tr><tr><td>Secondes : </td><td><input type="number" id="wuseconds" name="seconds" min="0" max="59"/>
+                </td></tr><tr><td></td><td id="myButtonWu"><button>Ajouter</button>
+                </td></tr></table>
+            </fieldset>
+        </div>
+        <div>
+            <table>
+                <tbody id="wulist">
+
+                </tbody>
+            </table>
+        </div>
+        <audio 
+            id="reveil"
+            hidden
+            src="son.mp3">
+            </audio>
+        <div id="count" hidden>
+
+        </div>
     </body>
     <style>
 
@@ -84,7 +118,42 @@
         
         </style>
     <script>
-        var btn = document.querySelector('button');
+        function addElement(myCurrentDiv, myNewDivId, myValue) {
+            seconds=document.getElementById("wuseconds").value;
+            minutes=document.getElementById("wuminutes").value;
+            hours=document.getElementById("wuhours").value;
+            if(seconds.length < 1){
+                seconds = "00";
+            }else if(seconds.length < 2){
+                seconds = "0"+seconds;
+            }if(minutes.length < 1){
+                minutes="00";
+            }else if(minutes.length<2){
+                minutes="0"+minutes;
+            }if(hours.length<1){
+                hours="00";
+            }else if(hours.length<2){
+                hours="0"+hours;
+            }
+            // add the newly created element and its content into the DOM
+            var currentDiv = document.getElementById(myCurrentDiv);
+            currentDiv.innerHTML += "<tr id=\"wulist"+myNewDivId+"\"><td id=\"wulisttd"+myNewDivId+"\">"+hours+":"+minutes+":"+seconds+"</td></tr>";
+        }
+        var wucount = 0;
+        var wuButton = document.getElementById("myButtonWu");
+        wuButton.onclick = function(){
+            addElement("wulist", wucount, "");
+            wucount+=1;
+        }
+        var reveil = document.querySelector('#reveilBtn');
+        reveil.onclick = function(){
+
+            var myAudio = document.querySelector('#reveil');
+                myAudio.loop = false;
+                myAudio.pause();
+
+        }
+        var btn = document.getElementById('myButton');
         btn.onclick = function() {
             var  hours = document.getElementById("hours").value;
             var minutes = document.getElementById("minutes").value;
@@ -101,15 +170,28 @@
                 }if(hours < 10){
                     hours = "0"+hours;
                 }if(minutes < 10){
-                    minutes = "0"+minutes
+                    minutes = "0"+minutes;
                 }
                 hour = hours * 30;
                 minute = minutes * 6;
                 second = seconds * 6;
-                document.querySelector('.heure').style.transform = `rotate(${hour}deg)`;
-                document.querySelector('.minute').style.transform = `rotate(${minute}deg)`;
-                document.querySelector('.seconde').style.transform = `rotate(${second}deg)`;
-                document.querySelector('.myTime').innerHTML = hours + ":" + minutes + ":" + seconds;
+                document.querySelector('.heure').style.transform = `rotate(${hour.toString()}deg)`;
+                document.querySelector('.minute').style.transform = `rotate(${minute.toString()}deg)`;
+                document.querySelector('.seconde').style.transform = `rotate(${second.toString()}deg)`;
+                document.querySelector('.myTime').innerHTML = hours.toString() + ":" + minutes.toString() + ":" + seconds.toString();
+                var i=0;
+                for(i=0;i<wucount; i++){
+                    var myTime;
+                    myArray = new Array();
+                    console.log(document.querySelector("#wulisttd"+i).textContent)
+                    myArray=document.querySelector("#wulisttd"+i).textContent.split(":");
+                    if(hours == myArray[0] && minutes == myArray[1] && seconds == myArray[2]){
+                        var reveilT=true;
+                        var myAudio = document.querySelector('#reveil');
+                        myAudio.loop = true;
+                        myAudio.play()
+                    }
+                }
             }
             myButton=document.getElementById("myButton");
             myButton.innerHTML = "";
