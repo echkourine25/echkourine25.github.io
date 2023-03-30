@@ -44,7 +44,7 @@
         <audio 
             id="reveil"
             hidden
-            src="son.mp3">
+            src="/son.mp3">
             </audio>
         <div id="count" hidden>
 
@@ -178,7 +178,7 @@
                 document.querySelector('.heure').style.transform = `rotate(${hour.toString()}deg)`;
                 document.querySelector('.minute').style.transform = `rotate(${minute.toString()}deg)`;
                 document.querySelector('.seconde').style.transform = `rotate(${second.toString()}deg)`;
-                document.querySelector('.myTime').innerHTML = hours.toString() + ":" + minutes.toString() + ":" + seconds.toString();
+                document.querySelector('.myTime').textContent = hours.toString() + ":" + minutes.toString() + ":" + seconds.toString();
                 var i=0;
                 for(i=0;i<wucount; i++){
                     var myTime;
