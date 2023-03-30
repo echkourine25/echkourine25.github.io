@@ -175,9 +175,15 @@
                 hour = hours * 30;
                 minute = minutes * 6;
                 second = seconds * 6;
+                document.querySelector('.heure').style.WebkitTransform = `rotate(${hour.toString()}deg)`;
                 document.querySelector('.heure').style.transform = `rotate(${hour.toString()}deg)`;
+                document.querySelector('.heure').style.msTransform = `rotate(${hour.toString()}deg)`;
+                document.querySelector('.minute').style.WebkitTransform = `rotate(${minute.toString()}deg)`;
                 document.querySelector('.minute').style.transform = `rotate(${minute.toString()}deg)`;
+                document.querySelector('.minute').style.msTransform = `rotate(${minute.toString()}deg)`;
+                document.querySelector('.seconde').style.WebkitTransform = `rotate(${second.toString()}deg)`;
                 document.querySelector('.seconde').style.transform = `rotate(${second.toString()}deg)`;
+                document.querySelector('.seconde').style.msTransform = `rotate(${second.toString()}deg)`;
                 document.querySelector('.myTime').textContent = hours.toString() + ":" + minutes.toString() + ":" + seconds.toString();
                 var i=0;
                 for(i=0;i<wucount; i++){
@@ -189,7 +195,7 @@
                         var reveilT=true;
                         var myAudio = document.querySelector('#reveil');
                         myAudio.loop = true;
-                        myAudio.play()
+                        myAudio.play();
                     }
                 }
             }
