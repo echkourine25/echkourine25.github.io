@@ -23,9 +23,9 @@ let curr_track = document.createElement('audio');
 let track_list = [
  {
     name: "Pumpkin Dance,
-    artist: "",
-    image: "/music/pie.jpg",
-    path: "https://echkourine25.github.io/music/Pumpkin Dance 03-11-2022 20-24_1.wav"
+    artist: "Evgueni CHKOURINE",
+    image: "pie.jpg",
+    path: "Pumpkin Dance 03-11-2022 20-24_1.wav"
   },
   {
     name: "Enthusiast",
