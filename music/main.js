@@ -42,6 +42,11 @@ let track_list = [
     artist: "Evgueni CHKOURINE",
     image: "pumpkin.jpg",
     path: "Pumpkin Dance.mp3",
+  }, {
+    name: "Meditation",
+    artist: "Evgueni CHKOURINE",
+    image: "meditation.jpg",
+    path: "Meditation.mp3"
   },
 
   {
