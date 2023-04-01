@@ -22,10 +22,20 @@ let curr_track = document.createElement('audio');
 // Define the tracks that have to be played
 let track_list = [
   {
+    name: "Punch",
+    artist: "Evgueni CHKOURINE",
+    image: "boxing-gloves.jpg",
+    path: "Punch.mp3"
+  }, {
     name: "Ocean View",
     artist: "Evgueni CHKOURINE",
     image: "motel.jpg",
     path: "Ocean View.mp3"
+  },  {
+    name: "Park",
+    artist: "Evgueni CHKOURINE",
+    image: "drift.jpg",
+    path: "Mountain.mp3"
   }, 
 {
     name: "Pumpkin Dance",
