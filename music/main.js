@@ -22,22 +22,29 @@ let curr_track = document.createElement('audio');
 // Define the tracks that have to be played
 let track_list = [
   {
-    name: "Energy Blast",
+    name: "Ocean View",
     artist: "Evgueni CHKOURINE",
-    image: "pie.jpg",
-    path: "Energy-Blast.mp3"
+    image: "motel.jpg",
+    path: "Ocean View.mp3"
+  }, 
+{
+    name: "Pumpkin Dance",
+    artist: "Evgueni CHKOURINE",
+    image: "pumpkin.jpg",
+    path: "Pumpkin Dance.mp3",
   },
+
   {
     name: "Viper Nest",
     artist: "Evgueni CHKOURINE",
     image: "viper.jpg",
     path: "Viper Nest.mp3"
   },
-  {
-    name: "Pumpkin Dance",
+ {
+    name: "Energy Blast",
     artist: "Evgueni CHKOURINE",
-    image: "pumpkin.jpg",
-    path: "Pumpkin Dance.mp3",
+    image: "magpie.jpg",
+    path: "Energy-Blast.mp3"
   },
 ];
 
