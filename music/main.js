@@ -21,25 +21,26 @@ let curr_track = document.createElement('audio');
 
 // Define the tracks that have to be played
 let track_list = [
- {
-    name: "Pumpkin Dance,
+  {
+    name: "Energy Blast",
     artist: "Evgueni CHKOURINE",
     image: "pie.jpg",
-    path: "Pumpkin Dance 03-11-2022 20-24_1.wav"
+    path: "Energy-Blast.mp3"
   },
   {
-    name: "Enthusiast",
-    artist: "Tours",
-    image: "https://images.pexels.com/photos/3100835/pexels-photo-3100835.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=250&w=250",
-    path: "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Tours/Enthusiast/Tours_-_01_-_Enthusiast.mp3"
+    name: "Viper Nest",
+    artist: "Evgueni CHKOURINE",
+    image: "viper.jpg",
+    path: "Viper Nest.mp3"
   },
   {
-    name: "Shipping Lanes",
-    artist: "Chad Crouch",
-    image: "https://images.pexels.com/photos/1717969/pexels-photo-1717969.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=250&w=250",
-    path: "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/ccCommunity/Chad_Crouch/Arps/Chad_Crouch_-_Shipping_Lanes.mp3",
+    name: "Pumpkin Dance",
+    artist: "Evgueni CHKOURINE",
+    image: "pumpkin.jpg",
+    path: "Pumpkin Dance.mp3",
   },
 ];
+
 function random_bg_color() {
 
   // Get a number between 64 to 256 (for getting lighter colors)
@@ -143,99 +144,3 @@ function seekUpdate() {
     total_duration.textContent = durationMinutes + ":" + durationSeconds;
   }
 }
-"/music/Downtown Lights 03-11-2022 18-56_7.mp3" type="audio/mp3">
-      Your browser does not support the audio element.
-    </audio><span>Downtown Lights: Beats by: Andy Brookes</span></li>
-  <li>
-    <audio controls>
-      <source src="/music/Metalstep 03-11-2022 12-16_2.mp3" type="audio/mp3">
-        Your browser does not support the audio element.
-      </audio>
-    <span>MetalStep: Beats by: Andy brookes</span></li>
-    <li>
-      <audio controls>
-      <source src="/music/House Of The Creeps 03-11-2022 11-30_1.mp3" type="audio/mp3">
-        Your browser does not support the audio element.
-    </audio><span>House Of The Creep: Beats by Synferatu</span>
-    </li>
-</ul>
-<h3>Then: GroovePad</h3>
-<ul>
-  <li><audio controls>
-    <source src="/music/Pumpkin Dance 03-11-2022 20-24_1.wav" type="audio/wav">
-      Your browser does not support the audio element.
-    </audio><span>Pumpkin Dance: Beats by: Andy Brookes</span></li>
-  <li>
-    <audio controls>
-      <source src="/music/Brooklyn Beats 03-11-2022 21-00_4.wav" type="audio/wav">
-        Your browser does not support the audio element.
-      </audio>
-    <span>Brooklyn beats: Beats by: Andy brookes</span></li><li>
-      <audio controls>
-      <source src="/music/Trap Core 04-11-2022 02-16_6.wav" type="audio/wav">
-        Your browser does not support the audio element.
-    </audio><span>Trap Core: Beats by: Tjam</span>
-    </li><li><audio controls>
-      <source src="/music/Viper Nest 03-11-2022 20-56_3.wav" type="audio/wav">
-    Your browser does not support the audio element.
-      </audio>
-      <span>Viper Nest: Beats by: Synthferatu</span>
-    </li>
-    <li><audio controls>
-      <source src="/music/EDM Evolution 04-11-2022 02-12_5.wav" type="audio/wav">
-    Your browser does not support the audio element.
-      </audio><span>EDM Evolution: Beats by: Synthferatu</span>
-    </li>
-    <li><audio controls>
-      <source src="/music/House Euphoria 04-11-2022 02-45_8.wav" type="audio/wav">
-    Your browser does not support the audio element.
-      </audio><span>House Euphoria: Beats by: Tjam</span>
-    </li>
-    <li><audio controls>
-      <source src="/music/Light Speed 04-11-2022 02-55_9.wav" type="audio/wav">
-    Your browser does not support the audio element.
-      </audio><span>Light Speed: Beats by: Andy Brookes</span>
-    </li>
-    <li><audio controls>
-      <source src="/music/Lo-Fi Lullaby 04-11-2022 02-29_7.wav" type="audio/wav">
-    Your browser does not support the audio element.
-      </audio><span>Lo-Fi Lullaby: Beats by: Andy Brookes</span>
-    </li>
-    <li><audio controls>
-      <source src="/music/Royal Road Dubstep 04-11-2022 03-00_10.wav" type="audio/wav">
-    Your browser does not support the audio element.
-      </audio>
-    </li>
-</ul>
-  </div>
-
-</article>
-
-      </div>
-    </main><footer class="site-footer h-card">
-  <data class="u-url" href="/"></data>
-
-  <div class="wrapper">
-
-    <h2 class="footer-heading">Evgueni CHKOURINE</h2>
-
-    <div class="footer-col-wrapper">
-      <div class="footer-col footer-col-1">
-        <ul class="contact-list">
-          <li class="p-name">Evgueni CHKOURINE</li><li><a class="u-email" href="mailto:echkourine@icloud.com">echkourine@icloud.com</a></li></ul>
-      </div>
-
-      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/echkourine25"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">echkourine25</span></a></li><li><a href="https://www.twitter.com/echkourine"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">echkourine</span></a></li></ul>
-</div>
-
-      <div class="footer-col footer-col-3">
-        <p>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</p>
-      </div>
-    </div>
-
-  </div>
-
-</footer>
-</body>
-
-</html>
