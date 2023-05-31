@@ -61,6 +61,13 @@ let track_list = [
     image: "magpie.jpg",
     path: "Energy-Blast.mp3"
   },
+ {
+	name: "Dubstep Equinox"
+	artist: "Evgueni CHKOURINE",
+	image: "ec.jpg"
+	path: "Dubstep-Equinox"
+},
+
 ];
 
 function random_bg_color() {
