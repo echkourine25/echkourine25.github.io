@@ -62,10 +62,10 @@ let track_list = [
     path: "Energy-Blast.mp3"
   },
  {
-	name: "Dubstep Equinox"
+	name: "Dubstep Equinox",
 	artist: "Evgueni CHKOURINE",
-	image: "ec.jpg"
-	path: "Dubstep-Equinox"
+	image: "ec.jpg",
+	path: "Dubstep-Equinox",
 },
 
 ];
