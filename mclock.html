@@ -122,19 +122,19 @@
             seconds=document.getElementById("wuseconds").value;
             minutes=document.getElementById("wuminutes").value;
             hours=document.getElementById("wuhours").value;
-            if(seconds.length < 1){
-                seconds = "00";
-            }else if(seconds.length < 2){
-                seconds = "0"+seconds;
-            }if(minutes.length < 1){
-                minutes="00";
-            }else if(minutes.length<2){
-                minutes="0"+minutes;
-            }if(hours.length<1){
-                hours="00";
-            }else if(hours.length<2){
-                hours="0"+hours;
-            }
+            //if(seconds.length < 1){
+            //    seconds = "00";
+            //}else if(seconds.length < 2){
+            //    seconds = "0"+seconds;
+            //}if(minutes.length < 1){
+            //    minutes="00";
+            //}else if(minutes.length<2){
+            //    minutes="0"+minutes;
+            //}if(hours.length<1){
+            //    hours="00";
+            //}else if(hours.length<2){
+            //    hours="0"+hours;
+            //}
             // add the newly created element and its content into the DOM
             var currentDiv = document.getElementById(myCurrentDiv);
             currentDiv.innerHTML += "<tr id=\"wulist"+myNewDivId+"\"><td id=\"wulisttd"+myNewDivId+"\">"+hours+":"+minutes+":"+seconds+"</td></tr>";
@@ -165,13 +165,13 @@
                 hours=dt.getHours();
                 minutes=dt.getMinutes();
                 seconds=dt.getSeconds();
-                if(seconds < 10){
-                    seconds = "0"+seconds;
-                }if(hours < 10){
-                    hours = "0"+hours;
-                }if(minutes < 10){
-                    minutes = "0"+minutes;
-                }
+                //if(seconds < 10){
+                //    seconds = "0"+seconds;
+                //}if(hours < 10){
+                //    hours = "0"+hours;
+                //}if(minutes < 10){
+                //    minutes = "0"+minutes;
+                //}
                 hour = hours * 30;
                 minute = minutes * 6;
                 second = seconds * 6;
