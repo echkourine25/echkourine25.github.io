@@ -122,20 +122,20 @@
             seconds=document.getElementById("wuseconds").value;
             minutes=document.getElementById("wuminutes").value;
             hours=document.getElementById("wuhours").value;
-            //if(seconds.length < 1){
-            //    seconds = "00";
-            //}else if(seconds.length < 2){
-            //    seconds = "0"+seconds;
-            //}if(minutes.length < 1){
-            //    minutes="00";
-            //}else if(minutes.length<2){
-            //    minutes="0"+minutes;
-            //}if(hours.length<1){
-            //    hours="00";
-            //}else if(hours.length<2){
-            //    hours="0"+hours;
-            //}
-            // add the newly created element and its content into the DOM
+            if(seconds.length < 1){
+                seconds = "00";
+            }else if(seconds.length < 2){
+                seconds = "0"+seconds;
+            }if(minutes.length < 1){
+                minutes="00";
+            }else if(minutes.length<2){
+                minutes="0"+minutes;
+            }if(hours.length<1){
+                hours="00";
+            }else if(hours.length<2){
+                hours="0"+hours;
+            }
+             add the newly created element and its content into the DOM
             var currentDiv = document.getElementById(myCurrentDiv);
             currentDiv.innerHTML += "<tr id=\"wulist"+myNewDivId+"\"><td id=\"wulisttd"+myNewDivId+"\">"+hours+":"+minutes+":"+seconds+"</td></tr>";
         }
@@ -165,26 +165,26 @@
                 hours=dt.getHours();
                 minutes=dt.getMinutes();
                 seconds=dt.getSeconds();
-                //if(seconds < 10){
-                //    seconds = "0"+seconds;
-                //}if(hours < 10){
-                //    hours = "0"+hours;
-                //}if(minutes < 10){
-                //    minutes = "0"+minutes;
-                //}
+                if(seconds < 10){
+                    seconds = "0"+seconds;
+                }if(hours < 10){
+                    hours = "0"+hours;
+                }if(minutes < 10){
+                    minutes = "0"+minutes;
+                }
                 hour = hours * 30;
                 minute = minutes * 6;
                 second = seconds * 6;
-                document.querySelector('.heure').style.WebkitTransform = `rotate(${hour.toString()}deg)`;
-                document.querySelector('.heure').style.transform = `rotate(${hour.toString()}deg)`;
-                document.querySelector('.heure').style.msTransform = `rotate(${hour.toString()}deg)`;
-                document.querySelector('.minute').style.WebkitTransform = `rotate(${minute.toString()}deg)`;
-                document.querySelector('.minute').style.transform = `rotate(${minute.toString()}deg)`;
-                document.querySelector('.minute').style.msTransform = `rotate(${minute.toString()}deg)`;
-                document.querySelector('.seconde').style.WebkitTransform = `rotate(${second.toString()}deg)`;
-                document.querySelector('.seconde').style.transform = `rotate(${second.toString()}deg)`;
-                document.querySelector('.seconde').style.msTransform = `rotate(${second.toString()}deg)`;
-                document.querySelector('.myTime').textContent = hours.toString() + ":" + minutes.toString() + ":" + seconds.toString();
+                document.querySelector('.heure').style.WebkitTransform = `rotate(${parseInt(hour.toString())}deg)`;
+                document.querySelector('.heure').style.transform = `rotate(${parseInt(hour.toString())}deg)`;
+                document.querySelector('.heure').style.msTransform = `rotate(${parseInt(hour.toString())}deg)`;
+                document.querySelector('.minute').style.WebkitTransform = `rotate(${parseInt(minute.toString())}deg)`;
+                document.querySelector('.minute').style.transform = `rotate(${parseInt(minute.toString())}deg)`;
+                document.querySelector('.minute').style.msTransform = `rotate(${parseInt(minute.toString())}deg)`;
+                document.querySelector('.seconde').style.WebkitTransform = `rotate(${parseInt(second.toString())}deg)`;
+                document.querySelector('.seconde').style.transform = `rotate(${parseInt(second.toString())}deg)`;
+                document.querySelector('.seconde').style.msTransform = `rotate(${parseInt(second.toString())}deg)`;
+                document.querySelector('.myTime').textContent = parseInt(hours.toString()) + ":" + parseInt(minutes.toString()) + ":" + parseInt(seconds.toString());
                 var i=0;
                 for(i=0;i<wucount; i++){
                     var myTime;
