@@ -162,15 +162,15 @@
         
             function clock() {
                 dt.setSeconds(dt.getSeconds() + 1);
-                hours=dt.getHours();
-                minutes=dt.getMinutes();
-                seconds=dt.getSeconds();
+                hours=Number(dt.getHours());
+                minutes=Number(dt.getMinutes());
+                seconds=Number(dt.getSeconds());
                 if(seconds < 10){
-                    seconds = "0"+seconds;
+                    seconds = Number("0"+seconds);
                 }if(hours < 10){
-                    hours = "0"+hours;
+                    hours = Number("0"+hours);
                 }if(minutes < 10){
-                    minutes = "0"+minutes;
+                    minutes = Number("0"+minutes);
                 }
                 hour = hours * 30;
                 minute = minutes * 6;
