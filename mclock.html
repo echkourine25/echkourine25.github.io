@@ -155,9 +155,9 @@
         }
         var btn = document.getElementById('myButton');
         btn.onclick = function() {
-            var  hours = document.getElementById("hours").value;
-            var minutes = document.getElementById("minutes").value;
-            var seconds = document.getElementById("seconds").value;
+            var  hours = Number(document.getElementById("hours").value);
+            var minutes = Number(document.getElementById("minutes").value);
+            var seconds = Number(document.getElementById("seconds").value);
             var dt=new Date("1970,01,01,"+hours+":"+minutes+":"+seconds);
         
             function clock() {
