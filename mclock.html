@@ -184,7 +184,8 @@
                 document.querySelector('.seconde').style.WebkitTransform = `rotate(${second}deg)`;
                 document.querySelector('.seconde').style.transform = `rotate(${second}deg)`;
                 document.querySelector('.seconde').style.msTransform = `rotate(${second}deg)`;
-                document.querySelector('.myTime').textContent = hours + ":" + minutes+ ":" + seconds;
+                document.querySelector('.myTime').innerHTML = hours + ":" + minutes+ ":" + seconds;
+			console.log(typeof(hours));
                 var i=0;
                 for(i=0;i<wucount; i++){
                     var myTime;
