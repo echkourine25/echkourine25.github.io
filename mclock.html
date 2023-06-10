@@ -175,16 +175,16 @@
                 hour = hours * 30;
                 minute = minutes * 6;
                 second = seconds * 6;
-                document.querySelector('.heure').style.WebkitTransform = `rotate(${parseInt(hour.toString())}deg)`;
-                document.querySelector('.heure').style.transform = `rotate(${parseInt(hour.toString())}deg)`;
-                document.querySelector('.heure').style.msTransform = `rotate(${parseInt(hour.toString())}deg)`;
-                document.querySelector('.minute').style.WebkitTransform = `rotate(${parseInt(minute.toString())}deg)`;
-                document.querySelector('.minute').style.transform = `rotate(${parseInt(minute.toString())}deg)`;
-                document.querySelector('.minute').style.msTransform = `rotate(${parseInt(minute.toString())}deg)`;
-                document.querySelector('.seconde').style.WebkitTransform = `rotate(${parseInt(second.toString())}deg)`;
-                document.querySelector('.seconde').style.transform = `rotate(${parseInt(second.toString())}deg)`;
-                document.querySelector('.seconde').style.msTransform = `rotate(${parseInt(second.toString())}deg)`;
-                document.querySelector('.myTime').textContent = parseInt(hours.toString()) + ":" + parseInt(minutes.toString()) + ":" + parseInt(seconds.toString());
+                document.querySelector('.heure').style.WebkitTransform = `rotate(${parseInt(hour.toString(), 10)}deg)`;
+                document.querySelector('.heure').style.transform = `rotate(${parseInt(hour.toString(), 10)}deg)`;
+                document.querySelector('.heure').style.msTransform = `rotate(${parseInt(hour.toString(), 10)}deg)`;
+                document.querySelector('.minute').style.WebkitTransform = `rotate(${parseInt(minute.toString(), 10)}deg)`;
+                document.querySelector('.minute').style.transform = `rotate(${parseInt(minute.toString(), 10)}deg)`;
+                document.querySelector('.minute').style.msTransform = `rotate(${parseInt(minute.toString(), 10)}deg)`;
+                document.querySelector('.seconde').style.WebkitTransform = `rotate(${parseInt(second.toString(), 10)}deg)`;
+                document.querySelector('.seconde').style.transform = `rotate(${parseInt(second.toString(), 10)}deg)`;
+                document.querySelector('.seconde').style.msTransform = `rotate(${parseInt(second.toString(), 10)}deg)`;
+                document.querySelector('.myTime').textContent = parseInt(hours.toString(), 10) + ":" + parseInt(minutes.toString(), 10) + ":" + parseInt(seconds.toString(), 10);
                 var i=0;
                 for(i=0;i<wucount; i++){
                     var myTime;
