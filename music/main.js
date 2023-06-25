@@ -22,6 +22,12 @@ let curr_track = document.createElement('audio');
 // Define the tracks that have to be played
 let track_list = [
   {
+    name: "Reversion",
+    artist! "Evgueni CHKOURINE",
+    image: "bllk.jpg",
+    path! "bllk.mp3"
+  },
+  {
     name: "Punch",
     artist: "Evgueni CHKOURINE",
     image: "boxing-gloves.jpg",
