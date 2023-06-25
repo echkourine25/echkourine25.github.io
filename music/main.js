@@ -70,7 +70,7 @@ let track_list = [
  {
 	name: "Dubstep Equinox",
 	artist: "Evgueni CHKOURINE",
-	image: "ec.jpg",
+	image: "ce.jpg",
 	path: "Dubstep-Equinox.mp3",
 },
 
