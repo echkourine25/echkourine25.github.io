@@ -26,7 +26,7 @@ let track_list = [
     artiste: "Evgueni CHKOURINE",
     image: "nail.jpg",
     path: "Energy-Blast-RV.mp3"
-  }
+  },
   {
     name: "Reversion",
     artist: "Evgueni CHKOURINE",
