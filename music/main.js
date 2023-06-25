@@ -23,7 +23,7 @@ let curr_track = document.createElement('audio');
 let track_list = [
   {
     name: "Reversion",
-    artist! "Evgueni CHKOURINE",
+    artist: "Evgueni CHKOURINE",
     image: "bllk.jpg",
     path: "bllk.mp3"
   },
