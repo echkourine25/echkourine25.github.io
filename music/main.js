@@ -25,7 +25,7 @@ let track_list = [
     name: "Reversion",
     artist! "Evgueni CHKOURINE",
     image: "bllk.jpg",
-    path! "bllk.mp3"
+    path: "bllk.mp3"
   },
   {
     name: "Punch",
