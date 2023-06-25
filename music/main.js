@@ -22,6 +22,12 @@ let curr_track = document.createElement('audio');
 // Define the tracks that have to be played
 let track_list = [
   {
+    name: "Une petite manicure, Energy Blast RV",
+    artiste: "Evgueni CHKOURINE",
+    image: "nail.jpg",
+    path: "Energy-Blast-RV.mp3"
+  }
+  {
     name: "Reversion",
     artist: "Evgueni CHKOURINE",
     image: "bllk.jpg",
