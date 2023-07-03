@@ -512,7 +512,7 @@ element.remove();
                 document.querySelector('.clock-times__second').style.WebkitTransform = `rotateZ(${second}deg)`;
                 document.querySelector('.clock-times__second').style.transform = `rotateZ(${second}deg)`;
                 document.querySelector('.clock-times__second').style.msTransform = `rotateZ(${second}deg)`;
-                document.querySelector('.myTime').innerHTML = hours + ":" + minutes+ ":" + seconds;
+                //document.querySelector('.myTime').innerHTML = hours + ":" + minutes+ ":" + seconds;
 			console.log(typeof(hours));
                 var i=0;
                 for(i=0;i<wucount; i++){
@@ -566,7 +566,14 @@ element.remove();
           </div>
         </div>
       </div>`;
-      const intervalID = setInterval(clock, 1000);
+      $('#scroll_diseases_left').bind('touchstart mousedown', function(){
+   int00 = int00 || setInterval(clock, 100);
+  });
+
+  $('#scroll_diseases_left').bind('touchend mouseup', function(){
+      clearInterval(int00);
+      int00 = undefined;
+  });
         }
     </script>
 </html>
