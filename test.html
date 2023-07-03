@@ -1,154 +1,398 @@
-<fieldset><legend>Enter your timezonedb infos</legend>
-<div>
-        <input type="text" name="apiKey" id="apiKey"/>
-                <label for="apiKey">API Key<label>
-</div>
-<div>
-        <input type="number" id="refresh" name="refresh" min="1" max="3600"/>
-                <label for="refresh">Refresh rate in second(s)</label>
-</div></fieldset>
-<fieldset><legend>Envoyer le formulaire</legend><input type="submit" value="Afficher les horraires"/></fieldset>
-<fieldset><legend>Select your timezones</legend>
-<div><table width="100%">
-<tr><td><input type="checkbox" id="0" name="0"/><label for="0">Africa/Abidjan</label><td><input type="checkbox" id="1" name="1"/><label for="1">Africa/Accra</label><td><input type="checkbox" id="2" name="2"/><label for="2">Africa/Addis_Ababa</label>
-<tr><td><input type="checkbox" id="3" name="3"/><label for="3">Africa/Algiers</label><td><input type="checkbox" id="4" name="4"/><label for="4">Africa/Asmara</label><td><input type="checkbox" id="5" name="5"/><label for="5">Africa/Bamako</label>
-<tr><td><input type="checkbox" id="6" name="6"/><label for="6">Africa/Bangui</label><td><input type="checkbox" id="7" name="7"/><label for="7">Africa/Banjul</label><td><input type="checkbox" id="8" name="8"/><label for="8">Africa/Bissau</label>
-<tr><td><input type="checkbox" id="9" name="9"/><label for="9">Africa/Blantyre</label><td><input type="checkbox" id="10" name="10"/><label for="10">Africa/Brazzaville</label><td><input type="checkbox" id="11" name="11"/><label for="11">Africa/Bujumbura</label>
-<tr><td><input type="checkbox" id="12" name="12"/><label for="12">Africa/Cairo</label><td><input type="checkbox" id="13" name="13"/><label for="13">Africa/Casablanca</label><td><input type="checkbox" id="14" name="14"/><label for="14">Africa/Ceuta</label>
-<tr><td><input type="checkbox" id="15" name="15"/><label for="15">Africa/Conakry</label><td><input type="checkbox" id="16" name="16"/><label for="16">Africa/Dakar</label><td><input type="checkbox" id="17" name="17"/><label for="17">Africa/Dar_es_Salaam</label>
-<tr><td><input type="checkbox" id="18" name="18"/><label for="18">Africa/Djibouti</label><td><input type="checkbox" id="19" name="19"/><label for="19">Africa/Douala</label><td><input type="checkbox" id="20" name="20"/><label for="20">Africa/El_Aaiun</label>
-<tr><td><input type="checkbox" id="21" name="21"/><label for="21">Africa/Freetown</label><td><input type="checkbox" id="22" name="22"/><label for="22">Africa/Gaborone</label><td><input type="checkbox" id="23" name="23"/><label for="23">Africa/Harare</label>
-<tr><td><input type="checkbox" id="24" name="24"/><label for="24">Africa/Johannesburg</label><td><input type="checkbox" id="25" name="25"/><label for="25">Africa/Juba</label><td><input type="checkbox" id="26" name="26"/><label for="26">Africa/Kampala</label>
-<tr><td><input type="checkbox" id="27" name="27"/><label for="27">Africa/Khartoum</label><td><input type="checkbox" id="28" name="28"/><label for="28">Africa/Kigali</label><td><input type="checkbox" id="29" name="29"/><label for="29">Africa/Kinshasa</label>
-<tr><td><input type="checkbox" id="30" name="30"/><label for="30">Africa/Lagos</label><td><input type="checkbox" id="31" name="31"/><label for="31">Africa/Libreville</label><td><input type="checkbox" id="32" name="32"/><label for="32">Africa/Lome</label>
-<tr><td><input type="checkbox" id="33" name="33"/><label for="33">Africa/Luanda</label><td><input type="checkbox" id="34" name="34"/><label for="34">Africa/Lubumbashi</label><td><input type="checkbox" id="35" name="35"/><label for="35">Africa/Lusaka</label>
-<tr><td><input type="checkbox" id="36" name="36"/><label for="36">Africa/Malabo</label><td><input type="checkbox" id="37" name="37"/><label for="37">Africa/Maputo</label><td><input type="checkbox" id="38" name="38"/><label for="38">Africa/Maseru</label>
-<tr><td><input type="checkbox" id="39" name="39"/><label for="39">Africa/Mbabane</label><td><input type="checkbox" id="40" name="40"/><label for="40">Africa/Mogadishu</label><td><input type="checkbox" id="41" name="41"/><label for="41">Africa/Monrovia</label>
-<tr><td><input type="checkbox" id="42" name="42"/><label for="42">Africa/Nairobi</label><td><input type="checkbox" id="43" name="43"/><label for="43">Africa/Ndjamena</label><td><input type="checkbox" id="44" name="44"/><label for="44">Africa/Niamey</label>
-<tr><td><input type="checkbox" id="45" name="45"/><label for="45">Africa/Nouakchott</label><td><input type="checkbox" id="46" name="46"/><label for="46">Africa/Ouagadougou</label><td><input type="checkbox" id="47" name="47"/><label for="47">Africa/Porto-Novo</label>
-<tr><td><input type="checkbox" id="48" name="48"/><label for="48">Africa/Sao_Tome</label><td><input type="checkbox" id="49" name="49"/><label for="49">Africa/Tripoli</label><td><input type="checkbox" id="50" name="50"/><label for="50">Africa/Tunis</label>
-<tr><td><input type="checkbox" id="51" name="51"/><label for="51">Africa/Windhoek</label><td><input type="checkbox" id="52" name="52"/><label for="52">America/Adak</label><td><input type="checkbox" id="53" name="53"/><label for="53">America/Anchorage</label>
-<tr><td><input type="checkbox" id="54" name="54"/><label for="54">America/Anguilla</label><td><input type="checkbox" id="55" name="55"/><label for="55">America/Antigua</label><td><input type="checkbox" id="56" name="56"/><label for="56">America/Araguaina</label>
-<tr><td><input type="checkbox" id="57" name="57"/><label for="57">America/Argentina/Buenos_Aires</label><td><input type="checkbox" id="58" name="58"/><label for="58">America/Argentina/Catamarca</label><td><input type="checkbox" id="59" name="59"/><label for="59">America/Argentina/Cordoba</label>
-<tr><td><input type="checkbox" id="60" name="60"/><label for="60">America/Argentina/Jujuy</label><td><input type="checkbox" id="61" name="61"/><label for="61">America/Argentina/La_Rioja</label><td><input type="checkbox" id="62" name="62"/><label for="62">America/Argentina/Mendoza</label>
-<tr><td><input type="checkbox" id="63" name="63"/><label for="63">America/Argentina/Rio_Gallegos</label><td><input type="checkbox" id="64" name="64"/><label for="64">America/Argentina/Salta</label><td><input type="checkbox" id="65" name="65"/><label for="65">America/Argentina/San_Juan</label>
-<tr><td><input type="checkbox" id="66" name="66"/><label for="66">America/Argentina/San_Luis</label><td><input type="checkbox" id="67" name="67"/><label for="67">America/Argentina/Tucuman</label><td><input type="checkbox" id="68" name="68"/><label for="68">America/Argentina/Ushuaia</label>
-<tr><td><input type="checkbox" id="69" name="69"/><label for="69">America/Aruba</label><td><input type="checkbox" id="70" name="70"/><label for="70">America/Asuncion</label><td><input type="checkbox" id="71" name="71"/><label for="71">America/Atikokan</label>
-<tr><td><input type="checkbox" id="72" name="72"/><label for="72">America/Bahia</label><td><input type="checkbox" id="73" name="73"/><label for="73">America/Bahia_Banderas</label><td><input type="checkbox" id="74" name="74"/><label for="74">America/Barbados</label>
-<tr><td><input type="checkbox" id="75" name="75"/><label for="75">America/Belem</label><td><input type="checkbox" id="76" name="76"/><label for="76">America/Belize</label><td><input type="checkbox" id="77" name="77"/><label for="77">America/Blanc-Sablon</label>
-<tr><td><input type="checkbox" id="78" name="78"/><label for="78">America/Boa_Vista</label><td><input type="checkbox" id="79" name="79"/><label for="79">America/Bogota</label><td><input type="checkbox" id="80" name="80"/><label for="80">America/Boise</label>
-<tr><td><input type="checkbox" id="81" name="81"/><label for="81">America/Cambridge_Bay</label><td><input type="checkbox" id="82" name="82"/><label for="82">America/Campo_Grande</label><td><input type="checkbox" id="83" name="83"/><label for="83">America/Cancun</label>
-<tr><td><input type="checkbox" id="84" name="84"/><label for="84">America/Caracas</label><td><input type="checkbox" id="85" name="85"/><label for="85">America/Cayenne</label><td><input type="checkbox" id="86" name="86"/><label for="86">America/Cayman</label>
-<tr><td><input type="checkbox" id="87" name="87"/><label for="87">America/Chicago</label><td><input type="checkbox" id="88" name="88"/><label for="88">America/Chihuahua</label><td><input type="checkbox" id="89" name="89"/><label for="89">America/Costa_Rica</label>
-<tr><td><input type="checkbox" id="90" name="90"/><label for="90">America/Creston</label><td><input type="checkbox" id="91" name="91"/><label for="91">America/Cuiaba</label><td><input type="checkbox" id="92" name="92"/><label for="92">America/Curacao</label>
-<tr><td><input type="checkbox" id="93" name="93"/><label for="93">America/Danmarkshavn</label><td><input type="checkbox" id="94" name="94"/><label for="94">America/Dawson</label><td><input type="checkbox" id="95" name="95"/><label for="95">America/Dawson_Creek</label>
-<tr><td><input type="checkbox" id="96" name="96"/><label for="96">America/Denver</label><td><input type="checkbox" id="97" name="97"/><label for="97">America/Detroit</label><td><input type="checkbox" id="98" name="98"/><label for="98">America/Dominica</label>
-<tr><td><input type="checkbox" id="99" name="99"/><label for="99">America/Edmonton</label><td><input type="checkbox" id="100" name="100"/><label for="100">America/Eirunepe</label><td><input type="checkbox" id="101" name="101"/><label for="101">America/El_Salvador</label>
-<tr><td><input type="checkbox" id="102" name="102"/><label for="102">America/Fort_Nelson</label><td><input type="checkbox" id="103" name="103"/><label for="103">America/Fortaleza</label><td><input type="checkbox" id="104" name="104"/><label for="104">America/Glace_Bay</label>
-<tr><td><input type="checkbox" id="105" name="105"/><label for="105">America/Goose_Bay</label><td><input type="checkbox" id="106" name="106"/><label for="106">America/Grand_Turk</label><td><input type="checkbox" id="107" name="107"/><label for="107">America/Grenada</label>
-<tr><td><input type="checkbox" id="108" name="108"/><label for="108">America/Guadeloupe</label><td><input type="checkbox" id="109" name="109"/><label for="109">America/Guatemala</label><td><input type="checkbox" id="110" name="110"/><label for="110">America/Guayaquil</label>
-<tr><td><input type="checkbox" id="111" name="111"/><label for="111">America/Guyana</label><td><input type="checkbox" id="112" name="112"/><label for="112">America/Halifax</label><td><input type="checkbox" id="113" name="113"/><label for="113">America/Havana</label>
-<tr><td><input type="checkbox" id="114" name="114"/><label for="114">America/Hermosillo</label><td><input type="checkbox" id="115" name="115"/><label for="115">America/Indiana/Indianapolis</label><td><input type="checkbox" id="116" name="116"/><label for="116">America/Indiana/Knox</label>
-<tr><td><input type="checkbox" id="117" name="117"/><label for="117">America/Indiana/Marengo</label><td><input type="checkbox" id="118" name="118"/><label for="118">America/Indiana/Petersburg</label><td><input type="checkbox" id="119" name="119"/><label for="119">America/Indiana/Tell_City</label>
-<tr><td><input type="checkbox" id="120" name="120"/><label for="120">America/Indiana/Vevay</label><td><input type="checkbox" id="121" name="121"/><label for="121">America/Indiana/Vincennes</label><td><input type="checkbox" id="122" name="122"/><label for="122">America/Indiana/Winamac</label>
-<tr><td><input type="checkbox" id="123" name="123"/><label for="123">America/Inuvik</label><td><input type="checkbox" id="124" name="124"/><label for="124">America/Iqaluit</label><td><input type="checkbox" id="125" name="125"/><label for="125">America/Jamaica</label>
-<tr><td><input type="checkbox" id="126" name="126"/><label for="126">America/Juneau</label><td><input type="checkbox" id="127" name="127"/><label for="127">America/Kentucky/Louisville</label><td><input type="checkbox" id="128" name="128"/><label for="128">America/Kentucky/Monticello</label>
-<tr><td><input type="checkbox" id="129" name="129"/><label for="129">America/Kralendijk</label><td><input type="checkbox" id="130" name="130"/><label for="130">America/La_Paz</label><td><input type="checkbox" id="131" name="131"/><label for="131">America/Lima</label>
-<tr><td><input type="checkbox" id="132" name="132"/><label for="132">America/Los_Angeles</label><td><input type="checkbox" id="133" name="133"/><label for="133">America/Lower_Princes</label><td><input type="checkbox" id="134" name="134"/><label for="134">America/Maceio</label>
-<tr><td><input type="checkbox" id="135" name="135"/><label for="135">America/Managua</label><td><input type="checkbox" id="136" name="136"/><label for="136">America/Manaus</label><td><input type="checkbox" id="137" name="137"/><label for="137">America/Marigot</label>
-<tr><td><input type="checkbox" id="138" name="138"/><label for="138">America/Martinique</label><td><input type="checkbox" id="139" name="139"/><label for="139">America/Matamoros</label><td><input type="checkbox" id="140" name="140"/><label for="140">America/Mazatlan</label>
-<tr><td><input type="checkbox" id="141" name="141"/><label for="141">America/Menominee</label><td><input type="checkbox" id="142" name="142"/><label for="142">America/Merida</label><td><input type="checkbox" id="143" name="143"/><label for="143">America/Metlakatla</label>
-<tr><td><input type="checkbox" id="144" name="144"/><label for="144">America/Mexico_City</label><td><input type="checkbox" id="145" name="145"/><label for="145">America/Miquelon</label><td><input type="checkbox" id="146" name="146"/><label for="146">America/Moncton</label>
-<tr><td><input type="checkbox" id="147" name="147"/><label for="147">America/Monterrey</label><td><input type="checkbox" id="148" name="148"/><label for="148">America/Montevideo</label><td><input type="checkbox" id="149" name="149"/><label for="149">America/Montserrat</label>
-<tr><td><input type="checkbox" id="150" name="150"/><label for="150">America/Nassau</label><td><input type="checkbox" id="151" name="151"/><label for="151">America/New_York</label><td><input type="checkbox" id="152" name="152"/><label for="152">America/Nome</label>
-</table><fieldset><legend>Envoyer le formulaire</legend><input type=submit value=Afficher les horraires/></fieldset><table width="100%">
-<tr><td><input type="checkbox" id="153" name="153"/><label for="153">America/Noronha</label><td><input type="checkbox" id="154" name="154"/><label for="154">America/North_Dakota/Beulah</label><td><input type="checkbox" id="155" name="155"/><label for="155">America/North_Dakota/Center</label>
-<tr><td><input type="checkbox" id="156" name="156"/><label for="156">America/North_Dakota/New_Salem</label><td><input type="checkbox" id="157" name="157"/><label for="157">America/Nuuk</label><td><input type="checkbox" id="158" name="158"/><label for="158">America/Ojinaga</label>
-<tr><td><input type="checkbox" id="159" name="159"/><label for="159">America/Panama</label><td><input type="checkbox" id="160" name="160"/><label for="160">America/Pangnirtung</label><td><input type="checkbox" id="161" name="161"/><label for="161">America/Paramaribo</label>
-<tr><td><input type="checkbox" id="162" name="162"/><label for="162">America/Phoenix</label><td><input type="checkbox" id="163" name="163"/><label for="163">America/Port-au-Prince</label><td><input type="checkbox" id="164" name="164"/><label for="164">America/Port_of_Spain</label>
-<tr><td><input type="checkbox" id="165" name="165"/><label for="165">America/Porto_Velho</label><td><input type="checkbox" id="166" name="166"/><label for="166">America/Puerto_Rico</label><td><input type="checkbox" id="167" name="167"/><label for="167">America/Punta_Arenas</label>
-<tr><td><input type="checkbox" id="168" name="168"/><label for="168">America/Rankin_Inlet</label><td><input type="checkbox" id="169" name="169"/><label for="169">America/Recife</label><td><input type="checkbox" id="170" name="170"/><label for="170">America/Regina</label>
-<tr><td><input type="checkbox" id="171" name="171"/><label for="171">America/Resolute</label><td><input type="checkbox" id="172" name="172"/><label for="172">America/Rio_Branco</label><td><input type="checkbox" id="173" name="173"/><label for="173">America/Santarem</label>
-<tr><td><input type="checkbox" id="174" name="174"/><label for="174">America/Santiago</label><td><input type="checkbox" id="175" name="175"/><label for="175">America/Santo_Domingo</label><td><input type="checkbox" id="176" name="176"/><label for="176">America/Sao_Paulo</label>
-<tr><td><input type="checkbox" id="177" name="177"/><label for="177">America/Scoresbysund</label><td><input type="checkbox" id="178" name="178"/><label for="178">America/Sitka</label><td><input type="checkbox" id="179" name="179"/><label for="179">America/St_Barthelemy</label>
-<tr><td><input type="checkbox" id="180" name="180"/><label for="180">America/St_Johns</label><td><input type="checkbox" id="181" name="181"/><label for="181">America/St_Kitts</label><td><input type="checkbox" id="182" name="182"/><label for="182">America/St_Lucia</label>
-<tr><td><input type="checkbox" id="183" name="183"/><label for="183">America/St_Thomas</label><td><input type="checkbox" id="184" name="184"/><label for="184">America/St_Vincent</label><td><input type="checkbox" id="185" name="185"/><label for="185">America/Swift_Current</label>
-<tr><td><input type="checkbox" id="186" name="186"/><label for="186">America/Tegucigalpa</label><td><input type="checkbox" id="187" name="187"/><label for="187">America/Thule</label><td><input type="checkbox" id="188" name="188"/><label for="188">America/Tijuana</label>
-<tr><td><input type="checkbox" id="189" name="189"/><label for="189">America/Toronto</label><td><input type="checkbox" id="190" name="190"/><label for="190">America/Tortola</label><td><input type="checkbox" id="191" name="191"/><label for="191">America/Vancouver</label>
-<tr><td><input type="checkbox" id="192" name="192"/><label for="192">America/Whitehorse</label><td><input type="checkbox" id="193" name="193"/><label for="193">America/Winnipeg</label><td><input type="checkbox" id="194" name="194"/><label for="194">America/Yakutat</label>
-<tr><td><input type="checkbox" id="195" name="195"/><label for="195">America/Yellowknife</label><td><input type="checkbox" id="196" name="196"/><label for="196">Antarctica/Casey</label><td><input type="checkbox" id="197" name="197"/><label for="197">Antarctica/Davis</label>
-<tr><td><input type="checkbox" id="198" name="198"/><label for="198">Antarctica/DumontDUrville</label><td><input type="checkbox" id="199" name="199"/><label for="199">Antarctica/Macquarie</label><td><input type="checkbox" id="200" name="200"/><label for="200">Antarctica/Mawson</label>
-<tr><td><input type="checkbox" id="201" name="201"/><label for="201">Antarctica/McMurdo</label><td><input type="checkbox" id="202" name="202"/><label for="202">Antarctica/Palmer</label><td><input type="checkbox" id="203" name="203"/><label for="203">Antarctica/Rothera</label>
-<tr><td><input type="checkbox" id="204" name="204"/><label for="204">Antarctica/Syowa</label><td><input type="checkbox" id="205" name="205"/><label for="205">Antarctica/Troll</label><td><input type="checkbox" id="206" name="206"/><label for="206">Antarctica/Vostok</label>
-<tr><td><input type="checkbox" id="207" name="207"/><label for="207">Arctic/Longyearbyen</label><td><input type="checkbox" id="208" name="208"/><label for="208">Asia/Aden</label><td><input type="checkbox" id="209" name="209"/><label for="209">Asia/Almaty</label>
-<tr><td><input type="checkbox" id="210" name="210"/><label for="210">Asia/Amman</label><td><input type="checkbox" id="211" name="211"/><label for="211">Asia/Anadyr</label><td><input type="checkbox" id="212" name="212"/><label for="212">Asia/Aqtau</label>
-<tr><td><input type="checkbox" id="213" name="213"/><label for="213">Asia/Aqtobe</label><td><input type="checkbox" id="214" name="214"/><label for="214">Asia/Ashgabat</label><td><input type="checkbox" id="215" name="215"/><label for="215">Asia/Atyrau</label>
-<tr><td><input type="checkbox" id="216" name="216"/><label for="216">Asia/Baghdad</label><td><input type="checkbox" id="217" name="217"/><label for="217">Asia/Bahrain</label><td><input type="checkbox" id="218" name="218"/><label for="218">Asia/Baku</label>
-<tr><td><input type="checkbox" id="219" name="219"/><label for="219">Asia/Bangkok</label><td><input type="checkbox" id="220" name="220"/><label for="220">Asia/Barnaul</label><td><input type="checkbox" id="221" name="221"/><label for="221">Asia/Beirut</label>
-<tr><td><input type="checkbox" id="222" name="222"/><label for="222">Asia/Bishkek</label><td><input type="checkbox" id="223" name="223"/><label for="223">Asia/Brunei</label><td><input type="checkbox" id="224" name="224"/><label for="224">Asia/Chita</label>
-<tr><td><input type="checkbox" id="225" name="225"/><label for="225">Asia/Choibalsan</label><td><input type="checkbox" id="226" name="226"/><label for="226">Asia/Colombo</label><td><input type="checkbox" id="227" name="227"/><label for="227">Asia/Damascus</label>
-<tr><td><input type="checkbox" id="228" name="228"/><label for="228">Asia/Dhaka</label><td><input type="checkbox" id="229" name="229"/><label for="229">Asia/Dili</label><td><input type="checkbox" id="230" name="230"/><label for="230">Asia/Dubai</label>
-<tr><td><input type="checkbox" id="231" name="231"/><label for="231">Asia/Dushanbe</label><td><input type="checkbox" id="232" name="232"/><label for="232">Asia/Famagusta</label><td><input type="checkbox" id="233" name="233"/><label for="233">Asia/Gaza</label>
-<tr><td><input type="checkbox" id="234" name="234"/><label for="234">Asia/Hebron</label><td><input type="checkbox" id="235" name="235"/><label for="235">Asia/Ho_Chi_Minh</label><td><input type="checkbox" id="236" name="236"/><label for="236">Asia/Hong_Kong</label>
-<tr><td><input type="checkbox" id="237" name="237"/><label for="237">Asia/Hovd</label><td><input type="checkbox" id="238" name="238"/><label for="238">Asia/Irkutsk</label><td><input type="checkbox" id="239" name="239"/><label for="239">Asia/Jakarta</label>
-<tr><td><input type="checkbox" id="240" name="240"/><label for="240">Asia/Jayapura</label><td><input type="checkbox" id="241" name="241"/><label for="241">Asia/Jerusalem</label><td><input type="checkbox" id="242" name="242"/><label for="242">Asia/Kabul</label>
-<tr><td><input type="checkbox" id="243" name="243"/><label for="243">Asia/Kamchatka</label><td><input type="checkbox" id="244" name="244"/><label for="244">Asia/Karachi</label><td><input type="checkbox" id="245" name="245"/><label for="245">Asia/Kathmandu</label>
-<tr><td><input type="checkbox" id="246" name="246"/><label for="246">Asia/Khandyga</label><td><input type="checkbox" id="247" name="247"/><label for="247">Asia/Kolkata</label><td><input type="checkbox" id="248" name="248"/><label for="248">Asia/Krasnoyarsk</label>
-<tr><td><input type="checkbox" id="249" name="249"/><label for="249">Asia/Kuala_Lumpur</label><td><input type="checkbox" id="250" name="250"/><label for="250">Asia/Kuching</label><td><input type="checkbox" id="251" name="251"/><label for="251">Asia/Kuwait</label>
-<tr><td><input type="checkbox" id="252" name="252"/><label for="252">Asia/Macau</label><td><input type="checkbox" id="253" name="253"/><label for="253">Asia/Magadan</label><td><input type="checkbox" id="254" name="254"/><label for="254">Asia/Makassar</label>
-<tr><td><input type="checkbox" id="255" name="255"/><label for="255">Asia/Manila</label><td><input type="checkbox" id="256" name="256"/><label for="256">Asia/Muscat</label><td><input type="checkbox" id="257" name="257"/><label for="257">Asia/Nicosia</label>
-<tr><td><input type="checkbox" id="258" name="258"/><label for="258">Asia/Novokuznetsk</label><td><input type="checkbox" id="259" name="259"/><label for="259">Asia/Novosibirsk</label><td><input type="checkbox" id="260" name="260"/><label for="260">Asia/Omsk</label>
-<tr><td><input type="checkbox" id="261" name="261"/><label for="261">Asia/Oral</label><td><input type="checkbox" id="262" name="262"/><label for="262">Asia/Phnom_Penh</label><td><input type="checkbox" id="263" name="263"/><label for="263">Asia/Pontianak</label>
-<tr><td><input type="checkbox" id="264" name="264"/><label for="264">Asia/Pyongyang</label><td><input type="checkbox" id="265" name="265"/><label for="265">Asia/Qatar</label><td><input type="checkbox" id="266" name="266"/><label for="266">Asia/Qostanay</label>
-<tr><td><input type="checkbox" id="267" name="267"/><label for="267">Asia/Qyzylorda</label><td><input type="checkbox" id="268" name="268"/><label for="268">Asia/Riyadh</label><td><input type="checkbox" id="269" name="269"/><label for="269">Asia/Sakhalin</label>
-<tr><td><input type="checkbox" id="270" name="270"/><label for="270">Asia/Samarkand</label><td><input type="checkbox" id="271" name="271"/><label for="271">Asia/Seoul</label><td><input type="checkbox" id="272" name="272"/><label for="272">Asia/Shanghai</label>
-<tr><td><input type="checkbox" id="273" name="273"/><label for="273">Asia/Singapore</label><td><input type="checkbox" id="274" name="274"/><label for="274">Asia/Srednekolymsk</label><td><input type="checkbox" id="275" name="275"/><label for="275">Asia/Taipei</label>
-<tr><td><input type="checkbox" id="276" name="276"/><label for="276">Asia/Tashkent</label><td><input type="checkbox" id="277" name="277"/><label for="277">Asia/Tbilisi</label><td><input type="checkbox" id="278" name="278"/><label for="278">Asia/Tehran</label>
-<tr><td><input type="checkbox" id="279" name="279"/><label for="279">Asia/Thimphu</label><td><input type="checkbox" id="280" name="280"/><label for="280">Asia/Tokyo</label><td><input type="checkbox" id="281" name="281"/><label for="281">Asia/Tomsk</label>
-<tr><td><input type="checkbox" id="282" name="282"/><label for="282">Asia/Ulaanbaatar</label><td><input type="checkbox" id="283" name="283"/><label for="283">Asia/Urumqi</label><td><input type="checkbox" id="284" name="284"/><label for="284">Asia/Ust-Nera</label>
-<tr><td><input type="checkbox" id="285" name="285"/><label for="285">Asia/Vientiane</label><td><input type="checkbox" id="286" name="286"/><label for="286">Asia/Vladivostok</label><td><input type="checkbox" id="287" name="287"/><label for="287">Asia/Yakutsk</label>
-<tr><td><input type="checkbox" id="288" name="288"/><label for="288">Asia/Yangon</label><td><input type="checkbox" id="289" name="289"/><label for="289">Asia/Yekaterinburg</label><td><input type="checkbox" id="290" name="290"/><label for="290">Asia/Yerevan</label>
-<tr><td><input type="checkbox" id="291" name="291"/><label for="291">Atlantic/Azores</label><td><input type="checkbox" id="292" name="292"/><label for="292">Atlantic/Bermuda</label><td><input type="checkbox" id="293" name="293"/><label for="293">Atlantic/Canary</label>
-<tr><td><input type="checkbox" id="294" name="294"/><label for="294">Atlantic/Cape_Verde</label><td><input type="checkbox" id="295" name="295"/><label for="295">Atlantic/Faroe</label><td><input type="checkbox" id="296" name="296"/><label for="296">Atlantic/Madeira</label>
-<tr><td><input type="checkbox" id="297" name="297"/><label for="297">Atlantic/Reykjavik</label><td><input type="checkbox" id="298" name="298"/><label for="298">Atlantic/South_Georgia</label><td><input type="checkbox" id="299" name="299"/><label for="299">Atlantic/St_Helena</label>
-<tr><td><input type="checkbox" id="300" name="300"/><label for="300">Atlantic/Stanley</label><td><input type="checkbox" id="301" name="301"/><label for="301">Australia/Adelaide</label><td><input type="checkbox" id="302" name="302"/><label for="302">Australia/Brisbane</label>
-</table><fieldset><legend>Envoyer le formulaire</legend><input type=submit value=Afficher les horraires/></fieldset><table width="100%">
-<tr><td><input type="checkbox" id="303" name="303"/><label for="303">Australia/Broken_Hill</label><td><input type="checkbox" id="304" name="304"/><label for="304">Australia/Darwin</label><td><input type="checkbox" id="305" name="305"/><label for="305">Australia/Eucla</label>
-<tr><td><input type="checkbox" id="306" name="306"/><label for="306">Australia/Hobart</label><td><input type="checkbox" id="307" name="307"/><label for="307">Australia/Lindeman</label><td><input type="checkbox" id="308" name="308"/><label for="308">Australia/Lord_Howe</label>
-<tr><td><input type="checkbox" id="309" name="309"/><label for="309">Australia/Melbourne</label><td><input type="checkbox" id="310" name="310"/><label for="310">Australia/Perth</label><td><input type="checkbox" id="311" name="311"/><label for="311">Australia/Sydney</label>
-<tr><td><input type="checkbox" id="312" name="312"/><label for="312">Europe/Amsterdam</label><td><input type="checkbox" id="313" name="313"/><label for="313">Europe/Andorra</label><td><input type="checkbox" id="314" name="314"/><label for="314">Europe/Astrakhan</label>
-<tr><td><input type="checkbox" id="315" name="315"/><label for="315">Europe/Athens</label><td><input type="checkbox" id="316" name="316"/><label for="316">Europe/Belgrade</label><td><input type="checkbox" id="317" name="317"/><label for="317">Europe/Berlin</label>
-<tr><td><input type="checkbox" id="318" name="318"/><label for="318">Europe/Bratislava</label><td><input type="checkbox" id="319" name="319"/><label for="319">Europe/Brussels</label><td><input type="checkbox" id="320" name="320"/><label for="320">Europe/Bucharest</label>
-<tr><td><input type="checkbox" id="321" name="321"/><label for="321">Europe/Budapest</label><td><input type="checkbox" id="322" name="322"/><label for="322">Europe/Busingen</label><td><input type="checkbox" id="323" name="323"/><label for="323">Europe/Chisinau</label>
-<tr><td><input type="checkbox" id="324" name="324"/><label for="324">Europe/Copenhagen</label><td><input type="checkbox" id="325" name="325"/><label for="325">Europe/Dublin</label><td><input type="checkbox" id="326" name="326"/><label for="326">Europe/Gibraltar</label>
-<tr><td><input type="checkbox" id="327" name="327"/><label for="327">Europe/Guernsey</label><td><input type="checkbox" id="328" name="328"/><label for="328">Europe/Helsinki</label><td><input type="checkbox" id="329" name="329"/><label for="329">Europe/Isle_of_Man</label>
-<tr><td><input type="checkbox" id="330" name="330"/><label for="330">Europe/Istanbul</label><td><input type="checkbox" id="331" name="331"/><label for="331">Europe/Jersey</label><td><input type="checkbox" id="332" name="332"/><label for="332">Europe/Kaliningrad</label>
-<tr><td><input type="checkbox" id="333" name="333"/><label for="333">Europe/Kirov</label><td><input type="checkbox" id="334" name="334"/><label for="334">Europe/Kyiv</label><td><input type="checkbox" id="335" name="335"/><label for="335">Europe/Lisbon</label>
-<tr><td><input type="checkbox" id="336" name="336"/><label for="336">Europe/Ljubljana</label><td><input type="checkbox" id="337" name="337"/><label for="337">Europe/London</label><td><input type="checkbox" id="338" name="338"/><label for="338">Europe/Luxembourg</label>
-<tr><td><input type="checkbox" id="339" name="339"/><label for="339">Europe/Madrid</label><td><input type="checkbox" id="340" name="340"/><label for="340">Europe/Malta</label><td><input type="checkbox" id="341" name="341"/><label for="341">Europe/Mariehamn</label>
-<tr><td><input type="checkbox" id="342" name="342"/><label for="342">Europe/Minsk</label><td><input type="checkbox" id="343" name="343"/><label for="343">Europe/Monaco</label><td><input type="checkbox" id="344" name="344"/><label for="344">Europe/Moscow</label>
-<tr><td><input type="checkbox" id="345" name="345"/><label for="345">Europe/Oslo</label><td><input type="checkbox" id="346" name="346"/><label for="346">Europe/Paris</label><td><input type="checkbox" id="347" name="347"/><label for="347">Europe/Podgorica</label>
-<tr><td><input type="checkbox" id="348" name="348"/><label for="348">Europe/Prague</label><td><input type="checkbox" id="349" name="349"/><label for="349">Europe/Riga</label><td><input type="checkbox" id="350" name="350"/><label for="350">Europe/Rome</label>
-<tr><td><input type="checkbox" id="351" name="351"/><label for="351">Europe/Samara</label><td><input type="checkbox" id="352" name="352"/><label for="352">Europe/San_Marino</label><td><input type="checkbox" id="353" name="353"/><label for="353">Europe/Sarajevo</label>
-<tr><td><input type="checkbox" id="354" name="354"/><label for="354">Europe/Saratov</label><td><input type="checkbox" id="355" name="355"/><label for="355">Europe/Simferopol</label><td><input type="checkbox" id="356" name="356"/><label for="356">Europe/Skopje</label>
-<tr><td><input type="checkbox" id="357" name="357"/><label for="357">Europe/Sofia</label><td><input type="checkbox" id="358" name="358"/><label for="358">Europe/Stockholm</label><td><input type="checkbox" id="359" name="359"/><label for="359">Europe/Tallinn</label>
-<tr><td><input type="checkbox" id="360" name="360"/><label for="360">Europe/Tirane</label><td><input type="checkbox" id="361" name="361"/><label for="361">Europe/Ulyanovsk</label><td><input type="checkbox" id="362" name="362"/><label for="362">Europe/Vaduz</label>
-<tr><td><input type="checkbox" id="363" name="363"/><label for="363">Europe/Vatican</label><td><input type="checkbox" id="364" name="364"/><label for="364">Europe/Vienna</label><td><input type="checkbox" id="365" name="365"/><label for="365">Europe/Vilnius</label>
-<tr><td><input type="checkbox" id="366" name="366"/><label for="366">Europe/Volgograd</label><td><input type="checkbox" id="367" name="367"/><label for="367">Europe/Warsaw</label><td><input type="checkbox" id="368" name="368"/><label for="368">Europe/Zagreb</label>
-<tr><td><input type="checkbox" id="369" name="369"/><label for="369">Europe/Zurich</label><td><input type="checkbox" id="370" name="370"/><label for="370">Indian/Antananarivo</label><td><input type="checkbox" id="371" name="371"/><label for="371">Indian/Chagos</label>
-<tr><td><input type="checkbox" id="372" name="372"/><label for="372">Indian/Christmas</label><td><input type="checkbox" id="373" name="373"/><label for="373">Indian/Cocos</label><td><input type="checkbox" id="374" name="374"/><label for="374">Indian/Comoro</label>
-<tr><td><input type="checkbox" id="375" name="375"/><label for="375">Indian/Kerguelen</label><td><input type="checkbox" id="376" name="376"/><label for="376">Indian/Mahe</label><td><input type="checkbox" id="377" name="377"/><label for="377">Indian/Maldives</label>
-<tr><td><input type="checkbox" id="378" name="378"/><label for="378">Indian/Mauritius</label><td><input type="checkbox" id="379" name="379"/><label for="379">Indian/Mayotte</label><td><input type="checkbox" id="380" name="380"/><label for="380">Indian/Reunion</label>
-<tr><td><input type="checkbox" id="381" name="381"/><label for="381">Pacific/Apia</label><td><input type="checkbox" id="382" name="382"/><label for="382">Pacific/Auckland</label><td><input type="checkbox" id="383" name="383"/><label for="383">Pacific/Bougainville</label>
-<tr><td><input type="checkbox" id="384" name="384"/><label for="384">Pacific/Chatham</label><td><input type="checkbox" id="385" name="385"/><label for="385">Pacific/Chuuk</label><td><input type="checkbox" id="386" name="386"/><label for="386">Pacific/Easter</label>
-<tr><td><input type="checkbox" id="387" name="387"/><label for="387">Pacific/Efate</label><td><input type="checkbox" id="388" name="388"/><label for="388">Pacific/Fakaofo</label><td><input type="checkbox" id="389" name="389"/><label for="389">Pacific/Fiji</label>
-<tr><td><input type="checkbox" id="390" name="390"/><label for="390">Pacific/Funafuti</label><td><input type="checkbox" id="391" name="391"/><label for="391">Pacific/Galapagos</label><td><input type="checkbox" id="392" name="392"/><label for="392">Pacific/Gambier</label>
-<tr><td><input type="checkbox" id="393" name="393"/><label for="393">Pacific/Guadalcanal</label><td><input type="checkbox" id="394" name="394"/><label for="394">Pacific/Guam</label><td><input type="checkbox" id="395" name="395"/><label for="395">Pacific/Honolulu</label>
-<tr><td><input type="checkbox" id="396" name="396"/><label for="396">Pacific/Kanton</label><td><input type="checkbox" id="397" name="397"/><label for="397">Pacific/Kiritimati</label><td><input type="checkbox" id="398" name="398"/><label for="398">Pacific/Kosrae</label>
-<tr><td><input type="checkbox" id="399" name="399"/><label for="399">Pacific/Kwajalein</label><td><input type="checkbox" id="400" name="400"/><label for="400">Pacific/Majuro</label><td><input type="checkbox" id="401" name="401"/><label for="401">Pacific/Marquesas</label>
-<tr><td><input type="checkbox" id="402" name="402"/><label for="402">Pacific/Midway</label><td><input type="checkbox" id="403" name="403"/><label for="403">Pacific/Nauru</label><td><input type="checkbox" id="404" name="404"/><label for="404">Pacific/Niue</label>
-<tr><td><input type="checkbox" id="405" name="405"/><label for="405">Pacific/Norfolk</label><td><input type="checkbox" id="406" name="406"/><label for="406">Pacific/Noumea</label><td><input type="checkbox" id="407" name="407"/><label for="407">Pacific/Pago_Pago</label>
-<tr><td><input type="checkbox" id="408" name="408"/><label for="408">Pacific/Palau</label><td><input type="checkbox" id="409" name="409"/><label for="409">Pacific/Pitcairn</label><td><input type="checkbox" id="410" name="410"/><label for="410">Pacific/Pohnpei</label>
-<tr><td><input type="checkbox" id="411" name="411"/><label for="411">Pacific/Port_Moresby</label><td><input type="checkbox" id="412" name="412"/><label for="412">Pacific/Rarotonga</label><td><input type="checkbox" id="413" name="413"/><label for="413">Pacific/Saipan</label>
-<tr><td><input type="checkbox" id="414" name="414"/><label for="414">Pacific/Tahiti</label><td><input type="checkbox" id="415" name="415"/><label for="415">Pacific/Tarawa</label><td><input type="checkbox" id="416" name="416"/><label for="416">Pacific/Tongatapu</label>
-<tr><td><input type="checkbox" id="417" name="417"/><label for="417">Pacific/Wake</label><td><input type="checkbox" id="418" name="418"/><label for="418">Pacific/Wallis</label></tr>
+<html  style="text-align:center">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta charset="UTF-8">
+        <title>m - Clock</title>
+    </head>
+    <style>
+* {
+	 box-sizing: border-box;
+}
+ .wrapper {
+	 width: 100%;
+	 height: 100vh;
+	 display: flex;
+	 align-items: center;
+	 justify-content: center;
+	 background: #f3fbff;
+}
+ .clock {
+	 width: 300px;
+	 height: 300px;
+	 border-radius: 50%;
+	 position: relative;
+}
+ .clock-circles {
+	 width: 100%;
+	 height: 100%;
+	 border-radius: 50%;
+	 position: relative;
+	 font-size: 300px;
+}
+ .clock-circles__item {
+	 width: 100%;
+	 height: 100%;
+	 border-radius: 50%;
+	 position: absolute;
+	 left: 50%;
+	 top: 50%;
+	 transform: translate(-50%, -50%);
+	 width: 1em;
+	 height: 1em;
+	 font-size: 100%;
+}
+ .clock-circles__item:nth-child(1) {
+	 background-image: linear-gradient(to bottom, #00c0ff, #ffcf00, #fc4f4f, #0e22c3);
+	 box-shadow: 0px 30px 40px 0px rgba(72, 30, 202, 0.2);
+}
+ .clock-circles__item:nth-child(2) {
+	 background-image: linear-gradient(to bottom, #027fff, #491bc9);
+	 font-size: 95%;
+	 box-shadow: 0px 10px 20px 0px rgba(42, 17, 121, 0.5);
+}
+ .clock-circles__item:nth-child(3) {
+	 font-size: 80%;
+	 box-shadow: inset 0px 20px 40px rgba(0, 0, 0, 0.1), inset 0px 0px 40px rgba(37, 13, 105, 0.55), 0px 5px 0px #5430ff, 0px -1px 0px 3px rgba(14, 29, 169, 0.35);
+}
+ .clock-circles__item:nth-child(4) {
+	 background: #3349c9;
+	 font-size: 35px;
+	 box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.2), inset 0px 0px 20px 1px rgba(54, 21, 148, 0.3);
+}
+ .clock-circles__item:nth-child(4) .wave {
+	 position: absolute;
+	 width: 1em;
+	 height: 1em;
+	 top: 50%;
+	 left: 50%;
+	 transform: translate(-50%, -50%);
+	 border-radius: 50%;
+	 border: 1px solid #fff;
+	 font-size: 100%;
+}
+ .clock-circles__item:nth-child(4) .wave:nth-child(1) {
+	 opacity: 0;
+}
+ .clock-circles__item:nth-child(4) .wave:nth-child(2) {
+	 font-size: 210%;
+	 opacity: 0.1;
+}
+ .clock-circles__item:nth-child(4) .wave:nth-child(3) {
+	 font-size: 320%;
+	 opacity: 0.1;
+}
+ .clock-circles__item:nth-child(4) .wave:nth-child(4) {
+	 font-size: 430%;
+	 opacity: 0.1;
+}
+ .clock-circles__item:nth-child(4) .wave:nth-child(5) {
+	 font-size: 600%;
+	 opacity: 0.3;
+	 border-color: #321e9a;
+}
+ .clock-indicators {
+	 position: absolute;
+	 width: 80%;
+	 height: 80%;
+	 left: 50%;
+	 top: 50%;
+	 transform: translate(-50%, -50%) rotate(-45deg);
+	 border-radius: 50%;
+}
+ .clock-indicators__item {
+	 position: absolute;
+	 left: calc(50% - 2px);
+	 width: 2px;
+	 -webkit-transform-origin: bottom center;
+	 transform-origin: bottom center;
+	 z-index: 2;
+	 border-radius: 1px;
+	 background: none;
+	 height: 108px;
+	 top: 10px;
+	 opacity: 0.5;
+}
+ .clock-indicators__item:after {
+	 content: "";
+	 position: absolute;
+	 width: 2px;
+	 height: 7px;
+	 background: #fff;
+	 left: 0;
+	 top: 0;
+	 border-radius: 10px;
+}
+ .clock-indicators__item:nth-child(1), .clock-indicators__item:nth-child(3), .clock-indicators__item:nth-child(5), .clock-indicators__item:nth-child(7) {
+	 opacity: 1;
+	 width: 8px;
+}
+ .clock-indicators__item:nth-child(1):after, .clock-indicators__item:nth-child(3):after, .clock-indicators__item:nth-child(5):after, .clock-indicators__item:nth-child(7):after {
+	 height: 10px;
+	 width: 6px;
+}
+ .clock-indicators__item:nth-of-type(1) {
+	 transform: rotateZ(calc(45deg * 1));
+}
+ .clock-indicators__item:nth-of-type(2) {
+	 transform: rotateZ(calc(45deg * 2));
+}
+ .clock-indicators__item:nth-of-type(3) {
+	 transform: rotateZ(calc(45deg * 3));
+}
+ .clock-indicators__item:nth-of-type(4) {
+	 transform: rotateZ(calc(45deg * 4));
+}
+ .clock-indicators__item:nth-of-type(5) {
+	 transform: rotateZ(calc(45deg * 5));
+}
+ .clock-indicators__item:nth-of-type(6) {
+	 transform: rotateZ(calc(45deg * 6));
+}
+ .clock-indicators__item:nth-of-type(7) {
+	 transform: rotateZ(calc(45deg * 7));
+}
+ .clock-indicators__item:nth-of-type(8) {
+	 transform: rotateZ(calc(45deg * 8));
+}
+ .clock-indicators__item:nth-of-type(9) {
+	 transform: rotateZ(calc(45deg * 9));
+}
+ .clock-indicators__item:nth-of-type(10) {
+	 transform: rotateZ(calc(45deg * 10));
+}
+ .clock-indicators__item:nth-of-type(11) {
+	 transform: rotateZ(calc(45deg * 11));
+}
+ .clock-indicators__item:nth-of-type(12) {
+	 transform: rotateZ(calc(45deg * 12));
+}
+ .clock-indicators__item:nth-of-type(13) {
+	 transform: rotateZ(calc(45deg * 13));
+}
+ .clock-indicators__item:nth-of-type(14) {
+	 transform: rotateZ(calc(45deg * 14));
+}
+ .clock-indicators__item:nth-of-type(15) {
+	 transform: rotateZ(calc(45deg * 15));
+}
+ .clock-indicators__item:nth-of-type(16) {
+	 transform: rotateZ(calc(45deg * 16));
+}
+ .clock-indicators__item:nth-of-type(17) {
+	 transform: rotateZ(calc(45deg * 17));
+}
+ .clock-indicators__item:nth-of-type(18) {
+	 transform: rotateZ(calc(45deg * 18));
+}
+ .clock-indicators__item:nth-of-type(19) {
+	 transform: rotateZ(calc(45deg * 19));
+}
+ .clock-indicators__item:nth-of-type(20) {
+	 transform: rotateZ(calc(45deg * 20));
+}
+ .clock-indicators__item:nth-of-type(21) {
+	 transform: rotateZ(calc(45deg * 21));
+}
+ .clock-indicators__item:nth-of-type(22) {
+	 transform: rotateZ(calc(45deg * 22));
+}
+ .clock-indicators__item:nth-of-type(23) {
+	 transform: rotateZ(calc(45deg * 23));
+}
+ .clock-indicators__item:nth-of-type(24) {
+	 transform: rotateZ(calc(45deg * 24));
+}
+ .clock-indicators__item:nth-of-type(25) {
+	 transform: rotateZ(calc(45deg * 25));
+}
+ .clock-indicators__item:nth-of-type(26) {
+	 transform: rotateZ(calc(45deg * 26));
+}
+ .clock-indicators__item:nth-of-type(27) {
+	 transform: rotateZ(calc(45deg * 27));
+}
+ .clock-indicators__item:nth-of-type(28) {
+	 transform: rotateZ(calc(45deg * 28));
+}
+ .clock-indicators__item:nth-of-type(29) {
+	 transform: rotateZ(calc(45deg * 29));
+}
+ .clock-indicators__item:nth-of-type(30) {
+	 transform: rotateZ(calc(45deg * 30));
+}
+ .clock-indicators__item:nth-of-type(31) {
+	 transform: rotateZ(calc(45deg * 31));
+}
+ .clock-indicators__item:nth-of-type(32) {
+	 transform: rotateZ(calc(45deg * 32));
+}
+ .clock-indicators__item:nth-of-type(33) {
+	 transform: rotateZ(calc(45deg * 33));
+}
+ .clock-indicators__item:nth-of-type(34) {
+	 transform: rotateZ(calc(45deg * 34));
+}
+ .clock-indicators__item:nth-of-type(35) {
+	 transform: rotateZ(calc(45deg * 35));
+}
+ .clock-indicators__item:nth-of-type(36) {
+	 transform: rotateZ(calc(45deg * 36));
+}
+ .clock-indicators__item:nth-of-type(37) {
+	 transform: rotateZ(calc(45deg * 37));
+}
+ .clock-indicators__item:nth-of-type(38) {
+	 transform: rotateZ(calc(45deg * 38));
+}
+ .clock-indicators__item:nth-of-type(39) {
+	 transform: rotateZ(calc(45deg * 39));
+}
+ .clock-indicators__item:nth-of-type(40) {
+	 transform: rotateZ(calc(45deg * 40));
+}
+ .clock-indicators__item:nth-of-type(41) {
+	 transform: rotateZ(calc(45deg * 41));
+}
+ .clock-indicators__item:nth-of-type(42) {
+	 transform: rotateZ(calc(45deg * 42));
+}
+ .clock-indicators__item:nth-of-type(43) {
+	 transform: rotateZ(calc(45deg * 43));
+}
+ .clock-indicators__item:nth-of-type(44) {
+	 transform: rotateZ(calc(45deg * 44));
+}
+ .clock-indicators__item:nth-of-type(45) {
+	 transform: rotateZ(calc(45deg * 45));
+}
+ .clock-indicators__item:nth-of-type(46) {
+	 transform: rotateZ(calc(45deg * 46));
+}
+ .clock-indicators__item:nth-of-type(47) {
+	 transform: rotateZ(calc(45deg * 47));
+}
+ .clock-indicators__item:nth-of-type(48) {
+	 transform: rotateZ(calc(45deg * 48));
+}
+ .clock-indicators__item:nth-of-type(49) {
+	 transform: rotateZ(calc(45deg * 49));
+}
+ .clock-indicators__item:nth-of-type(50) {
+	 transform: rotateZ(calc(45deg * 50));
+}
+ .clock-indicators__item:nth-of-type(51) {
+	 transform: rotateZ(calc(45deg * 51));
+}
+ .clock-indicators__item:nth-of-type(52) {
+	 transform: rotateZ(calc(45deg * 52));
+}
+ .clock-indicators__item:nth-of-type(53) {
+	 transform: rotateZ(calc(45deg * 53));
+}
+ .clock-indicators__item:nth-of-type(54) {
+	 transform: rotateZ(calc(45deg * 54));
+}
+ .clock-indicators__item:nth-of-type(55) {
+	 transform: rotateZ(calc(45deg * 55));
+}
+ .clock-indicators__item:nth-of-type(56) {
+	 transform: rotateZ(calc(45deg * 56));
+}
+ .clock-indicators__item:nth-of-type(57) {
+	 transform: rotateZ(calc(45deg * 57));
+}
+ .clock-indicators__item:nth-of-type(58) {
+	 transform: rotateZ(calc(45deg * 58));
+}
+ .clock-indicators__item:nth-of-type(59) {
+	 transform: rotateZ(calc(45deg * 59));
+}
+ .clock-indicators__item:nth-of-type(60) {
+	 transform: rotateZ(calc(45deg * 60));
+}
+ .clock-times {
+	 position: absolute;
+	 width: 70%;
+	 height: 70%;
+	 left: 50%;
+	 top: 50%;
+	 transform: translate(-50%, -50%);
+	 border-radius: 50%;
+}
+ .clock-times__second, .clock-times__minute, .clock-times__hour {
+	 position: absolute;
+	 left: calc(50% - 1px);
+	 width: 2px;
+	 background: #f4eed7;
+	 transform-origin: bottom center;
+	 top: 5px;
+	 z-index: 2;
+	 border-radius: 1px;
+}
+ .clock-times__second {
+	 height: 90px;
+	 margin-top: 10px;
+	 animation: time 2s linear infinite;
+	 z-index: 3;
+	 background-image: linear-gradient(to top, #e45753 0%, #ca09e8 100%);
+	 width: 3px;
+	 border-radius: 50px;
+}
+ .clock-times__minute {
+	 height: 80px;
+	 margin-top: 20px;
+	 opacity: 0.75;
+	 animation: time 20s linear infinite;
+	 animation-delay: -35s;
+}
+ .clock-times__hour {
+	 height: 70px;
+	 margin-top: 30px;
+	 width: 5px;
+	 border-radius: 50px;
+	 box-shadow: 3px 1px 6px -1px rgba(10, 21, 53, 0.45);
+	 animation: time 60s linear infinite;
+	 animation-delay: -20s;
+}
+ @keyframes time {
+	 to {
+		 transform: rotateZ(360deg);
+	}
+}
+ 
+</style>
+
+<body>
+    <div class="wrapper">
+        <div class="clock">
+          <div class="clock-circles">
+            <div class="clock-circles__item"></div>
+            <div class="clock-circles__item"></div>
+            <div class="clock-circles__item"></div>
+            <div class="clock-circles__item">
+              <div class="wave"></div>
+              <div class="wave"></div>
+              <div class="wave"></div>
+              <div class="wave"></div>
+              <div class="wave"></div>
+            </div>
+          </div>
+          <div class="clock-indicators">
+            <div class="clock-indicators__item"></div>
+            <div class="clock-indicators__item"></div>
+            <div class="clock-indicators__item"></div>
+            <div class="clock-indicators__item"></div>
+            <div class="clock-indicators__item"></div>
+            <div class="clock-indicators__item"></div>
+            <div class="clock-indicators__item"></div>
+            <div class="clock-indicators__item"></div>
+          </div>
+          <div class="clock-times">
+            <div class="clock-times__second"></div>
+            <div class="clock-times__minute"></div>
+            <div class="clock-times__hour"></div>
+          </div>
+        </div>
+      </div>
+</body>
+</html>
