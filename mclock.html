@@ -1,4 +1,4 @@
-<html>
+<html  style="text-align:center">
     <head>
         <meta charset="UTF-8">
         <title>m - Clock</title>
@@ -7,9 +7,9 @@
         <application android:theme="@style/Theme.AppCompat">
         </application>
     </manifest>
-    <body>
+    <body style="text-align:center">
         <div class="myBody" id="myBody">
-            <fieldset>
+            <fieldset style="display: inline-block;">
                 <legend>Réglez votre horloge :</legend>
                 <table><tr><td>Heure : </td><td><input type="number" id="hours" name="hours" min="0" max="23"/>
                 </td></tr><tr><td>Minutes  : </td><td><input type="number" id="minutes" name="minutes" min="0" max="59"/>
@@ -19,13 +19,10 @@
             </fieldset>
         </div>
         <div>
-            <input type="radio" id="0" checked><label for="0">Défault</label>
+            
         </div>
-        <div>
-            <button id="reveilBtn">Arrêter réveil</button>
-        </div>
-        <div class="addwakeup">
-            <fieldset>
+        <div class="addwakeup" id="showWake">
+            <fieldset style="display: inline-block;">
                 <legend>Ajoutez un réveil :</legend>
                 <table><tr><td>Heure : </td><td><input type="number" id="wuhours" name="hours" min="0" max="23"/>
                 </td></tr><tr><td>Minutes  : </td><td><input type="number" id="wuminutes" name="minutes" min="0" max="59"/>
@@ -33,8 +30,7 @@
                 </td></tr><tr><td></td><td id="myButtonWu"><button>Ajouter</button>
                 </td></tr></table>
             </fieldset>
-        </div>
-        <div>
+        
             <table>
                 <tbody id="wulist">
 
@@ -49,6 +45,11 @@
         <div id="count" hidden>
 
         </div>
+        <div>
+            <li id="showTimeBtn"><img src="h.jpg" width="50px" onClick="showTime()"/></li>
+            <li id="showWakeBtn"><img src="r.jpg" width="50px" onClick="showWake()"/></li>
+            <button id="reveilBtn">Arrêter réveil</button>
+        </div>
     </body>
     <style>
 
@@ -57,6 +58,7 @@
                  background: #fff;
                  border: 5px solid white;
                  box-shadow: inset 2px 3px 8px 0 rgba(0, 0, 0, 0.1);
+                 text-align:center;
         }
         
         .wrap {
@@ -118,6 +120,48 @@
         
         </style>
     <script>
+        btn=document.getElementById("showWake");
+        btn.style.display = 'none';
+        btn2=document.getElementById("showWakeBtn");
+        btn2.style.display = 'block';
+        btn2=document.getElementById("showTimeBtn");
+        btn2.style.display='none';
+        function showTime() {
+    btn2 = document.getElementById("myBody");
+    // hide the lorem ipsum te
+    // hide the link
+    btn2.style.display = 'block';
+    btn = document.getElementById("showWake");
+    btn.style.display="none";
+    btn3 = document.getElementById("showWakeBtn");
+    // hide the lorem ipsum te
+    // hide the link
+    btn3.style.display = 'none';
+    btn4 = document.getElementById("showWakeBtn");
+    // hide the lorem ipsum te
+    // hide the link
+    btn4.style.display = 'block';
+    btn=document.getElementById("showTimeBtn");
+    btn.style.display = 'none';
+}
+        function showWake(){
+            btn = document.getElementById("showWake");
+
+            btn.style.display="block";
+            btn2 = document.getElementById("myBody");
+    // hide the lorem ipsum te
+    // hide the link
+    btn2.style.display = 'none';
+    btn3 = document.getElementById("showTimeBtn");
+    // hide the lorem ipsum te
+    // hide the link
+    btn3.style.display = 'block';
+    btn4 = document.getElementById("showWakeBtn");
+    // hide the lorem ipsum te
+    // hide the link
+    btn4.style.display = 'none';
+
+        }
         function addElement(myCurrentDiv, myNewDivId, myValue) {
             seconds=document.getElementById("wuseconds").value;
             minutes=document.getElementById("wuminutes").value;
