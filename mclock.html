@@ -1,5 +1,6 @@
 <html  style="text-align:center">
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <meta charset="UTF-8">
         <title>m - Clock</title>
     </head>
@@ -42,29 +43,28 @@
             hidden
             src="ALRM.mp3">
             </audio>
-        <div id="count" hidden>
-
-        </div>
         <div>
-            <li id="showTimeBtn"><img src="h.jpg" width="50px" onClick="showTime()"/></li>
-            <li id="showWakeBtn"><img src="r.jpg" width="50px" onClick="showWake()"/></li>
-            <button id="reveilBtn">Arrêter réveil</button>
+            <img class="center-me" id="showTimeBtn" style="display:inline;" src="https://echkourine25.github.io/h.jpg" width="50px" onClick="showTime()"/>
+            <img class="center-me" id="showWakeBtn" style="display:inline;" src="https://echkourine25.github.io/r.jpg" width="50px" onClick="showWake()"/>
+            <img class="center-me" src="https://echkourine25.github.io/s.jpg" style="display:inline;" width="50px" id="reveilBtn"/>
         </div>
     </body>
     <style>
-
+.center-me {
+  margin: 0 auto;
+}
         .clock {
                  border-radius: 50%;
                  background: #fff;
                  border: 5px solid white;
                  box-shadow: inset 2px 3px 8px 0 rgba(0, 0, 0, 0.1);
-                 text-align:center;
         }
         
         .wrap {
                  position: relative;
                  width: 175px;
                  height: 175px;
+                 margin: 0 auto;
         }
         
         .minute, .heure {
@@ -123,31 +123,31 @@
         btn=document.getElementById("showWake");
         btn.style.display = 'none';
         btn2=document.getElementById("showWakeBtn");
-        btn2.style.display = 'block';
+        btn2.style.display = 'inline';
         btn2=document.getElementById("showTimeBtn");
         btn2.style.display='none';
         function showTime() {
     btn2 = document.getElementById("myBody");
     // hide the lorem ipsum te
     // hide the link
-    btn2.style.display = 'block';
+    btn2.style.display = 'inline';
     btn = document.getElementById("showWake");
     btn.style.display="none";
     btn3 = document.getElementById("showWakeBtn");
     // hide the lorem ipsum te
-    // hide the link
+    // hide the links
     btn3.style.display = 'none';
     btn4 = document.getElementById("showWakeBtn");
     // hide the lorem ipsum te
     // hide the link
-    btn4.style.display = 'block';
+    btn4.style.display = 'inline';
     btn=document.getElementById("showTimeBtn");
     btn.style.display = 'none';
 }
         function showWake(){
             btn = document.getElementById("showWake");
 
-            btn.style.display="block";
+            btn.style.display="inline";
             btn2 = document.getElementById("myBody");
     // hide the lorem ipsum te
     // hide the link
@@ -155,7 +155,7 @@
     btn3 = document.getElementById("showTimeBtn");
     // hide the lorem ipsum te
     // hide the link
-    btn3.style.display = 'block';
+    btn3.style.display = 'inline';
     btn4 = document.getElementById("showWakeBtn");
     // hide the lorem ipsum te
     // hide the link
@@ -210,11 +210,11 @@
                 minutes=Number(dt.getMinutes());
                 seconds=Number(dt.getSeconds());
                 if(seconds < 10){
-                    seconds = Number("0"+seconds);
+                    seconds = "0"+seconds;
                 }if(hours < 10){
-                    hours = Number("0"+hours);
+                    hours = "0"+hours;
                 }if(minutes < 10){
-                    minutes = Number("0"+minutes);
+                    minutes = "0"+minutes;
                 }
                 hour = hours * 30;
                 minute = minutes * 6;
