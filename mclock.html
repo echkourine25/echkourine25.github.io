@@ -465,7 +465,7 @@ element.remove();
             }
              //add the newly created element and its content into the DOM
             var currentDiv = document.getElementById(myCurrentDiv);
-            currentDiv.innerHTML += "<tr style=\"text-align:center;\" id=\"wulist"+myNewDivId+"\"><td id=\"wulisttd"+myNewDivId+"\">"+hours+":"+minutes+":"+seconds+"</td><td id=\"wulisttdbtn"+myNewDivId+"\" style=\"color:red;\"><button id=\"wulistbtn"+myNewDivId+"\"onClick=\"this.parentNode.parentNode.style.display='none';\">X</button></tr>";
+            currentDiv.outerHTML += "<tr style=\"text-align:center;\" id=\"wulist"+myNewDivId+"\"><td id=\"wulisttd"+myNewDivId+"\">"+hours+":"+minutes+":"+seconds+"</td><td id=\"wulisttdbtn"+myNewDivId+"\" style=\"color:red;\"><input type=\"checkbox\" name=\"wulistbtnname\" id=\"wulistbtnid"+myNewDivId+"\" value=\"wulistbtnvalue"+myNewDivId+"\"/></td></tr>";
         }
         var wucount = 0;
         var wuButton = document.getElementById("myButtonWu");
@@ -519,17 +519,16 @@ element.remove();
                     var myTime;
                     myArray = new Array();
                     console.log(document.querySelector("#wulisttd"+i).textContent)
-                    if(document.querySelector("#wulist"+i).style.display === 'none'){
-                        break;
+                    if(document.querySelector("#wulistbtnid"+i).checked){
+                        myArray=document.querySelector("#wulisttd"+i).textContent.split(":");
+                        if(hours == myArray[0] && minutes == myArray[1] && seconds == myArray[2]){
+                            var reveilT=true;
+                            var myAudio = document.getElementById("reveil");
+                            myAudio.loop = true;
+                            myAudio.play();
+                        }
                     }
-                    myArray=document.querySelector("#wulisttd"+i).textContent.split(":");
-                    if(hours == myArray[0] && minutes == myArray[1] && seconds == myArray[2]){
-                        var reveilT=true;
-                        var myAudio = document.getElementById("reveil");
-                        myAudio.loop = true;
-                        myAudio.play();
-                    }
-                }
+                }   
             }
             myButton=document.getElementById("myButton");
             myButton.innerHTML = "";
@@ -566,14 +565,7 @@ element.remove();
           </div>
         </div>
       </div>`;
-      $('#scroll_diseases_left').bind('touchstart mousedown', function(){
-   int00 = int00 || setInterval(clock, 100);
-  });
-
-  $('#scroll_diseases_left').bind('touchend mouseup', function(){
-      clearInterval(int00);
-      int00 = undefined;
-  });
+            setInterval(clock, 1000);
         }
     </script>
 </html>
