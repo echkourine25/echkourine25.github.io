@@ -22,6 +22,12 @@ let curr_track = document.createElement('audio');
 // Define the tracks that have to be played
 let track_list = [
   {
+    name: "Méditation (RV)",
+    artiste: "Evgueni CHKOURINE",
+    image: "meditationrv.jpg",
+    path: "meditationrv.mp3",
+  },
+  {
     name: "Viper Nest RV",
     artiste: "Evgueni CHKOURINE",
     image: "viperrv.jpg",
