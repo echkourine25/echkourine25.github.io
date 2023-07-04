@@ -22,6 +22,12 @@ let curr_track = document.createElement('audio');
 // Define the tracks that have to be played
 let track_list = [
   {
+    name: "Ocean View (RV)",
+    artiste: "Evgueni CHKOURINE",
+    image: "oceanviewrv.jpg",
+    path: "oceanviewrv.mp3",
+  },
+  {
     name: "Méditation (RV)",
     artiste: "Evgueni CHKOURINE",
     image: "meditationrv.jpg",
