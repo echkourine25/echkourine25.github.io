@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="fr"><head>
-  <meta http-equiv="refresh" content="0;URL=https://twitch/cevgueni">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
@@ -44,12 +43,20 @@
   </header>
 
   <div class="post-content">
-    <iframe
-    src="https://player.twitch.tv/?channel=cevgueni&parent=echkourine25.github.io&muted=false"
-    height="300"
-    width="400"
-    allowfullscreen>
-</iframe>
+    <script src= "https://player.twitch.tv/js/embed/v1.js"></script>
+<div id="playerdiv"></div>
+<script type="text/javascript">
+  var options = {
+    width: 1024,
+    height: 768,
+    channel: "cevgueni",
+    // only needed if your site is also embedded on embed.example.com and othersite.example.com
+    parent: ["echkourine25.github.io"]
+  };
+  var player = new Twitch.Player("playerdiv", options);
+  player.setVolume(1);
+</script>
+
 
   </div>
 
