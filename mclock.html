@@ -399,30 +399,32 @@ function plus1sec(dt){
 }
  function clock(dt) {
     
-        
-                
-                hours=Number(dt.getHours());
-                minutes=Number(dt.getMinutes());
-                seconds=Number(dt.getSeconds());
-                if(seconds < 10){
-                    seconds = "0"+seconds;
-                }if(hours < 10){
-                    hours = "0"+hours;
+       		var dtn = Date.now();
+		var dt3 = new Date(dt);
+		var mysec = dt3.getSeconds();
+		var diff = dtn - mysec;
+                hours = diff/(120*60*1000);
+                minutes = diff/60000;
+		seconds = diff/1000;
+		var hourl = dt3.getHours() + hours;
+		var minutel = dt3.getMinutes() + minutes;
+		var secondl = dt3.getSeconds() + seconds;
+                if(secondl < 10){
+                    secondl = "0"+secondl;
+                }if(hourl < 10){
+                    hourl = "0"+hourl;
                 }if(minutes < 10){
-                    minutes = "0"+minutes;
+                    minutel = "0"+minutel;
                 }
-                hour = hours * 30;
-                minute = minutes * 6;
-                second = seconds * 6;
-                document.querySelector('.clock-times__hour').style.WebkitTransform = `rotateZ(${hour}deg)`;
-                document.querySelector('.clock-times__hour').style.transform = `rotateZ(${hour}deg)`;
-                document.querySelector('.clock-times__hour').style.msTransform = `rotateZ(${hour}deg)`;
-                document.querySelector('.clock-times__minute').style.WebkitTransform = `rotateZ(${minute}deg)`;
-                document.querySelector('.clock-times__minute').style.transform = `rotateZ(${minute}deg)`;
-                document.querySelector('.clock-times__minute').style.msTransform = `rotateZ(${minute}deg)`;
-                document.querySelector('.clock-times__second').style.WebkitTransform = `rotateZ(${second}deg)`;
-                document.querySelector('.clock-times__second').style.transform = `rotateZ(${second}deg)`;
-                document.querySelector('.clock-times__second').style.msTransform = `rotateZ(${second}deg)`;
+                document.querySelector('.clock-times__hour').style.transform = `rotateZ(${(hourl)*30+(minutel)/2}deg)`;
+                document.querySelector('.clock-times__hour').style.WebkitTransform = `rotateZ(${(hourl)*30}deg)`;
+                document.querySelector('.clock-times__hour').style.msTransform =  `rotateZ(${(hourl)*30}deg)`;
+                document.querySelector('.clock-times__minute').style.WebkitTransform = `rotateZ(${(minutel)*3}deg)`;
+                document.querySelector('.clock-times__minute').style.transform =  `rotateZ(${(minutel)*3}deg)`;
+                document.querySelector('.clock-times__minute').style.msTransform =  `rotateZ(${(minutel)*3}deg)`;
+                document.querySelector('.clock-times__second').style.WebkitTransform = `rotateZ(${secondl*6}deg)`;
+                document.querySelector('.clock-times__second').style.transform =  `rotateZ(${secondl*6}deg)`;
+                document.querySelector('.clock-times__second').style.msTransform =  `rotateZ(${secondl*6}deg)`;
                 //document.querySelector('.myTime').innerHTML = hours + ":" + minutes+ ":" + seconds;
                 var i=0;
                 for(i=0;i<wucount; i++){
@@ -439,7 +441,6 @@ function plus1sec(dt){
                         }
                     }
                 }   
-            return dt;
             }
         function remRev(id){
             const element = document.getElementById(id);
@@ -568,8 +569,12 @@ element.remove();
                 setTimeout(requestAnimationFrame(clock), 1000);
                 sec += 1;
             }*/
-            var dt=new Date();
-            setInterval(clock(dt), 1000, dt=plus1sec(dt));
+		dt = Date.now();
+		let i = 1;
+		setTimeout(function run(){
+			clock(dt);
+			setTimeout(run, 1000);
+		}, 1000);
         }
     </script>
 </html>
