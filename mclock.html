@@ -407,19 +407,13 @@ function plus1sec(dt){
 const hour = minute * 60;
 const day = hour * 24;
 const year = day * 365;*/
-                hours = diff/(60*60*1000);
-                minutes = diff/60000;
-		seconds = diff/1000;
+                hours = Math.round(diff/(60*60*1000));
+                minutes = Math.round(diff/60000);
+		seconds = Math.round(diff/1000);
 		var hourl = dt3.getHours() + hours;
 		var minutel = dt3.getMinutes() + minutes;
 		var secondl = dt3.getSeconds() + seconds;
-                if(secondl < 10){
-                    secondl = "0"+secondl;
-                }if(hourl < 10){
-                    hourl = "0"+hourl;
-                }if(minutes < 10){
-                    minutel = "0"+minutel;
-                }
+		console.log(hourl+":"+minutel+":"+secondl);
                 document.querySelector('.clock-times__hour').style.transform = `rotateZ(${(hourl)*30+(minutel)/2}deg)`;
                 document.querySelector('.clock-times__hour').style.WebkitTransform = `rotateZ(${(hourl)*30+(minutel)/2}deg)`;
                 document.querySelector('.clock-times__hour').style.msTransform =  `rotateZ(${(hourl)*30+(minutel)/2}deg)`;
@@ -437,7 +431,7 @@ const year = day * 365;*/
                     console.log(document.querySelector("#wulisttd"+i).textContent)
                     if(document.querySelector("#wulistbtnid"+i).checked){
                         myArray=document.querySelector("#wulisttd"+i).textContent.split(":");
-                        if(hours == myArray[0] && minutes == myArray[1] && seconds == myArray[2]){
+                        if(hourl == myArray[0] && minutel == myArray[1] && secondl == myArray[2]){
                             var reveilT=true;
                             var myAudio = document.getElementById("reveil");
                             myAudio.loop = true;
