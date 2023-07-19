@@ -411,8 +411,11 @@ const year = day * 365;*/
                 minutes = Math.round(diff/60000);
 		seconds = Math.round(diff/1000);
 		var hourl = dt3.getHours() + hours;
+		hourl = hourl % (3600*24);
 		var minutel = dt3.getMinutes() + minutes;
+		minutel = minutel % 3600;
 		var secondl = dt3.getSeconds() + seconds;
+		secondl = secondl %60;
 		console.log(hourl+":"+minutel+":"+secondl);
                 document.querySelector('.clock-times__hour').style.transform = `rotateZ(${(hourl)*30+(minutel)/2}deg)`;
                 document.querySelector('.clock-times__hour').style.WebkitTransform = `rotateZ(${(hourl)*30+(minutel)/2}deg)`;
@@ -522,8 +525,7 @@ element.remove();
                 myAudio.pause();
 
         }
-        var btn = document.getElementById('myButton');
-        btn.onclick = function() {
+        function startClock() {
            
            
             myButton=document.getElementById("myButton");
@@ -574,5 +576,6 @@ element.remove();
 			setTimeout(run, 1000);
 		}, 1000);
         }
+	startClock();
     </script>
 </html>
