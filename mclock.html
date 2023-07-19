@@ -401,9 +401,13 @@ function plus1sec(dt){
     
        		var dtn = Date.now();
 		var dt3 = new Date(dt);
-		var mysec = dt3.getSeconds();
+		var mysec = dt3.getTime();
 		var diff = dtn - mysec;
-                hours = diff/(120*60*1000);
+		/*const minute = 1000 * 60;
+const hour = minute * 60;
+const day = hour * 24;
+const year = day * 365;*/
+                hours = diff/(60*60*1000);
                 minutes = diff/60000;
 		seconds = diff/1000;
 		var hourl = dt3.getHours() + hours;
@@ -417,8 +421,8 @@ function plus1sec(dt){
                     minutel = "0"+minutel;
                 }
                 document.querySelector('.clock-times__hour').style.transform = `rotateZ(${(hourl)*30+(minutel)/2}deg)`;
-                document.querySelector('.clock-times__hour').style.WebkitTransform = `rotateZ(${(hourl)*30}deg)`;
-                document.querySelector('.clock-times__hour').style.msTransform =  `rotateZ(${(hourl)*30}deg)`;
+                document.querySelector('.clock-times__hour').style.WebkitTransform = `rotateZ(${(hourl)*30+(minutel)/2}deg)`;
+                document.querySelector('.clock-times__hour').style.msTransform =  `rotateZ(${(hourl)*30+(minutel)/2}deg)`;
                 document.querySelector('.clock-times__minute').style.WebkitTransform = `rotateZ(${(minutel)*3}deg)`;
                 document.querySelector('.clock-times__minute').style.transform =  `rotateZ(${(minutel)*3}deg)`;
                 document.querySelector('.clock-times__minute').style.msTransform =  `rotateZ(${(minutel)*3}deg)`;
