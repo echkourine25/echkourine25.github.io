@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>QR Code vCard Generator</title>
+  <!-- Include the qrcode.js library -->
+  <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>QR Code vCard Generator</h1>
+    <form id="vCardForm">
+      <label for="name">Prénom et Nom :</label>
+      <input type="text" id="name" required>
+      <label for="email">Email :</label>
+      <input type="email" id="email" required>
+      <label for="phone">Téléphone :</label>
+      <input type="tel" id="phone" required>
+      <!-- Add other contact information fields as needed -->
+      <button type="submit">Generate QR Code</button>
+    </form>
+    <p>Votre QR-Code apparait ci-dessous :</p>
+    <div id="qrcode"></div>
+  </div>
+	<div id="myqrcode">
+		<p style="text-align:center;">Give me a tip !</p>
+		<img style="display: block;
+ margin-left: auto;
+  margin-right: auto;
+ " src="myqrcode.png">
+	</div>
+</div>
+</body>
+</html>
+<script>
+  document.getElementById('vCardForm').addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    // Get vCard data from the form
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const phone = document.getElementById('phone').value;
+
+    // Generate the vCard text
+    const vCardText = `BEGIN:VCARD
+VERSION:3.0
+FN:${name}
+EMAIL:${email}
+TEL:${phone}
+END:VCARD`;
+
+    // Generate the QR code
+    const qrcodeElement = document.getElementById('qrcode');
+    qrcodeElement.innerHTML = ''; // Clear any previous QR code
+    const qrcode = new QRCode(qrcodeElement, {
+      text: vCardText,
+      width: 200,
+      height: 200,
+    });
+  });
+</script>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f2f2f2;
+  }
+
+  .container {
+    text-align: center;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+  }
+
+  h1 {
+    margin-bottom: 20px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  label {
+    margin-bottom: 5px;
+  }
+
+  input {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 200px;
+  }
+
+  button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  #qrcode {
+    margin-top: 20px;
+  }
+</style>
