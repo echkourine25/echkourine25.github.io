@@ -2,6 +2,16 @@
   <title>BeeCard Register</title>
 </head>
 <style>
+.colored-bubble {
+	color:white;
+      display: inline-block;
+      padding: 5px 10px;
+      border-radius: 10px;
+        background-image: linear-gradient(to right, #000000, #FFA500); /* Dégradé de noir à orange de gauche à droite */
+      //background-clip: text; /* Appliquer le dégradé de couleurs au texte */
+      //-webkit-background-clip: text; /* Pour une compatibilité avec certains navigateurs */
+      //color: transparent; /* Rendre le texte transparent pour voir le dégradé de couleurs */
+    }
  body {
     background-color: #f9f9f9; /* Set the background color here */
     background-image: url("bee.jpg"); /* Set the path to your image here */
@@ -81,54 +91,54 @@ button {
     <form>
 <div class="containerCheckbox">
 	<input type="checkbox" id="nameShow" name="nameShow" checked>
-      <label for="name">Name:</label>
+      <label class="colored-bubble" for="name">Name:</label>
 </div>
     <input type="text" id="nameInput" name="nameInput" required>
 <div class="containerCheckbox">
 	<input type="checkbox" id="professionShow" name="professionShow" checked>
-<label for="profession">Profession:</label>
+<label class="colored-bubble" for="profession">Profession:</label>
 </div>
       <input type="profession" id="professionInput" name="professionInput" required>
 <div class="containerCheckbox">
 	<input type="checkbox" id="emailShow" name="emailShow" checked>
-      <label for="email">Email:</label>
+      <label class="colored-bubble" for="email">Email:</label>
 </div>
       <input type="email" id="emailInput" name="emailInput" required>
 
 <div class="containerCheckbox">
 	<input type="checkbox" id="phoneShow" name="phoneShow" checked>
-<label for="phone">Phone Number:</label>
+<label class="colored-bubble" for="phone">Phone Number:</label>
 </div>
     <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
-    <small>Format: xxx-xxx-xxxx</small>
+    <small class="colored-bubble" >Format: xxx-xxx-xxxx</small>
 
 <div class="containerCheckbox">
 	<input type="checkbox" id="streetShow" name="streetShow" checked>
- <label for="street">Street Address:</label>
+ <label class="colored-bubble" for="street">Street Address:</label>
 </div>
     <input type="text" id="street" name="street" required>
 
 	<div class="containerCheckbox">
 	<input type="checkbox" id="cityShow" name="cityShow" checked>
-    <label for="city">City:</label>
+    <label class="colored-bubble" for="city">City:</label>
 	</div>
     <input type="text" id="city" name="city" required>
 
 	<div class="containerCheckbox">
 	<input type="checkbox" id="stateShow" name="stateShow" checked>
-    <label for="state">State/Province:</label>
+    <label class="colored-bubble" for="state">State/Province:</label>
 	</div>
     <input type="text" id="state" name="state" required>
 
 	<div class="containerCheckbox">
 	<input type="checkbox" id="postalShow" name="postalShow" checked>
-    <label for="postal-code">Postal Code:</label>
+    <label class="colored-bubble" for="postal-code">Postal Code:</label>
 	</div>
     <input type="text" id="postal-code" name="postal-code" required>
 
 <div class="containerCheckbox">
 	<input type="checkbox" id="countryShow" name="countryShow" checked>
-    <label for="country">Country:</label>
+    <label class="colored-bubble" for="country">Country:</label>
 	</div>
     <input type="text" id="country" name="country" required>
 <div class="business-card" id="preview">
