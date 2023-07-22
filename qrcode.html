@@ -18,19 +18,27 @@
       <!-- Add other contact information fields as needed -->
       <button type="submit">Generate QR Code</button>
     </form>
-    <p>Your QR-Code is down below :</p>
+    <p>The QR-Code will be sent to you by email check your SPAM folder. Through email you can register the PNG file but not on this page.</p>
     <div id="qrcode"></div>
   </div>
-	<div id="myqrcode">
-		<p style="text-align:center;">Give me a tip ! paypal.me/echkourine25</p>
-		<img style="display: block;
-  margin-left: auto;
-   margin-right: auto;
-  " src="ppqr.jpeg">
 </div>
 </body>
 </html>
 <script>
+
+  // Function to convert data URL to Blob
+  function dataURLtoBlob(dataURL) {
+    const arr = dataURL.split(',');
+    const mime = arr[0].match(/:(.*?);/)[1];
+    const bstr = atob(arr[1]);
+    let n = bstr.length;
+    const u8arr = new Uint8Array(n);
+    while (n--) {
+      u8arr[n] = bstr.charCodeAt(n);
+    }
+    return new Blob([u8arr], { type: mime });
+  }
+
   document.getElementById('vCardForm').addEventListener('submit', function (event) {
     event.preventDefault();
 
@@ -55,7 +63,43 @@ END:VCARD`;
       width: 200,
       height: 200,
     });
+
+    // Get the QR code image data URL
+    const qrCodeDataURL = qrcodeElement.querySelector('canvas').toDataURL();
+
+// Convert the base64-encoded data to a Blob
+  const imageDataBlob = dataURLtoBlob(qrCodeDataURL);
+
+    // Create a FormData object to send the data
+    const formData = new FormData();
+    formData.append('from', 'echkourine@icloud.com'); // Replace with your email address
+    formData.append('to', email);
+    formData.append('subject', 'QR Code vCard');
+    formData.append('body', '<p>Please find your QR code attached.</p><h3>Can you give me a tip ?</h3><p>If you feel generous you can go to <a href="https://paypal.me/echkourine25">https://paypal.me/echkourine25</a> and give me what you want ! If you have paypal installed you can send me through this qr-code : </p><img src="https://echkourine25.github.io/ppqr.jpeg">');
+    formData.append('isTransactional', 'true');
+    formData.append('attachments', imageDataBlob, 'qrcode.png');
+
+    // Replace 'your_api_key' with your actual ElasticEmail API key
+    const apiKey = '559E30E1787DEE1A5B2706FA728C06FC2FF73EB2F538A046FF299C02E9723B674575F9A5052D488B6843FECDE1F9BBE4';
+    const apiUrl = 'https://api.elasticemail.com/v2/email/send';
+
+    fetch(apiUrl, {
+      method: 'POST',
+      headers: {
+        'X-ElasticEmail-ApiKey': apiKey
+      },
+      body: formData,
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Email sent successfully!', data);
+    })
+    .catch(error => {
+      console.error('Error sending email:', error);
+    });
+
   });
+
 </script>
 <style>
   body {
