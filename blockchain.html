@@ -178,7 +178,7 @@ function handleInput(event) {
 
     if (key === "ArrowLeft") {
         // Move the top number to the left column if it is at the top of the grid
-        if (topNumberIndex < gridSize) {
+        if (topNumberIndex > 0) {
             numbers[topNumberIndex] = undefined;
             topNumberIndex--;
             targetColumn--;
@@ -187,7 +187,7 @@ function handleInput(event) {
         }
     } else if (key === "ArrowRight") {
         // Move the top number to the right column if it is at the top of the grid
-        if (topNumberIndex < gridSize) {
+        if (topNumberIndex < gridSize - 1) {
             numbers[topNumberIndex] = undefined;
             topNumberIndex++;
             targetColumn++;
