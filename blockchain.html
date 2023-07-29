@@ -164,35 +164,33 @@ function animateMoveDown(startIndex, endIndex) {
 }
 function generateNewTopNumber() {
     topNumberValue = Math.floor(Math.random() * 7) + 1;
-    columnIndex = targetColumn; // Set the column index to the targetColumn for the new top number
+    targetColumn = 3; // Reset the targetColumn to 3 (middle column) for the new top number
 
     // Set the top number at the top of the grid (above the visible grid)
-    topNumberIndex = columnIndex;
+    topNumberIndex = targetColumn; // Set the topNumberIndex to the correct column index for the new top number
     numbers[topNumberIndex] = topNumberValue;
 
     drawGrid();
-
-    // Reset the targetColumn to 3 (middle column) for the next top number
-    targetColumn = 3;
 }
+
 function handleInput(event) {
     const key = event.key;
 
     if (key === "ArrowLeft") {
-        // Move the top number to the left column if not already at the leftmost column
-        if (targetColumn > 0 && topNumberIndex >= 0) {
+        // Move the top number to the left column if it is at the top of the grid
+        if (topNumberIndex < gridSize) {
             numbers[topNumberIndex] = undefined;
-            targetColumn--;
             topNumberIndex--;
+            targetColumn--;
             numbers[topNumberIndex] = topNumberValue;
             drawGrid();
         }
     } else if (key === "ArrowRight") {
-        // Move the top number to the right column if not already at the rightmost column
-        if (targetColumn < gridSize - 1 && topNumberIndex >= 0) {
+        // Move the top number to the right column if it is at the top of the grid
+        if (topNumberIndex < gridSize) {
             numbers[topNumberIndex] = undefined;
-            targetColumn++;
             topNumberIndex++;
+            targetColumn++;
             numbers[topNumberIndex] = topNumberValue;
             drawGrid();
         }
