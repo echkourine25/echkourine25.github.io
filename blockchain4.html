@@ -28,66 +28,6 @@ body {
     </div>
     <script>
 
-function removeMatchingNumbers() {
-    let changed = true;  // Initial condition to start the loop
-
-    while (changed) {
-        changed = false;
-        let cellsToRemove = [];
-
-        // Parcourir chaque cellule
-        for (let i = 0; i < totalCells2; i++) {
-            if (numbers[i] !== undefined && numbers[i] !== "=") {
-                // Compter le nombre de cellules adjacentes non vides
-                let countRow = 1;  // start with 1 to count the cell itself
-                let countColumn = 1;  // start with 1 to count the cell itself
-
-                // Compter dans la ligne vers la droite
-                let j = i;
-                while ((j + 1) % gridSize !== 0 && numbers[j + 1] !== undefined && numbers[j + 1] !== "=") {
-                    countRow++;
-                    j++;
-                }
-
-                // Compter dans la ligne vers la gauche
-                j = i;
-                while (j % gridSize !== 0 && numbers[j - 1] !== undefined && numbers[j - 1] !== "=") {
-                    countRow++;
-                    j--;
-                }
-
-                // Compter dans la colonne vers le bas
-                j = i;
-                while (j + gridSize < totalCells2 && numbers[j + gridSize] !== undefined && numbers[j + gridSize] !== "=") {
-                    countColumn++;
-                    j += gridSize;
-                }
-
-                // Compter dans la colonne vers le haut
-                j = i;
-                while (j >= gridSize && numbers[j - gridSize] !== undefined && numbers[j - gridSize] !== "=") {
-                    countColumn++;
-                    j -= gridSize;
-                }
-
-                // Si la valeur de la cellule est égale au nombre de cellules adjacentes non vides + 1, marquer pour suppression
-                // unless the number is '1' and it's not completely alone
-                if ((numbers[i] !== 1 || (countRow === 1 && countColumn === 1)) && (numbers[i] === countRow || numbers[i] === countColumn)) {
-                    cellsToRemove.push(i);
-                }
-            }
-        }
-
-        // Supprimer les cellules marquées
-        for (let i of cellsToRemove) {
-            numbers[i] = undefined;
-            changed = true;  // Mark that there was a change
-        }
-    }
-
-    // Redessiner le tableau
-    drawGrid();
-}
 function pushLinesUp() {
     // Shift each number one row up
     for (let row = 0; row < gridHeight - 1; row++) {
@@ -189,7 +129,6 @@ function actionRight(){
 
         const gridHeight = 8;
         const totalCells = gridSize * gridHeight;
-	const totalCells2 = gridSize * gridHeight;
 
         // Initialize an empty array for the numbers (grid will be empty)
         const numbers = new Array(totalCells).fill(undefined);
@@ -240,21 +179,9 @@ function moveDown() {
     const cellBelowIndex = topNumberIndex + gridSize;
     const isCellBelowFilled = numbers[cellBelowIndex] !== undefined;
 
-    // If the top number is at the bottom row or there is a filled cell below
+    // Stop moving down if the top number is at the bottom row or there is a filled cell below
     if (isAtBottomRow || isCellBelowFilled) {
-        downArrowCount++;
-        if(downArrowCount === 5) {
-            downArrowCount = 0;
-            setTimeout(function() {
-                pushLinesUp();
-                generateNewTopNumber();
-                removeMatchingNumbers();
-            }, 200);
-        } else {
-            // If we're not at the fifth count yet, generate a new top number immediately
-            generateNewTopNumber();
-            removeMatchingNumbers();
-        }
+        generateNewTopNumber(); // Generate a new top number after reaching the bottom or encountering a filled cell
         return;
     }
 
@@ -267,15 +194,10 @@ function moveDown() {
     // Move the top number to the next index (down to the target column)
     numbers[destinationIndex] = topNumberValue;
     numbers[topNumberIndex] = undefined;
-    
+    drawGrid();
+
     // Continue the animation after a short delay
-    setTimeout(() => {
-	console.log("before: "+ numbers);
-        drawGrid();
-        removeMatchingNumbers();
-        moveDown();
-	console.log("after: "+numbers);
-    }, 200);
+    setTimeout(moveDown, 200);
 }
 function animateMoveDown(startIndex, endIndex) {
     const animationSpeed = 5; // Adjust this value to control the speed of movement
@@ -288,7 +210,7 @@ function animateMoveDown(startIndex, endIndex) {
     numbers[nextIndex] = topNumberValue;
     numbers[startIndex] = undefined;
     drawGrid();
-	setTimeout(moveDown, 200);
+
     // Continue the animation until reaching the destination index
     if ((direction === 1 && nextIndex < endIndex) || (direction === -1 && nextIndex > endIndex)) {
         requestAnimationFrame(() => animateMoveDown(nextIndex, endIndex));
@@ -335,7 +257,7 @@ function animateMoveDown(startIndex, endIndex) {
     }
 }
 function generateNewTopNumber() {
-    topNumberValue = Math.floor(Math.random() * 7) +1;
+    topNumberValue = Math.floor(Math.random() * 7) + 1;
     targetColumn = 3; // Reset the targetColumn to 3 (middle column) for the new top number
 
     // Set the top number at the top of the grid (above the visible grid)
@@ -353,10 +275,18 @@ function handleInput(event) {
     } else if (key === "ArrowRight") {
 	actionRight();    
 } else if (key === "ArrowDown") {
+	downArrowCount++;
+        // Move the top number down when the "Arrow Down" key is pressed
+	if(downArrowCount === 5){
 		moveDown();
-	removeMatchingNumbers();
+		pushLinesUp();
+		downArrowCount=0;
+		
+	}else{
+		moveDown();
 	}
     }
+}
 // Call generateNewTopNumber() after the initial grid is drawn
         generateNewTopNumber();
         drawGrid();
