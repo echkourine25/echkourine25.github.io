@@ -4,9 +4,18 @@
 	<meta charset="UTF-8">
     <title>Grid of Rectangles</title>
     <style>
+ #game-container {
+            position: relative;
+        }
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+	    max-width: 300px;
+        }
 
 .button {
-            position: absolute;
             width: 50px;
             height: 50px;
             background-color: #ccc;
@@ -15,28 +24,8 @@
             line-height: 50px;
             font-size: 20px;
             cursor: pointer;
+		margin: 5px;
         }
-        .up {
-            top: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        .down {
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        .left {
-            left: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-        .right {
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-
 body {
             margin: 0;
             overflow: hidden;
@@ -59,10 +48,12 @@ body {
         <h1 style="text-align:center;color:green;">Blockchain</h1>
         <canvas id="gridCanvas" width="400" height="470"></canvas>
     </div>
+<div class="button-container">
 <div class="button up">↑</div>
     <div class="button down">↓</div>
     <div class="button left">←</div>
     <div class="button right">→</div>
+</div>
     <script>
 function actionLeft(){
 // Move the top number to the left column if it is at the top of the grid
