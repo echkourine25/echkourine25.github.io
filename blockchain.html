@@ -1,8 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="UTF-8">
     <title>Grid of Rectangles</title>
     <style>
+
+.button {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: #ccc;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 50px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        .up {
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .down {
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .left {
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .right {
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
 
 body {
             margin: 0;
@@ -26,7 +59,54 @@ body {
         <h1 style="text-align:center;color:green;">Blockchain</h1>
         <canvas id="gridCanvas" width="400" height="470"></canvas>
     </div>
+<div class="button up">↑</div>
+    <div class="button down">↓</div>
+    <div class="button left">←</div>
+    <div class="button right">→</div>
     <script>
+function actionLeft(){
+// Move the top number to the left column if it is at the top of the grid
+        if (topNumberIndex > 0) {
+            numbers[topNumberIndex] = undefined;
+            topNumberIndex--;
+            targetColumn--;
+            numbers[topNumberIndex] = topNumberValue;
+            drawGrid();
+        }
+}
+function actionRight(){
+// Move the top number to the right column if it is at the top of the grid
+        if (topNumberIndex < gridSize - 1) {
+            numbers[topNumberIndex] = undefined;
+            topNumberIndex++;
+            targetColumn++;
+            numbers[topNumberIndex] = topNumberValue;
+            drawGrid();
+        }
+}
+// Add event listeners to the virtual buttons to trigger the corresponding actions
+        document.querySelector(".up").addEventListener("touchstart", () => {
+            // Move the game character up or trigger the desired action
+            // Your game logic goes here
+        });
+
+        document.querySelector(".down").addEventListener("touchstart", () => {
+            // Move the game character down or trigger the desired action
+            // Your game logic goes here
+		moveDown();
+        });
+
+        document.querySelector(".left").addEventListener("touchstart", () => {
+            // Move the game character to the left or trigger the desired action
+            // Your game logic goes here
+		actionLeft();
+        });
+
+        document.querySelector(".right").addEventListener("touchstart", () => {
+            // Move the game character to the right or trigger the desired action
+            // Your game logic goes here
+		actionRight();
+        });
         const canvas = document.getElementById("gridCanvas");
         const ctx = canvas.getContext("2d");
 
@@ -185,24 +265,10 @@ function handleInput(event) {
     const key = event.key;
 
     if (key === "ArrowLeft") {
-        // Move the top number to the left column if it is at the top of the grid
-        if (topNumberIndex > 0) {
-            numbers[topNumberIndex] = undefined;
-            topNumberIndex--;
-            targetColumn--;
-            numbers[topNumberIndex] = topNumberValue;
-            drawGrid();
-        }
+	actionLeft();
     } else if (key === "ArrowRight") {
-        // Move the top number to the right column if it is at the top of the grid
-        if (topNumberIndex < gridSize - 1) {
-            numbers[topNumberIndex] = undefined;
-            topNumberIndex++;
-            targetColumn++;
-            numbers[topNumberIndex] = topNumberValue;
-            drawGrid();
-        }
-    } else if (key === "ArrowDown") {
+	actionRight();    
+} else if (key === "ArrowDown") {
         // Move the top number down when the "Arrow Down" key is pressed
         moveDown();
     }
