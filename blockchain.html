@@ -39,11 +39,14 @@ body {
         // Initialize an empty array for the numbers (grid will be empty)
         const numbers = new Array(totalCells).fill(undefined);
 
+const colors = ["#FF0000", "#FF7F00", "#FFFF00", "#00FF00", "#0000FF", "#4B0082", "#9400D3"];
+const colorsRev = ["#9400D3", "#4B0082", "#0000FF", "#00FF00", "#FFFF00", "#FF7F00", "#FF0000"];
+
         function drawGrid() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
             // Draw the grid lines
-            ctx.strokeStyle = "#000000";
+            ctx.strokeStyle = "#ffffff";
             for (let i = 1; i <= gridHeight; i++) {
                 const y = i * rectSize;
                 ctx.beginPath();
@@ -57,20 +60,25 @@ body {
                     const x = col * rectSize;
                     const y = row * rectSize; // No need to add 1 grid vertical rectangle separation
 
-                    // Draw the colored rectangle
-                    ctx.fillStyle = "#ffcc00"; // Change this to set the rectangle color
-                    ctx.fillRect(x, y, rectSize, rectSize);
+		// Draw the colored rectangle
+            const number = numbers[row * gridSize + col];
+            if (number !== undefined && number >= 1 && number <= 7) {
+                
+		ctx.beginPath();
+		ctx.arc(x + rectSize / 2, y + rectSize / 2, rectSize / 2, 0, 2 * Math.PI);
+ctx.fillStyle = "black"; 
+//ctx.fillStyle = "rgba(255, 255, 255, 0.5)";
+                //ctx.fillRect(x, y, rectSize, rectSize);
+		ctx.fill();
+            }
 
-                    // Check if this grid cell contains a number
-                    const number = numbers[row * gridSize + col];
-                    if (number !== undefined) {
-                        // Draw the number in the center of the rectangle
-                        ctx.fillStyle = "#000000"; // Change this to set the number color
-                        ctx.font = "20px Arial"; // Change the font size and family if needed
-                        ctx.textAlign = "center";
-                        ctx.textBaseline = "middle";
-                        ctx.fillText(number.toString(), x + rectSize / 2, y + rectSize / 2);
-                    }
+		   if (number !== undefined) {
+                ctx.fillStyle = colors[number - 1];  // Set the number color to black
+                ctx.font = "20px Arial"; // Change the font size and family if needed
+                ctx.textAlign = "center";
+                ctx.textBaseline = "middle";
+                ctx.fillText(number.toString(), x + rectSize / 2, y + rectSize / 2);
+            }
                 }
             }
         }
