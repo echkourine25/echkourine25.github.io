@@ -41,25 +41,7 @@ function handleTouchEnd(event) {
     } else {
         // Vertical gesture (up or down)
         if (deltaY > 0) {
-            // Down swipe
-            // Handle the down swipe action in your game logic
-            console.log("down pressed");
-		//sreenSwitch();
-            downArrowCount++;
-            // Move the top number down when the "Arrow Down" key is pressed
-            if(downArrowCount === 7){
-                moveDown();
-                pushLinesUp();
-		        gameOver();
-                downArrowCount=0;
-            }
-
-            else {
-                moveDown();
-		        gameOver();
-            }
-            score(numbers);
-            console.log("Down Swipe");
+		actionDown();
         } else {
             // Up swipe
             // Handle the up swipe action in your game logic
@@ -89,17 +71,7 @@ function actionRight(){
         drawGrid();
     }
 }
-
-function handleInput(event) {
-    const key = event.key;
-
-    if (key === "ArrowLeft") {
-        actionLeft();
-        console.log("left pressed");
-    } else if (key === "ArrowRight") {
-        actionRight();
-        console.log("right pressed");
-    } else if (key === "ArrowDown") {
+function actionDown(){
 	//screenSwitch();
         console.log("down pressed");
 	if(inGame==true){
@@ -120,6 +92,19 @@ function handleInput(event) {
 	inGame=true;
 	drawGrid();
 	}
+}
+function handleInput(event) {
+    const key = event.key;
+
+    if (key === "ArrowLeft") {
+        actionLeft();
+        console.log("left pressed");
+    } else if (key === "ArrowRight") {
+        actionRight();
+        console.log("right pressed");
+    } else if (key === "ArrowDown") {
+
+	actionDown();
 }
 }
 
