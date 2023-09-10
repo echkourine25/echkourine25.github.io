@@ -2,14 +2,21 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta charset="UTF-8">
+        <meta charset="UTF-8">
     <title>Blockchain Game</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-<div id="gridContainer" class="gridContainer">
+    <audio controls id="myAudio" src="Monmorceau.m4a" type="x/-m4a" autoplay></audio>
+<div id="gridContainer" class="gridContainer" autofocus>
+        <div id="nextNumber"></div>
         <canvas id="gridCanvas" width="400" height="470"></canvas>
     </div>
-    <script type="text/javascript" src="js.js"></script>
+    <script type="text/javascript" src="preVarsFunctions.js"></script>
+    <script type="text/javascript" src="vars.js"></script>
+    <script type="text/javascript" src="draw.js"></script>
+    <script type="text/javascript" src="touchGesture.js"></script>
+    <script type="text/javascript" src="engine.js"></script>
+    <script type="text/javascript" src="init.js"></script>
 </body>
 </html>
