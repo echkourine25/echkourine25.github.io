@@ -38,6 +38,9 @@
                 </tbody>
             </table>
         </div>
+<div style="float:center;height:100%;display:flex;align-items:flex-end;display:inline;">
+<button onClick="utcm1()">-</button><span class="utc">UTC</span><span class="utcn">-0</span><button onClick="utcp1()">+</button>
+</div>
         <div style="float:center;height:100%;display:flex;align-items:flex-end;display:inline;">
             <img class="" id="showTimeBtn" style="display:inline;" src="h.jpg" width="50px" onClick="showTime()"/>
             <img class="" id="showWakeBtn" style="display:inline;" src="h.jpg" width="50px" onClick="showWake()"/>
@@ -60,6 +63,7 @@
 	 background: #f3fbff;
 }
  .clock {
+color:white;
 	 width: 300px;
 	 height: 300px;
 	 border-radius: 50%;
@@ -94,7 +98,7 @@
 	 box-shadow: 0px 10px 20px 0px rgba(42, 17, 121, 0.5);
 }
  .clock-circles__item:nth-child(3) {
-	 font-size: 80%;
+	 font-size: 6%;
 	 box-shadow: inset 0px 20px 40px rgba(0, 0, 0, 0.1), inset 0px 0px 40px rgba(37, 13, 105, 0.55), 0px 5px 0px #5430ff, 0px -1px 0px 3px rgba(14, 29, 169, 0.35);
 }
  .clock-circles__item:nth-child(4) {
@@ -410,11 +414,11 @@ const year = day * 365;*/
                 hours = Math.round(diff/(60*60*1000));
                 minutes = Math.round(diff/60000);
 		seconds = Math.round(diff/1000);
-		var hourl = dt3.getHours() + hours;
+		var hourl = dt3.getUTCHours() + hours;
 		hourl = hourl % (3600*24);
-		var minutel = dt3.getMinutes() + minutes;
+		var minutel = dt3.getUTCMinutes() + minutes;
 		minutel = minutel % 3600;
-		var secondl = dt3.getSeconds() + seconds;
+		var secondl = dt3.getUTCSeconds() + seconds;
 		secondl = secondl %60;
 		console.log(hourl+":"+minutel+":"+secondl);
                 document.querySelector('.clock-times__hour').style.transform = `rotateZ(${(hourl)*30+(minutel)/2}deg)`;
@@ -534,10 +538,12 @@ element.remove();
                 myBody.innerHTML = `
                     <div class="wrapper">
         <div class="clock">
+	<div class="clock-numbers" style="width:300px;height:300px;">
+
           <div class="clock-circles">
             <div class="clock-circles__item"></div>
             <div class="clock-circles__item"></div>
-            <div class="clock-circles__item"></div>
+            <div class="clock-circles__item numbers"></div>
             <div class="clock-circles__item">
               <div class="wave"></div>
               <div class="wave"></div>
@@ -561,21 +567,58 @@ element.remove();
             <div class="clock-times__minute"></div>
             <div class="clock-times__hour"></div>
           </div>
-        </div>
+        </div></div>
       </div>`;
             //setInterval(clock, 1000);
             /*let sec=0;
             while(sec < 60*60*24){
                 setTimeout(requestAnimationFrame(clock), 1000);
                 sec += 1;
-            }*/
+            }*///l this function to position the numbers when the document loads
+
 		dt = Date.now();
 		let i = 1;
 		setTimeout(function run(){
 			clock(dt);
 			setTimeout(run, 1000);
 		}, 1000);
-        }
+        	
+
+	}
+function positionNumbers(utc) {
+    var clock = document.querySelector('.clock');
+    var radius = 130; // Radius where the numbers will be placed
+    var diameter = radius * 2;
+    var cx = 0;
+    var cy = 0
+document.querySelector('.clock-circles__item:nth-child(3)').innerHTML="";
+    for (var number = 12; number >= 1; number--) {
+        var theta = (number / 12) * Math.PI * 2// Angle in radians
+        var x = cx + radius * Math.cos(theta - Math.PI/2-0.52*utc);
+	var y = cy + radius * Math.sin(theta - Math.PI/2-0.52*utc);
+	var numElem = document.createElement('div');
+        numElem.classList.add('clock-number');
+        numElem.textContent = number;
+        numElem.style.position = 'absolute';
+        numElem.style.left = `${x}px`;
+        numElem.style.top = `${y}px`;
+        //numElem.style.transform = `translate(-50%, -50%)`; // Center the number
+	
+        document.querySelector('.clock-circles__item:nth-child(3)').appendChild(numElem);
+    }
+}
+
+function utcp1(){
+var utc = document.querySelector('.utcn').innerHTML;
+positionNumbers(Number(utc)+1);
+document.querySelector('.utcn').innerHTML = Number(utc)+1;
+}
+function utcm1(){
+var utc = document.querySelector('.utcn').innerHTML;
+positionNumbers(Number(utc)-1);
+document.querySelector('.utcn').innerHTML = Number(utc)-1;
+}
+
 	startClock();
     </script>
 </html>
