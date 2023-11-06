@@ -400,12 +400,11 @@ color:white;
  
 </style>
     <script>
+
 function plus1sec(dt){
     dt.setSeconds(dt.getSeconds() + 1);
     return dt;
 }
-var myvar = document.getElementById('test');
-myvar.innerHTML = window.Telegram.WebApp.initData;
  function clock(dt) {
     
        		var dtn = Date.now();
@@ -623,7 +622,12 @@ var utc = document.querySelector('.utcn').innerHTML;
 positionNumbers(Number(utc)-1);
 document.querySelector('.utcn').innerHTML = Number(utc)-1;
 }
-
-	startClock();
+data_check_string = window.Telegram.WebApp.initData;
+secret_key = HMAC_SHA256("6955734788:AAEQTDLHDtb8STvU-865wWVbHaMFq3c0rqI", "WebAppDate");
+if (hex(HMAC_SHA256(data_check_string, secret_key)) == hash) {
+  // data is from Telegram
+startClock();
+}
+	
     </script>
 </html>
