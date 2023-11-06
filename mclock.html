@@ -9,7 +9,7 @@
 	<body style="background-color:black;color:white;">
 <h1 id="test"></h1>
 <div style="background-color:black;float:center;height:100%;display:flex;align-items:flex-end;display:block;"><h3>
-<button onClick="utcm1()">-</button><span class="utc">UTC</span><span class="utcn">-0</span><button onClick="utcp1()">+</button>
+<button onClick="utcm1()">-</button><span class="utc">UTC</span><span class="utcn">0</span><button onClick="utcp1()">+</button>
 </h3/></div>
 
         <audio 
@@ -587,7 +587,10 @@ element.remove();
 			setTimeout(run, 1000);
 		}, 1000);
         	
-
+var offset = new Date().getTimezoneOffset()/60;
+offset = -offset;
+document.querySelector('.utcn').innerHTML = offset;
+positionNumbers(offset);
 	}
 function positionNumbers(utc) {
     var clock = document.querySelector('.clock');
