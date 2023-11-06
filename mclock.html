@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="fr" style="text-align:center">
     <head>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
         <meta charset="UTF-8">
-        <title>m - Clock</title>
+        <title>m-Clock</title>
     </head>
 	<body style="background-color:black;color:white;">
+<h1 id="test"></h1>
 <div style="background-color:black;float:center;height:100%;display:flex;align-items:flex-end;display:block;"><h3>
 <button onClick="utcm1()">-</button><span class="utc">UTC</span><span class="utcn">-0</span><button onClick="utcp1()">+</button>
 </h3/></div>
@@ -402,6 +404,8 @@ function plus1sec(dt){
     dt.setSeconds(dt.getSeconds() + 1);
     return dt;
 }
+var myvar = document.getElementById('test');
+myvar.innerHTML = window.Telegram.WebApp.initData;
  function clock(dt) {
     
        		var dtn = Date.now();
