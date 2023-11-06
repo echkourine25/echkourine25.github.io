@@ -5,7 +5,11 @@
         <meta charset="UTF-8">
         <title>m - Clock</title>
     </head>
-    <body>
+	<body style="background-color:black;color:white;">
+<div style="background-color:black;float:center;height:100%;display:flex;align-items:flex-end;display:block;">
+<button onClick="utcm1()">-</button><span class="utc">UTC</span><span class="utcn">-0</span><button onClick="utcp1()">+</button>
+</div>
+
         <audio 
             id="reveil"
             hidden
@@ -38,9 +42,6 @@
                 </tbody>
             </table>
         </div>
-<div style="float:center;height:100%;display:flex;align-items:flex-end;display:inline;">
-<button onClick="utcm1()">-</button><span class="utc">UTC</span><span class="utcn">-0</span><button onClick="utcp1()">+</button>
-</div>
         <div style="float:center;height:100%;display:flex;align-items:flex-end;display:inline;">
             <img class="" id="showTimeBtn" style="display:inline;" src="h.jpg" width="50px" onClick="showTime()"/>
             <img class="" id="showWakeBtn" style="display:inline;" src="h.jpg" width="50px" onClick="showWake()"/>
@@ -60,7 +61,7 @@
 	 display: flex;
 	 align-items: center;
 	 justify-content: center;
-	 background: #f3fbff;
+	 background: #000000;
 }
  .clock {
 color:white;
