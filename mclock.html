@@ -43,9 +43,9 @@
             </table>
         </div>
         <div style="float:center;height:100%;display:flex;align-items:flex-end;display:inline;">
-            <img class="" id="showTimeBtn" style="display:inline;" src="h.jpg" width="50px" onClick="showTime()"/>
-            <img class="" id="showWakeBtn" style="display:inline;" src="h.jpg" width="50px" onClick="showWake()"/>
-            <img class="center-me" src="s.jpg" style="display:inline;" width="50px" id="reveilBtn"/>
+            <img class="" id="showTimeBtn" style="display:none;" src="h.jpg" width="50px" onClick="showTime()"/>
+            <img class="" id="showWakeBtn" style="display:none;" src="h.jpg" width="50px" onClick="showWake()"/>
+            <img class="center-me" src="s.jpg" style="display:none;"width="50px" id="reveilBtn"/>
         </div>
     </body>
     <style>
@@ -456,14 +456,14 @@ element.remove();
         btn=document.getElementById("showWake");
         btn.style.display = 'none';
         btn2=document.getElementById("showWakeBtn");
-        btn2.style.display = 'inline';
+        btn2.style.display = 'none';
         btn2=document.getElementById("showTimeBtn");
         btn2.style.display='none';
         function showTime() {
     btn2 = document.getElementById("myBody");
     // hide the lorem ipsum te
     // hide the link
-    btn2.style.display = 'inline';
+    btn2.style.display = 'none';
     btn = document.getElementById("showWake");
     btn.style.display="none";
     btn3 = document.getElementById("showWakeBtn");
@@ -473,7 +473,7 @@ element.remove();
     btn4 = document.getElementById("showWakeBtn");
     // hide the lorem ipsum te
     // hide the link
-    btn4.style.display = 'inline';
+    btn4.style.display = 'none';
     btn=document.getElementById("showTimeBtn");
     btn.style.display = 'none';
 }
@@ -488,7 +488,7 @@ element.remove();
     btn3 = document.getElementById("showTimeBtn");
     // hide the lorem ipsum te
     // hide the link
-    btn3.style.display = 'inline';
+    btn3.style.display = 'none';
     btn4 = document.getElementById("showWakeBtn");
     // hide the lorem ipsum te
     // hide the link
