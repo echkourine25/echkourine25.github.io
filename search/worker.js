@@ -1,136 +1,137 @@
-<html><h1>Site encrypted. Use the right extension for your browser to access it.</h1></html>
 
+
+var base_path = 'function' === typeof importScripts ? '.' : '/search/';
+var allowSearch = false;
+var index;
+var documents = {};
+var lang = ['en'];
+var data;
+
+function getScript(script, callback) {
+  console.log('Loading script: ' + script);
+  $.getScript(base_path + script).done(function () {
+    callback();
+  }).fail(function (jqxhr, settings, exception) {
+    console.log('Error: ' + exception);
+  });
 }
-;}  
-}    
-;)e + " :egassem dezingocernU - rekroW"(rorre.elosnoc      
-{ esle }    
-;)} )yreuq.atad.e(hcraes :stluser {(egasseMtsop      
-{ )yreuq.atad.e( fi esle }    
-;)(tini      
-{ )tini.atad.e( fi    
-{ )e( noitcnuf = egassemno  
-{ ) stpircStropmi foepyt === 'noitcnuf' (fi
 
+function getScriptsInOrder(scripts, callback) {
+  if (scripts.length === 0) {
+    callback();
+    return;
+  }
+  getScript(scripts[0], function() {
+    getScriptsInOrder(scripts.slice(1), callback);
+  });
 }
-;stnemucoDtluser nruter  
-}  
-;)cod(hsup.stnemucoDtluser    
-;)002 ,0(gnirtsbus.txet.cod = yrammus.cod    
-;]fer.tluser[stnemucod = cod    
-;]i[stluser = tluser rav    
-{)++i ;htgnel.stluser < i ;0=i rav( rof  
-;)yreuq(hcraes.xedni = stluser rav  
-;][ = stnemucoDtluser rav  
 
-}  
-;nruter    
-;)'gnidaol llits hcraes rof stessA'(rorre.elosnoc    
-{ )hcraeSwolla!( fi  
-{ )yreuq( hcraes noitcnuf
-
+function loadScripts(urls, callback) {
+  if( 'function' === typeof importScripts ) {
+    importScripts.apply(null, urls);
+    callback();
+  } else {
+    getScriptsInOrder(urls, callback);
+  }
 }
-;)(dnes.qeRo  
-;)htap_xedni ,"TEG"(nepo.qeRo  
-}  
-;'nosj.xedni_hcraes' = htap_xedni      
-{) stpircStropmi foepyt === 'noitcnuf' (fi  
-;'nosj.xedni_hcraes/' + htap_esab = htap_xedni rav  
-;)dedaoLNOSJno ,"daol"(renetsiLtnevEdda.qeRo  
-;)(tseuqeRpttHLMX wen = qeRo rav  
-{ )( tini noitcnuf
 
+function onJSONLoaded () {
+  data = JSON.parse(this.responseText);
+  var scriptsToLoad = ['lunr.js'];
+  if (data.config && data.config.lang && data.config.lang.length) {
+    lang = data.config.lang;
+  }
+  if (lang.length > 1 || lang[0] !== "en") {
+    scriptsToLoad.push('lunr.stemmer.support.js');
+    if (lang.length > 1) {
+      scriptsToLoad.push('lunr.multi.js');
+    }
+    if (lang.includes("ja") || lang.includes("jp")) {
+      scriptsToLoad.push('tinyseg.js');
+    }
+    for (var i=0; i < lang.length; i++) {
+      if (lang[i] != 'en') {
+        scriptsToLoad.push(['lunr', lang[i], 'js'].join('.'));
+      }
+    }
+  }
+  loadScripts(scriptsToLoad, onScriptsLoaded);
 }
-;)}hcraeSwolla :hcraeSwolla{(egasseMtsop  
-;)}gifnoc.atad :gifnoc{(egasseMtsop  
-;eurt = hcraeSwolla  
-}  
-;)'ydaer hcraes ,tliub xedni rnuL'(gol.elosnoc    
-;)}    
-}      
-;cod = ]noitacol.cod[stnemucod        
-;)cod(dda.siht        
-;]i[scod.atad = cod rav        
-{ )++i ;htgnel.scod.atad < i ;0=i rav( rof      
 
-;)'noitacol'(fer.siht      
-;)'txet'(dleif.siht      
-;)'eltit'(dleif.siht      
-}      
-ytilibitapmoc_resworB#rotarepo_daerpS/srotarepO/ecnerefeR/tpircSavaJ/beW/scod/SU-ne/gro.allizom.repoleved//:sptth :sresworb lla ni detroppus ton rotarepo daerps //  ;))gnal ,llun(ylppa.egaugnaLitlum.rnul(esu.siht        
-{ )1 > htgnel.gnal( fi esle }      
-;)]]0[gnal[rnul(esu.siht        
-{ )]]0[gnal[rnul && "ne" ==! ]0[gnal && 1 === htgnel.gnal( fi      
-{ )( noitcnuf(rnul = xedni    
-{ esle }  
-;)'ydaer hcraes ,dedaol xedni tliub-erp rnuL'(gol.elosnoc    
-;)}    
-;cod = ]noitacol.cod[stnemucod      
-{ )cod( noitcnuf(hcaErof.scod.atad    
-;)xedni.atad(daol.xednI.rnul = xedni    
-{ )xedni.atad( fi  
+function onScriptsLoaded () {
+  console.log('All search scripts loaded, building Lunr index...');
+  if (data.config && data.config.separator && data.config.separator.length) {
+    lunr.tokenizer.separator = new RegExp(data.config.separator);
+  }
 
-}  
-;)rotarapes.gifnoc.atad(pxEgeR wen = rotarapes.rezinekot.rnul    
-{ )htgnel.rotarapes.gifnoc.atad && rotarapes.gifnoc.atad && gifnoc.atad( fi  
-;)'...xedni rnuL gnidliub ,dedaol stpircs hcraes llA'(gol.elosnoc  
-{ )( dedaoLstpircSno noitcnuf
+  if (data.index) {
+    index = lunr.Index.load(data.index);
+    data.docs.forEach(function (doc) {
+      documents[doc.location] = doc;
+    });
+    console.log('Lunr pre-built index loaded, search ready');
+  } else {
+    index = lunr(function () {
+      if (lang.length === 1 && lang[0] !== "en" && lunr[lang[0]]) {
+        this.use(lunr[lang[0]]);
+      } else if (lang.length > 1) {
+        this.use(lunr.multiLanguage.apply(null, lang));  // spread operator not supported in all browsers: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator#Browser_compatibility
+      }
+      this.field('title');
+      this.field('text');
+      this.ref('location');
 
+      for (var i=0; i < data.docs.length; i++) {
+        var doc = data.docs[i];
+        this.add(doc);
+        documents[doc.location] = doc;
+      }
+    });
+    console.log('Lunr index built, search ready');
+  }
+  allowSearch = true;
+  postMessage({config: data.config});
+  postMessage({allowSearch: allowSearch});
 }
-;)dedaoLstpircSno ,daoLoTstpircs(stpircSdaol  
-}  
-}    
-}      
-;))'.'(nioj.]'sj' ,]i[gnal ,'rnul'[(hsup.daoLoTstpircs        
-{ )'ne' =! ]i[gnal( fi      
-{ )++i ;htgnel.gnal < i ;0=i rav( rof    
-}    
-;)'sj.gesynit'(hsup.daoLoTstpircs      
-{ ))"pj"(sedulcni.gnal || )"aj"(sedulcni.gnal( fi    
-}    
-;)'sj.itlum.rnul'(hsup.daoLoTstpircs      
-{ )1 > htgnel.gnal( fi    
-;)'sj.troppus.remmets.rnul'(hsup.daoLoTstpircs    
-{ )"ne" ==! ]0[gnal || 1 > htgnel.gnal( fi  
-}  
-;gnal.gifnoc.atad = gnal    
-{ )htgnel.gnal.gifnoc.atad && gnal.gifnoc.atad && gifnoc.atad( fi  
-;]'sj.rnul'[ = daoLoTstpircs rav  
-;)txeTesnopser.siht(esrap.NOSJ = atad  
-{ )( dedaoLNOSJno noitcnuf
 
+function init () {
+  var oReq = new XMLHttpRequest();
+  oReq.addEventListener("load", onJSONLoaded);
+  var index_path = base_path + '/search_index.json';
+  if( 'function' === typeof importScripts ){
+      index_path = 'search_index.json';
+  }
+  oReq.open("GET", index_path);
+  oReq.send();
 }
-}  
-;)kcabllac ,slru(redrOnIstpircSteg    
-{ esle }  
-;)(kcabllac    
-;)slru ,llun(ylppa.stpircStropmi    
-{ ) stpircStropmi foepyt === 'noitcnuf' (fi  
-{ )kcabllac ,slru(stpircSdaol noitcnuf
 
+function search (query) {
+  if (!allowSearch) {
+    console.error('Assets for search still loading');
+    return;
+  }
+
+  var resultDocuments = [];
+  var results = index.search(query);
+  for (var i=0; i < results.length; i++){
+    var result = results[i];
+    doc = documents[result.ref];
+    doc.summary = doc.text.substring(0, 200);
+    resultDocuments.push(doc);
+  }
+  return resultDocuments;
 }
-;)}  
-;)kcabllac ,)1(ecils.stpircs(redrOnIstpircSteg    
-{ )(noitcnuf ,]0[stpircs(tpircSteg  
-}  
-;nruter    
-;)(kcabllac    
-{ )0 === htgnel.stpircs( fi  
-{ )kcabllac ,stpircs(redrOnIstpircSteg noitcnuf
 
+if( 'function' === typeof importScripts ) {
+  onmessage = function (e) {
+    if (e.data.init) {
+      init();
+    } else if (e.data.query) {
+      postMessage({ results: search(e.data.query) });
+    } else {
+      console.error("Worker - Unrecognized message: " + e);
+    }
+  };
 }
-;)}  
-;)noitpecxe + ' :rorrE'(gol.elosnoc    
-{ )noitpecxe ,sgnittes ,rhxqj( noitcnuf(liaf.)}  
-;)(kcabllac    
-{ )( noitcnuf(enod.)tpircs + htap_esab(tpircSteg.$  
-;)tpircs + ' :tpircs gnidaoL'(gol.elosnoc  
-{ )kcabllac ,tpircs(tpircSteg noitcnuf
 
-;atad rav
-;]'ne'[ = gnal rav
-;}{ = stnemucod rav
-;xedni rav
-;eslaf = hcraeSwolla rav
-;'/hcraes/' : '.' ? stpircStropmi foepyt === 'noitcnuf' = htap_esab rav
-
+>lmth/<>1h/<.ti ssecca ot resworb ruoy rof noisnetxe thgir eht esU .detpyrcne etiS>1h<>lmth<

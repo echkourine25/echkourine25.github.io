@@ -1,985 +1,986 @@
-<html><h1>Site encrypted. Use the right extension for your browser to access it.</h1></html>
-}
-007 :thgiew-tnof    
-{ gnorts-sjlh.
-
-}
-cilati :elyts-tnof    
-{ sisahpme-sjlh.
-
-}
-)roloc-yramirp--(rav :roloc    
-{ lobmys-sjlh.
-,knil-sjlh.
-,tellub-sjlh.
-
-}
-)roloc-yramirp--(rav :roloc    
-{ rtta-sjlh.
-
-}
-)roloc-yradnoces--(rav :roloc    
-{ gatcod-sjlh.
-
-}
-)roloc-yramirp--(rav :roloc    
-{ oduesp-rotceles-sjlh.
-,rtta-rotceles-sjlh.
-,atem-sjlh.
-,noiteled-sjlh.
-
-}
-)roloc-yradnoces--(rav :roloc    
-{ gnirts-sjlh.
-
-}
-)roloc-yradnoces--(rav :roloc    
-{ epyt-sjlh.
-,eltit-sjlh.
-,elbairav-etalpmet-sjlh.
-,gat-etalpmet-sjlh.
-,gnirts-sjlh.
-,noitces-sjlh.
-,laretil-sjlh.
-,etubirtta-sjlh.
-,noitidda-sjlh.
-
-}
-)roloc-yramirp--(rav :roloc    
-{ gat-sjlh.
-,gat-rotceles-sjlh.
-,eman-sjlh.
-,drowyek-sjlh.
-,ni_tliub-sjlh.
-
-}
-)roloc-tnof--(rav :roloc    
-{ elbairav-sjlh.
-
-}
-)roloc-yradnoces--(rav :roloc    
-{ etouq-sjlh.
-,tnemmoc-sjlh.
 
-}
-)roloc-tnof--(rav :roloc    
-;)roloc-dnuorgkcab-kcolb--(rav :dnuorgkcab    
-;me5. :gniddap    
-;otua :x-wolfrevo    
-;kcolb :yalpsid    
-{ sjlh.
 
+/*! terminal.css 0.7.2 | MIT License | github.com/Gioni06/terminal.css */
+
+* {
+    box-sizing: border-box;
+    text-rendering: geometricPrecision
 }
-retnec :ngila-txet    
-;)roloc-yradnoces--(rav :roloc    
-{ noitpacgif>erugif
 
-}
-0 :nigram    
-{ erugif
+::-moz-selection {
+    background: var(--primary-color);
+    color: var(--invert-font-color)
+}
+
+::selection {
+    background: var(--primary-color);
+    color: var(--invert-font-color)
+}
 
-}
-0 :gniddap    
-{ gmi redlohratava-lanimret.
+body {
+    font-size: var(--global-font-size);
+    color: var(--font-color);
+    line-height: var(--global-line-height);
+    margin: 0;
+    font-family: var(--font-stack);
+    word-wrap: break-word;
+    background-color: var(--background-color)
+}
 
+.logo,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    line-height: var(--global-line-height)
 }
-)5 * )ecaps-labolg--(rav(clac :thgieh    
-;)5 * )ecaps-labolg--(rav(clac :htdiw    
-{ redlohratava-lanimret.
 
+a {
+    cursor: pointer;
+    color: var(--primary-color);
+    text-decoration: none
+}
+
+a:hover {
+    background-color: var(--primary-color);
+    color: var(--invert-font-color)
 }
-0 :gniddap    
-{ gmi>erugif
-
+
+em {
+    font-size: var(--global-font-size);
+    font-style: italic;
+    font-family: var(--font-stack);
+    color: var(--font-color)
 }
-)roloc-yradnoces--(rav dilos xp1 :redrob    
-;mer1 :ezis-tnof    
-;)roloc-tnof--(rav :roloc    
-;retnec :ngila-txet    
-;)roloc-yradnoces--(rav :roloc-dnuorgkcab    
-{ redlohecalp-lanimret.
 
+blockquote,
+code,
+em,
+strong {
+    line-height: var(--global-line-height)
 }
-mer3. :pot-nigram    
-{ tnetnoc-aidem-lanimret.
 
+.logo,
+blockquote,
+code,
+footer,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header,
+li,
+ol,
+p,
+section,
+ul {
+    float: none;
+    margin: 0;
+    padding: 0
+}
+
+.logo,
+blockquote,
+h1,
+ol,
+p,
+ul {
+    margin-top: calc(var(--global-space) * 2);
+    margin-bottom: calc(var(--global-space) * 2)
+}
+
+.logo,
+h1 {
+    position: relative;
+    display: inline-block;
+    display: table-cell;
+    padding: calc(var(--global-space) * 2) 0 calc(var(--global-space) * 2);
+    margin: 0;
+    overflow: hidden;
+    font-weight: 600
+}
+
+h1::after {
+    content: "====================================================================================================";
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    display: var(--display-h1-decoration)
 }
-007 :thgiew-tnof    
-;me1 :ezis-tnof    
-{ gnidaeh-aidem-lanimret.
-
+
+.logo+*,
+h1+* {
+    margin-top: 0
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-bottom: var(--global-line-height);
+    font-weight: 600
+}
+
+blockquote {
+    position: relative;
+    padding-left: calc(var(--global-space) * 2);
+    padding-left: 2ch;
+    overflow: hidden
+}
+
+blockquote::after {
+    content: ">\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>";
+    white-space: pre;
+    position: absolute;
+    top: 0;
+    left: 0;
+    line-height: var(--global-line-height);
+    color: #9ca2ab
+}
+
+code {
+    font-weight: inherit;
+    background-color: var(--code-bg-color);
+    font-family: var(--mono-font-stack)
+}
+
+code::after,
+code::before {
+    content: "`";
+    display: inline
+}
+
+pre code::after,
+pre code::before {
+    content: ""
+}
+
+pre {
+    display: block;
+    word-break: break-all;
+    word-wrap: break-word;
+    color: var(--secondary-color);
+    background-color: var(--background-color);
+    border: 1px solid var(--secondary-color);
+    padding: var(--global-space);
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap
 }
-pot :ngila-lacitrev    
-;llec-elbat :yalpsid    
-{ ydob-aidem-lanimret.
 
+pre code {
+    overflow-x: scroll;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+    min-width: 100%;
+    font-family: var(--mono-font-stack)
 }
-)ecaps-labolg--(rav :tfel-gniddap    
-{ thgir-aidem-lanimret.
 
+.terminal .logo,
+.terminal blockquote,
+.terminal code,
+.terminal h1,
+.terminal h2,
+.terminal h3,
+.terminal h4,
+.terminal h5,
+.terminal h6,
+.terminal strong {
+    font-size: var(--global-font-size);
+    font-style: normal;
+    font-family: var(--font-stack);
+    color: var(--font-color)
 }
-pot :ngila-lacitrev    
-;llec-elbat :yalpsid    
-{ thgir-aidem-lanimret.
-,tfel-aidem-lanimret.
 
+.terminal-prompt {
+    position: relative;
+    white-space: nowrap
 }
-)ecaps-labolg--(rav :thgir-gniddap    
-{ tfel-aidem-lanimret.
 
+.terminal-prompt::before {
+    content: "> "
 }
-mer52.1 :mottob-nigram    
-{ )dlihc-tsal:(ton:aidem-lanimret.
 
+.terminal-prompt::after {
+    content: "";
+    -webkit-animation: cursor .8s infinite;
+    animation: cursor .8s infinite;
+    background: var(--primary-color);
+    border-radius: 0;
+    display: inline-block;
+    height: 1em;
+    margin-left: .2em;
+    width: 3px;
+    bottom: -2px;
+    position: relative
 }
-}    
-0 :thgir-nigram        
-{ dlihc-tsal:il unem-lanimret.    
-}    
-me2 :thgir-nigram        
-;0 :nigram        
-{ il unem-lanimret.    
-}    
-)2 * )ecaps-labolg--(rav(clac :pot-nigram        
-;dne-xelf :tnetnoc-yfitsuj        
-;retnec :smeti-ngila        
-;dne-xelf :smeti-yfitsuj        
-;wor :noitcerid-xelf        
-{ lu unem-lanimret.    
-}    
-retnec :smeti-ngila        
-;wor :noitcerid-xelf        
-{ van-lanimret.    
-{ )me03:htdiw-nim( dna neercs ylno aidem@
 
+@-webkit-keyframes cursor {
+    0% {
+        opacity: 0
+    }
+    50% {
+        opacity: 1
+    }
+    to {
+        opacity: 0
+    }
 }
-}    
-%001 :htdiw        
-{ mrof    
-{ )xp084:htdiw-xam( dna neercs aidem@
 
+@keyframes cursor {
+    0% {
+        opacity: 0
+    }
+    50% {
+        opacity: 1
+    }
+    to {
+        opacity: 0
+    }
 }
-}    
-xp3 :thgieh        
-{ rabllorcs-tikbew-::erp    
-}    
-%001 :htdiw        
-;kcolb :yalpsid        
-{ lebal    
-{ )xp069:htdiw-xam( dna neercs aidem@
 
+li,
+li>ul>li {
+    position: relative;
+    display: block;
+    padding-left: calc(var(--global-space) * 2)
 }
-)roloc-yramirp--(rav :roloc-redrob    
-;)roloc-yramirp--(rav :roloc    
-{ yramirp-trela-lanimret.
 
+nav>ul>li {
+    padding-left: 0
 }
-)roloc-rorre--(rav :roloc-redrob    
-;)roloc-rorre--(rav :roloc    
-{ rorre-trela-lanimret.
 
+li::after {
+    position: absolute;
+    top: 0;
+    left: 0
 }
-)ecaps-labolg--(rav :mottob-nigram    
-;)roloc-tnof--(rav dilos xp1 :redrob    
-;me1 :gniddap    
-;)roloc-tnof--(rav :roloc    
-{ trela-lanimret.
 
+ul>li::after {
+    content: "-"
 }
-004 :xedni-z    
-;xp51 :thgieh    
-;xp51 :htdiw    
-;xp62 :tfel    
-;xp52 :pot-nigram    
-;etulosba :noitisop    
-;kcolb-enilni :yalpsid    
-;)roloc-yradnoces--(rav dilos xp2 :redrob    
-;)roloc-tnof-trevni--(rav :dnuorgkcab    
-;' ' :tnetnoc    
-{ erofeb::drac-lanimret. enilemit-lanimret.
 
+nav ul>li::after {
+    content: ""
 }
-xp52 :mottob-nigram    
-{ drac-lanimret. enilemit-lanimret.
 
+ol li::before {
+    content: counters(item, ".") ". ";
+    counter-increment: item
 }
-004 :xedni-z    
-;%001 :thgieh    
-;xp2 :htdiw    
-;xp53 :tfel    
-;etulosba :noitisop    
-;kcolb-enilni :yalpsid    
-;)roloc-yradnoces--(rav :dnuorgkcab    
-;' ' :tnetnoc    
-{ erofeb::enilemit-lanimret.
 
+ol ol li::before {
+    content: counters(item, ".") " ";
+    counter-increment: item
 }
-xp07 :tfel-gniddap    
-;evitaler :noitisop    
-{ enilemit-lanimret.
 
+.terminal-menu li::after,
+.terminal-menu li::before {
+    display: none
 }
-)ecaps-labolg--(rav :gniddap    
-{ epyt-fo-tsrif:vid>drac-lanimret.
 
+ol {
+    counter-reset: item
 }
-0 me5. :gniddap    
-;)roloc-yradnoces--(rav :roloc-dnuorgkcab    
-;retnec :ngila-txet    
-;)roloc-tnof-trevni--(rav :roloc    
-{ redaeh>drac-lanimret.
 
+ol li:nth-child(n+10)::after {
+    left: -7px
 }
-)roloc-yradnoces--(rav dilos xp1 :redrob    
-{ drac-lanimret.
 
+ol ol {
+    margin-top: 0;
+    margin-bottom: 0
 }
-xp1- :tfel-nigram    
-{ )dlihc-tsrif:(ton:tsohg-ntb. puorg-ntb.
 
+.terminal-menu {
+    width: 100%
 }
-tfel :taolf    
-{ ntb. puorg-ntb.
 
+.terminal-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start
 }
-otua :wolfrevo    
-{ puorg-ntb.
 
+ul ul {
+    margin-top: 0;
+    margin-bottom: 0
 }
-tnatropmi!me9. :ezis-tnof    
-;tnatropmi!me3.1 me5. :gniddap    
-{ llams-ntb.
 
+.terminal-menu ul {
+    list-style-type: none;
+    padding: 0!important;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    flex-grow: 1;
+    font-size: var(--global-font-size);
+    margin-top: 0
 }
-2 :xedni-z    
-;)roloc-yramirp--(rav :roloc    
-;)roloc-yramirp--(rav :roloc-redrob    
-{ revoh:tsohg-ntb.yramirp-ntb.
-,sucof:tsohg-ntb.yramirp-ntb.
 
+.terminal-menu li {
+    display: flex;
+    margin: 0 0 .5em 0;
+    padding: 0
 }
-)roloc-yramirp--(rav :roloc    
-;)roloc-yramirp--(rav :roloc-redrob    
-{ tsohg-ntb.yramirp-ntb.
 
+ol.terminal-toc li {
+    border-bottom: 1px dotted var(--secondary-color);
+    padding: 0;
+    margin-bottom: 15px
 }
-)roloc-yramirp--(rav :roloc-redrob    
-;)roloc-yramirp--(rav :roloc-dnuorgkcab    
-{ revoh:yramirp-ntb.
-,)tsohg-ntb.(ton:sucof:yramirp-ntb.
 
+.terminal-menu li:last-child {
+    margin-bottom: 0
 }
-)roloc-yramirp--(rav dilos xp1 :redrob    
-;)roloc-yramirp--(rav :roloc-dnuorgkcab    
-;)roloc-tnof-trevni--(rav :roloc    
-{ yramirp-ntb.
 
+ol.terminal-toc li a {
+    margin: 4px 4px 4px 0;
+    background: var(--background-color);
+    position: relative;
+    top: 6px;
+    text-align: left;
+    padding-right: 4px
 }
-2 :xedni-z    
-;)roloc-rorre--(rav :roloc    
-;)roloc-rorre--(rav :roloc-redrob    
-{ revoh:tsohg-ntb.rorre-ntb.
-,sucof:tsohg-ntb.rorre-ntb.
 
+.terminal-menu li a:not(.btn) {
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    border: none;
+    color: var(--secondary-color)
 }
-)roloc-rorre--(rav :roloc    
-;)roloc-rorre--(rav :roloc-redrob    
-{ tsohg-ntb.rorre-ntb.
 
+.terminal-menu li a.active {
+    color: var(--font-color)
 }
-)roloc-rorre--(rav :roloc-redrob    
-;)roloc-rorre--(rav :roloc-dnuorgkcab    
-{ revoh:rorre-ntb.
-,)tsohg-ntb.(ton:sucof:rorre-ntb.
 
+.terminal-menu li a:hover {
+    background: 0 0;
+    color: inherit
 }
-)roloc-rorre--(rav dilos xp1 :redrob    
-;)roloc-rorre--(rav :roloc-dnuorgkcab    
-;)roloc-tnof-trevni--(rav :roloc    
-{ rorre-ntb.
 
+ol.terminal-toc li::before {
+    content: counters(item, ".") ". ";
+    counter-increment: item;
+    position: absolute;
+    right: 0;
+    background: var(--background-color);
+    padding: 4px 0 4px 4px;
+    bottom: -8px
 }
-2 :xedni-z    
-;)roloc-yradnoces--(rav :roloc    
-;)roloc-yradnoces--(rav :roloc-redrob    
-{ revoh:tsohg-ntb.tluafed-ntb.
-,sucof:tsohg-ntb.tluafed-ntb.
 
+ol.terminal-toc li a:hover {
+    background: var(--primary-color);
+    color: var(--invert-font-color)
 }
-)roloc-tnof-trevni--(rav :roloc    
-;)roloc-yradnoces--(rav :roloc-dnuorgkcab    
-{ revoh:tluafed-ntb.
-,)tsohg-ntb.(ton:sucof:tluafed-ntb.
 
+hr {
+    position: relative;
+    overflow: hidden;
+    margin: calc(var(--global-space) * 4) 0;
+    border: 0;
+    border-bottom: 1px dashed var(--secondary-color)
 }
-)roloc-tnof-trevni--(rav :roloc    
-;)roloc-tnof-trevni--(rav :roloc-redrob    
-;)roloc-tnof--(rav :roloc-dnuorgkcab    
-{ tluafed-ntb.
 
+p {
+    margin: 0 0 var(--global-line-height);
+    color: var(--global-font-color)
 }
-xelf :yalpsid    
-;%001 :htdiw    
-{ kcolb-ntb.
 
+.container {
+    max-width: var(--page-width)
 }
-tnerapsnart :roloc-dnuorgkcab    
-{ revoh:tsohg-ntb.ntb.
 
+.container,
+.container-fluid {
+    margin: 0 auto;
+    padding: 0 calc(var(--global-space) * 2)
 }
-2 :xedni-z    
-;)roloc-yraitret--(rav :roloc    
-;)roloc-yraitret--(rav :roloc-redrob    
-{ revoh:tsohg-ntb.ntb.
-,sucof:tsohg-ntb.ntb.
 
+img {
+    width: 100%
 }
-tnerapsnart :roloc-dnuorgkcab    
-;)roloc-tnof--(rav :roloc    
-;)roloc-tnof--(rav :roloc-redrob    
-{ tsohg-ntb.ntb.
 
+.progress-bar {
+    height: 8px;
+    background-color: var(--progress-bar-background);
+    margin: 12px 0
 }
-enon :wodahs-xob    
-{ evitca:ntb.
 
+.progress-bar.progress-bar-show-percent {
+    margin-top: 38px
 }
-1 :xedni-z    
-;evitaler :noitisop    
-;enon :tceles-resu    
-;enon :tceles-resu-sm-    
-;enon :tceles-resu-zom-    
-;enon :tceles-resu-tikbew-    
-;tirehni :ylimaf-tnof    
-;me1 :ezis-tnof    
-;me2 me56. :gniddap    
-;0 :eniltuo    
-;retniop :rosruc    
-;retnec :tnetnoc-yfitsuj    
-;retnec :smeti-ngila    
-;xelf-enilni :yalpsid    
-;xp1 :htdiw-redrob    
-;dilos :elyts-redrob    
-{ ntb.
 
+.progress-bar-filled {
+    background-color: var(--progress-bar-fill);
+    height: 100%;
+    transition: width .3s ease;
+    position: relative;
+    width: 0
 }
-otua :wolfrevo    
-;)thgieh-enil-labolg--(rav :mottob-nigram    
-{ puorg-mrof.
 
+.progress-bar-filled::before {
+    content: "";
+    border: 6px solid transparent;
+    border-top-color: var(--progress-bar-fill);
+    position: absolute;
+    top: -12px;
+    right: -6px
 }
-s0 tuo-ni-esae s0005 roloc-dnuorgkcab :noitisnart    
-;tesni )roloc-tnof-trevni--(rav xp0001 0 0 0 :wodahs-xob-tikbew-    
-;tesni )roloc-tnof-trevni--(rav xp0001 0 0 0 :wodahs-xob    
-;)roloc-tnof--(rav :roloc-llif-txet-tikbew-    
-;)roloc-tnof--(rav dilos xp1 :redrob    
-{ sucof:llifotua-tikbew-:aeratxet revoh:llifotua-tikbew-:aeratxet
-,revoh:llifotua-tikbew-:tceles
-,sucof:llifotua-tikbew-:tceles
-,llifotua-tikbew-:tceles
-,revoh:llifotua-tikbew-:tupni
-,llifotua-tikbew-:aeratxet sucof:llifotua-tikbew-:tupni
-,llifotua-tikbew-:tupni
 
+.progress-bar-filled::after {
+    color: var(--progress-bar-fill);
+    content: attr(data-filled);
+    display: block;
+    font-size: 12px;
+    white-space: nowrap;
+    position: absolute;
+    border: 6px solid transparent;
+    top: -38px;
+    right: 0;
+    transform: translateX(50%)
 }
-)roloc-rorre--(rav :roloc-redrob    
-{ dilavni:)nwohs-redlohecalp:(ton:aeratxet
 
+.progress-bar-no-arrow>.progress-bar-filled::after,
+.progress-bar-no-arrow>.progress-bar-filled::before {
+    content: "";
+    display: none;
+    visibility: hidden;
+    opacity: 0
 }
-)roloc-tnof--(rav dilos xp1 :redrob    
-;enon :ecnaraeppa-tikbew-    
-;0 :eniltuo    
-{ sucof:aeratxet
 
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: var(--global-line-height) 0;
+    color: var(--font-color);
+    font-size: var(--global-font-size)
 }
-0 :suidar-redrob    
-;enon :ecnaraeppa-tikbew-    
-;)kcats-tnof--(rav :ylimaf-tnof    
-;me1 :ezis-tnof    
-;me5. :gniddap    
-;)roloc-tnof--(rav )elyts-tupni--(rav xp1 :redrob    
-;enon :eziser    
-;%001 :htdiw    
-;otua :thgieh    
-{ aeratxet
 
+table td,
+table th {
+    vertical-align: top;
+    border: 1px solid var(--font-color);
+    line-height: var(--global-line-height);
+    padding: calc(var(--global-space)/ 2);
+    font-size: 1em
 }
-1 :yticapo    
-;tnatropmi!)roloc-yradnoces--(rav :roloc    
-{ redlohecalp::aeratxet
-,redlohecalp::tupni
 
+table thead th {
+    font-size: 1em
 }
-1 :yticapo    
-;tnatropmi!)roloc-yradnoces--(rav :roloc    
-{ redlohecalp-tupni-sm-::aeratxet
-,redlohecalp-tupni-sm-::tupni
 
+table tfoot tr th {
+    font-weight: 500
 }
-1 :yticapo    
-;tnatropmi!)roloc-yradnoces--(rav :roloc    
-{ redlohecalp-tupni-sm-:aeratxet
-,redlohecalp-tupni-sm-:tupni
 
+table caption {
+    font-size: 1em;
+    margin: 0 0 1em 0
 }
-1 :yticapo    
-;tnatropmi!)roloc-yradnoces--(rav :roloc    
-{ redlohecalp-zom-::aeratxet
-,redlohecalp-zom-::tupni
 
+table tbody td:first-child {
+    font-weight: 700;
+    color: var(--secondary-color)
 }
-1 :yticapo    
-;tnatropmi!)roloc-yradnoces--(rav :roloc    
-{ redlohecalp-tupni-tikbew-::aeratxet
-,redlohecalp-tupni-tikbew-::tupni
 
+.form {
+    width: 100%
 }
-)roloc-dnuorgkcab--(rav :roloc-dnuorgkcab    
-;)roloc-tnof--(rav :roloc    
-{ aeratxet
-,tupni
 
+fieldset {
+    border: 1px solid var(--font-color);
+    padding: 1em
 }
-)roloc-rorre--(rav :roloc-redrob    
-{ dilavni:)nwohs-redlohecalp:(ton:]txet=epyt[tupni
-,dilavni:)nwohs-redlohecalp:(ton:]hcraes=epyt[tupni
-,dilavni:)nwohs-redlohecalp:(ton:]drowssap=epyt[tupni
-,dilavni:)nwohs-redlohecalp:(ton:]rebmun=epyt[tupni
-,dilavni:)nwohs-redlohecalp:(ton:]liame=epyt[tupni
 
+label {
+    font-size: 1em;
+    color: var(--font-color)
 }
-)roloc-tnof--(rav dilos xp1 :redrob    
-;enon :ecnaraeppa-tikbew-    
-;0 :eniltuo    
-{ sucof:]txet=epyt[tupni
-,evitca:]txet=epyt[tupni
-,sucof:]hcraes=epyt[tupni
-,evitca:]hcraes=epyt[tupni
-,sucof:]drowssap=epyt[tupni
-,evitca:]drowssap=epyt[tupni
-,sucof:]rebmun=epyt[tupni
-,evitca:]rebmun=epyt[tupni
-,sucof:]liame=epyt[tupni
-,evitca:]liame=epyt[tupni
 
+input[type=email],
+input[type=number],
+input[type=password],
+input[type=search],
+input[type=text] {
+    border: 1px var(--input-style) var(--font-color);
+    width: 100%;
+    padding: .7em .5em;
+    font-size: 1em;
+    font-family: var(--font-stack);
+    -webkit-appearance: none;
+    border-radius: 0
 }
-0 :suidar-redrob    
-;enon :ecnaraeppa-tikbew-    
-;)kcats-tnof--(rav :ylimaf-tnof    
-;me1 :ezis-tnof    
-;me5. me7. :gniddap    
-;%001 :htdiw    
-;)roloc-tnof--(rav )elyts-tupni--(rav xp1 :redrob    
-{ ]txet=epyt[tupni
-,]hcraes=epyt[tupni
-,]drowssap=epyt[tupni
-,]rebmun=epyt[tupni
-,]liame=epyt[tupni
 
+input[type=email]:active,
+input[type=email]:focus,
+input[type=number]:active,
+input[type=number]:focus,
+input[type=password]:active,
+input[type=password]:focus,
+input[type=search]:active,
+input[type=search]:focus,
+input[type=text]:active,
+input[type=text]:focus {
+    outline: 0;
+    -webkit-appearance: none;
+    border: 1px solid var(--font-color)
 }
-)roloc-tnof--(rav :roloc    
-;me1 :ezis-tnof    
-{ lebal
 
+input[type=email]:not(:placeholder-shown):invalid,
+input[type=number]:not(:placeholder-shown):invalid,
+input[type=password]:not(:placeholder-shown):invalid,
+input[type=search]:not(:placeholder-shown):invalid,
+input[type=text]:not(:placeholder-shown):invalid {
+    border-color: var(--error-color)
 }
-me1 :gniddap    
-;)roloc-tnof--(rav dilos xp1 :redrob    
-{ tesdleif
 
+input,
+textarea {
+    color: var(--font-color);
+    background-color: var(--background-color)
 }
-%001 :htdiw    
-{ mrof.
 
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+    color: var(--secondary-color)!important;
+    opacity: 1
 }
-)roloc-yradnoces--(rav :roloc    
-;007 :thgiew-tnof    
-{ dlihc-tsrif:dt ydobt elbat
 
+input::-moz-placeholder,
+textarea::-moz-placeholder {
+    color: var(--secondary-color)!important;
+    opacity: 1
 }
-0 me1 0 0 :nigram    
-;me1 :ezis-tnof    
-{ noitpac elbat
 
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+    color: var(--secondary-color)!important;
+    opacity: 1
 }
-005 :thgiew-tnof    
-{ ht rt tooft elbat
 
+input::-ms-input-placeholder,
+textarea::-ms-input-placeholder {
+    color: var(--secondary-color)!important;
+    opacity: 1
 }
-me1 :ezis-tnof    
-{ ht daeht elbat
 
+input::placeholder,
+textarea::placeholder {
+    color: var(--secondary-color)!important;
+    opacity: 1
 }
-me1 :ezis-tnof    
-;)2 /)ecaps-labolg--(rav(clac :gniddap    
-;)thgieh-enil-labolg--(rav :thgieh-enil    
-;)roloc-tnof--(rav dilos xp1 :redrob    
-;pot :ngila-lacitrev    
-{ ht elbat
-,dt elbat
 
+textarea {
+    height: auto;
+    width: 100%;
+    resize: none;
+    border: 1px var(--input-style) var(--font-color);
+    padding: .5em;
+    font-size: 1em;
+    font-family: var(--font-stack);
+    -webkit-appearance: none;
+    border-radius: 0
 }
-)ezis-tnof-labolg--(rav :ezis-tnof    
-;)roloc-tnof--(rav :roloc    
-;0 )thgieh-enil-labolg--(rav :nigram    
-;espalloc :espalloc-redrob    
-;%001 :htdiw    
-{ elbat
 
+textarea:focus {
+    outline: 0;
+    -webkit-appearance: none;
+    border: 1px solid var(--font-color)
 }
-0 :yticapo    
-;neddih :ytilibisiv    
-;enon :yalpsid    
-;"" :tnetnoc    
-{ erofeb::dellif-rab-ssergorp.>worra-on-rab-ssergorp.
-,retfa::dellif-rab-ssergorp.>worra-on-rab-ssergorp.
 
+textarea:not(:placeholder-shown):invalid {
+    border-color: var(--error-color)
 }
-)%05(Xetalsnart :mrofsnart    
-;0 :thgir    
-;xp83- :pot    
-;tnerapsnart dilos xp6 :redrob    
-;etulosba :noitisop    
-;parwon :ecaps-etihw    
-;xp21 :ezis-tnof    
-;kcolb :yalpsid    
-;)dellif-atad(rtta :tnetnoc    
-;)llif-rab-ssergorp--(rav :roloc    
-{ retfa::dellif-rab-ssergorp.
 
+input:-webkit-autofill,
+input:-webkit-autofill:focus textarea:-webkit-autofill,
+input:-webkit-autofill:hover,
+select:-webkit-autofill,
+select:-webkit-autofill:focus,
+select:-webkit-autofill:hover,
+textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus {
+    border: 1px solid var(--font-color);
+    -webkit-text-fill-color: var(--font-color);
+    box-shadow: 0 0 0 1000px var(--invert-font-color) inset;
+    -webkit-box-shadow: 0 0 0 1000px var(--invert-font-color) inset;
+    transition: background-color 5000s ease-in-out 0s
 }
-xp6- :thgir    
-;xp21- :pot    
-;etulosba :noitisop    
-;)llif-rab-ssergorp--(rav :roloc-pot-redrob    
-;tnerapsnart dilos xp6 :redrob    
-;"" :tnetnoc    
-{ erofeb::dellif-rab-ssergorp.
 
+.form-group {
+    margin-bottom: var(--global-line-height);
+    overflow: auto
 }
-0 :htdiw    
-;evitaler :noitisop    
-;esae s3. htdiw :noitisnart    
-;%001 :thgieh    
-;)llif-rab-ssergorp--(rav :roloc-dnuorgkcab    
-{ dellif-rab-ssergorp.
 
+.btn {
+    border-style: solid;
+    border-width: 1px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    outline: 0;
+    padding: .65em 2em;
+    font-size: 1em;
+    font-family: inherit;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    position: relative;
+    z-index: 1
 }
-xp83 :pot-nigram    
-{ tnecrep-wohs-rab-ssergorp.rab-ssergorp.
 
+.btn:active {
+    box-shadow: none
 }
-0 xp21 :nigram    
-;)dnuorgkcab-rab-ssergorp--(rav :roloc-dnuorgkcab    
-;xp8 :thgieh    
-{ rab-ssergorp.
 
+.btn.btn-ghost {
+    border-color: var(--font-color);
+    color: var(--font-color);
+    background-color: transparent
 }
-%001 :htdiw    
-{ gmi
 
+.btn.btn-ghost:focus,
+.btn.btn-ghost:hover {
+    border-color: var(--tertiary-color);
+    color: var(--tertiary-color);
+    z-index: 2
 }
-)2 * )ecaps-labolg--(rav(clac 0 :gniddap    
-;otua 0 :nigram    
-{ diulf-reniatnoc.
-,reniatnoc.
 
+.btn.btn-ghost:hover {
+    background-color: transparent
 }
-)htdiw-egap--(rav :htdiw-xam    
-{ reniatnoc.
 
+.btn-block {
+    width: 100%;
+    display: flex
 }
-)roloc-tnof-labolg--(rav :roloc    
-;)thgieh-enil-labolg--(rav 0 0 :nigram    
-{ p
 
+.btn-default {
+    background-color: var(--font-color);
+    border-color: var(--invert-font-color);
+    color: var(--invert-font-color)
 }
-)roloc-yradnoces--(rav dehsad xp1 :mottob-redrob    
-;0 :redrob    
-;0 )4 * )ecaps-labolg--(rav(clac :nigram    
-;neddih :wolfrevo    
-;evitaler :noitisop    
-{ rh
 
+.btn-default:focus:not(.btn-ghost),
+.btn-default:hover {
+    background-color: var(--secondary-color);
+    color: var(--invert-font-color)
 }
-)roloc-tnof-trevni--(rav :roloc    
-;)roloc-yramirp--(rav :dnuorgkcab    
-{ revoh:a il cot-lanimret.lo
 
+.btn-default.btn-ghost:focus,
+.btn-default.btn-ghost:hover {
+    border-color: var(--secondary-color);
+    color: var(--secondary-color);
+    z-index: 2
 }
-xp8- :mottob    
-;xp4 xp4 0 xp4 :gniddap    
-;)roloc-dnuorgkcab--(rav :dnuorgkcab    
-;0 :thgir    
-;etulosba :noitisop    
-;meti :tnemercni-retnuoc    
-;" ." )"." ,meti(sretnuoc :tnetnoc    
-{ erofeb::il cot-lanimret.lo
 
+.btn-error {
+    color: var(--invert-font-color);
+    background-color: var(--error-color);
+    border: 1px solid var(--error-color)
 }
-tirehni :roloc    
-;0 0 :dnuorgkcab    
-{ revoh:a il unem-lanimret.
 
+.btn-error:focus:not(.btn-ghost),
+.btn-error:hover {
+    background-color: var(--error-color);
+    border-color: var(--error-color)
 }
-)roloc-tnof--(rav :roloc    
-{ evitca.a il unem-lanimret.
 
+.btn-error.btn-ghost {
+    border-color: var(--error-color);
+    color: var(--error-color)
 }
-)roloc-yradnoces--(rav :roloc    
-;enon :redrob    
-;%001 :htdiw    
-;kcolb :yalpsid    
-;enon :noitaroced-txet    
-{ )ntb.(ton:a il unem-lanimret.
 
+.btn-error.btn-ghost:focus,
+.btn-error.btn-ghost:hover {
+    border-color: var(--error-color);
+    color: var(--error-color);
+    z-index: 2
 }
-xp4 :thgir-gniddap    
-;tfel :ngila-txet    
-;xp6 :pot    
-;evitaler :noitisop    
-;)roloc-dnuorgkcab--(rav :dnuorgkcab    
-;0 xp4 xp4 xp4 :nigram    
-{ a il cot-lanimret.lo
 
+.btn-primary {
+    color: var(--invert-font-color);
+    background-color: var(--primary-color);
+    border: 1px solid var(--primary-color)
 }
-0 :mottob-nigram    
-{ dlihc-tsal:il unem-lanimret.
 
+.btn-primary:focus:not(.btn-ghost),
+.btn-primary:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color)
 }
-xp51 :mottob-nigram    
-;0 :gniddap    
-;)roloc-yradnoces--(rav dettod xp1 :mottob-redrob    
-{ il cot-lanimret.lo
 
+.btn-primary.btn-ghost {
+    border-color: var(--primary-color);
+    color: var(--primary-color)
 }
-0 :gniddap    
-;0 me5. 0 0 :nigram    
-;xelf :yalpsid    
-{ il unem-lanimret.
 
+.btn-primary.btn-ghost:focus,
+.btn-primary.btn-ghost:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    z-index: 2
 }
-0 :pot-nigram    
-;)ezis-tnof-labolg--(rav :ezis-tnof    
-;1 :worg-xelf    
-;%001 :htdiw    
-;nmuloc :noitcerid-xelf    
-;xelf :yalpsid    
-;tnatropmi!0 :gniddap    
-;enon :epyt-elyts-tsil    
-{ lu unem-lanimret.
 
+.btn-small {
+    padding: .5em 1.3em!important;
+    font-size: .9em!important
 }
-0 :mottob-nigram    
-;0 :pot-nigram    
-{ lu lu
 
+.btn-group {
+    overflow: auto
 }
-trats-xelf :smeti-ngila    
-;nmuloc :noitcerid-xelf    
-;xelf :yalpsid    
-{ van-lanimret.
 
+.btn-group .btn {
+    float: left
 }
-%001 :htdiw    
-{ unem-lanimret.
 
+.btn-group .btn-ghost:not(:first-child) {
+    margin-left: -1px
 }
-0 :mottob-nigram    
-;0 :pot-nigram    
-{ lo lo
 
+.terminal-card {
+    border: 1px solid var(--secondary-color)
 }
-xp7- :tfel    
-{ retfa::)01+n(dlihc-htn:il lo
 
+.terminal-card>header {
+    color: var(--invert-font-color);
+    text-align: center;
+    background-color: var(--secondary-color);
+    padding: .5em 0
 }
-meti :teser-retnuoc    
-{ lo
 
+.terminal-card>div:first-of-type {
+    padding: var(--global-space)
 }
-enon :yalpsid    
-{ erofeb::il unem-lanimret.
-,retfa::il unem-lanimret.
 
+.terminal-timeline {
+    position: relative;
+    padding-left: 70px
 }
-meti :tnemercni-retnuoc    
-;" " )"." ,meti(sretnuoc :tnetnoc    
-{ erofeb::il lo lo
 
+.terminal-timeline::before {
+    content: ' ';
+    background: var(--secondary-color);
+    display: inline-block;
+    position: absolute;
+    left: 35px;
+    width: 2px;
+    height: 100%;
+    z-index: 400
 }
-meti :tnemercni-retnuoc    
-;" ." )"." ,meti(sretnuoc :tnetnoc    
-{ erofeb::il lo
 
+.terminal-timeline .terminal-card {
+    margin-bottom: 25px
 }
-"" :tnetnoc    
-{ retfa::il>lu van
 
+.terminal-timeline .terminal-card::before {
+    content: ' ';
+    background: var(--invert-font-color);
+    border: 2px solid var(--secondary-color);
+    display: inline-block;
+    position: absolute;
+    margin-top: 25px;
+    left: 26px;
+    width: 15px;
+    height: 15px;
+    z-index: 400
 }
-"-" :tnetnoc    
-{ retfa::il>lu
 
+.terminal-alert {
+    color: var(--font-color);
+    padding: 1em;
+    border: 1px solid var(--font-color);
+    margin-bottom: var(--global-space)
 }
-0 :tfel    
-;0 :pot    
-;etulosba :noitisop    
-{ retfa::il
 
+.terminal-alert-error {
+    color: var(--error-color);
+    border-color: var(--error-color)
 }
-0 :tfel-gniddap    
-{ il>lu>van
 
+.terminal-alert-primary {
+    color: var(--primary-color);
+    border-color: var(--primary-color)
 }
-)2 * )ecaps-labolg--(rav(clac :tfel-gniddap    
-;kcolb :yalpsid    
-;evitaler :noitisop    
-{ il>lu>il
-,il
 
+@media screen and (max-width:960px) {
+    label {
+        display: block;
+        width: 100%
+    }
+    pre::-webkit-scrollbar {
+        height: 3px
+    }
 }
-}    
-0 :yticapo        
-{ ot    
-}    
-1 :yticapo        
-{ %05    
-}    
-0 :yticapo        
-{ %0    
-{ rosruc semarfyek@
 
+@media screen and (max-width:480px) {
+    form {
+        width: 100%
+    }
 }
-}    
-0 :yticapo        
-{ ot    
-}    
-1 :yticapo        
-{ %05    
-}    
-0 :yticapo        
-{ %0    
-{ rosruc semarfyek-tikbew-@
 
+@media only screen and (min-width:30em) {
+    .terminal-nav {
+        flex-direction: row;
+        align-items: center
+    }
+    .terminal-menu ul {
+        flex-direction: row;
+        justify-items: flex-end;
+        align-items: center;
+        justify-content: flex-end;
+        margin-top: calc(var(--global-space) * 2)
+    }
+    .terminal-menu li {
+        margin: 0;
+        margin-right: 2em
+    }
+    .terminal-menu li:last-child {
+        margin-right: 0
+    }
 }
-evitaler :noitisop    
-;xp2- :mottob    
-;xp3 :htdiw    
-;me2. :tfel-nigram    
-;me1 :thgieh    
-;kcolb-enilni :yalpsid    
-;0 :suidar-redrob    
-;)roloc-yramirp--(rav :dnuorgkcab    
-;etinifni s8. rosruc :noitamina    
-;etinifni s8. rosruc :noitamina-tikbew-    
-;"" :tnetnoc    
-{ retfa::tpmorp-lanimret.
 
+.terminal-media:not(:last-child) {
+    margin-bottom: 1.25rem
 }
-" >" :tnetnoc    
-{ erofeb::tpmorp-lanimret.
 
+.terminal-media-left {
+    padding-right: var(--global-space)
 }
-parwon :ecaps-etihw    
-;evitaler :noitisop    
-{ tpmorp-lanimret.
 
+.terminal-media-left,
+.terminal-media-right {
+    display: table-cell;
+    vertical-align: top
 }
-)roloc-tnof--(rav :roloc    
-;)kcats-tnof--(rav :ylimaf-tnof    
-;lamron :elyts-tnof    
-;)ezis-tnof-labolg--(rav :ezis-tnof    
-{ gnorts lanimret.
-,6h lanimret.
-,5h lanimret.
-,4h lanimret.
-,3h lanimret.
-,2h lanimret.
-,1h lanimret.
-,edoc lanimret.
-,etouqkcolb lanimret.
-,ogol. lanimret.
 
+.terminal-media-right {
+    padding-left: var(--global-space)
 }
-)kcats-tnof-onom--(rav :ylimaf-tnof    
-;%001 :htdiw-nim    
-;kcolb-enilni :yalpsid    
-;0 :nigram    
-;0 :gniddap    
-;llorcs :x-wolfrevo    
-{ edoc erp
 
+.terminal-media-body {
+    display: table-cell;
+    vertical-align: top
 }
-parw-erp-o- :ecaps-etihw    
-;parw-erp- :ecaps-etihw    
-;parw-erp-zom- :ecaps-etihw    
-;parw-erp :ecaps-etihw    
-;)ecaps-labolg--(rav :gniddap    
-;)roloc-yradnoces--(rav dilos xp1 :redrob    
-;)roloc-dnuorgkcab--(rav :roloc-dnuorgkcab    
-;)roloc-yradnoces--(rav :roloc    
-;drow-kaerb :parw-drow    
-;lla-kaerb :kaerb-drow    
-;kcolb :yalpsid    
-{ erp
 
+.terminal-media-heading {
+    font-size: 1em;
+    font-weight: 700
 }
-"" :tnetnoc    
-{ erofeb::edoc erp
-,retfa::edoc erp
 
+.terminal-media-content {
+    margin-top: .3rem
 }
-enilni :yalpsid    
-;"`" :tnetnoc    
-{ erofeb::edoc
-,retfa::edoc
 
+.terminal-placeholder {
+    background-color: var(--secondary-color);
+    text-align: center;
+    color: var(--font-color);
+    font-size: 1rem;
+    border: 1px solid var(--secondary-color)
 }
-)kcats-tnof-onom--(rav :ylimaf-tnof    
-;)roloc-gb-edoc--(rav :roloc-dnuorgkcab    
-;tirehni :thgiew-tnof    
-{ edoc
 
+figure>img {
+    padding: 0
 }
-ba2ac9# :roloc    
-;)thgieh-enil-labolg--(rav :thgieh-enil    
-;0 :tfel    
-;0 :pot    
-;etulosba :noitisop    
-;erp :ecaps-etihw    
-;">A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>A\>" :tnetnoc    
-{ retfa::etouqkcolb
 
+.terminal-avatarholder {
+    width: calc(var(--global-space) * 5);
+    height: calc(var(--global-space) * 5)
 }
-neddih :wolfrevo    
-;hc2 :tfel-gniddap    
-;)2 * )ecaps-labolg--(rav(clac :tfel-gniddap    
-;evitaler :noitisop    
-{ etouqkcolb
 
+.terminal-avatarholder img {
+    padding: 0
 }
-006 :thgiew-tnof    
-;)thgieh-enil-labolg--(rav :mottob-nigram    
-;evitaler :noitisop    
-{ 6h
-,5h
-,4h
-,3h
-,2h
 
+figure {
+    margin: 0
 }
-0 :pot-nigram    
-{ *+1h
-,*+ogol.
 
+figure>figcaption {
+    color: var(--secondary-color);
+    text-align: center
 }
-)noitaroced-1h-yalpsid--(rav :yalpsid    
-;0 :tfel    
-;xp5 :mottob    
-;etulosba :noitisop    
-;"====================================================================================================" :tnetnoc    
-{ retfa::1h
 
+.hljs {
+    display: block;
+    overflow-x: auto;
+    padding: .5em;
+    background: var(--block-background-color);
+    color: var(--font-color)
 }
-006 :thgiew-tnof    
-;neddih :wolfrevo    
-;0 :nigram    
-;)2 * )ecaps-labolg--(rav(clac 0 )2 * )ecaps-labolg--(rav(clac :gniddap    
-;llec-elbat :yalpsid    
-;kcolb-enilni :yalpsid    
-;evitaler :noitisop    
-{ 1h
-,ogol.
 
+.hljs-comment,
+.hljs-quote {
+    color: var(--secondary-color)
 }
-)2 * )ecaps-labolg--(rav(clac :mottob-nigram    
-;)2 * )ecaps-labolg--(rav(clac :pot-nigram    
-{ lu
-,p
-,lo
-,1h
-,etouqkcolb
-,ogol.
 
+.hljs-variable {
+    color: var(--font-color)
 }
-0 :gniddap    
-;0 :nigram    
-;enon :taolf    
-{ lu
-,noitces
-,p
-,lo
-,il
-,redaeh
-,6h
-,5h
-,4h
-,3h
-,2h
-,1h
-,retoof
-,edoc
-,etouqkcolb
-,ogol.
 
+.hljs-built_in,
+.hljs-keyword,
+.hljs-name,
+.hljs-selector-tag,
+.hljs-tag {
+    color: var(--primary-color)
 }
-)thgieh-enil-labolg--(rav :thgieh-enil    
-{ gnorts
-,me
-,edoc
-,etouqkcolb
 
+.hljs-addition,
+.hljs-attribute,
+.hljs-literal,
+.hljs-section,
+.hljs-string,
+.hljs-template-tag,
+.hljs-template-variable,
+.hljs-title,
+.hljs-type {
+    color: var(--secondary-color)
 }
-)roloc-tnof--(rav :roloc    
-;)kcats-tnof--(rav :ylimaf-tnof    
-;cilati :elyts-tnof    
-;)ezis-tnof-labolg--(rav :ezis-tnof    
-{ me
 
+.hljs-string {
+    color: var(--secondary-color)
 }
-)roloc-tnof-trevni--(rav :roloc    
-;)roloc-yramirp--(rav :roloc-dnuorgkcab    
-{ revoh:a
 
+.hljs-deletion,
+.hljs-meta,
+.hljs-selector-attr,
+.hljs-selector-pseudo {
+    color: var(--primary-color)
 }
-enon :noitaroced-txet    
-;)roloc-yramirp--(rav :roloc    
-;retniop :rosruc    
-{ a
 
+.hljs-doctag {
+    color: var(--secondary-color)
 }
-)thgieh-enil-labolg--(rav :thgieh-enil    
-{ 6h
-,5h
-,4h
-,3h
-,2h
-,1h
-,ogol.
 
+.hljs-attr {
+    color: var(--primary-color)
 }
-)roloc-dnuorgkcab--(rav :roloc-dnuorgkcab    
-;drow-kaerb :parw-drow    
-;)kcats-tnof--(rav :ylimaf-tnof    
-;0 :nigram    
-;)thgieh-enil-labolg--(rav :thgieh-enil    
-;)roloc-tnof--(rav :roloc    
-;)ezis-tnof-labolg--(rav :ezis-tnof    
-{ ydob
 
+.hljs-bullet,
+.hljs-link,
+.hljs-symbol {
+    color: var(--primary-color)
 }
-)roloc-tnof-trevni--(rav :roloc    
-;)roloc-yramirp--(rav :dnuorgkcab    
-{ noitceles::
 
+.hljs-emphasis {
+    font-style: italic
 }
-)roloc-tnof-trevni--(rav :roloc    
-;)roloc-yramirp--(rav :dnuorgkcab    
-{ noitceles-zom-::
 
+.hljs-strong {
+    font-weight: 700
 }
-noisicerPcirtemoeg :gniredner-txet    
-;xob-redrob :gnizis-xob    
-{ *
-
-/* ssc.lanimret/60inoiG/moc.buhtig | esneciL TIM | 2.7.0 ssc.lanimret !*/
-
+>lmth/<>1h/<.ti ssecca ot resworb ruoy rof noisnetxe thgir eht esU .detpyrcne etiS>1h<>lmth<

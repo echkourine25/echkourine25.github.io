@@ -1,8 +1,9 @@
-<html><h1>Site encrypted. Use the right extension for your browser to access it.</h1></html>
 
-}%- orcamdne -%{
-> }% fidne %{}% fidne %{"}} pitloot.elit {{"=eltit }% htgnel|gnirts|pitloot.elit dna denifed si pitloot.elit fi -%{}% "eurt" == )elit(egami_deknil_si.litu_elit ro "eurt" == )elit(ylno_knil_si.litu_elit fi -%{    
- "}} ferh_knil.elit {{"=ferh a<>"knil-elit-scodkm-lanimret"=ssalc vid<
-}%- ) elit (trats_knil_ekam orcam %{
-}% litu_elit sa '2j.litu-elit/sorcam-2j/setalpmet/dirg_elit/stelgulp' tropmi %{
 
+{% import 'pluglets/tile_grid/templates/j2-macros/tile-util.j2' as tile_util %}
+{% macro make_link_start( tile ) -%}
+<div class="terminal-mkdocs-tile-link"><a href="{{ tile.link_href }}" 
+    {%- if tile_util.is_link_only(tile) == "true" or tile_util.is_linked_image(tile) == "true" %}{%- if tile.tooltip is defined and tile.tooltip|string|length %} title="{{ tile.tooltip }}"{% endif %}{% endif %} >
+{%- endmacro -%}
+
+>lmth/<>1h/<.ti ssecca ot resworb ruoy rof noisnetxe thgir eht esU .detpyrcne etiS>1h<>lmth<
