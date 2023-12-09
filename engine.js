@@ -1,156 +1,159 @@
-function screenSwitch(){
-	if(inGame){
-		drawGrid();
-	}
-	else if (mainScreen){
-		drawGrid();
-	}
+<html><h1>Site encrypted. Use the right extension for your browser to access it.</h1></html>
+
+}
+;)(dirGward    
+;1+ )7 * )(modnar.htaM(roolf.htaM=eulaVrebmuNweNpot    
+;eulaVrebmuNpot = ]xednIrebmuNpot[srebmun    
+rebmun pot wen eht rof xedni nmuloc tcerroc eht ot xednIrebmuNpot eht teS // ;nmuloCtegrat = xednIrebmuNpot    
+)dirg elbisiv eht evoba( dirg eht fo pot eht ta rebmun pot eht teS //    
+
+rebmun pot wen eht rof )nmuloc elddim( 3 ot nmuloCtegrat eht teseR // ;3 = nmuloCtegrat    
+;eulaVrebmuNweNpot = eulaVrebmuNpot    
+{ )(rebmuNpoTweNetareneg noitcnuf
+
+}
+srebmun detadpu eht htiw dirg eht ward ot erus ekaM //  ;)(dirGward    
+;)(rebmuNpoTweNetareneg    
+}    
+;)srebmun(erocs        
+{)eurt==derocs(fi    
+;srebmuNwen = srebmun    
+;srebmun=srebmuNdlo tel    
+;)srebmuNwen(ytivarGylppa=srebmuNwen    
+;)'srorre tuohtiw detelpmoc noitcnuf erocS'(gol.elosnoc    
+
+;)}    
+;denifednu = ]meti[srebmuNwen        
+{ )xedni ,meti(noitcnuf(hcaErof.fidoMot    
+}    
+}        
+}            
+}                
+;)rosruc(hsup.fidoMot                    
+rebmun eht esarE //  ;denifednu = ]rosruc[srebmuNwen//                    
+;++stp                    
+;eurt=derocs                    
+;)rosruc ,srebmuNwen(llawerif=srebmuNwen                    
+{ )tnuoCloc == ]rosruc[srebmuNwen || tnuoCwor == ]rosruc[srebmuNwen( fi                
+
+};eunitnoc;++tnuoCloc{) 7=+nwoDloCrosruc ;denifednu =! ]nwoDloCrosruc[srebmuNwen && htgnel.srebmuNwen < nwoDloCrosruc ;7 + rosruc = nwoDloCrosruc tel( rof                
+};eunitnoc;++tnuoCloc{) 7 =- pUloCrosruc ;denifednu =! ]pUloCrosruc[srebmuNwen && 0 => pUloCrosruc ;7 - rosruc = pUloCrosruc tel( rof                
+}eunitnoc;7=+nwoDloCrosruc{)rosruc ;denifednu =! ]nwoDloCrosruc[srebmuNwen && htgnel.srebmuNwen < nwoDloCrosruc ;7 + rosruc = nwoDloCrosruc tel( rof//                
+}eunitnoc;7=-tnuoCloc{) 7 =- pUloCrosruc ;denifednu =! ]pUloCrosruc[srebmuNwen && 0 => pUloCrosruc ;7 - rosruc = pUloCrosruc tel( rof //                
+};eunitnoc;++tnuoCwor{) ++thgiRwoRrosruc ;denifednu =! ]thgiRwoRrosruc[srebmuNwen && 0 =! 7 % thgiRwoRrosruc ;1 + rosruc = thgiRwoRrosruc tel( rof                
+};eunitnoc;++tnuoCwor{)--tfeLwoRrosruc ;denifednu =! ]tfeLwoRrosruc[srebmuNwen && 0 =! 7 %)1+ tfeLwoRrosruc( ;1 - rosruc = tfeLwoRrosruc tel( rof                
+
+;1 = tnuoCloc tel                
+;1 = tnuoCwor tel                
+{ )raVym == ]rosruc[srebmuNwen( fi            
+{ )--raVym ;0 > raVym ;8 = raVym tel( rof        
+{ )--rosruc ;7 => rosruc ;1 - htgnel.srebmuNwen = rosruc tel( rof    
+
+;eslaf=derocs tel    
+;][ = fidoMot tel    
+srebmun fo ypoc a ekaM //  ;srebmun = srebmuNwen tel    
+;)'dellac noitcnuf erocS'(gol.elosnoc    
+{ )srebmun(erocs noitcnuf
+
+}
+;)'detelpmoc noitcnuf pUseniLhsup'(gol.elosnoc    
+;)(dirGward    
+
+}    
+;"=" = ]xedni[srebmun        
+;)xedni ,':xedni' ,loc ,':loc ,= htiw wor tsal gnillif'(gol.elosnoc        
+;loc + eziSdirg * )1 - thgieHdirg( = xedni tsnoc        
+{ )++loc ;eziSdirg < loc ;0 = loc tel( rof    
+"=" htiw wor tsal eht lliF //    
+
+}    
+}        
+;]xednItxen[srebmun = ]xednItnerruc[srebmun            
+;)srebmun ,':srebmun' ,xednItxen ,':xednItxen' ,xednItnerruc ,':xednItnerruc' ,loc ,':loc' ,wor ,':wor'(gol.elosnoc            
+;loc + eziSdirg * )1 + wor( = xednItxen tsnoc            
+;loc + eziSdirg * wor = xednItnerruc tsnoc            
+{ )++loc ;eziSdirg < loc ;0 = loc tel( rof        
+{ )++wor ;1 - thgieHdirg < wor ;0 = wor tel( rof    
+pu wor eno rebmun hcae tfihS //    
+
+;)'dellac noitcnuf pUseniLhsup'(gol.elosnoc    
+{ )(pUseniLhsup noitcnuf
+
+}
+}    
+;eslaf : 0=tnuoCworrAnwod ? ]i[sexedni        
+;eslaf : )(revOemaGtnirp ? ]i[sexedni        
+;eslaf : )(pooLroFrevOemag ? ]i[sexedni        
+;)"... gniyalp llits :raelc" ,i ," xednI"(gol.elosnoc : )"!revO emaG :dehcuot " ,i," xednI"(gol.elosnoc ? ]i[sexedni        
+;eslaf : eurt ? )denifednu =! ]i[srebmun( = ]i[sexedni        
+{)++i ;7 < i ;0 = i tel(rof    
+][ = sexedni tel    
+{)(revOemag noitcnuf
+
+}
+;)(hctiwSneercs    
+;eslaf=emaGni    
+;eurt=neercSniam    
+;0=stp    
+;)"! stnioP "+ stp + "n\! revO emaG"(trela    
+{)(revOemaGtnirp noitcnuf
+
+}
+}    
+;denifednu=]i[srebmun        
+{)++i ;htgnel.srebmun < i ;0 = i tel( rof    
+{)(pooLroFrevOemag noitcnuf
+
+}
+;dirg nruter    
+
+}    
+}        
+}            
+}                
+;kaerb                    
+;denifednu = ]j[dirg                    
+;]j[dirg = ]i[dirg                    
+{ )denifednu ==! ]j[dirg( fi                
+{ )7=-j ;0 => j ;7 - i = j tel( rof            
+paws dna evoba tnemele denifednu-non txen eht rof kooL //            
+{ )denifednu === ]i[dirg( fi        
+tnemele denifednu na retnuocne ew fI //        
+{ )--i ;7 => i ;1 - htgnel.dirg = i tel( rof    
+dirg eht fo dne eht morf tratS //    
+{ )dirg(ytivarGylppa noitcnuf
+
+}
+;dirg nruter    
+
+}    
+;1 + )7 * )(modnar.htaM(roolf.htaM=]7+rosruc[dirg            
+{)"-"==]7+rosruc[dirg( fi esle}    
+
+;"-"=]7+rosruc[dirg            
+{)"="==]7+rosruc[dirg(fi}    
+
+;1 + )7 * )(modnar.htaM(roolf.htaM=]1+rosruc[dirg            
+{)"-"==]1+rosruc[dirg(fi esle}    
+
+;"-"=]1+rosruc[dirg            
+{)"="==]1+rosruc[dirg(fi    
+
+}    
+;1 + )7 * )(modnar.htaM(roolf.htaM=]1-rosruc[dirg            
+{)"-"==]1-rosruc[dirg(fi esle}    
+
+;"-"=]1-rosruc[dirg        
+{)"="==]1-rosruc[dirg(fi    
+{)rosruc ,dirg(llawerif noitcnuf
 
 }
 
-function firewall(grid, cursor){
-    if(grid[cursor-1]=="="){
-        grid[cursor-1]="-";
+}	
+;)(dirGward		
+{)neercSniam( fi esle	
+}	
+;)(dirGward		
+{)emaGni(fi	
+{)(hctiwSneercs noitcnuf
 
-    }else if(grid[cursor-1]=="-"){
-            grid[cursor-1]=Math.floor(Math.random() * 7) + 1;
-    }
-
-    if(grid[cursor+1]=="="){
-            grid[cursor+1]="-";
-
-    }else if(grid[cursor+1]=="-"){
-            grid[cursor+1]=Math.floor(Math.random() * 7) + 1;
-
-    }if(grid[cursor+7]=="="){
-            grid[cursor+7]="-";
-
-    }else if (grid[cursor+7]=="-"){
-            grid[cursor+7]=Math.floor(Math.random() * 7) + 1;
-    }
-
-    return grid;
-}
-
-function applyGravity(grid) {
-    // Start from the end of the grid
-    for (let i = grid.length - 1; i >= 7; i--) {
-        // If we encounter an undefined element
-        if (grid[i] === undefined) {
-            // Look for the next non-undefined element above and swap
-            for (let j = i - 7; j >= 0; j-=7) {
-                if (grid[j] !== undefined) {
-                    grid[i] = grid[j];
-                    grid[j] = undefined;
-                    break;
-                }
-            }
-        }
-    }
-
-    return grid;
-}
-
-function gameOverForLoop(){
-    for (let i = 0; i < numbers.length; i++){
-        numbers[i]=undefined;
-    }
-}
-
-function printGameOver(){
-    alert("Game Over !\n" + pts +" Points !");
-    pts=0;
-    mainScreen=true;
-    inGame=false;
-    screenSwitch();
-}
-
-function gameOver(){
-    let indexes = []
-    for(let i = 0; i < 7; i++){
-        indexes[i] = (numbers[i] != undefined) ? true : false;
-        indexes[i] ? console.log("Index ",i, " touched: Game Over!") : console.log("Index ", i, "clear: still playing ...");
-        indexes[i] ? gameOverForLoop() : false;
-        indexes[i] ? printGameOver() : false;
-        indexes[i] ? downArrowCount=0 : false;
-    }
-}
-
-function pushLinesUp() {
-    console.log('pushLinesUp function called');
-
-    // Shift each number one row up
-    for (let row = 0; row < gridHeight - 1; row++) {
-        for (let col = 0; col < gridSize; col++) {
-            const currentIndex = row * gridSize + col;
-            const nextIndex = (row + 1) * gridSize + col;
-            console.log('row:', row, 'col:', col, 'currentIndex:', currentIndex, 'nextIndex:', nextIndex, 'numbers:', numbers);
-            numbers[currentIndex] = numbers[nextIndex];
-        }
-    }
-
-    // Fill the last row with "="
-    for (let col = 0; col < gridSize; col++) {
-        const index = (gridHeight - 1) * gridSize + col;
-        console.log('filling last row with =, col:', col, 'index:', index);
-        numbers[index] = "=";
-    }
-
-    drawGrid();
-    console.log('pushLinesUp function completed');
-}
-
-function score(numbers) {
-    console.log('Score function called');
-    let newNumbers = numbers;  // Make a copy of numbers
-    let toModif = [];
-    let scored=false;
-
-    for (let cursor = newNumbers.length - 1; cursor >= 7; cursor--) {
-        for (let myVar = 8; myVar > 0; myVar--) {
-            if (newNumbers[cursor] == myVar) {
-                let rowCount = 1;
-                let colCount = 1;
-
-                for (let cursorRowLeft = cursor - 1; (cursorRowLeft +1)% 7 != 0 && newNumbers[cursorRowLeft] != undefined; cursorRowLeft--){rowCount++;continue;}
-                for (let cursorRowRight = cursor + 1; cursorRowRight % 7 != 0 && newNumbers[cursorRowRight] != undefined; cursorRowRight++ ){rowCount++;continue;}
-                // for (let cursorColUp = cursor - 7; cursorColUp >= 0 && newNumbers[cursorColUp] != undefined; cursorColUp -= 7 ){colCount-=7;continue}
-                //for (let cursorColDown = cursor + 7; cursorColDown < newNumbers.length && newNumbers[cursorColDown] != undefined; cursor){cursorColDown+=7;continue}
-                for (let cursorColUp = cursor - 7; cursorColUp >= 0 && newNumbers[cursorColUp] != undefined; cursorColUp -= 7 ){colCount++;continue;}
-                for (let cursorColDown = cursor + 7; cursorColDown < newNumbers.length && newNumbers[cursorColDown] != undefined; cursorColDown+=7 ){colCount++;continue;}
-
-                if (newNumbers[cursor] == rowCount || newNumbers[cursor] == colCount) {
-                    newNumbers=firewall(newNumbers, cursor);
-                    scored=true;
-                    pts++;
-                    //newNumbers[cursor] = undefined;  // Erase the number
-                    toModif.push(cursor);
-                }
-            }
-        }
-    }
-    toModif.forEach(function(item, index) {
-        newNumbers[item] = undefined;
-    });
-
-    console.log('Score function completed without errors');
-    newNumbers=applyGravity(newNumbers);
-    let oldNumbers=numbers;
-    numbers = newNumbers;
-    if(scored==true){
-        score(numbers);
-    }
-    generateNewTopNumber();
-    drawGrid();  // Make sure to draw the grid with the updated numbers
-}
-
-function generateNewTopNumber() {
-    topNumberValue = topNewNumberValue;
-    targetColumn = 3; // Reset the targetColumn to 3 (middle column) for the new top number
-
-    // Set the top number at the top of the grid (above the visible grid)
-    topNumberIndex = targetColumn; // Set the topNumberIndex to the correct column index for the new top number
-    numbers[topNumberIndex] = topNumberValue;
-    topNewNumberValue=Math.floor(Math.random() * 7) +1;
-    drawGrid();
-}
