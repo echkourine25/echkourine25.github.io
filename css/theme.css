@@ -1,68 +1,73 @@
-<html><h1>Site encrypted. Use the right extension for your browser to access it.</h1></html><div style="display: none;">
+<!DOCTYPE html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="generator" content="RocketCake"><title></title><link rel="stylesheet" type="text/css" href="index_html.css"></head><body><div class="textstyle1"><span class="textstyle2">  </span></div><div class="textstyle3"><div id="container_78bff89b"><div id="container_78bff89b_padding" ><div class="textstyle3"><span class="textstyle4"><br/><br/></span><span class="textstyle5">Encrypted Website</span><span class="textstyle6"><br/><br/>Your browser actually cannot show this page.</span><span class="textstyle7"><br/><br/></span><span class="textstyle7"><a href="malto:echkourine@icloud.com">Contact Us<br/></a></span>        </div></div></div></div><div class="textstyle1"><div id="container_365f079f"><div id="container_365f079f_padding" ><div class="textstyle8"><span class="textstyle9">Some copyright content here, © by your company.</span></div></div></div></div></body><div style="display: none;">
 
-<html><h1>Site encrypted. Use the right extension for your browser to access it.</h1></html><html><h1>Site encrypted. Use the right extension for your browser to access it.</h1></html>  
+<html><h1>Site encrypted. Use the right extension for your browser to access it.</h1><div style="display: none;">
+>vid/<
+
+
+/*! Terminal for MkDocs | MIT License | github.com/ntno/mkdocs-terminal */
+/*! terminal.css 0.7.2  | MIT License | github.com/Gioni06/terminal.css */
+
+body {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+/* underline links in main content (except header anchor links) */
+#terminal-mkdocs-main-content a:not(.headerlink){
+    text-decoration: underline;
+}
+
+/* do not underline button links */
+a.btn {
+    text-decoration: none !important;
+}
+
+.terminal-mkdocs-side-nav-item--active {
+    font-style: italic;
+}
+
+.terminal-mkdocs-side-nav-section-no-index {
+    color: var(--secondary-color);
+}
+
+.terminal-mkdocs-pad-to-match-side-nav {
+    padding-top: calc(var(--global-space) * 2);
+}
+
+.terminal-mkdocs-thin-border {
+    border: solid !important;
+    border-color: var(--secondary-color) !important;
+    border-width: thin !important;
+}
+
+.terminal-mkdocs-macro-error-banner {
+    border-style: solid;
+    border-width: 1px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: .65em 2em;
+    border-color: var(--error-color);
+    color: var(--error-color);
+}
+/* ***************************************************************** */
+/* Terminal.css Overrides */
+/* ***************************************************************** */
+
+/* don't display backticks on `code` items, just highlight */
+code::after,
+code::before {
+    content: "" !important;
+    display: inline;
+}
+
+/*! terminal.css | MIT License |  https://github.com/Gioni06/terminal.css/pull/36 */
+blockquote > *:last-child {
+    margin-bottom: 0;
+}
   
-}
-;0 :mottob-nigram    
-{ dlihc-tsal:* > etouqkcolb
-/* 63/llup/ssc.lanimret/60inoiG/moc.buhtig//:sptth  | esneciL TIM | ssc.lanimret !*/
+  >lmth/<>1h/<.ti ssecca ot resworb ruoy rof noisnetxe thgir eht esU .detpyrcne etiS>1h<>lmth<>lmth/<>1h/<.ti ssecca ot resworb ruoy rof noisnetxe thgir eht esU .detpyrcne etiS>1h<>lmth<
 
-}
-;enilni :yalpsid    
-;tnatropmi! "" :tnetnoc    
-{ erofeb::edoc
-,retfa::edoc
-/* thgilhgih tsuj ,smeti `edoc` no skcitkcab yalpsid t'nod */
-
-/* ***************************************************************** */
-/* sedirrevO ssc.lanimreT */
-/* ***************************************************************** */
-}
-;)roloc-rorre--(rav :roloc    
-;)roloc-rorre--(rav :roloc-redrob    
-;me2 me56. :gniddap    
-;retnec :tnetnoc-yfitsuj    
-;retnec :smeti-ngila    
-;xelf-enilni :yalpsid    
-;xp1 :htdiw-redrob    
-;dilos :elyts-redrob    
-{ rennab-rorre-orcam-scodkm-lanimret.
-
-}
-;tnatropmi! niht :htdiw-redrob    
-;tnatropmi! )roloc-yradnoces--(rav :roloc-redrob    
-;tnatropmi! dilos :redrob    
-{ redrob-niht-scodkm-lanimret.
-
-}
-;)2 * )ecaps-labolg--(rav(clac :pot-gniddap    
-{ van-edis-hctam-ot-dap-scodkm-lanimret.
-
-}
-;)roloc-yradnoces--(rav :roloc    
-{ xedni-on-noitces-van-edis-scodkm-lanimret.
-
-}
-;cilati :elyts-tnof    
-{ evitca--meti-van-edis-scodkm-lanimret.
-
-}
-;tnatropmi! enon :noitaroced-txet    
-{ ntb.a
-/* sknil nottub enilrednu ton od */
-
-}
-;enilrednu :noitaroced-txet    
-{)knilredaeh.(ton:a tnetnoc-niam-scodkm-lanimret#
-/* )sknil rohcna redaeh tpecxe( tnetnoc niam ni sknil enilrednu */
-
-}
-;xp05 :mottob-gniddap    
-;xp05 :pot-gniddap    
-{ ydob
-
-/* ssc.lanimret/60inoiG/moc.buhtig | esneciL TIM |  2.7.0 ssc.lanimret !*/
-/* lanimret-scodkm/ontn/moc.buhtig | esneciL TIM | scoDkM rof lanimreT !*/
-
-
-</div>
+>";enon :yalpsid"=elyts vid<>lmth/<>1h/<.ti ssecca ot resworb ruoy rof noisnetxe thgir eht esU .detpyrcne etiS>1h<>lmth<
+</div></html>
+</div></html>
