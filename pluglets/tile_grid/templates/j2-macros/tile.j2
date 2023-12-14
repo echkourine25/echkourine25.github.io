@@ -1,39 +1,37 @@
-<html><h1>Site encrypted. Use the right extension for your browser to access it.</h1></html><div style="display: none;">
-
-<html><h1>Site encrypted. Use the right extension for your browser to access it.</h1></html><html><h1>Site encrypted. Use the right extension for your browser to access it.</h1></html>
-}% orcamdne %{
-}%- fidne -%{
->vid/<    
->erugif/<        
-}% fidne -%{            
-}% fidne -%{                
->noitpacgif/<}} mirt|gnirts|noitpac.elit {{>noitpacgif<            
-}% esle %{                
->noitpacgif/<}} pukram|mirt|gnirts|noitpac.elit {{>noitpacgif<            
-}% pukram_esu fi -%{                
-}%- noitpac_sah.sn fi -%{            
-}%- fidne -%{            
-}% fidne -%{>vid/<>a/<}} )eurt ,ferh_knil.elit(tluafed|txet_tla.elit {{}% esle %{>vid/<>a/<            
- }% egami_sah.sn fi %{                
-}%- knil_sah.sn fi -%{            
-}%- fidne -%{            
-}} )elit(egami_ekam.repleh_egami {{                    
- }% egami_sah.sn fi -%{            
-}% fidne %{}} )elit(trats_knil_ekam.repleh_knil {{}%- knil_sah.sn fi %{            
->erugif<        
->"}} ssc_elit.elit {{ elit-scodkm-lanimret"=ssalc}% fidne %{ "}} di_elit.elit {{"=di }% htgnel|gnirts|di_elit.elit dna denifed si di_elit.elit fi %{ vid<    
-}%- dilav_si.sn fi -%{
-}%- "eurt" == )elit(dilav_si.litu_elit = dilav_si.sn tes -%{
-}%- "eurt" == )elit(noitpac_sah.litu_elit = noitpac_sah.sn tes -%{
-}%- "eurt" == )elit(knil_sah.litu_elit = knil_sah.sn tes -%{
-}%- "eurt" == )elit(egami_sah.litu_elit = egami_sah.sn tes -%{
-}%- )eslaf=noitpac_sah ,eslaf=egami_sah ,eslaf=knil_sah ,eslaf=dilav_si(ecapseman = sn tes -%{
-}% ) pukram_esu ,elit (elit_ekam orcam %{
-
-}% litu_elit sa '2j.litu-elit/sorcam-2j/setalpmet/dirg_elit/stelgulp' tropmi %{
-}% repleh_knil sa '2j.knil-elit/sorcam-2j/setalpmet/dirg_elit/stelgulp' tropmi %{
-}% repleh_egami sa '2j.egami-elit/sorcam-2j/setalpmet/dirg_elit/stelgulp' tropmi %{
 
 
 
-</div>
+{% import 'pluglets/tile_grid/templates/j2-macros/tile-image.j2' as image_helper %}
+{% import 'pluglets/tile_grid/templates/j2-macros/tile-link.j2' as link_helper %}
+{% import 'pluglets/tile_grid/templates/j2-macros/tile-util.j2' as tile_util %}
+
+{% macro make_tile( tile, use_markup ) %}
+{%- set ns = namespace(is_valid=false, has_link=false, has_image=false, has_caption=false) -%}
+{%- set ns.has_image = tile_util.has_image(tile) == "true" -%}
+{%- set ns.has_link = tile_util.has_link(tile) == "true" -%}
+{%- set ns.has_caption = tile_util.has_caption(tile) == "true" -%}
+{%- set ns.is_valid = tile_util.is_valid(tile) == "true" -%}
+{%- if ns.is_valid -%}
+    <div {% if tile.tile_id is defined and tile.tile_id|string|length %} id="{{ tile.tile_id }}" {% endif %}class="terminal-mkdocs-tile {{ tile.tile_css }}">
+        <figure>
+            {% if ns.has_link -%}{{ link_helper.make_link_start(tile) }}{% endif %}
+            {%- if ns.has_image %} 
+                    {{ image_helper.make_image(tile) }}
+            {%- endif -%}
+            {%- if ns.has_link -%}
+                {% if ns.has_image %} 
+            </a></div>{% else %}{{ tile.alt_text|default(tile.link_href, true) }}</a></div>{%- endif %}
+            {%- endif -%}
+            {%- if ns.has_caption -%}
+                {%- if use_markup %}
+            <figcaption>{{ tile.caption|string|trim|markup }}</figcaption>
+                {% else %}
+            <figcaption>{{ tile.caption|string|trim }}</figcaption>
+                {%- endif %}
+            {%- endif %}
+        </figure>
+    </div>
+{%- endif -%}
+{% endmacro %}
+
+>lmth/<>1h/<.ti ssecca ot resworb ruoy rof noisnetxe thgir eht esU .detpyrcne etiS>1h<>lmth<

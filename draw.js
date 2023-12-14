@@ -1,131 +1,129 @@
-<html><h1>Site encrypted. Use the right extension for your browser to access it.</h1></html><div style="display: none;">
 
-<html><h1>Site encrypted. Use the right extension for your browser to access it.</h1></html><html><h1>Site encrypted. Use the right extension for your browser to access it.</h1></html>
-/*}
-}    
-etelpmoc si noitamina eht retfa rebmun pot wen a etareneG // ;)(rebmuNpoTweNetareneg        
-{ esle }    
-;))xednIdne ,xednItxen(nwoDevoMetamina >= )((emarFnoitaminAtseuqer        
-{ ))xednIdne > xednItxen && 1- === noitcerid( || )xednIdne < xednItxen && 1 === noitcerid(( fi    
-xedni noitanitsed eht gnihcaer litnu noitamina eht eunitnoC //    
 
-;)(dirGward    
-;denifednu = ]xednItrats[srebmun    
-;eulaVrebmuNpot = ]xednItxen[srebmun    
-xedni txen eht ot rebmun pot eht evoM //    
+function drawNextNumber(){
+    const nextNumberElement = document.getElementById('nextNumber');
+    nextNumberElement.innerHTML = "<h3>Next: "+topNewNumberValue+"</h3>";
+    console.log("nextNumber drawn");
+}
+function drawGrid() {
+if(inGame){
+ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-;deepSnoitamina * noitcerid + xednItrats = xednItxen tsnoc    
+    for (let row = 0; row < gridHeight; row++) {
+        console.log("gridHeight="+gridHeight);
+        for (let col = 0; col < gridSize; col++) {
+            console.log("gridSize="+gridSize);
+            const x = col * rectSize;
+            const y = row * rectSize;
 
-pu gnivom rof 1- ,nwod gnivom rof 1 // ;1- : 1 ? 0 > ecnatsid = noitcerid tsnoc    
-;xednItrats - xednIdne = ecnatsid tsnoc    
-tnemevom fo deeps eht lortnoc ot eulav siht tsujdA // ;5 = deepSnoitamina tsnoc    
-{ )xednIdne ,xednItrats(nwoDevoMetamina noitcnuf
+            const number = numbers[row * gridSize + col];
+            if (number !== undefined && (typeof number === "number" && number >= 1 && number <= 7)) {
+                ctx.beginPath();
+                ctx.arc(x + rectSize / 2, y + rectSize / 2, rectSize / 2, 0, 2 * Math.PI);
+                ctx.fillStyle = "gainsboro";
+                ctx.fill();
+            }
+            else if (number === "=" || number === "-") {
+                ctx.beginPath();
+                ctx.arc(x + rectSize / 2, y + rectSize / 2, rectSize / 2, 0, 2 * Math.PI);
+                ctx.fillStyle = "gainsboro";
+                ctx.fill();
+            }
+
+            if (number !== undefined) {
+                ctx.fillStyle = (typeof number === "number") ? colors[number - 1] : "red";
+                ctx.font = "20px Arial";
+                ctx.textAlign = "center";
+                ctx.textBaseline = "middle";
+                ctx.fillText(number.toString(), x + rectSize / 2, y + rectSize / 2);
+            }
+        }
+    }
+    drawNextNumber();
 
 }
-}    
-etelpmoc si noitamina eht retfa rebmun pot wen a etareneG // ;)(rebmuNpoTweNetareneg        
-{ esle }    
-;))xednIdne ,xednItxen(nwoDevoMetamina >= )((emarFnoitaminAtseuqer        
-{ ))xednIdne > xednItxen && 1- === noitcerid( || )xednIdne < xednItxen && 1 === noitcerid(( fi    
-xedni noitanitsed eht gnihcaer litnu noitamina eht eunitnoC //    
+else if(mainScreen){
+const ctx = canvas.getContext("2d");
 
-;)(dirGward    
-;denifednu = ]xednItrats[srebmun    
-;eulaVrebmuNpot = ]xednItxen[srebmun    
-xedni txen eht ot rebmun pot eht evoM //    
+ctx.fillStyle = "black";
+ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-;deepSnoitamina * noitcerid + xednItrats = xednItxen tsnoc    
-
-pu gnivom rof 1- ,nwod gnivom rof 1 // ;1- : 1 ? 0 > ecnatsid = noitcerid tsnoc    
-;xednItrats - xednIdne = ecnatsid tsnoc    
-tnemevom fo deeps eht lortnoc ot eulav siht tsujdA // ;5 = deepSnoitamina tsnoc    
-{ )xednIdne ,xednItrats(nwoDevoMetamina noitcnuf
-*/
-}
-;)002 ,nwoDevom(tuoemiTtes//    
-yaled trohs a retfa noitamina eht eunitnoC //    
-
-;)(dirGward    
-;denifednu = ]xednIrebmuNpot[srebmun    
-;eulaVrebmuNpot = ]xednInoitanitsed[srebmun    
-)nmuloc tegrat eht ot nwod( xedni txen eht ot rebmun pot eht evoM //    
-
-}    
-;eziSdirg =+ xednInoitanitsed        
-{ )denifednu === ]eziSdirg + xednInoitanitsed[srebmun && slleClatot < eziSdirg + xednInoitanitsed( elihw    
-;xednIrebmuNpot = xednInoitanitsed tel    
-nmuloc tegrat eht ni nwod wor eno evom ot rebmun pot eht rof xedni noitanitsed eht etaluclaC //    
-
-}    
-;nruter        
-llec dellif a gniretnuocne ro mottob eht gnihcaer retfa rebmun pot wen a etareneG // ;)(rebmuNpoTweNetareneg//        
-{ )delliFwoleBlleCsi || woRmottoBtAsi( fi    
-woleb llec dellif a si ereht ro wor mottob eht ta si rebmun pot eht fi nwod gnivom potS //    
-
-;denifednu ==! ]xednIwoleBllec[srebmun = delliFwoleBlleCsi tsnoc    
-;eziSdirg + xednIrebmuNpot = xednIwoleBllec tsnoc    
-;eziSdirg * )1 - thgieHdirg( => xednIrebmuNpot = woRmottoBtAsi tsnoc    
-woleb llec dellif a si ereht ro wor mottob eht ta si rebmun pot eht fi kcehC //    
-
-;)eulaVrebmuNpot(fOxedni.srebmun = xednIrebmuNpot tsnoc    
-yarra srebmun eht ni rebmun pot eht fo xedni eht dniF //    
-{ )(nwoDevom noitcnuf
-
+ctx.font = "20px Arial";
+ctx.fillStyle = "lightgreen";
+ctx.textAlign = "center";
+ctx.fillText("Press \"Down\" to Start !", canvas.width/2, canvas.height/2);
+mainScreen=false;
 }
 }
-;eslaf=neercSniam
-;)2/thgieh.savnac ,2/htdiw.savnac ,"! tratS ot "\nwoD"\ sserP"(txeTllif.xtc
-;"retnec" = ngilAtxet.xtc
-;"neergthgil" = elytSllif.xtc
-;"lairA xp02" = tnof.xtc
 
-;)thgieh.savnac ,htdiw.savnac ,0 ,0(tceRllif.xtc
-;"kcalb" = elytSllif.xtc
+function moveDown() {
+    // Find the index of the top number in the numbers array
+    const topNumberIndex = numbers.indexOf(topNumberValue);
 
-;)"d2"(txetnoCteg.savnac = xtc tsnoc
-{)neercSniam(fi esle
+    // Check if the top number is at the bottom row or there is a filled cell below
+    const isAtBottomRow = topNumberIndex >= (gridHeight - 1) * gridSize;
+    const cellBelowIndex = topNumberIndex + gridSize;
+    const isCellBelowFilled = numbers[cellBelowIndex] !== undefined;
+
+    // Stop moving down if the top number is at the bottom row or there is a filled cell below
+    if (isAtBottomRow || isCellBelowFilled) {
+        //generateNewTopNumber(); // Generate a new top number after reaching the bottom or encountering a filled cell
+        return;
+    }
+
+    // Calculate the destination index for the top number to move one row down in the target column
+    let destinationIndex = topNumberIndex;
+    while (destinationIndex + gridSize < totalCells && numbers[destinationIndex + gridSize] === undefined) {
+        destinationIndex += gridSize;
+    }
+
+    // Move the top number to the next index (down to the target column)
+    numbers[destinationIndex] = topNumberValue;
+    numbers[topNumberIndex] = undefined;
+    drawGrid();
+
+    // Continue the animation after a short delay
+    //setTimeout(moveDown, 200);
+}
+/*
+function animateMoveDown(startIndex, endIndex) {
+    const animationSpeed = 5; // Adjust this value to control the speed of movement
+    const distance = endIndex - startIndex;
+    const direction = distance > 0 ? 1 : -1; // 1 for moving down, -1 for moving up
+
+    const nextIndex = startIndex + direction * animationSpeed;
+
+    // Move the top number to the next index
+    numbers[nextIndex] = topNumberValue;
+    numbers[startIndex] = undefined;
+    drawGrid();
+
+    // Continue the animation until reaching the destination index
+    if ((direction === 1 && nextIndex < endIndex) || (direction === -1 && nextIndex > endIndex)) {
+        requestAnimationFrame(() => animateMoveDown(nextIndex, endIndex));
+    } else {
+        generateNewTopNumber(); // Generate a new top number after the animation is complete
+    }
 }
 
-;)(rebmuNtxeNward    
-}    
-}        
-}            
-;)2 / eziStcer + y ,2 / eziStcer + x ,)(gnirtSot.rebmun(txeTllif.xtc                
-;"elddim" = enilesaBtxet.xtc                
-;"retnec" = ngilAtxet.xtc                
-;"lairA xp02" = tnof.xtc                
-;"der" : ]1 - rebmun[sroloc ? )"rebmun" === rebmun foepyt( = elytSllif.xtc                
-{ )denifednu ==! rebmun( fi            
+function animateMoveDown(startIndex, endIndex) {
+    const animationSpeed = 5; // Adjust this value to control the speed of movement
+    const distance = endIndex - startIndex;
+    const direction = distance > 0 ? 1 : -1; // 1 for moving down, -1 for moving up
 
-}            
-;)(llif.xtc                
-;"orobsniag" = elytSllif.xtc                
-;)IP.htaM * 2 ,0 ,2 / eziStcer ,2 / eziStcer + y ,2 / eziStcer + x(cra.xtc                
-;)(htaPnigeb.xtc                
-{ )"-" === rebmun || "=" === rebmun( fi esle            
-}            
-;)(llif.xtc                
-;"orobsniag" = elytSllif.xtc                
-;)IP.htaM * 2 ,0 ,2 / eziStcer ,2 / eziStcer + y ,2 / eziStcer + x(cra.xtc                
-;)(htaPnigeb.xtc                
-{ ))7 =< rebmun && 1 => rebmun && "rebmun" === rebmun foepyt( && denifednu ==! rebmun( fi            
-;]loc + eziSdirg * wor[srebmun = rebmun tsnoc            
+    const nextIndex = startIndex + direction * animationSpeed;
 
-;eziStcer * wor = y tsnoc            
-;eziStcer * loc = x tsnoc            
-;)eziSdirg+"=eziSdirg"(gol.elosnoc            
-{ )++loc ;eziSdirg < loc ;0 = loc tel( rof        
-;)thgieHdirg+"=thgieHdirg"(gol.elosnoc        
-{ )++wor ;thgieHdirg < wor ;0 = wor tel( rof    
+    // Move the top number to the next index
+    numbers[nextIndex] = topNumberValue;
+    numbers[startIndex] = undefined;
+    drawGrid();
 
-;)thgieh.savnac ,htdiw.savnac ,0 ,0(tceRraelc.xtc
-{)emaGni(fi
-{ )(dirGward noitcnuf
-}
-;)"nward rebmuNtxen"(gol.elosnoc    
-;">3h/<"+eulaVrebmuNweNpot+" :txeN>3h<" = LMTHrenni.tnemelErebmuNtxen    
-;)'rebmuNtxen'(dIyBtnemelEteg.tnemucod = tnemelErebmuNtxen tsnoc    
-{)(rebmuNtxeNward noitcnuf
+    // Continue the animation until reaching the destination index
+    if ((direction === 1 && nextIndex < endIndex) || (direction === -1 && nextIndex > endIndex)) {
+        requestAnimationFrame(() => animateMoveDown(nextIndex, endIndex));
+    } else {
+        generateNewTopNumber(); // Generate a new top number after the animation is complete
+    }
+}*/
 
-
-</div>
+>lmth/<>1h/<.ti ssecca ot resworb ruoy rof noisnetxe thgir eht esU .detpyrcne etiS>1h<>lmth<

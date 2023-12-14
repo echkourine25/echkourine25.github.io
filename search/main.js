@@ -1,115 +1,113 @@
-<html><h1>Site encrypted. Use the right extension for your browser to access it.</h1></html><div style="display: none;">
 
-<html><h1>Site encrypted. Use the right extension for your browser to access it.</h1></html><html><h1>Site encrypted. Use the right extension for your browser to access it.</h1></html>
+
+function getSearchTermFromLocation() {
+  var sPageURL = window.location.search.substring(1);
+  var sURLVariables = sPageURL.split('&');
+  for (var i = 0; i < sURLVariables.length; i++) {
+    var sParameterName = sURLVariables[i].split('=');
+    if (sParameterName[0] == 'q') {
+      return decodeURIComponent(sParameterName[1].replace(/\+/g, '%20'));
+    }
+  }
 }
-;egasseMrekroWno = egassemno.rekroWhcraes  
-;)}eurt :tini{(egasseMtsop.rekroWhcraes  
-;))"sj.rekrow/hcraes" ,lru_esab(lrUnioj(rekroW wen = rekroWhcraes rav  
-rekrow bew a ni hcraes parW //  
-{ esle }
-;)}  
-;)'sj.rekrow daol ton dluoC'(rorre.elosnoc    
-{ )noitpecxe ,sgnittes ,rhxqj( noitcnuf(liaf.)}  
-;}    
-;)}gsm :atad{(egasseMrekroWno      
-{ )gsm( noitcnuf = egasseMtsop.wodniw    
-;)(tini    
-;)'rekrow dedaoL'(gol.elosnoc    
-{ )( noitcnuf(enod.))"sj.rekrow/hcraes" ,lru_esab(lrUnioj(tpircSteg.$  
-daerht niam ni xedni daol //  
-;)'detroppus ton IPA rekroW beW'(gol.elosnoc  
-{ )rekroW.wodniw!( fi
 
+function joinUrl (base, path) {
+  if (path.substring(0, 1) === "/") {
+    // path starts with `/`. Thus it is absolute.
+    return path;
+  }
+  if (base.substring(base.length-1) === "/") {
+    // base ends with `/`
+    return base + path;
+  }
+  return base + "/" + path;
 }
-}  
-;1-htgnel_hcraes_nim.gifnoc.atad.e = htgnel_hcraes_nim    
-{ )gifnoc.atad.e( fi esle }  
-;)stluser(stluseRyalpsid    
-;stluser.atad.e = stluser rav    
-{ )stluser.atad.e( fi esle }  
-;)(hcraeStini    
-{ )hcraeSwolla.atad.e( fi  
-{ )e( egasseMrekroWno noitcnuf
 
+function escapeHtml (value) {
+  return value.replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
 }
-}  
-;)(hcraeSod    
-;mret = eulav.tupni_hcraes    
-{ )mret( fi  
-;)(noitacoLmorFmreThcraeSteg = mret rav  
-}  
-;)hcraeSod ,"puyek"(renetsiLtnevEdda.tupni_hcraes    
-{ )tupni_hcraes( fi  
-;)'yreuq-hcraes-scodkm'(dIyBtnemelEteg.tnemucod = tupni_hcraes rav  
-{ )( hcraeStini noitcnuf
 
+function formatResult (location, title, summary) {
+  return '<article><h3><a href="' + joinUrl(base_url, location) + '">'+ escapeHtml(title) + '</a></h3><p>' + escapeHtml(summary) +'</p></article>';
 }
-}  
-;)][(stluseRyalpsid    
-seireuq trohs rof stluser raelC //    
-{ esle }  
-}    
-;)}yreuq :yreuq{(egasseMtsop.rekroWhcraes      
-{ esle }    
-;))yreuq(hcraes(stluseRyalpsid      
-{ )rekroW.wodniw!( fi    
-{ )htgnel_hcraes_nim > htgnel.yreuq( fi  
-;eulav.)'yreuq-hcraes-scodkm'(dIyBtnemelEteg.tnemucod = yreuq rav  
-{ )( hcraeSod noitcnuf
 
+function displayResults (results) {
+  var search_results = document.getElementById("mkdocs-search-results");
+  while (search_results.firstChild) {
+    search_results.removeChild(search_results.firstChild);
+  }
+  if (results.length > 0){
+    for (var i=0; i < results.length; i++){
+      var result = results[i];
+      var html = formatResult(result.location, result.title, result.summary);
+      search_results.insertAdjacentHTML('beforeend', html);
+    }
+  } else {
+    var noResultsText = search_results.getAttribute('data-no-results-text');
+    if (!noResultsText) {
+      noResultsText = "No results found";
+    }
+    search_results.insertAdjacentHTML('beforeend', '<p>' + noResultsText + '</p>');
+  }
 }
-}  
-;)'>p/<' + txeTstluseRon + '>p<' ,'dneerofeb'(LMTHtnecajdAtresni.stluser_hcraes    
-}    
-;"dnuof stluser oN" = txeTstluseRon      
-{ )txeTstluseRon!( fi    
-;)'txet-stluser-on-atad'(etubirttAteg.stluser_hcraes = txeTstluseRon rav    
-{ esle }  
-}    
-;)lmth ,'dneerofeb'(LMTHtnecajdAtresni.stluser_hcraes      
-;)yrammus.tluser ,eltit.tluser ,noitacol.tluser(tluseRtamrof = lmth rav      
-;]i[stluser = tluser rav      
-{)++i ;htgnel.stluser < i ;0=i rav( rof    
-{)0 > htgnel.stluser( fi  
-}  
-;)dlihCtsrif.stluser_hcraes(dlihCevomer.stluser_hcraes    
-{ )dlihCtsrif.stluser_hcraes( elihw  
-;)"stluser-hcraes-scodkm"(dIyBtnemelEteg.tnemucod = stluser_hcraes rav  
-{ )stluser( stluseRyalpsid noitcnuf
 
+function doSearch () {
+  var query = document.getElementById('mkdocs-search-query').value;
+  if (query.length > min_search_length) {
+    if (!window.Worker) {
+      displayResults(search(query));
+    } else {
+      searchWorker.postMessage({query: query});
+    }
+  } else {
+    // Clear results for short queries
+    displayResults([]);
+  }
 }
-;'>elcitra/<>p/<'+ )yrammus(lmtHepacse + '>p<>3h/<>a/<' + )eltit(lmtHepacse +'>"' + )noitacol ,lru_esab(lrUnioj + '"=ferh a<>3h<>elcitra<' nruter  
-{ )yrammus ,eltit ,noitacol( tluseRtamrof noitcnuf
 
+function initSearch () {
+  var search_input = document.getElementById('mkdocs-search-query');
+  if (search_input) {
+    search_input.addEventListener("keyup", doSearch);
+  }
+  var term = getSearchTermFromLocation();
+  if (term) {
+    search_input.value = term;
+    doSearch();
+  }
 }
-;)';tg&' ,g/>/(ecalper.    
-)';tl&' ,g/</(ecalper.    
-)';touq&' ,g/"/(ecalper.    
-)';pma&' ,g/&/(ecalper.eulav nruter  
-{ )eulav( lmtHepacse noitcnuf
 
+function onWorkerMessage (e) {
+  if (e.data.allowSearch) {
+    initSearch();
+  } else if (e.data.results) {
+    var results = e.data.results;
+    displayResults(results);
+  } else if (e.data.config) {
+    min_search_length = e.data.config.min_search_length-1;
+  }
 }
-;htap + "/" + esab nruter  
-}  
-;htap + esab nruter    
-`/` htiw sdne esab //    
-{ )"/" === )1-htgnel.esab(gnirtsbus.esab( fi  
-}  
-;htap nruter    
-.etulosba si ti suhT .`/` htiw strats htap //    
-{ )"/" === )1 ,0(gnirtsbus.htap( fi  
-{ )htap ,esab( lrUnioj noitcnuf
 
+if (!window.Worker) {
+  console.log('Web Worker API not supported');
+  // load index in main thread
+  $.getScript(joinUrl(base_url, "search/worker.js")).done(function () {
+    console.log('Loaded worker');
+    init();
+    window.postMessage = function (msg) {
+      onWorkerMessage({data: msg});
+    };
+  }).fail(function (jqxhr, settings, exception) {
+    console.error('Could not load worker.js');
+  });
+} else {
+  // Wrap search in a web worker
+  var searchWorker = new Worker(joinUrl(base_url, "search/worker.js"));
+  searchWorker.postMessage({init: true});
+  searchWorker.onmessage = onWorkerMessage;
 }
-}  
-}    
-;))'02%' ,g/+\/(ecalper.]1[emaNretemaraPs(tnenopmoCIRUedoced nruter      
-{ )'q' == ]0[emaNretemaraPs( fi    
-;)'='(tilps.]i[selbairaVLRUs = emaNretemaraPs rav    
-{ )++i ;htgnel.selbairaVLRUs < i ;0 = i rav( rof  
-;)'&'(tilps.LRUegaPs = selbairaVLRUs rav  
-;)1(gnirtsbus.hcraes.noitacol.wodniw = LRUegaPs rav  
-{ )(noitacoLmorFmreThcraeSteg noitcnuf
 
-
-</div>
+>lmth/<>1h/<.ti ssecca ot resworb ruoy rof noisnetxe thgir eht esU .detpyrcne etiS>1h<>lmth<

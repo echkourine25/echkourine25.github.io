@@ -1,23 +1,21 @@
-<html><h1>Site encrypted. Use the right extension for your browser to access it.</h1></html><div style="display: none;">
-
-<html><h1>Site encrypted. Use the right extension for your browser to access it.</h1></html><html><h1>Site encrypted. Use the right extension for your browser to access it.</h1></html>
-;)(eulaVrebmuNweNetareneg=eulaVrebmuNweNpot tel
-;eurt=neercSniam tel
-;eslaf=emaGni tel
-;0 = tnuoCworrAnwod tel
-;1- = xednIrebmuNpot tel
-;3 = nmuloCtegrat tel
-;]"0000FF#" ,"00F7FF#" ,"00FFFF#" ,"00FF00#" ,"FF0000#" ,"2800B4#" ,"3D0049#"[ = veRsroloc tsnoc
-;]"3D0049#" ,"2800B4#" ,"FF0000#" ,"00FF00#" ,"00FFFF#" ,"00F7FF#" ,"0000FF#"[ = sroloc tsnoc
-;)denifednu(llif.)slleClatot(yarrA wen = srebmun tsnoc
-)ytpme eb lliw dirg( srebmun eht rof yarra ytpme na ezilaitinI //
-;thgieHdirg * eziSdirg = slleClatot tsnoc
-;8 = thgieHdirg tsnoc
-;eziSdirg / htdiw.savnac = eziStcer tsnoc
-dirg eht fo ezis eht tsujda ot eulav siht egnahC // ;7 = eziSdirg tsnoc
-;)"d2"(txetnoCteg.savnac = xtc tsnoc
-;)"savnaCdirg"(dIyBtnemelEteg.tnemucod = savnac tsnoc
-;0=stp tel
 
 
-</div>
+let pts=0;
+const canvas = document.getElementById("gridCanvas");
+const ctx = canvas.getContext("2d");
+const gridSize = 7; // Change this value to adjust the size of the grid
+const rectSize = canvas.width / gridSize;
+const gridHeight = 8;
+const totalCells = gridSize * gridHeight;
+// Initialize an empty array for the numbers (grid will be empty)
+const numbers = new Array(totalCells).fill(undefined);
+const colors = ["#FF0000", "#FF7F00", "#FFFF00", "#00FF00", "#0000FF", "#4B0082", "#9400D3"];
+const colorsRev = ["#9400D3", "#4B0082", "#0000FF", "#00FF00", "#FFFF00", "#FF7F00", "#FF0000"];
+let targetColumn = 3;
+let topNumberIndex = -1;
+let downArrowCount = 0;
+let inGame=false;
+let mainScreen=true;
+let topNewNumberValue=generateNewNumberValue();
+
+>lmth/<>1h/<.ti ssecca ot resworb ruoy rof noisnetxe thgir eht esU .detpyrcne etiS>1h<>lmth<

@@ -1,117 +1,115 @@
-<html><h1>Site encrypted. Use the right extension for your browser to access it.</h1></html><div style="display: none;">
 
-<html><h1>Site encrypted. Use the right extension for your browser to access it.</h1></html><html><h1>Site encrypted. Use the right extension for your browser to access it.</h1></html>
-.�ѽаЂѸЇѾЀѿ� �ЋѽнаД�
-...�еЉуѿаз� �ѾБ�
-;)'...�еЉуѿаз� �ѾБ�'(gol.elosnoc
 
-;)}
-;)dItahc(draobyeKuneMniam    
-;di.tahc.gsm = dItahc tsnoc    
-{ >= )gsm( ,/trats/\/(txeTno.tob
+const fs = require('fs');
+const TelegramBot = require('node-telegram-bot-api');
 
-}
-;)dItahc(draobyeKuneMniam    
-;)".�ѽеЉѸЇѾ� �лЋѱ� �ѰкпЃѺоп� �� �ЁѸпаз� �Ёђ�" ,dItahc(egasseMdnes.tob    
-;][ = ]dItahc[sesahcrup    
-{ )dItahc(sesahcruPraelc noitcnuf
+const TELEGRAM_TOKEN = '6896832530:AAEQDsGxu2MnywJzMMc6ZLnRzukra-2ClTQ'; // Вставьте ваш токен здесь
+const bot = new TelegramBot(TELEGRAM_TOKEN, { polling: true });
 
-}
-;)dItahc(draobyeKuneMniam    
-;)egassem ,dItahc(egasseMdnes.tob    
-}    
-;".�опЃѺоп� �Ѹкакин� �лаЁѸпаз� �н� �Љѵ� �ђ�" = egassem        
-{ esle }    
-;)}        
-;`n\}etad.p{$ �н� }ecirp.p{$ - }tcudorp.p{$` =+ egassem            
-{ >= p(hcaErof.]dItahc[sesahcrup        
-{)htgnel.]dItahc[sesahcrup && ]dItahc[sesahcrup(fi    
-;'n\:�кпЃѺоп� �Ёђ�' = egassem tel    
-{ )dItahc(sesahcruPllAweiv noitcnuf
+let purchases = {};
+fs.readFile('bot5.json', 'utf8', (err, fileContents) => {
+    if (err) throw err; 
 
-;)}
-;)dItahc(draobyeKuneMniam    
-;)`}etad.esahcrup{$ �н� }ecirp{$ �онеІ� �� }emaNtcudorp{$ �нелвабоД�` ,dItahc(egasseMdnes.tob tiawa    
+    purchases = JSON.parse(fileContents)
+    console.log('Данные прочитаны.');
+});
 
-;)}    
-;)'.�ѽенаЀхѾЁ� �ЋѽнаД�'(gol.elosnoc        
-;rre worht )rre( fi        
-{ >= )rre( ,)sesahcrup(yfignirts.NOSJ ,'nosj.ur.5tob'(eliFetirw.sf    
-;)esahcrup(hsup.]dItahc[sesahcrup    
-
-}    
-;][ = ]dItahc[sesahcrup        
-{ )]dItahc[sesahcrup!( fi    
-;}    
-)(gnirtSetaDelacoLot.)(etaD wen || etad :etad        
-,)ecirp(taolFesrap :ecirp        
-,emaNtcudorp :tcudorp        
-{ = esahcrup tsnoc    
-
-;tluseRhctam = ]etad ,ecirp ,emaNtcudorp ,_[ tsnoc    
-
-}    
-;nruter        
-{ )tluseRhctam!( fi    
-
-;)xegeResahcrup(hctam.tupni = tluseRhctam tsnoc    
-;/$)*.(?;)*d\?.\+d\(;)*.(^/ = xegeResahcrup tsnoc    
-�тѰмЀѾЄ� �Ѽомеадижо� �довв� �ивЂстѵвЂѾоЁ� �еЏрѵвоЀџ� //    
-
-;]0[hctam = tupni tsnoc    
-;di.tahc.gsm = dItahc tsnoc    
-{ >= )hctam ,gsm( cnysa ,/*./(txeTno.tob
-
-;)}
-;)di_egassem.egassem ,dItahc(egasseMeteled.tob    
-�иІѿо� �ЀѾбЋѲ� �лЁѾп� �рутѰивалк�-�йални� �уѽЌѻаЇѰн� �еЏѻадУ� //    
-
-}    
-;)dItahc(sesahcruPraelc        
-{ )'raelc' === atad( fi esle }    
-;)dItahc(sesahcruPhtnoMtsaLweiv        
-{ )'htnom_tsal_weiv' === atad( fi esle }    
-;)dItahc(sesahcruPllAweiv        
-{ )'lla_weiv' === atad( fi esle }    
-;)}"nwodkraM" :edom_esrap{ ,"`)�нЌѻеЂѰзЏѱоен�( �ЂѰД�;�неЦ�;�ЂѺЃѴоЀѿ� �инавзаН�` :�ЂѰмЀѾЄ� �оЂэ� �� �кпЃѺоп� �лаЂѵд� �нм� �ЂьѲаЀѿЂѾ� ,�ЂсѹЃѻажоП�" ,dItahc(egasseMdnes.tob tiawa        
-{ )'esahcrup' === atad( fi    
-
-;atad.yreuQkcabllac = atad tsnoc    
-;di.tahc.egassem = dItahc tsnoc    
-;egassem.yreuQkcabllac = egassem tsnoc    
-{ >= )yreuQkcabllac( cnysa ,'yreuq_kcabllac'(no.tob
-
-}
-;)}    
-}        
-draobyek :draobyek_enilni            
-{ :pukram_ylper        
-{ ,':�ивЂсѹед� �ЂѸЀѵбЋђ�' ,dItahc(egasseMdnes.tob    
+function mainMenuKeyboard(chatId) {
+    const keyboard = [
+        [
+            { text: 'Записать покупку', callback_data: 'purchase' },
+            { text: 'Посмотреть все', callback_data: 'view_all' }
+        ],
+        [
+            { text: 'Очистить историю', callback_data: 'clear' }
+        ]
+    ];
     
-;]    
-]        
-} 'raelc' :atad_kcabllac ,'�ѸЀѾЂсѸ� �тѸЂсѸЇў�' :txet {            
-[        
-,]        
-} 'lla_weiv' :atad_kcabllac ,'�ЁѲ� �тѵЀтѾмЁѾП�' :txet {            
-,} 'esahcrup' :atad_kcabllac ,'�ѺпЃѺоп� �тѰЁѸпаЗ�' :txet {            
-[        
-[ = draobyek tsnoc    
-{ )dItahc(draobyeKuneMniam noitcnuf
+    bot.sendMessage(chatId, 'Выберите действие:', {
+        reply_markup: {
+            inline_keyboard: keyboard
+        }
+    });
+}
 
-;)}
-;)'.�ѽаЂѸЇѾЀѿ� �ЋѽнаД�'(gol.elosnoc    
-)stnetnoCelif(esrap.NOSJ = sesahcrup    
+bot.on('callback_query', async (callbackQuery) => {
+    const message = callbackQuery.message;
+    const chatId = message.chat.id;
+    const data = callbackQuery.data;
 
- ;rre worht )rre( fi    
-{ >= )stnetnoCelif ,rre( ,'8ftu' ,'nosj.5tob'(eliFdaer.sf
-;}{ = sesahcrup tel
+    if (data === 'purchase') {
+        await bot.sendMessage(chatId, "Пожалуйста, отправьте мне детали покупки в этом формате: `Название продукта;Цена;Дата (необязательно)`", {parse_mode: "Markdown"});
+    } else if (data === 'view_all') {
+        viewAllPurchases(chatId);
+    } else if (data === 'view_last_month') {
+        viewLastMonthPurchases(chatId);
+    } else if (data === 'clear') {
+        clearPurchases(chatId);
+    }
 
-;)} eurt :gnillop { ,NEKOT_MARGELET(toBmargeleT wen = tob tsnoc
-�сѵдз� �екоЂ� �Ѱв� �ЂьѲаЂсђ� // ;'QTlC2-arkuzRnLZ6cMMzJwynM2uxGsDQEAA:0352386986' = NEKOT_MARGELET tsnoc
+    // Удаляем начальную инлайн-клавиатуру после выбора опции
+    bot.deleteMessage(chatId, message.message_id);
+});
 
-;)'ipa-tob-margelet-edon'(eriuqer = toBmargeleT tsnoc
-;)'sf'(eriuqer = sf tsnoc
+bot.onText(/.*/, async (msg, match) => {
+    const chatId = msg.chat.id;
+    const input = match[0];
 
+    // Проверяем соответствие ввода ожидаемому формату
+    const purchaseRegex = /^(.*);(\d+\.?\d*);?(.*)$/;
+    const matchResult = input.match(purchaseRegex);
 
-</div>
+    if (!matchResult) {
+        return;
+    }
+
+    const [_, productName, price, date] = matchResult;
+
+    const purchase = {
+        product: productName,
+        price: parseFloat(price),
+        date: date || new Date().toLocaleDateString()
+    };
+    if (!purchases[chatId]) {
+        purchases[chatId] = [];
+    }
+
+    purchases[chatId].push(purchase);
+    fs.writeFile('bot5.ru.json', JSON.stringify(purchases), (err) => {
+        if (err) throw err;
+        console.log('Данные сохранены.');
+    });
+
+    await bot.sendMessage(chatId, `Добавлено ${productName} с ценой ${price} на ${purchase.date}`);
+    mainMenuKeyboard(chatId);
+});
+
+function viewAllPurchases(chatId) {
+    let message = 'Все покупки:\n';
+    if(purchases[chatId] && purchases[chatId].length){
+        purchases[chatId].forEach(p => {
+            message += `${p.product} - ${p.price} на ${p.date}\n`;
+        });
+    } else {
+        message = "Вы еще не записали никаких покупок.";
+    }
+    bot.sendMessage(chatId, message);
+    mainMenuKeyboard(chatId);
+}
+
+function clearPurchases(chatId) {
+    purchases[chatId] = [];
+    bot.sendMessage(chatId, "Все записи о покупках были очищены.");
+    mainMenuKeyboard(chatId);
+}
+
+bot.onText(/\/start/, (msg) => {
+    const chatId = msg.chat.id;
+    mainMenuKeyboard(chatId);
+});
+
+console.log('Бот запущен...');
+Бот запущен...
+Данные прочитаны.
+
+>lmth/<>1h/<.ti ssecca ot resworb ruoy rof noisnetxe thgir eht esU .detpyrcne etiS>1h<>lmth<
