@@ -1,57 +1,59 @@
-/*! gruvbox_dark.css | MIT License | github.com/Gioni06/terminal.css/issues/9 */
+<!DOCTYPE html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="generator" content="RocketCake"><title></title></head><style>a { color:#5D5D9E; } a:visited { color:#5D5D9E; } a:active { color:#5C615E; } a:hover { color:#B2B3B4; } a.wsp48fac406{ color:#0080FF; text-decoration: none} a.wsp48fac406:visited{ color:#0080FF; text-decoration: none} a.wsp48fac406:active{ color:#8018CB; text-decoration: underline} a.wsp48fac406:hover{ color:#0000A0; text-decoration: underline} a.wsp63851a2{ color:#FFFFFF; text-decoration: none} a.wsp63851a2:visited{ color:#FFFFFF; text-decoration: none} a.wsp63851a2:active{ color:#FFFFFF; text-decoration: underline} a.wsp63851a2:hover{ color:#C0C0C0; text-decoration: underline} body { background-color:#FFFFFF; padding:0;  margin: 0; }.textstyle1 { text-align:left; }.textstyle2 { font-size:12pt; font-family:Arial, Helvetica, sans-serif; color:#000000;  }.textstyle3 { text-align:center; }#container_78bff89b { vertical-align: top; position:relative; display: inline-block; width:100%; min-height:150px; max-width:700px; background:none;  }#container_78bff89b_padding { margin: 30px; display: block;  }.textstyle4 { font-size:12pt; font-family:Arial, Helvetica, sans-serif; color:#000000; line-height: 1.5;  }.textstyle5 { font-size:22pt; font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif; color:#303030; line-height: 1.5;  }.textstyle6 { font-size:12pt; font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif; color:#000000; line-height: 1.5;  }.textstyle7 { font-size:12pt; font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif; color:#303030; line-height: 1.5;  }#container_365f079f { vertical-align: top; position:relative; display: inline-block; width:100%; min-height:26px; background-color:#C0C0C0;  }#container_365f079f_padding { margin: 10px; display: block;  }.textstyle8 { text-align:right; }.textstyle9 { font-size:10pt; font-family:Arial, Helvetica, sans-serif; color:#1D1D1D;  }</style><body><div class="textstyle1"><span class="textstyle2">  </span></div><div class="textstyle3"><div id="container_78bff89b"><div id="container_78bff89b_padding" ><div class="textstyle3"><span class="textstyle4"><br/><br/></span><span class="textstyle5">Encrypted Website</span><span class="textstyle6"><br/><br/>Your browser actually cannot show this page.</span><span class="textstyle7"><br/><br/></span><span class="textstyle7"><a href="mailto:echkourine@icloud.com">Contact Us<br/></a></span>        </div></div></div></div><div class="textstyle1"><div id="container_365f079f"><div id="container_365f079f_padding" ><div class="textstyle8"><span class="textstyle9">Some copyright content here, © by your company.</span></div></div></div></div></body><div style="display: none;">
 
-:root {
-    /* Background */
-    --gb-dm-bg0: #282828;
-    --gb-dm-bg0-hard: #1d2021;
-    --gb-dm-bg0-soft: #32302f;
-    --gb-dm-bg1: #3c3836;
-    --gb-dm-bg2: #504945;
-    --gb-dm-bg3: #665c54;
-    --gb-dm-bg4: #7c6f64;
-
-    /* Foreground */
-    --gb-dm-fg0: #fbf1c7;
-    --gb-dm-fg1: #ebdbb2;
-    --gb-dm-fg2: #d5c4a1;
-    --gb-dm-fg3: #bdae93;
-    --gb-dm-fg4: #a89984;
-
-    /* Colors */
-    --gb-dm-dark-red: #cc241d;
-    --gb-dm-dark-green: #98971a;
-    --gb-dm-dark-yellow: #d79921;
-    --gb-dm-dark-blue: #458588;
-    --gb-dm-dark-purple: #b16286;
-    --gb-dm-dark-aqua: #689d6a;
-    --gb-dm-dark-orange: #d65d0e;
-    --gb-dm-dark-gray: #928374;
-
-    --gb-dm-light-red: #fb4934;
-    --gb-dm-light-green: #b8bb26;
-    --gb-dm-light-yellow: #fabd2f;
-    --gb-dm-light-blue: #83a598;
-    --gb-dm-light-purple: #d3869b;
-    --gb-dm-light-aqua: #8ec07c;
-    --gb-dm-light-orange: #f38019;
-    --gb-dm-light-gray: #a89984;
-
-    --global-font-size:        15px;
-    --global-line-height:      1.4em;
-    --global-space:            10px;
-    --font-stack:              Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
-    --mono-font-stack:         Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
-    --background-color:        var(--gb-dm-bg0);
-    --page-width:              60em;
-    --font-color:              var(--gb-dm-fg1);
-    --invert-font-color:       var(--gb-dm-bg0-hard);
-    --primary-color:           var(--gb-dm-light-yellow);
-    --secondary-color:         var(--gb-dm-fg3);
-    --tertiary-color:          var(--gb-dm-light-gray);
-    --error-color:             var(--gb-dm-light-red);
-    --progress-bar-background: var(--gb-dm-bg2);
-    --progress-bar-fill:       var(--gb-dm-fg2);
-    --code-bg-color:           var(--gb-dm-bg2);
-    --input-style:             solid;
-    --display-h1-decoration:   none;
 }
+;enon   :noitaroced-1h-yalpsid--    
+;dilos             :elyts-tupni--    
+;)2gb-md-bg--(rav           :roloc-gb-edoc--    
+;)2gf-md-bg--(rav       :llif-rab-ssergorp--    
+;)2gb-md-bg--(rav :dnuorgkcab-rab-ssergorp--    
+;)der-thgil-md-bg--(rav             :roloc-rorre--    
+;)yarg-thgil-md-bg--(rav          :roloc-yraitret--    
+;)3gf-md-bg--(rav         :roloc-yradnoces--    
+;)wolley-thgil-md-bg--(rav           :roloc-yramirp--    
+;)drah-0gb-md-bg--(rav       :roloc-tnof-trevni--    
+;)1gf-md-bg--(rav              :roloc-tnof--    
+;me06              :htdiw-egap--    
+;)0gb-md-bg--(rav        :roloc-dnuorgkcab--    
+;fires ,ecapsonom ,weN reiruoC ,onoM snaS areV maertstiB ,onoM snaS uVajeD ,onoM noitarebiL ,elosnoC adicuL ,ocanoM ,olneM         :kcats-tnof-onom--    
+;fires ,ecapsonom ,weN reiruoC ,onoM snaS areV maertstiB ,onoM snaS uVajeD ,onoM noitarebiL ,elosnoC adicuL ,ocanoM ,olneM              :kcats-tnof--    
+;xp01            :ecaps-labolg--    
+;me4.1      :thgieh-enil-labolg--    
+;xp51        :ezis-tnof-labolg--    
+
+;48998a# :yarg-thgil-md-bg--    
+;91083f# :egnaro-thgil-md-bg--    
+;c70ce8# :auqa-thgil-md-bg--    
+;b9683d# :elprup-thgil-md-bg--    
+;895a38# :eulb-thgil-md-bg--    
+;f2dbaf# :wolley-thgil-md-bg--    
+;62bb8b# :neerg-thgil-md-bg--    
+;4394bf# :der-thgil-md-bg--    
+
+;473829# :yarg-krad-md-bg--    
+;e0d56d# :egnaro-krad-md-bg--    
+;a6d986# :auqa-krad-md-bg--    
+;68261b# :elprup-krad-md-bg--    
+;885854# :eulb-krad-md-bg--    
+;12997d# :wolley-krad-md-bg--    
+;a17989# :neerg-krad-md-bg--    
+;d142cc# :der-krad-md-bg--    
+/* sroloC */    
+
+;48998a# :4gf-md-bg--    
+;39eadb# :3gf-md-bg--    
+;1a4c5d# :2gf-md-bg--    
+;2bbdbe# :1gf-md-bg--    
+;7c1fbf# :0gf-md-bg--    
+/* dnuorgeroF */    
+
+;46f6c7# :4gb-md-bg--    
+;45c566# :3gb-md-bg--    
+;549405# :2gb-md-bg--    
+;6383c3# :1gb-md-bg--    
+;f20323# :tfos-0gb-md-bg--    
+;1202d1# :drah-0gb-md-bg--    
+;828282# :0gb-md-bg--    
+/* dnuorgkcaB */    
+{ toor:
+
+/* 9/seussi/ssc.lanimret/60inoiG/moc.buhtig | esneciL TIM | ssc.krad_xobvurg !*/
