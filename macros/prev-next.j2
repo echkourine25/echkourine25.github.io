@@ -1,15 +1,13 @@
-<html><h1>Site encrypted. Use the right extension for your browser to access it.</h1></html>
-}%- orcamdne -%{
->van/<            
-}% fidne -%{                
->a/<}% snartdne %{txeN}% snart %{>"}} eltit.egap_txen.egap {{"=eltit "}} lru|lru.egap_txen.egap {{"=ferh a<                
-}% egap_txen.egap fi -%{                
-}%- fidne -%{                
-|                
-}%- egap_txen.egap dna egap_suoiverp.egap fi -%{                
-}% fidne %{                
->a/<}% snartdne %{suoiverP}% snart %{>"}} eltit.egap_suoiverp.egap {{"=eltit "}} lru|lru.egap_suoiverp.egap {{"=ferh a<                
-}% egap_suoiverp.egap fi -%{                
->"puorg-ntb"=ssalc van<            
-}%- ) (txen_verp_ekam orcam %{
-
+{% macro make_prev_next( ) -%}
+            <nav class="btn-group">
+                {%- if page.previous_page %}
+                <a href="{{ page.previous_page.url|url }}" title="{{ page.previous_page.title }}">{% trans %}Previous{% endtrans %}</a>
+                {% endif %}
+                {%- if page.previous_page and page.next_page -%}
+                |
+                {%- endif -%}
+                {%- if page.next_page %}
+                <a href="{{ page.next_page.url|url }}" title="{{ page.next_page.title }}">{% trans %}Next{% endtrans %}</a>
+                {%- endif %}
+            </nav>
+{%- endmacro -%}

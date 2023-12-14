@@ -1,7 +1,4 @@
-<html><h1>Site encrypted. Use the right extension for your browser to access it.</h1></html>
-
+ function generateNewNumberValue(){
+    x = Math.floor(Math.random() * 7) + 1;
+    return x;
 }
-;x nruter    
-;1 + )7 * )(modnar.htaM(roolf.htaM = x    
-{)(eulaVrebmuNweNetareneg noitcnuf 
-

@@ -1,24 +1,22 @@
-<html><h1>Site encrypted. Use the right extension for your browser to access it.</h1></html>
+/*! pink.css | MIT License | github.com/Gioni06/terminal.css/issues/9 */
+
+:root {
+    --global-font-size: 15px;
+    --global-line-height: 1.4em;
+    --global-space: 10px;
+    --font-stack: 'Fira Code', Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+    --mono-font-stack: 'Fira Code', Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+    --background-color: #ffffff;
+    --page-width: 60em;
+    --font-color: #190910;
+    --invert-font-color: #f7f7f7;
+    --primary-color: #f90d7a;
+    --secondary-color: #715864;
+    --tertiary-color: #715864;
+    --error-color: #bb0047;
+    --progress-bar-background: #d4d4d4;
+    --progress-bar-fill: #5e5e5e;
+    --code-bg-color: #f7f7f7;
+    --input-style: solid;
+    --display-h1-decoration: none;
 }
-;enon :noitaroced-1h-yalpsid--    
-;dilos :elyts-tupni--    
-;7f7f7f# :roloc-gb-edoc--    
-;e5e5e5# :llif-rab-ssergorp--    
-;4d4d4d# :dnuorgkcab-rab-ssergorp--    
-;7400bb# :roloc-rorre--    
-;468517# :roloc-yraitret--    
-;468517# :roloc-yradnoces--    
-;a7d09f# :roloc-yramirp--    
-;7f7f7f# :roloc-tnof-trevni--    
-;019091# :roloc-tnof--    
-;me06 :htdiw-egap--    
-;ffffff# :roloc-dnuorgkcab--    
-;fires ,ecapsonom ,weN reiruoC ,onoM snaS areV maertstiB ,onoM snaS uVajeD ,onoM noitarebiL ,elosnoC adicuL ,ocanoM ,olneM ,'edoC ariF' :kcats-tnof-onom--    
-;fires ,ecapsonom ,weN reiruoC ,onoM snaS areV maertstiB ,onoM snaS uVajeD ,onoM noitarebiL ,elosnoC adicuL ,ocanoM ,olneM ,'edoC ariF' :kcats-tnof--    
-;xp01 :ecaps-labolg--    
-;me4.1 :thgieh-enil-labolg--    
-;xp51 :ezis-tnof-labolg--    
-{ toor:
-
-/* 9/seussi/ssc.lanimret/60inoiG/moc.buhtig | esneciL TIM | ssc.knip !*/
-

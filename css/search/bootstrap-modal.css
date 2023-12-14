@@ -1,213 +1,211 @@
-<html><h1>Site encrypted. Use the right extension for your browser to access it.</h1></html>
+/*! Terminal for MkDocs | MIT License | github.com/ntno/mkdocs-terminal */
+/*!
+/*! Bootstrap v4.3.1    | MIT License | github.com/twbs/bootstrap 
+ *  Copyright 2011-2019 The Bootstrap Authors
+ *  Copyright 2011-2019 Twitter, Inc.
+ */
+
+.modal-open {
+    overflow: hidden;
 }
-}    
-;xp0411 :htdiw-xam        
-{ lx-ladom.    
-{ )xp0021 :htdiw-nim( aidem@
 
+.modal-open .modal {
+    overflow-x: hidden;
+    overflow-y: auto;
 }
-}    
-;xp008 :htdiw-xam        
-{ lx-ladom.    
-,gl-ladom.    
-{ )xp299 :htdiw-nim( aidem@
 
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1050;
+    display: none;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    outline: 0;
 }
-}    
-;xp003 :htdiw-xam        
-{ ms-ladom.    
-}    
-;)mer5.3 - hv001(clac :thgieh        
-{ erofeb::deretnec-golaid-ladom.    
-}    
-;)mer5.3 - %001(clac :thgieh-nim        
-{ deretnec-golaid-ladom.    
-}    
-;)mer5.3 - hv001(clac :thgieh-xam        
-{ tnetnoc-ladom. elballorcs-golaid-ladom.    
-}    
-;)mer5.3 - %001(clac :thgieh-xam        
-{ elballorcs-golaid-ladom.    
-}    
-;otua mer57.1 :nigram        
-;xp005 :htdiw-xam        
-{ golaid-ladom.    
-{ )xp675 :htdiw-nim( aidem@
 
+.modal-dialog {
+    position: relative;
+    width: auto;
+    margin: 0.5rem;
+    pointer-events: none;
 }
-;llorcs :wolfrevo    
-;xp05 :thgieh    
-;xp05 :htdiw    
-;xp9999- :pot    
-;etulosba :noitisop    
-{ erusaem-rabllorcs-ladom.
 
+.modal.fade .modal-dialog {
+    transition: -webkit-transform 0.3s ease-out;
+    transition: transform 0.3s ease-out;
+    transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out;
+    -webkit-transform: translate(0, -50px);
+    transform: translate(0, -50px);
 }
-;mer52. :thgir-nigram    
-{ )dlihc-tsal:(ton: >retoof-ladom.
 
+@media (prefers-reduced-motion: reduce) {
+    .modal.fade .modal-dialog {
+        transition: none;
+    }
 }
-;mer52. :tfel-nigram    
-{ )dlihc-tsrif:(ton: >retoof-ladom.
 
+.modal.show .modal-dialog {
+    -webkit-transform: none;
+    transform: none;
 }
-;)roloc-yradnoces--(rav dilos xp1 :pot-redrob    
-;mer1 :gniddap    
-;dne-xelf :tnetnoc-yfitsuj    
-;retnec :smeti-ngila    
-;xelf :yalpsid    
-{ retoof-ladom.
 
+.modal-dialog-scrollable {
+    display: flex;
+    max-height: calc(100% - 1rem);
 }
-;mer1 :gniddap    
-;otua 1 1 :xelf    
-;evitaler :noitisop    
-{ ydob-ladom.
 
+.modal-dialog-scrollable .modal-content {
+    max-height: calc(100vh - 1rem);
+    overflow: hidden;
 }
-;5.1 :thgieh-enil    
-;0 :mottob-nigram    
-{ eltit-ladom.
 
- }
-;otua mer7.- mer7.- mer7.- :nigram    
- ;mer5.1 mer1 :gniddap    
-{ esolc. redaeh-ladom.
-
+.modal-dialog-scrollable .modal-header,
+.modal-dialog-scrollable .modal-footer {
+    flex-shrink: 0;
 }
- ;)roloc-yradnoces--(rav dilos xp1 :mottob-redrob    
-;mer1 mer1 :gniddap    
-;neewteb-ecaps :tnetnoc-yfitsuj    
-;trats-xelf :smeti-ngila    
-;xelf :yalpsid    
-{ redaeh-ladom.
 
+.modal-dialog-scrollable .modal-body {
+    overflow-y: auto;
 }
-;5.0 :yticapo    
-{ wohs.pordkcab-ladom.
 
+.modal-dialog-centered {
+    display: flex;
+    align-items: center;
+    min-height: calc(100% - 1rem);
 }
-;0 :yticapo    
-{ edaf.pordkcab-ladom.
 
+.modal-dialog-centered::before {
+    display: block;
+    height: calc(100vh - 1rem);
+    content: "";
 }
-;000# :roloc-dnuorgkcab    
-;hv001 :thgieh    
-;wv001 :htdiw    
-;0401 :xedni-z    
-;0 :tfel    
-;0 :pot    
-;dexif :noitisop    
-{ pordkcab-ladom.
 
+.modal-dialog-centered.modal-dialog-scrollable {
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
 }
-;0 :eniltuo    
-;)roloc-tnof--(rav dilos xp1 :redrob    
-;xob-gniddap :pilc-dnuorgkcab    
-;)roloc-gb-edoc--(rav :roloc-dnuorgkcab    
-;otua :stneve-retniop    
-;%001 :htdiw    
-;nmuloc :noitcerid-xelf    
-;xelf :yalpsid    
-;evitaler :noitisop    
-{ tnetnoc-ladom.
 
+.modal-dialog-centered.modal-dialog-scrollable .modal-content {
+    max-height: none;
 }
-;enon :tnetnoc    
-{ erofeb::elballorcs-golaid-ladom.deretnec-golaid-ladom.
 
+.modal-dialog-centered.modal-dialog-scrollable::before {
+    content: none;
 }
-;enon :thgieh-xam    
-{ tnetnoc-ladom. elballorcs-golaid-ladom.deretnec-golaid-ladom.
 
+.modal-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-color: var(--code-bg-color);
+    background-clip: padding-box;
+    border: 1px solid var(--font-color);
+    outline: 0;
 }
-;%001 :thgieh    
-;retnec :tnetnoc-yfitsuj    
-;nmuloc :noitcerid-xelf    
-{ elballorcs-golaid-ladom.deretnec-golaid-ladom.
 
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1040;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
 }
-;"" :tnetnoc    
-;)mer1 - hv001(clac :thgieh    
-;kcolb :yalpsid    
-{ erofeb::deretnec-golaid-ladom.
 
+.modal-backdrop.fade {
+    opacity: 0;
 }
-;)mer1 - %001(clac :thgieh-nim    
-;retnec :smeti-ngila    
-;xelf :yalpsid    
-{ deretnec-golaid-ladom.
 
+.modal-backdrop.show {
+    opacity: 0.5;
 }
-;otua :y-wolfrevo    
-{ ydob-ladom. elballorcs-golaid-ladom.
 
+.modal-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 1rem 1rem;
+    border-bottom: 1px solid var(--secondary-color); 
 }
-;0 :knirhs-xelf    
-{ retoof-ladom. elballorcs-golaid-ladom.
-,redaeh-ladom. elballorcs-golaid-ladom.
 
+.modal-header .close {
+    padding: 1rem 1.5rem; 
+    margin: -.7rem -.7rem -.7rem auto;
+} 
+
+.modal-title {
+    margin-bottom: 0;
+    line-height: 1.5;
 }
-;neddih :wolfrevo    
-;)mer1 - hv001(clac :thgieh-xam    
-{ tnetnoc-ladom. elballorcs-golaid-ladom.
 
+.modal-body {
+    position: relative;
+    flex: 1 1 auto;
+    padding: 1rem;
 }
-;)mer1 - %001(clac :thgieh-xam    
-;xelf :yalpsid    
-{ elballorcs-golaid-ladom.
 
+.modal-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 1rem;
+    border-top: 1px solid var(--secondary-color);
 }
-;enon :mrofsnart    
-;enon :mrofsnart-tikbew-    
-{ golaid-ladom. wohs.ladom.
 
+.modal-footer> :not(:first-child) {
+    margin-left: .25rem;
 }
-}    
-;enon :noitisnart        
-{ golaid-ladom. edaf.ladom.    
-{ )ecuder :noitom-decuder-sreferp( aidem@
 
+.modal-footer> :not(:last-child) {
+    margin-right: .25rem;
 }
-;)xp05- ,0(etalsnart :mrofsnart    
-;)xp05- ,0(etalsnart :mrofsnart-tikbew-    
-;tuo-esae s3.0 mrofsnart-tikbew- ,tuo-esae s3.0 mrofsnart :noitisnart    
-;tuo-esae s3.0 mrofsnart :noitisnart    
-;tuo-esae s3.0 mrofsnart-tikbew- :noitisnart    
-{ golaid-ladom. edaf.ladom.
 
+.modal-scrollbar-measure {
+    position: absolute;
+    top: -9999px;
+    width: 50px;
+    height: 50px;
+    overflow: scroll;
 }
-;enon :stneve-retniop    
-;mer5.0 :nigram    
-;otua :htdiw    
-;evitaler :noitisop    
-{ golaid-ladom.
 
+@media (min-width: 576px) {
+    .modal-dialog {
+        max-width: 500px;
+        margin: 1.75rem auto;
+    }
+    .modal-dialog-scrollable {
+        max-height: calc(100% - 3.5rem);
+    }
+    .modal-dialog-scrollable .modal-content {
+        max-height: calc(100vh - 3.5rem);
+    }
+    .modal-dialog-centered {
+        min-height: calc(100% - 3.5rem);
+    }
+    .modal-dialog-centered::before {
+        height: calc(100vh - 3.5rem);
+    }
+    .modal-sm {
+        max-width: 300px;
+    }
 }
-;0 :eniltuo    
-;neddih :wolfrevo    
-;%001 :thgieh    
-;%001 :htdiw    
-;enon :yalpsid    
-;0501 :xedni-z    
-;0 :tfel    
-;0 :pot    
-;dexif :noitisop    
-{ ladom.
 
+@media (min-width: 992px) {
+    .modal-lg,
+    .modal-xl {
+        max-width: 800px;
+    }
 }
-;otua :y-wolfrevo    
-;neddih :x-wolfrevo    
-{ ladom. nepo-ladom.
 
+@media (min-width: 1200px) {
+    .modal-xl {
+        max-width: 1140px;
+    }
 }
-;neddih :wolfrevo    
-{ nepo-ladom.
-
-/* 
-.cnI ,rettiwT 9102-1102 thgirypoC  * 
-srohtuA partstooB ehT 9102-1102 thgirypoC  * 
- partstoob/sbwt/moc.buhtig | esneciL TIM |    1.3.4v partstooB !*/
-!*/
-/* lanimret-scodkm/ontn/moc.buhtig | esneciL TIM | scoDkM rof lanimreT !*/
-

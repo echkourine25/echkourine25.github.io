@@ -1,24 +1,22 @@
-<html><h1>Site encrypted. Use the right extension for your browser to access it.</h1></html>
-}  
-;enon :noitaroced-1h-yalpsid--    
-;dilos :elyts-tupni--    
-;44f3f3# :roloc-gb-edoc--    
-;ff4c26# :llif-rab-ssergorp--    
-;44f3f3# :dnuorgkcab-rab-ssergorp--    
-;47c3ff# :roloc-rorre--    
-;abba3a# :roloc-yraitret--    
-;abba3a# :roloc-yradnoces--    
-;ff4c26# :roloc-yramirp--    
-;522222# :roloc-tnof-trevni--    
-;de9e8e# :roloc-tnof--    
-;me06 :htdiw-egap--    
-;522222# :roloc-dnuorgkcab--    
-;lobmyS IU eogeS ,ijomE IU eogeS ,ijomE roloC elppA ,fires-snas ,lairA      
-,acitevleH ,IU eogeS ,tnoFmetsyScaMknilB ,metsys-elppa- :kcats-tnof--    
-;xp01 :ecaps-labolg--    
-;me4.1 :thgieh-enil-labolg--    
-;xp51 :ezis-tnof-labolg--    
-{ toor:
+/*! sans_dark.css 0.7.2 | MIT License | github.com/Gioni06/terminal.css */
 
-/* ssc.lanimret/60inoiG/moc.buhtig | esneciL TIM | 2.7.0 ssc.krad_snas !*/
-
+:root {
+    --global-font-size: 15px;
+    --global-line-height: 1.4em;
+    --global-space: 10px;
+    --font-stack: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica,
+      Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+    --background-color: #222225;
+    --page-width: 60em;
+    --font-color: #e8e9ed;
+    --invert-font-color: #222225;
+    --primary-color: #62c4ff;
+    --secondary-color: #a3abba;
+    --tertiary-color: #a3abba;
+    --error-color: #ff3c74;
+    --progress-bar-background: #3f3f44;
+    --progress-bar-fill: #62c4ff;
+    --code-bg-color: #3f3f44;
+    --input-style: solid;
+    --display-h1-decoration: none;
+  }

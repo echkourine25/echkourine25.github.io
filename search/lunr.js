@@ -1,3478 +1,3475 @@
-<html><h1>Site encrypted. Use the right extension for your browser to access it.</h1></html>
+/**
+ * lunr - http://lunrjs.com - A bit like Solr, but much smaller and not as bright - 2.3.9
+ * Copyright (C) 2020 Oliver Nightingale
+ * @license MIT
+ */
 
-;)()}
-))}  
-rnul nruter    
-/*     
-.eulav detropxe eht sa noitcnuf a nruter nac *     
-eludom eht tub ,tcejbo na snruter elpmaxe sihT *     
-.tropxe eludom eht enifed ot eulav a nruter tsuJ *     
-**/    
-{ )( noitcnuf ,siht(}  
-}    
-)(yrotcaf = rnul.toor      
-)wodniw si toor( slabolg resworB //      
-{ esle }    
-)(yrotcaf = stropxe.eludom      
-/*       
-.edoN ekil *       
-,stropxe.eludom troppus taht stnemnorivne ekil-SJnommoC ylno *       
-tub ,SJnommoC tcirts htiw krow ton seoD .edoN *       
-**/      
-{ )'tcejbo' === stropxe foepyt( fi esle }    
-)yrotcaf(enifed      
-.eludom suomynona na sa retsigeR .DMA //      
-{ )dma.enifed && 'noitcnuf' === enifed foepyt( fi    
-{ )yrotcaf ,toor( noitcnuf(;  
-/*   
-sj.stropxEnruter/retsam/bolb/dmu/sjdmu/moc.buhtig//:sptth morf edoc tropxE *   
-labolg resworb a sa ro SJnommoC ,DMA aiv eludom eht tropxe *   
-**/  
+;(function(){
 
+/**
+ * A convenience function for configuring and constructing
+ * a new lunr Index.
+ *
+ * A lunr.Builder instance is created and the pipeline setup
+ * with a trimmer, stop word filter and stemmer.
+ *
+ * This builder object is yielded to the configuration function
+ * that is passed as a parameter, allowing the list of fields
+ * and other builder parameters to be customised.
+ *
+ * All documents _must_ be added within the passed config function.
+ *
+ * @example
+ * var idx = lunr(function () {
+ *   this.field('title')
+ *   this.field('body')
+ *   this.ref('id')
+ *
+ *   documents.forEach(function (doc) {
+ *     this.add(doc)
+ *   }, this)
+ * })
+ *
+ * @see {@link lunr.Builder}
+ * @see {@link lunr.Pipeline}
+ * @see {@link lunr.trimmer}
+ * @see {@link lunr.stopWordFilter}
+ * @see {@link lunr.stemmer}
+ * @namespace {function} lunr
+ */
+var lunr = function (config) {
+  var builder = new lunr.Builder
+
+  builder.pipeline.add(
+    lunr.trimmer,
+    lunr.stopWordFilter,
+    lunr.stemmer
+  )
+
+  builder.searchPipeline.add(
+    lunr.stemmer
+  )
+
+  config.call(builder, builder)
+  return builder.build()
 }
-}  
-)dne.emexeLtxen ,trats.emexeLtxen ,egasseMrorre( rorrEesraPyreuQ.rnul wen worht      
-"'" + epyt.emexeLtxen + "' epyt emexel detcepxenU" = egasseMrorre rav      
-:tluafed    
-ecneserPesrap.resraPyreuQ.rnul nruter      
-)(esualCtxen.resrap      
-:ECNESERP.rexeLyreuQ.rnul esac    
-tsooBesrap.resraPyreuQ.rnul nruter      
-:TSOOB.rexeLyreuQ.rnul esac    
-ecnatsiDtidEesrap.resraPyreuQ.rnul nruter      
-:ECNATSID_TIDE.rexeLyreuQ.rnul esac    
-dleiFesrap.resraPyreuQ.rnul nruter      
-)(esualCtxen.resrap      
-:DLEIF.rexeLyreuQ.rnul esac    
-mreTesrap.resraPyreuQ.rnul nruter      
-)(esualCtxen.resrap      
-:MRET.rexeLyreuQ.rnul esac    
-{ )epyt.emexeLtxen( hctiws  
 
-}  
-nruter    
-)(esualCtxen.resrap    
-{ )denifednu == emexeLtxen( fi  
+lunr.version = "2.3.9"
+/*!
+ * lunr.utils
+ * Copyright (C) 2020 Oliver Nightingale
+ */
 
-)(emexeLkeep.resrap = emexeLtxen rav  
+/**
+ * A namespace containing utils for the rest of the lunr library
+ * @namespace lunr.utils
+ */
+lunr.utils = {}
 
-tsoob = tsoob.esualCtnerruc.resrap  
+/**
+ * Print a warning message to the console.
+ *
+ * @param {String} message The message to be printed.
+ * @memberOf lunr.utils
+ * @function
+ */
+lunr.utils.warn = (function (global) {
+  /* eslint-disable no-console */
+  return function (message) {
+    if (global.console && console.warn) {
+      console.warn(message)
+    }
+  }
+  /* eslint-enable no-console */
+})(this)
 
-}  
-)dne.emexel ,trats.emexel ,egasseMrorre( rorrEesraPyreuQ.rnul wen worht    
-"ciremun eb tsum tsoob" = egasseMrorre rav    
-{ ))tsoob(NaNsi( fi  
-
-)01 ,rts.emexel(tnIesrap = tsoob rav  
-
-}  
-nruter    
-{ )denifednu == emexel( fi  
-
-)(emexeLemusnoc.resrap = emexel rav  
-{ )resrap( noitcnuf = tsooBesrap.resraPyreuQ.rnul
-
+/**
+ * Convert an object to a string.
+ *
+ * In the case of `null` and `undefined` the function returns
+ * the empty string, in all other cases the result of calling
+ * `toString` on the passed object is returned.
+ *
+ * @param {Any} obj The object to convert to a string.
+ * @return {String} string representation of the passed object.
+ * @memberOf lunr.utils
+ */
+lunr.utils.asString = function (obj) {
+  if (obj === void 0 || obj === null) {
+    return ""
+  } else {
+    return obj.toString()
+  }
 }
-}  
-)dne.emexeLtxen ,trats.emexeLtxen ,egasseMrorre( rorrEesraPyreuQ.rnul wen worht      
-"'" + epyt.emexeLtxen + "' epyt emexel detcepxenU" = egasseMrorre rav      
-:tluafed    
-ecneserPesrap.resraPyreuQ.rnul nruter      
-)(esualCtxen.resrap      
-:ECNESERP.rexeLyreuQ.rnul esac    
-tsooBesrap.resraPyreuQ.rnul nruter      
-:TSOOB.rexeLyreuQ.rnul esac    
-ecnatsiDtidEesrap.resraPyreuQ.rnul nruter      
-:ECNATSID_TIDE.rexeLyreuQ.rnul esac    
-dleiFesrap.resraPyreuQ.rnul nruter      
-)(esualCtxen.resrap      
-:DLEIF.rexeLyreuQ.rnul esac    
-mreTesrap.resraPyreuQ.rnul nruter      
-)(esualCtxen.resrap      
-:MRET.rexeLyreuQ.rnul esac    
-{ )epyt.emexeLtxen( hctiws  
 
-}  
-nruter    
-)(esualCtxen.resrap    
-{ )denifednu == emexeLtxen( fi  
+/**
+ * Clones an object.
+ *
+ * Will create a copy of an existing object such that any mutations
+ * on the copy cannot affect the original.
+ *
+ * Only shallow objects are supported, passing a nested object to this
+ * function will cause a TypeError.
+ *
+ * Objects with primitives, and arrays of primitives are supported.
+ *
+ * @param {Object} obj The object to clone.
+ * @return {Object} a clone of the passed object.
+ * @throws {TypeError} when a nested object is passed.
+ * @memberOf Utils
+ */
+lunr.utils.clone = function (obj) {
+  if (obj === null || obj === undefined) {
+    return obj
+  }
 
-)(emexeLkeep.resrap = emexeLtxen rav  
+  var clone = Object.create(null),
+      keys = Object.keys(obj)
 
-ecnatsiDtide = ecnatsiDtide.esualCtnerruc.resrap  
+  for (var i = 0; i < keys.length; i++) {
+    var key = keys[i],
+        val = obj[key]
 
-}  
-)dne.emexel ,trats.emexel ,egasseMrorre( rorrEesraPyreuQ.rnul wen worht    
-"ciremun eb tsum ecnatsid tide" = egasseMrorre rav    
-{ ))ecnatsiDtide(NaNsi( fi  
+    if (Array.isArray(val)) {
+      clone[key] = val.slice()
+      continue
+    }
 
-)01 ,rts.emexel(tnIesrap = ecnatsiDtide rav  
+    if (typeof val === 'string' ||
+        typeof val === 'number' ||
+        typeof val === 'boolean') {
+      clone[key] = val
+      continue
+    }
 
-}  
-nruter    
-{ )denifednu == emexel( fi  
+    throw new TypeError("clone is not deep and does not support nested objects")
+  }
 
-)(emexeLemusnoc.resrap = emexel rav  
-{ )resrap( noitcnuf = ecnatsiDtidEesrap.resraPyreuQ.rnul
-
+  return clone
 }
-}  
-)dne.emexeLtxen ,trats.emexeLtxen ,egasseMrorre( rorrEesraPyreuQ.rnul wen worht      
-"'" + epyt.emexeLtxen + "' epyt emexel detcepxenU" = egasseMrorre rav      
-:tluafed    
-ecneserPesrap.resraPyreuQ.rnul nruter      
-)(esualCtxen.resrap      
-:ECNESERP.rexeLyreuQ.rnul esac    
-tsooBesrap.resraPyreuQ.rnul nruter      
-:TSOOB.rexeLyreuQ.rnul esac    
-ecnatsiDtidEesrap.resraPyreuQ.rnul nruter      
-:ECNATSID_TIDE.rexeLyreuQ.rnul esac    
-dleiFesrap.resraPyreuQ.rnul nruter      
-)(esualCtxen.resrap      
-:DLEIF.rexeLyreuQ.rnul esac    
-mreTesrap.resraPyreuQ.rnul nruter      
-)(esualCtxen.resrap      
-:MRET.rexeLyreuQ.rnul esac    
-{ )epyt.emexeLtxen( hctiws  
-
-}  
-nruter    
-)(esualCtxen.resrap    
-{ )denifednu == emexeLtxen( fi  
-
-)(emexeLkeep.resrap = emexeLtxen rav  
-
-}  
-eslaf = enilepiPesu.esualCtnerruc.resrap    
-{ )1- =! )"*"(fOxedni.rts.emexel( fi  
-
-)(esaCrewoLot.rts.emexel = mret.esualCtnerruc.resrap  
-
-}  
-nruter    
-{ )denifednu == emexel( fi  
-
-)(emexeLemusnoc.resrap = emexel rav  
-{ )resrap( noitcnuf = mreTesrap.resraPyreuQ.rnul
-
+lunr.FieldRef = function (docRef, fieldName, stringValue) {
+  this.docRef = docRef
+  this.fieldName = fieldName
+  this._stringValue = stringValue
 }
-}  
-)dne.emexeLtxen ,trats.emexeLtxen ,egasseMrorre( rorrEesraPyreuQ.rnul wen worht      
-"'" + epyt.emexeLtxen + "' dnuof ,mret gnitcepxe" = egasseMrorre rav      
-:tluafed    
-mreTesrap.resraPyreuQ.rnul nruter      
-:MRET.rexeLyreuQ.rnul esac    
-{ )epyt.emexeLtxen( hctiws  
 
-}  
-)dne.emexel ,trats.emexel ,egasseMrorre( rorrEesraPyreuQ.rnul wen worht    
-"gnihton dnuof ,mret gnitcepxe" = egasseMrorre rav    
-{ )denifednu == emexeLtxen( fi  
+lunr.FieldRef.joiner = "/"
 
-)(emexeLkeep.resrap = emexeLtxen rav  
+lunr.FieldRef.fromString = function (s) {
+  var n = s.indexOf(lunr.FieldRef.joiner)
 
-]rts.emexel[ = sdleif.esualCtnerruc.resrap  
+  if (n === -1) {
+    throw "malformed field ref string"
+  }
 
-}  
-)dne.emexel ,trats.emexel ,egasseMrorre( rorrEesraPyreuQ.rnul wen worht    
+  var fieldRef = s.slice(0, n),
+      docRef = s.slice(n + 1)
 
-sdleiFelbissop + " :sdleif elbissop ,'" + rts.emexel + "' dleif desingocernu" = egasseMrorre        
-,)' ,'(nioj.)} "'" + f + "'" nruter { )f( noitcnuf(pam.sdleiFlla.yreuq.resrap = sdleiFelbissop rav    
-{ )1- == )rts.emexel(fOxedni.sdleiFlla.yreuq.resrap( fi  
-
-}  
-nruter    
-{ )denifednu == emexel( fi  
-
-)(emexeLemusnoc.resrap = emexel rav  
-{ )resrap( noitcnuf = dleiFesrap.resraPyreuQ.rnul
-
+  return new lunr.FieldRef (docRef, fieldRef, s)
 }
-}  
-)dne.emexeLtxen ,trats.emexeLtxen ,egasseMrorre( rorrEesraPyreuQ.rnul wen worht      
-"'" + epyt.emexeLtxen + "' dnuof ,dleif ro mret gnitcepxe" = egasseMrorre rav      
-:tluafed    
-mreTesrap.resraPyreuQ.rnul nruter      
-:MRET.rexeLyreuQ.rnul esac    
-dleiFesrap.resraPyreuQ.rnul nruter      
-:DLEIF.rexeLyreuQ.rnul esac    
-{ )epyt.emexeLtxen( hctiws  
 
-}  
-)dne.emexel ,trats.emexel ,egasseMrorre( rorrEesraPyreuQ.rnul wen worht    
-"gnihton dnuof ,dleif ro mret gnitcepxe" = egasseMrorre rav    
-{ )denifednu == emexeLtxen( fi  
+lunr.FieldRef.prototype.toString = function () {
+  if (this._stringValue == undefined) {
+    this._stringValue = this.fieldName + lunr.FieldRef.joiner + this.docRef
+  }
 
-)(emexeLkeep.resrap = emexeLtxen rav  
-
-}  
-)dne.emexel ,trats.emexel ,egasseMrorre( rorrEesraPyreuQ.rnul wen worht      
-"'" + rts.emexel + "'rotarepo ecneserp desingocernu" = egasseMrorre rav      
-:tluafed    
-kaerb      
-DERIUQER.ecneserp.yreuQ.rnul = ecneserp.esualCtnerruc.resrap      
-:"+" esac    
-kaerb      
-DETIBIHORP.ecneserp.yreuQ.rnul = ecneserp.esualCtnerruc.resrap      
-:"-" esac    
-{ )rts.emexel( hctiws  
-
-}  
-nruter    
-{ )denifednu == emexel( fi  
-
-)(emexeLemusnoc.resrap = emexel rav  
-{ )resrap( noitcnuf = ecneserPesrap.resraPyreuQ.rnul
-
+  return this._stringValue
 }
-}  
-)dne.emexel ,trats.emexel ,egasseMrorre( rorrEesraPyreuQ.rnul wen worht      
+/*!
+ * lunr.Set
+ * Copyright (C) 2020 Oliver Nightingale
+ */
 
-}      
-"'" + rts.emexel + "' eulav htiw " =+ egasseMrorre        
-{ )1 => htgnel.rts.emexel( fi      
+/**
+ * A lunr set.
+ *
+ * @constructor
+ */
+lunr.Set = function (elements) {
+  this.elements = Object.create(null)
 
-epyt.emexel + " dnuof ,mret a ro dleif a rehtie detcepxe" = egasseMrorre rav      
-:tluafed    
-mreTesrap.resraPyreuQ.rnul nruter      
-:MRET.rexeLyreuQ.rnul esac    
-dleiFesrap.resraPyreuQ.rnul nruter      
-:DLEIF.rexeLyreuQ.rnul esac    
-ecneserPesrap.resraPyreuQ.rnul nruter      
-:ECNESERP.rexeLyreuQ.rnul esac    
-{ )epyt.emexel( hctiws  
+  if (elements) {
+    this.length = elements.length
 
-}  
-nruter    
-{ )denifednu == emexel( fi  
-
-)(emexeLkeep.resrap = emexel rav  
-{ )resrap( noitcnuf = esualCesrap.resraPyreuQ.rnul
-
+    for (var i = 0; i < this.length; i++) {
+      this.elements[elements[i]] = true
+    }
+  } else {
+    this.length = 0
+  }
 }
-}{ = esualCtnerruc.siht  
-)esualCdetelpmoc(esualc.yreuq.siht  
-esualCtnerruc.siht = esualCdetelpmoc rav  
-{ )( noitcnuf = esualCtxen.epytotorp.resraPyreuQ.rnul
 
+/**
+ * A complete set that contains all elements.
+ *
+ * @static
+ * @readonly
+ * @type {lunr.Set}
+ */
+lunr.Set.complete = {
+  intersect: function (other) {
+    return other
+  },
+
+  union: function () {
+    return this
+  },
+
+  contains: function () {
+    return true
+  }
 }
-emexel nruter  
-1 =+ xdIemexel.siht  
-)(emexeLkeep.siht = emexel rav  
-{ )( noitcnuf = emexeLemusnoc.epytotorp.resraPyreuQ.rnul
 
+/**
+ * An empty set that contains no elements.
+ *
+ * @static
+ * @readonly
+ * @type {lunr.Set}
+ */
+lunr.Set.empty = {
+  intersect: function () {
+    return this
+  },
+
+  union: function (other) {
+    return other
+  },
+
+  contains: function () {
+    return false
+  }
 }
-]xdIemexel.siht[semexel.siht nruter  
-{ )( noitcnuf = emexeLkeep.epytotorp.resraPyreuQ.rnul
 
+/**
+ * Returns true if this set contains the specified object.
+ *
+ * @param {object} object - Object whose presence in this set is to be tested.
+ * @returns {boolean} - True if this set contains the specified object.
+ */
+lunr.Set.prototype.contains = function (object) {
+  return !!this.elements[object]
 }
-yreuq.siht nruter  
 
-}  
-)siht(etats = etats    
-{ )etats( elihw  
+/**
+ * Returns a new set containing only the elements that are present in both
+ * this set and the specified set.
+ *
+ * @param {lunr.Set} other - set to intersect with this set.
+ * @returns {lunr.Set} a new set that is the intersection of this and the specified set.
+ */
 
-esualCesrap.resraPyreuQ.rnul = etats rav  
+lunr.Set.prototype.intersect = function (other) {
+  var a, b, elements, intersection = []
 
-semexel.rexel.siht = semexel.siht  
-)(nur.rexel.siht  
-{ )( noitcnuf = esrap.epytotorp.resraPyreuQ.rnul
+  if (other === lunr.Set.complete) {
+    return this
+  }
 
+  if (other === lunr.Set.empty) {
+    return other
+  }
+
+  if (this.length < other.length) {
+    a = this
+    b = other
+  } else {
+    a = other
+    b = this
+  }
+
+  elements = Object.keys(a.elements)
+
+  for (var i = 0; i < elements.length; i++) {
+    var element = elements[i]
+    if (element in b.elements) {
+      intersection.push(element)
+    }
+  }
+
+  return new lunr.Set (intersection)
 }
-0 = xdIemexel.siht  
-}{ = esualCtnerruc.siht  
-yreuq = yreuq.siht  
-)rts( rexeLyreuQ.rnul wen = rexel.siht  
-{ )yreuq ,rts( noitcnuf = resraPyreuQ.rnul
 
+/**
+ * Returns a new set combining the elements of this and the specified set.
+ *
+ * @param {lunr.Set} other - set to union with this set.
+ * @return {lunr.Set} a new set that is the union of this and the specified set.
+ */
+
+lunr.Set.prototype.union = function (other) {
+  if (other === lunr.Set.complete) {
+    return lunr.Set.complete
+  }
+
+  if (other === lunr.Set.empty) {
+    return this
+  }
+
+  return new lunr.Set(Object.keys(this.elements).concat(Object.keys(other.elements)))
 }
-}  
-}    
-mreTxel.rexeLyreuQ.rnul nruter      
-{ ))rotarapeSmret.rexeLyreuQ.rnul(hctam.rahc( fi    
+/**
+ * A function to calculate the inverse document frequency for
+ * a posting. This is shared between the builder and the index
+ *
+ * @private
+ * @param {object} posting - The posting for a given term
+ * @param {number} documentCount - The total number of documents.
+ */
+lunr.idf = function (posting, documentCount) {
+  var documentsWithTerm = 0
 
-}    
-txeTxel.rexeLyreuQ.rnul nruter      
-)ECNESERP.rexeLyreuQ.rnul(time.rexel      
-{ )1 === )(htdiw.rexel && "-" == rahc( fi    
-deredisnoc era "-" gnidael //    
-ylno taht erusne ot htgnel rof gnikcehc //    
-detibihorp si ecneserp mret setacidni "-" //    
+  for (var fieldName in posting) {
+    if (fieldName == '_index') continue // Ignore the term index, its not a field
+    documentsWithTerm += Object.keys(posting[fieldName]).length
+  }
 
-}    
-txeTxel.rexeLyreuQ.rnul nruter      
-)ECNESERP.rexeLyreuQ.rnul(time.rexel      
-{ )1 === )(htdiw.rexel && "+" == rahc( fi    
-deredisnoc era "+" gnidael //    
-ylno taht erusne ot htgnel rof gnikcehc //    
-deriuqer si ecneserp mret setacidni "+" //    
+  var x = (documentCount - documentsWithTerm + 0.5) / (documentsWithTerm + 0.5)
 
-}    
-tsooBxel.rexeLyreuQ.rnul nruter      
-}      
-)MRET.rexeLyreuQ.rnul(time.rexel        
-{ )0 > )(htdiw.rexel( fi      
-)(pukcab.rexel      
-{ )"^" == rahc( fi    
+  return Math.log(1 + Math.abs(x))
+}
 
-}    
-ecnatsiDtidExel.rexeLyreuQ.rnul nruter      
-}      
-)MRET.rexeLyreuQ.rnul(time.rexel        
-{ )0 > )(htdiw.rexel( fi      
-)(pukcab.rexel      
-{ )"~" == rahc( fi    
+/**
+ * A token wraps a string representation of a token
+ * as it is passed through the text processing pipeline.
+ *
+ * @constructor
+ * @param {string} [str=''] - The string token being wrapped.
+ * @param {object} [metadata={}] - Metadata associated with this token.
+ */
+lunr.Token = function (str, metadata) {
+  this.str = str || ""
+  this.metadata = metadata || {}
+}
 
-}    
-dleiFxel.rexeLyreuQ.rnul nruter      
-{ )":" == rahc( fi    
+/**
+ * Returns the token string that is being wrapped by this object.
+ *
+ * @returns {string}
+ */
+lunr.Token.prototype.toString = function () {
+  return this.str
+}
 
-}    
-eunitnoc      
-)(retcarahCepacse.rexel      
-{ )29 == )0(tAedoCrahc.rahc( fi    
-'\' si retcarahc epacsE //    
+/**
+ * A token update function is used when updating or optionally
+ * when cloning a token.
+ *
+ * @callback lunr.Token~updateFunction
+ * @param {string} str - The string representation of the token.
+ * @param {Object} metadata - All metadata associated with this token.
+ */
 
-}    
-SOExel.rexeLyreuQ.rnul nruter      
-{ )SOE.rexeLyreuQ.rnul == rahc( fi    
+/**
+ * Applies the given function to the wrapped string token.
+ *
+ * @example
+ * token.update(function (str, metadata) {
+ *   return str.toUpperCase()
+ * })
+ *
+ * @param {lunr.Token~updateFunction} fn - A function to apply to the token string.
+ * @returns {lunr.Token}
+ */
+lunr.Token.prototype.update = function (fn) {
+  this.str = fn(this.str, this.metadata)
+  return this
+}
 
-)(txen.rexel = rahc rav    
-{ )eurt( elihw  
-{ )rexel( noitcnuf = txeTxel.rexeLyreuQ.rnul
+/**
+ * Creates a clone of this token. Optionally a function can be
+ * applied to the cloned token.
+ *
+ * @param {lunr.Token~updateFunction} [fn] - An optional function to apply to the cloned token.
+ * @returns {lunr.Token}
+ */
+lunr.Token.prototype.clone = function (fn) {
+  fn = fn || function (s) { return s }
+  return new lunr.Token (fn(this.str, this.metadata), this.metadata)
+}
+/*!
+ * lunr.tokenizer
+ * Copyright (C) 2020 Oliver Nightingale
+ */
 
-rotarapes.rezinekot.rnul = rotarapeSmret.rexeLyreuQ.rnul
-.gnirts //
-hcraes a gnisu elbahcraesnu sdrow emos sekam taht yaw a hcus //
-ni rotarapes eht egnahc ot elbissop si ti taht snaem sihT //
+/**
+ * A function for splitting a string into tokens ready to be inserted into
+ * the search index. Uses `lunr.tokenizer.separator` to split strings, change
+ * the value of this property to change how strings are split into tokens.
+ *
+ * This tokenizer will convert its parameter to a string by calling `toString` and
+ * then will split this string on the character in `lunr.tokenizer.separator`.
+ * Arrays will have their elements converted to strings and wrapped in a lunr.Token.
+ *
+ * Optional metadata can be passed to the tokenizer, this metadata will be cloned and
+ * added as metadata to every token that is created from the object to be tokenized.
+ *
+ * @static
+ * @param {?(string|object|object[])} obj - The object to convert into tokens
+ * @param {?object} metadata - Optional metadata to associate with every token
+ * @returns {lunr.Token[]}
+ * @see {@link lunr.Pipeline}
+ */
+lunr.tokenizer = function (obj, metadata) {
+  if (obj == null || obj == undefined) {
+    return []
+  }
+
+  if (Array.isArray(obj)) {
+    return obj.map(function (t) {
+      return new lunr.Token(
+        lunr.utils.asString(t).toLowerCase(),
+        lunr.utils.clone(metadata)
+      )
+    })
+  }
+
+  var str = obj.toString().toLowerCase(),
+      len = str.length,
+      tokens = []
+
+  for (var sliceEnd = 0, sliceStart = 0; sliceEnd <= len; sliceEnd++) {
+    var char = str.charAt(sliceEnd),
+        sliceLength = sliceEnd - sliceStart
+
+    if ((char.match(lunr.tokenizer.separator) || sliceEnd == len)) {
+
+      if (sliceLength > 0) {
+        var tokenMetadata = lunr.utils.clone(metadata) || {}
+        tokenMetadata["position"] = [sliceStart, sliceLength]
+        tokenMetadata["index"] = tokens.length
+
+        tokens.push(
+          new lunr.Token (
+            str.slice(sliceStart, sliceEnd),
+            tokenMetadata
+          )
+        )
+      }
+
+      sliceStart = sliceEnd + 1
+    }
+
+  }
+
+  return tokens
+}
+
+/**
+ * The separator used to split a string into tokens. Override this property to change the behaviour of
+ * `lunr.tokenizer` behaviour when tokenizing strings. By default this splits on whitespace and hyphens.
+ *
+ * @static
+ * @see lunr.tokenizer
+ */
+lunr.tokenizer.separator = /[\s\-]+/
+/*!
+ * lunr.Pipeline
+ * Copyright (C) 2020 Oliver Nightingale
+ */
+
+/**
+ * lunr.Pipelines maintain an ordered list of functions to be applied to all
+ * tokens in documents entering the search index and queries being ran against
+ * the index.
+ *
+ * An instance of lunr.Index created with the lunr shortcut will contain a
+ * pipeline with a stop word filter and an English language stemmer. Extra
+ * functions can be added before or after either of these functions or these
+ * default functions can be removed.
+ *
+ * When run the pipeline will call each function in turn, passing a token, the
+ * index of that token in the original list of all tokens and finally a list of
+ * all the original tokens.
+ *
+ * The output of functions in the pipeline will be passed to the next function
+ * in the pipeline. To exclude a token from entering the index the function
+ * should return undefined, the rest of the pipeline will not be called with
+ * this token.
+ *
+ * For serialisation of pipelines to work, all functions used in an instance of
+ * a pipeline should be registered with lunr.Pipeline. Registered functions can
+ * then be loaded. If trying to load a serialised pipeline that uses functions
+ * that are not registered an error will be thrown.
+ *
+ * If not planning on serialising the pipeline then registering pipeline functions
+ * is not necessary.
+ *
+ * @constructor
+ */
+lunr.Pipeline = function () {
+  this._stack = []
+}
+
+lunr.Pipeline.registeredFunctions = Object.create(null)
+
+/**
+ * A pipeline function maps lunr.Token to lunr.Token. A lunr.Token contains the token
+ * string as well as all known metadata. A pipeline function can mutate the token string
+ * or mutate (or add) metadata for a given token.
+ *
+ * A pipeline function can indicate that the passed token should be discarded by returning
+ * null, undefined or an empty string. This token will not be passed to any downstream pipeline
+ * functions and will not be added to the index.
+ *
+ * Multiple tokens can be returned by returning an array of tokens. Each token will be passed
+ * to any downstream pipeline functions and all will returned tokens will be added to the index.
+ *
+ * Any number of pipeline functions may be chained together using a lunr.Pipeline.
+ *
+ * @interface lunr.PipelineFunction
+ * @param {lunr.Token} token - A token from the document being processed.
+ * @param {number} i - The index of this token in the complete list of tokens for this document/field.
+ * @param {lunr.Token[]} tokens - All tokens for this document/field.
+ * @returns {(?lunr.Token|lunr.Token[])}
+ */
+
+/**
+ * Register a function with the pipeline.
+ *
+ * Functions that are used in the pipeline should be registered if the pipeline
+ * needs to be serialised, or a serialised pipeline needs to be loaded.
+ *
+ * Registering a function does not add it to a pipeline, functions must still be
+ * added to instances of the pipeline for them to be used when running a pipeline.
+ *
+ * @param {lunr.PipelineFunction} fn - The function to check for.
+ * @param {String} label - The label to register this function with
+ */
+lunr.Pipeline.registerFunction = function (fn, label) {
+  if (label in this.registeredFunctions) {
+    lunr.utils.warn('Overwriting existing registered function: ' + label)
+  }
+
+  fn.label = label
+  lunr.Pipeline.registeredFunctions[fn.label] = fn
+}
+
+/**
+ * Warns if the function is not registered as a Pipeline function.
+ *
+ * @param {lunr.PipelineFunction} fn - The function to check for.
+ * @private
+ */
+lunr.Pipeline.warnIfFunctionNotRegistered = function (fn) {
+  var isRegistered = fn.label && (fn.label in this.registeredFunctions)
+
+  if (!isRegistered) {
+    lunr.utils.warn('Function is not registered with pipeline. This may cause problems when serialising the index.\n', fn)
+  }
+}
+
+/**
+ * Loads a previously serialised pipeline.
+ *
+ * All functions to be loaded must already be registered with lunr.Pipeline.
+ * If any function from the serialised data has not been registered then an
+ * error will be thrown.
+ *
+ * @param {Object} serialised - The serialised pipeline to load.
+ * @returns {lunr.Pipeline}
+ */
+lunr.Pipeline.load = function (serialised) {
+  var pipeline = new lunr.Pipeline
+
+  serialised.forEach(function (fnName) {
+    var fn = lunr.Pipeline.registeredFunctions[fnName]
+
+    if (fn) {
+      pipeline.add(fn)
+    } else {
+      throw new Error('Cannot load unregistered function: ' + fnName)
+    }
+  })
+
+  return pipeline
+}
+
+/**
+ * Adds new functions to the end of the pipeline.
+ *
+ * Logs a warning if the function has not been registered.
+ *
+ * @param {lunr.PipelineFunction[]} functions - Any number of functions to add to the pipeline.
+ */
+lunr.Pipeline.prototype.add = function () {
+  var fns = Array.prototype.slice.call(arguments)
+
+  fns.forEach(function (fn) {
+    lunr.Pipeline.warnIfFunctionNotRegistered(fn)
+    this._stack.push(fn)
+  }, this)
+}
+
+/**
+ * Adds a single function after a function that already exists in the
+ * pipeline.
+ *
+ * Logs a warning if the function has not been registered.
+ *
+ * @param {lunr.PipelineFunction} existingFn - A function that already exists in the pipeline.
+ * @param {lunr.PipelineFunction} newFn - The new function to add to the pipeline.
+ */
+lunr.Pipeline.prototype.after = function (existingFn, newFn) {
+  lunr.Pipeline.warnIfFunctionNotRegistered(newFn)
+
+  var pos = this._stack.indexOf(existingFn)
+  if (pos == -1) {
+    throw new Error('Cannot find existingFn')
+  }
+
+  pos = pos + 1
+  this._stack.splice(pos, 0, newFn)
+}
+
+/**
+ * Adds a single function before a function that already exists in the
+ * pipeline.
+ *
+ * Logs a warning if the function has not been registered.
+ *
+ * @param {lunr.PipelineFunction} existingFn - A function that already exists in the pipeline.
+ * @param {lunr.PipelineFunction} newFn - The new function to add to the pipeline.
+ */
+lunr.Pipeline.prototype.before = function (existingFn, newFn) {
+  lunr.Pipeline.warnIfFunctionNotRegistered(newFn)
+
+  var pos = this._stack.indexOf(existingFn)
+  if (pos == -1) {
+    throw new Error('Cannot find existingFn')
+  }
+
+  this._stack.splice(pos, 0, newFn)
+}
+
+/**
+ * Removes a function from the pipeline.
+ *
+ * @param {lunr.PipelineFunction} fn The function to remove from the pipeline.
+ */
+lunr.Pipeline.prototype.remove = function (fn) {
+  var pos = this._stack.indexOf(fn)
+  if (pos == -1) {
+    return
+  }
+
+  this._stack.splice(pos, 1)
+}
+
+/**
+ * Runs the current list of functions that make up the pipeline against the
+ * passed tokens.
+ *
+ * @param {Array} tokens The tokens to run through the pipeline.
+ * @returns {Array}
+ */
+lunr.Pipeline.prototype.run = function (tokens) {
+  var stackLength = this._stack.length
+
+  for (var i = 0; i < stackLength; i++) {
+    var fn = this._stack[i]
+    var memo = []
+
+    for (var j = 0; j < tokens.length; j++) {
+      var result = fn(tokens[j], j, tokens)
+
+      if (result === null || result === void 0 || result === '') continue
+
+      if (Array.isArray(result)) {
+        for (var k = 0; k < result.length; k++) {
+          memo.push(result[k])
+        }
+      } else {
+        memo.push(result)
+      }
+    }
+
+    tokens = memo
+  }
+
+  return tokens
+}
+
+/**
+ * Convenience method for passing a string through a pipeline and getting
+ * strings out. This method takes care of wrapping the passed string in a
+ * token and mapping the resulting tokens back to strings.
+ *
+ * @param {string} str - The string to pass through the pipeline.
+ * @param {?object} metadata - Optional metadata to associate with the token
+ * passed to the pipeline.
+ * @returns {string[]}
+ */
+lunr.Pipeline.prototype.runString = function (str, metadata) {
+  var token = new lunr.Token (str, metadata)
+
+  return this.run([token]).map(function (t) {
+    return t.toString()
+  })
+}
+
+/**
+ * Resets the pipeline by removing any existing processors.
+ *
+ */
+lunr.Pipeline.prototype.reset = function () {
+  this._stack = []
+}
+
+/**
+ * Returns a representation of the pipeline ready for serialisation.
+ *
+ * Logs a warning if the function has not been registered.
+ *
+ * @returns {Array}
+ */
+lunr.Pipeline.prototype.toJSON = function () {
+  return this._stack.map(function (fn) {
+    lunr.Pipeline.warnIfFunctionNotRegistered(fn)
+
+    return fn.label
+  })
+}
+/*!
+ * lunr.Vector
+ * Copyright (C) 2020 Oliver Nightingale
+ */
+
+/**
+ * A vector is used to construct the vector space of documents and queries. These
+ * vectors support operations to determine the similarity between two documents or
+ * a document and a query.
+ *
+ * Normally no parameters are required for initializing a vector, but in the case of
+ * loading a previously dumped vector the raw elements can be provided to the constructor.
+ *
+ * For performance reasons vectors are implemented with a flat array, where an elements
+ * index is immediately followed by its value. E.g. [index, value, index, value]. This
+ * allows the underlying array to be as sparse as possible and still offer decent
+ * performance when being used for vector calculations.
+ *
+ * @constructor
+ * @param {Number[]} [elements] - The flat list of element index and element value pairs.
+ */
+lunr.Vector = function (elements) {
+  this._magnitude = 0
+  this.elements = elements || []
+}
+
+
+/**
+ * Calculates the position within the vector to insert a given index.
+ *
+ * This is used internally by insert and upsert. If there are duplicate indexes then
+ * the position is returned as if the value for that index were to be updated, but it
+ * is the callers responsibility to check whether there is a duplicate at that index
+ *
+ * @param {Number} insertIdx - The index at which the element should be inserted.
+ * @returns {Number}
+ */
+lunr.Vector.prototype.positionForIndex = function (index) {
+  // For an empty vector the tuple can be inserted at the beginning
+  if (this.elements.length == 0) {
+    return 0
+  }
+
+  var start = 0,
+      end = this.elements.length / 2,
+      sliceLength = end - start,
+      pivotPoint = Math.floor(sliceLength / 2),
+      pivotIndex = this.elements[pivotPoint * 2]
+
+  while (sliceLength > 1) {
+    if (pivotIndex < index) {
+      start = pivotPoint
+    }
+
+    if (pivotIndex > index) {
+      end = pivotPoint
+    }
+
+    if (pivotIndex == index) {
+      break
+    }
+
+    sliceLength = end - start
+    pivotPoint = start + Math.floor(sliceLength / 2)
+    pivotIndex = this.elements[pivotPoint * 2]
+  }
+
+  if (pivotIndex == index) {
+    return pivotPoint * 2
+  }
+
+  if (pivotIndex > index) {
+    return pivotPoint * 2
+  }
+
+  if (pivotIndex < index) {
+    return (pivotPoint + 1) * 2
+  }
+}
+
+/**
+ * Inserts an element at an index within the vector.
+ *
+ * Does not allow duplicates, will throw an error if there is already an entry
+ * for this index.
+ *
+ * @param {Number} insertIdx - The index at which the element should be inserted.
+ * @param {Number} val - The value to be inserted into the vector.
+ */
+lunr.Vector.prototype.insert = function (insertIdx, val) {
+  this.upsert(insertIdx, val, function () {
+    throw "duplicate index"
+  })
+}
+
+/**
+ * Inserts or updates an existing index within the vector.
+ *
+ * @param {Number} insertIdx - The index at which the element should be inserted.
+ * @param {Number} val - The value to be inserted into the vector.
+ * @param {function} fn - A function that is called for updates, the existing value and the
+ * requested value are passed as arguments
+ */
+lunr.Vector.prototype.upsert = function (insertIdx, val, fn) {
+  this._magnitude = 0
+  var position = this.positionForIndex(insertIdx)
+
+  if (this.elements[position] == insertIdx) {
+    this.elements[position + 1] = fn(this.elements[position + 1], val)
+  } else {
+    this.elements.splice(position, 0, insertIdx, val)
+  }
+}
+
+/**
+ * Calculates the magnitude of this vector.
+ *
+ * @returns {Number}
+ */
+lunr.Vector.prototype.magnitude = function () {
+  if (this._magnitude) return this._magnitude
+
+  var sumOfSquares = 0,
+      elementsLength = this.elements.length
+
+  for (var i = 1; i < elementsLength; i += 2) {
+    var val = this.elements[i]
+    sumOfSquares += val * val
+  }
+
+  return this._magnitude = Math.sqrt(sumOfSquares)
+}
+
+/**
+ * Calculates the dot product of this vector and another vector.
+ *
+ * @param {lunr.Vector} otherVector - The vector to compute the dot product with.
+ * @returns {Number}
+ */
+lunr.Vector.prototype.dot = function (otherVector) {
+  var dotProduct = 0,
+      a = this.elements, b = otherVector.elements,
+      aLen = a.length, bLen = b.length,
+      aVal = 0, bVal = 0,
+      i = 0, j = 0
+
+  while (i < aLen && j < bLen) {
+    aVal = a[i], bVal = b[j]
+    if (aVal < bVal) {
+      i += 2
+    } else if (aVal > bVal) {
+      j += 2
+    } else if (aVal == bVal) {
+      dotProduct += a[i + 1] * b[j + 1]
+      i += 2
+      j += 2
+    }
+  }
+
+  return dotProduct
+}
+
+/**
+ * Calculates the similarity between this vector and another vector.
+ *
+ * @param {lunr.Vector} otherVector - The other vector to calculate the
+ * similarity with.
+ * @returns {Number}
+ */
+lunr.Vector.prototype.similarity = function (otherVector) {
+  return this.dot(otherVector) / this.magnitude() || 0
+}
+
+/**
+ * Converts the vector to an array of the elements within the vector.
+ *
+ * @returns {Number[]}
+ */
+lunr.Vector.prototype.toArray = function () {
+  var output = new Array (this.elements.length / 2)
+
+  for (var i = 1, j = 0; i < this.elements.length; i += 2, j++) {
+    output[j] = this.elements[i]
+  }
+
+  return output
+}
+
+/**
+ * A JSON serializable representation of the vector.
+ *
+ * @returns {Number[]}
+ */
+lunr.Vector.prototype.toJSON = function () {
+  return this.elements
+}
+/* eslint-disable */
+/*!
+ * lunr.stemmer
+ * Copyright (C) 2020 Oliver Nightingale
+ * Includes code from - http://tartarus.org/~martin/PorterStemmer/js.txt
+ */
+
+/**
+ * lunr.stemmer is an english language stemmer, this is a JavaScript
+ * implementation of the PorterStemmer taken from http://tartarus.org/~martin
+ *
+ * @static
+ * @implements {lunr.PipelineFunction}
+ * @param {lunr.Token} token - The string to stem
+ * @returns {lunr.Token}
+ * @see {@link lunr.Pipeline}
+ * @function
+ */
+lunr.stemmer = (function(){
+  var step2list = {
+      "ational" : "ate",
+      "tional" : "tion",
+      "enci" : "ence",
+      "anci" : "ance",
+      "izer" : "ize",
+      "bli" : "ble",
+      "alli" : "al",
+      "entli" : "ent",
+      "eli" : "e",
+      "ousli" : "ous",
+      "ization" : "ize",
+      "ation" : "ate",
+      "ator" : "ate",
+      "alism" : "al",
+      "iveness" : "ive",
+      "fulness" : "ful",
+      "ousness" : "ous",
+      "aliti" : "al",
+      "iviti" : "ive",
+      "biliti" : "ble",
+      "logi" : "log"
+    },
+
+    step3list = {
+      "icate" : "ic",
+      "ative" : "",
+      "alize" : "al",
+      "iciti" : "ic",
+      "ical" : "ic",
+      "ful" : "",
+      "ness" : ""
+    },
+
+    c = "[^aeiou]",          // consonant
+    v = "[aeiouy]",          // vowel
+    C = c + "[^aeiouy]*",    // consonant sequence
+    V = v + "[aeiou]*",      // vowel sequence
+
+    mgr0 = "^(" + C + ")?" + V + C,               // [C]VC... is m>0
+    meq1 = "^(" + C + ")?" + V + C + "(" + V + ")?$",  // [C]VC[V] is m=1
+    mgr1 = "^(" + C + ")?" + V + C + V + C,       // [C]VCVC... is m>1
+    s_v = "^(" + C + ")?" + v;                   // vowel in stem
+
+  var re_mgr0 = new RegExp(mgr0);
+  var re_mgr1 = new RegExp(mgr1);
+  var re_meq1 = new RegExp(meq1);
+  var re_s_v = new RegExp(s_v);
+
+  var re_1a = /^(.+?)(ss|i)es$/;
+  var re2_1a = /^(.+?)([^s])s$/;
+  var re_1b = /^(.+?)eed$/;
+  var re2_1b = /^(.+?)(ed|ing)$/;
+  var re_1b_2 = /.$/;
+  var re2_1b_2 = /(at|bl|iz)$/;
+  var re3_1b_2 = new RegExp("([^aeiouylsz])\\1$");
+  var re4_1b_2 = new RegExp("^" + C + v + "[^aeiouwxy]$");
+
+  var re_1c = /^(.+?[^aeiou])y$/;
+  var re_2 = /^(.+?)(ational|tional|enci|anci|izer|bli|alli|entli|eli|ousli|ization|ation|ator|alism|iveness|fulness|ousness|aliti|iviti|biliti|logi)$/;
+
+  var re_3 = /^(.+?)(icate|ative|alize|iciti|ical|ful|ness)$/;
+
+  var re_4 = /^(.+?)(al|ance|ence|er|ic|able|ible|ant|ement|ment|ent|ou|ism|ate|iti|ous|ive|ize)$/;
+  var re2_4 = /^(.+?)(s|t)(ion)$/;
+
+  var re_5 = /^(.+?)e$/;
+  var re_5_1 = /ll$/;
+  var re3_5 = new RegExp("^" + C + v + "[^aeiouwxy]$");
+
+  var porterStemmer = function porterStemmer(w) {
+    var stem,
+      suffix,
+      firstch,
+      re,
+      re2,
+      re3,
+      re4;
+
+    if (w.length < 3) { return w; }
+
+    firstch = w.substr(0,1);
+    if (firstch == "y") {
+      w = firstch.toUpperCase() + w.substr(1);
+    }
+
+    // Step 1a
+    re = re_1a
+    re2 = re2_1a;
+
+    if (re.test(w)) { w = w.replace(re,"$1$2"); }
+    else if (re2.test(w)) { w = w.replace(re2,"$1$2"); }
+
+    // Step 1b
+    re = re_1b;
+    re2 = re2_1b;
+    if (re.test(w)) {
+      var fp = re.exec(w);
+      re = re_mgr0;
+      if (re.test(fp[1])) {
+        re = re_1b_2;
+        w = w.replace(re,"");
+      }
+    } else if (re2.test(w)) {
+      var fp = re2.exec(w);
+      stem = fp[1];
+      re2 = re_s_v;
+      if (re2.test(stem)) {
+        w = stem;
+        re2 = re2_1b_2;
+        re3 = re3_1b_2;
+        re4 = re4_1b_2;
+        if (re2.test(w)) { w = w + "e"; }
+        else if (re3.test(w)) { re = re_1b_2; w = w.replace(re,""); }
+        else if (re4.test(w)) { w = w + "e"; }
+      }
+    }
+
+    // Step 1c - replace suffix y or Y by i if preceded by a non-vowel which is not the first letter of the word (so cry -> cri, by -> by, say -> say)
+    re = re_1c;
+    if (re.test(w)) {
+      var fp = re.exec(w);
+      stem = fp[1];
+      w = stem + "i";
+    }
+
+    // Step 2
+    re = re_2;
+    if (re.test(w)) {
+      var fp = re.exec(w);
+      stem = fp[1];
+      suffix = fp[2];
+      re = re_mgr0;
+      if (re.test(stem)) {
+        w = stem + step2list[suffix];
+      }
+    }
+
+    // Step 3
+    re = re_3;
+    if (re.test(w)) {
+      var fp = re.exec(w);
+      stem = fp[1];
+      suffix = fp[2];
+      re = re_mgr0;
+      if (re.test(stem)) {
+        w = stem + step3list[suffix];
+      }
+    }
+
+    // Step 4
+    re = re_4;
+    re2 = re2_4;
+    if (re.test(w)) {
+      var fp = re.exec(w);
+      stem = fp[1];
+      re = re_mgr1;
+      if (re.test(stem)) {
+        w = stem;
+      }
+    } else if (re2.test(w)) {
+      var fp = re2.exec(w);
+      stem = fp[1] + fp[2];
+      re2 = re_mgr1;
+      if (re2.test(stem)) {
+        w = stem;
+      }
+    }
+
+    // Step 5
+    re = re_5;
+    if (re.test(w)) {
+      var fp = re.exec(w);
+      stem = fp[1];
+      re = re_mgr1;
+      re2 = re_meq1;
+      re3 = re3_5;
+      if (re.test(stem) || (re2.test(stem) && !(re3.test(stem)))) {
+        w = stem;
+      }
+    }
+
+    re = re_5_1;
+    re2 = re_mgr1;
+    if (re.test(w) && re2.test(w)) {
+      re = re_1b_2;
+      w = w.replace(re,"");
+    }
+
+    // and turn initial Y back to y
+
+    if (firstch == "y") {
+      w = firstch.toLowerCase() + w.substr(1);
+    }
+
+    return w;
+  };
+
+  return function (token) {
+    return token.update(porterStemmer);
+  }
+})();
+
+lunr.Pipeline.registerFunction(lunr.stemmer, 'stemmer')
+/*!
+ * lunr.stopWordFilter
+ * Copyright (C) 2020 Oliver Nightingale
+ */
+
+/**
+ * lunr.generateStopWordFilter builds a stopWordFilter function from the provided
+ * list of stop words.
+ *
+ * The built in lunr.stopWordFilter is built using this generator and can be used
+ * to generate custom stopWordFilters for applications or non English languages.
+ *
+ * @function
+ * @param {Array} token The token to pass through the filter
+ * @returns {lunr.PipelineFunction}
+ * @see lunr.Pipeline
+ * @see lunr.stopWordFilter
+ */
+lunr.generateStopWordFilter = function (stopWords) {
+  var words = stopWords.reduce(function (memo, stopWord) {
+    memo[stopWord] = stopWord
+    return memo
+  }, {})
+
+  return function (token) {
+    if (token && words[token.toString()] !== token.toString()) return token
+  }
+}
+
+/**
+ * lunr.stopWordFilter is an English language stop word list filter, any words
+ * contained in the list will not be passed through the filter.
+ *
+ * This is intended to be used in the Pipeline. If the token does not pass the
+ * filter then undefined will be returned.
+ *
+ * @function
+ * @implements {lunr.PipelineFunction}
+ * @params {lunr.Token} token - A token to check for being a stop word.
+ * @returns {lunr.Token}
+ * @see {@link lunr.Pipeline}
+ */
+lunr.stopWordFilter = lunr.generateStopWordFilter([
+  'a',
+  'able',
+  'about',
+  'across',
+  'after',
+  'all',
+  'almost',
+  'also',
+  'am',
+  'among',
+  'an',
+  'and',
+  'any',
+  'are',
+  'as',
+  'at',
+  'be',
+  'because',
+  'been',
+  'but',
+  'by',
+  'can',
+  'cannot',
+  'could',
+  'dear',
+  'did',
+  'do',
+  'does',
+  'either',
+  'else',
+  'ever',
+  'every',
+  'for',
+  'from',
+  'get',
+  'got',
+  'had',
+  'has',
+  'have',
+  'he',
+  'her',
+  'hers',
+  'him',
+  'his',
+  'how',
+  'however',
+  'i',
+  'if',
+  'in',
+  'into',
+  'is',
+  'it',
+  'its',
+  'just',
+  'least',
+  'let',
+  'like',
+  'likely',
+  'may',
+  'me',
+  'might',
+  'most',
+  'must',
+  'my',
+  'neither',
+  'no',
+  'nor',
+  'not',
+  'of',
+  'off',
+  'often',
+  'on',
+  'only',
+  'or',
+  'other',
+  'our',
+  'own',
+  'rather',
+  'said',
+  'say',
+  'says',
+  'she',
+  'should',
+  'since',
+  'so',
+  'some',
+  'than',
+  'that',
+  'the',
+  'their',
+  'them',
+  'then',
+  'there',
+  'these',
+  'they',
+  'this',
+  'tis',
+  'to',
+  'too',
+  'twas',
+  'us',
+  'wants',
+  'was',
+  'we',
+  'were',
+  'what',
+  'when',
+  'where',
+  'which',
+  'while',
+  'who',
+  'whom',
+  'why',
+  'will',
+  'with',
+  'would',
+  'yet',
+  'you',
+  'your'
+])
+
+lunr.Pipeline.registerFunction(lunr.stopWordFilter, 'stopWordFilter')
+/*!
+ * lunr.trimmer
+ * Copyright (C) 2020 Oliver Nightingale
+ */
+
+/**
+ * lunr.trimmer is a pipeline function for trimming non word
+ * characters from the beginning and end of tokens before they
+ * enter the index.
+ *
+ * This implementation may not work correctly for non latin
+ * characters and should either be removed or adapted for use
+ * with languages with non-latin characters.
+ *
+ * @static
+ * @implements {lunr.PipelineFunction}
+ * @param {lunr.Token} token The token to pass through the filter
+ * @returns {lunr.Token}
+ * @see lunr.Pipeline
+ */
+lunr.trimmer = function (token) {
+  return token.update(function (s) {
+    return s.replace(/^\W+/, '').replace(/\W+$/, '')
+  })
+}
+
+lunr.Pipeline.registerFunction(lunr.trimmer, 'trimmer')
+/*!
+ * lunr.TokenSet
+ * Copyright (C) 2020 Oliver Nightingale
+ */
+
+/**
+ * A token set is used to store the unique list of all tokens
+ * within an index. Token sets are also used to represent an
+ * incoming query to the index, this query token set and index
+ * token set are then intersected to find which tokens to look
+ * up in the inverted index.
+ *
+ * A token set can hold multiple tokens, as in the case of the
+ * index token set, or it can hold a single token as in the
+ * case of a simple query token set.
+ *
+ * Additionally token sets are used to perform wildcard matching.
+ * Leading, contained and trailing wildcards are supported, and
+ * from this edit distance matching can also be provided.
+ *
+ * Token sets are implemented as a minimal finite state automata,
+ * where both common prefixes and suffixes are shared between tokens.
+ * This helps to reduce the space used for storing the token set.
+ *
+ * @constructor
+ */
+lunr.TokenSet = function () {
+  this.final = false
+  this.edges = {}
+  this.id = lunr.TokenSet._nextId
+  lunr.TokenSet._nextId += 1
+}
+
+/**
+ * Keeps track of the next, auto increment, identifier to assign
+ * to a new tokenSet.
+ *
+ * TokenSets require a unique identifier to be correctly minimised.
+ *
+ * @private
+ */
+lunr.TokenSet._nextId = 1
+
+/**
+ * Creates a TokenSet instance from the given sorted array of words.
+ *
+ * @param {String[]} arr - A sorted array of strings to create the set from.
+ * @returns {lunr.TokenSet}
+ * @throws Will throw an error if the input array is not sorted.
+ */
+lunr.TokenSet.fromArray = function (arr) {
+  var builder = new lunr.TokenSet.Builder
+
+  for (var i = 0, len = arr.length; i < len; i++) {
+    builder.insert(arr[i])
+  }
+
+  builder.finish()
+  return builder.root
+}
+
+/**
+ * Creates a token set from a query clause.
+ *
+ * @private
+ * @param {Object} clause - A single clause from lunr.Query.
+ * @param {string} clause.term - The query clause term.
+ * @param {number} [clause.editDistance] - The optional edit distance for the term.
+ * @returns {lunr.TokenSet}
+ */
+lunr.TokenSet.fromClause = function (clause) {
+  if ('editDistance' in clause) {
+    return lunr.TokenSet.fromFuzzyString(clause.term, clause.editDistance)
+  } else {
+    return lunr.TokenSet.fromString(clause.term)
+  }
+}
+
+/**
+ * Creates a token set representing a single string with a specified
+ * edit distance.
+ *
+ * Insertions, deletions, substitutions and transpositions are each
+ * treated as an edit distance of 1.
+ *
+ * Increasing the allowed edit distance will have a dramatic impact
+ * on the performance of both creating and intersecting these TokenSets.
+ * It is advised to keep the edit distance less than 3.
+ *
+ * @param {string} str - The string to create the token set from.
+ * @param {number} editDistance - The allowed edit distance to match.
+ * @returns {lunr.Vector}
+ */
+lunr.TokenSet.fromFuzzyString = function (str, editDistance) {
+  var root = new lunr.TokenSet
+
+  var stack = [{
+    node: root,
+    editsRemaining: editDistance,
+    str: str
+  }]
+
+  while (stack.length) {
+    var frame = stack.pop()
+
+    // no edit
+    if (frame.str.length > 0) {
+      var char = frame.str.charAt(0),
+          noEditNode
+
+      if (char in frame.node.edges) {
+        noEditNode = frame.node.edges[char]
+      } else {
+        noEditNode = new lunr.TokenSet
+        frame.node.edges[char] = noEditNode
+      }
+
+      if (frame.str.length == 1) {
+        noEditNode.final = true
+      }
+
+      stack.push({
+        node: noEditNode,
+        editsRemaining: frame.editsRemaining,
+        str: frame.str.slice(1)
+      })
+    }
+
+    if (frame.editsRemaining == 0) {
+      continue
+    }
+
+    // insertion
+    if ("*" in frame.node.edges) {
+      var insertionNode = frame.node.edges["*"]
+    } else {
+      var insertionNode = new lunr.TokenSet
+      frame.node.edges["*"] = insertionNode
+    }
+
+    if (frame.str.length == 0) {
+      insertionNode.final = true
+    }
+
+    stack.push({
+      node: insertionNode,
+      editsRemaining: frame.editsRemaining - 1,
+      str: frame.str
+    })
+
+    // deletion
+    // can only do a deletion if we have enough edits remaining
+    // and if there are characters left to delete in the string
+    if (frame.str.length > 1) {
+      stack.push({
+        node: frame.node,
+        editsRemaining: frame.editsRemaining - 1,
+        str: frame.str.slice(1)
+      })
+    }
+
+    // deletion
+    // just removing the last character from the str
+    if (frame.str.length == 1) {
+      frame.node.final = true
+    }
+
+    // substitution
+    // can only do a substitution if we have enough edits remaining
+    // and if there are characters left to substitute
+    if (frame.str.length >= 1) {
+      if ("*" in frame.node.edges) {
+        var substitutionNode = frame.node.edges["*"]
+      } else {
+        var substitutionNode = new lunr.TokenSet
+        frame.node.edges["*"] = substitutionNode
+      }
+
+      if (frame.str.length == 1) {
+        substitutionNode.final = true
+      }
+
+      stack.push({
+        node: substitutionNode,
+        editsRemaining: frame.editsRemaining - 1,
+        str: frame.str.slice(1)
+      })
+    }
+
+    // transposition
+    // can only do a transposition if there are edits remaining
+    // and there are enough characters to transpose
+    if (frame.str.length > 1) {
+      var charA = frame.str.charAt(0),
+          charB = frame.str.charAt(1),
+          transposeNode
+
+      if (charB in frame.node.edges) {
+        transposeNode = frame.node.edges[charB]
+      } else {
+        transposeNode = new lunr.TokenSet
+        frame.node.edges[charB] = transposeNode
+      }
+
+      if (frame.str.length == 1) {
+        transposeNode.final = true
+      }
+
+      stack.push({
+        node: transposeNode,
+        editsRemaining: frame.editsRemaining - 1,
+        str: charA + frame.str.slice(2)
+      })
+    }
+  }
+
+  return root
+}
+
+/**
+ * Creates a TokenSet from a string.
+ *
+ * The string may contain one or more wildcard characters (*)
+ * that will allow wildcard matching when intersecting with
+ * another TokenSet.
+ *
+ * @param {string} str - The string to create a TokenSet from.
+ * @returns {lunr.TokenSet}
+ */
+lunr.TokenSet.fromString = function (str) {
+  var node = new lunr.TokenSet,
+      root = node
+
+  /*
+   * Iterates through all characters within the passed string
+   * appending a node for each character.
+   *
+   * When a wildcard character is found then a self
+   * referencing edge is introduced to continually match
+   * any number of any characters.
+   */
+  for (var i = 0, len = str.length; i < len; i++) {
+    var char = str[i],
+        final = (i == len - 1)
+
+    if (char == "*") {
+      node.edges[char] = node
+      node.final = final
+
+    } else {
+      var next = new lunr.TokenSet
+      next.final = final
+
+      node.edges[char] = next
+      node = next
+    }
+  }
+
+  return root
+}
+
+/**
+ * Converts this TokenSet into an array of strings
+ * contained within the TokenSet.
+ *
+ * This is not intended to be used on a TokenSet that
+ * contains wildcards, in these cases the results are
+ * undefined and are likely to cause an infinite loop.
+ *
+ * @returns {string[]}
+ */
+lunr.TokenSet.prototype.toArray = function () {
+  var words = []
+
+  var stack = [{
+    prefix: "",
+    node: this
+  }]
+
+  while (stack.length) {
+    var frame = stack.pop(),
+        edges = Object.keys(frame.node.edges),
+        len = edges.length
+
+    if (frame.node.final) {
+      /* In Safari, at this point the prefix is sometimes corrupted, see:
+       * https://github.com/olivernn/lunr.js/issues/279 Calling any
+       * String.prototype method forces Safari to "cast" this string to what
+       * it's supposed to be, fixing the bug. */
+      frame.prefix.charAt(0)
+      words.push(frame.prefix)
+    }
+
+    for (var i = 0; i < len; i++) {
+      var edge = edges[i]
+
+      stack.push({
+        prefix: frame.prefix.concat(edge),
+        node: frame.node.edges[edge]
+      })
+    }
+  }
+
+  return words
+}
+
+/**
+ * Generates a string representation of a TokenSet.
+ *
+ * This is intended to allow TokenSets to be used as keys
+ * in objects, largely to aid the construction and minimisation
+ * of a TokenSet. As such it is not designed to be a human
+ * friendly representation of the TokenSet.
+ *
+ * @returns {string}
+ */
+lunr.TokenSet.prototype.toString = function () {
+  // NOTE: Using Object.keys here as this.edges is very likely
+  // to enter 'hash-mode' with many keys being added
+  //
+  // avoiding a for-in loop here as it leads to the function
+  // being de-optimised (at least in V8). From some simple
+  // benchmarks the performance is comparable, but allowing
+  // V8 to optimize may mean easy performance wins in the future.
+
+  if (this._str) {
+    return this._str
+  }
+
+  var str = this.final ? '1' : '0',
+      labels = Object.keys(this.edges).sort(),
+      len = labels.length
+
+  for (var i = 0; i < len; i++) {
+    var label = labels[i],
+        node = this.edges[label]
+
+    str = str + label + node.id
+  }
+
+  return str
+}
+
+/**
+ * Returns a new TokenSet that is the intersection of
+ * this TokenSet and the passed TokenSet.
+ *
+ * This intersection will take into account any wildcards
+ * contained within the TokenSet.
+ *
+ * @param {lunr.TokenSet} b - An other TokenSet to intersect with.
+ * @returns {lunr.TokenSet}
+ */
+lunr.TokenSet.prototype.intersect = function (b) {
+  var output = new lunr.TokenSet,
+      frame = undefined
+
+  var stack = [{
+    qNode: b,
+    output: output,
+    node: this
+  }]
+
+  while (stack.length) {
+    frame = stack.pop()
+
+    // NOTE: As with the #toString method, we are using
+    // Object.keys and a for loop instead of a for-in loop
+    // as both of these objects enter 'hash' mode, causing
+    // the function to be de-optimised in V8
+    var qEdges = Object.keys(frame.qNode.edges),
+        qLen = qEdges.length,
+        nEdges = Object.keys(frame.node.edges),
+        nLen = nEdges.length
+
+    for (var q = 0; q < qLen; q++) {
+      var qEdge = qEdges[q]
+
+      for (var n = 0; n < nLen; n++) {
+        var nEdge = nEdges[n]
+
+        if (nEdge == qEdge || qEdge == '*') {
+          var node = frame.node.edges[nEdge],
+              qNode = frame.qNode.edges[qEdge],
+              final = node.final && qNode.final,
+              next = undefined
+
+          if (nEdge in frame.output.edges) {
+            // an edge already exists for this character
+            // no need to create a new node, just set the finality
+            // bit unless this node is already final
+            next = frame.output.edges[nEdge]
+            next.final = next.final || final
+
+          } else {
+            // no edge exists yet, must create one
+            // set the finality bit and insert it
+            // into the output
+            next = new lunr.TokenSet
+            next.final = final
+            frame.output.edges[nEdge] = next
+          }
+
+          stack.push({
+            qNode: qNode,
+            output: next,
+            node: node
+          })
+        }
+      }
+    }
+  }
+
+  return output
+}
+lunr.TokenSet.Builder = function () {
+  this.previousWord = ""
+  this.root = new lunr.TokenSet
+  this.uncheckedNodes = []
+  this.minimizedNodes = {}
+}
+
+lunr.TokenSet.Builder.prototype.insert = function (word) {
+  var node,
+      commonPrefix = 0
+
+  if (word < this.previousWord) {
+    throw new Error ("Out of order word insertion")
+  }
+
+  for (var i = 0; i < word.length && i < this.previousWord.length; i++) {
+    if (word[i] != this.previousWord[i]) break
+    commonPrefix++
+  }
+
+  this.minimize(commonPrefix)
+
+  if (this.uncheckedNodes.length == 0) {
+    node = this.root
+  } else {
+    node = this.uncheckedNodes[this.uncheckedNodes.length - 1].child
+  }
+
+  for (var i = commonPrefix; i < word.length; i++) {
+    var nextNode = new lunr.TokenSet,
+        char = word[i]
+
+    node.edges[char] = nextNode
+
+    this.uncheckedNodes.push({
+      parent: node,
+      char: char,
+      child: nextNode
+    })
+
+    node = nextNode
+  }
+
+  node.final = true
+  this.previousWord = word
+}
+
+lunr.TokenSet.Builder.prototype.finish = function () {
+  this.minimize(0)
+}
+
+lunr.TokenSet.Builder.prototype.minimize = function (downTo) {
+  for (var i = this.uncheckedNodes.length - 1; i >= downTo; i--) {
+    var node = this.uncheckedNodes[i],
+        childKey = node.child.toString()
+
+    if (childKey in this.minimizedNodes) {
+      node.parent.edges[node.char] = this.minimizedNodes[childKey]
+    } else {
+      // Cache the key for this node since
+      // we know it can't change anymore
+      node.child._str = childKey
+
+      this.minimizedNodes[childKey] = node.child
+    }
+
+    this.uncheckedNodes.pop()
+  }
+}
+/*!
+ * lunr.Index
+ * Copyright (C) 2020 Oliver Nightingale
+ */
+
+/**
+ * An index contains the built index of all documents and provides a query interface
+ * to the index.
+ *
+ * Usually instances of lunr.Index will not be created using this constructor, instead
+ * lunr.Builder should be used to construct new indexes, or lunr.Index.load should be
+ * used to load previously built and serialized indexes.
+ *
+ * @constructor
+ * @param {Object} attrs - The attributes of the built search index.
+ * @param {Object} attrs.invertedIndex - An index of term/field to document reference.
+ * @param {Object<string, lunr.Vector>} attrs.fieldVectors - Field vectors
+ * @param {lunr.TokenSet} attrs.tokenSet - An set of all corpus tokens.
+ * @param {string[]} attrs.fields - The names of indexed document fields.
+ * @param {lunr.Pipeline} attrs.pipeline - The pipeline to use for search terms.
+ */
+lunr.Index = function (attrs) {
+  this.invertedIndex = attrs.invertedIndex
+  this.fieldVectors = attrs.fieldVectors
+  this.tokenSet = attrs.tokenSet
+  this.fields = attrs.fields
+  this.pipeline = attrs.pipeline
+}
+
+/**
+ * A result contains details of a document matching a search query.
+ * @typedef {Object} lunr.Index~Result
+ * @property {string} ref - The reference of the document this result represents.
+ * @property {number} score - A number between 0 and 1 representing how similar this document is to the query.
+ * @property {lunr.MatchData} matchData - Contains metadata about this match including which term(s) caused the match.
+ */
+
+/**
+ * Although lunr provides the ability to create queries using lunr.Query, it also provides a simple
+ * query language which itself is parsed into an instance of lunr.Query.
+ *
+ * For programmatically building queries it is advised to directly use lunr.Query, the query language
+ * is best used for human entered text rather than program generated text.
+ *
+ * At its simplest queries can just be a single term, e.g. `hello`, multiple terms are also supported
+ * and will be combined with OR, e.g `hello world` will match documents that contain either 'hello'
+ * or 'world', though those that contain both will rank higher in the results.
+ *
+ * Wildcards can be included in terms to match one or more unspecified characters, these wildcards can
+ * be inserted anywhere within the term, and more than one wildcard can exist in a single term. Adding
+ * wildcards will increase the number of documents that will be found but can also have a negative
+ * impact on query performance, especially with wildcards at the beginning of a term.
+ *
+ * Terms can be restricted to specific fields, e.g. `title:hello`, only documents with the term
+ * hello in the title field will match this query. Using a field not present in the index will lead
+ * to an error being thrown.
+ *
+ * Modifiers can also be added to terms, lunr supports edit distance and boost modifiers on terms. A term
+ * boost will make documents matching that term score higher, e.g. `foo^5`. Edit distance is also supported
+ * to provide fuzzy matching, e.g. 'hello~2' will match documents with hello with an edit distance of 2.
+ * Avoid large values for edit distance to improve query performance.
+ *
+ * Each term also supports a presence modifier. By default a term's presence in document is optional, however
+ * this can be changed to either required or prohibited. For a term's presence to be required in a document the
+ * term should be prefixed with a '+', e.g. `+foo bar` is a search for documents that must contain 'foo' and
+ * optionally contain 'bar'. Conversely a leading '-' sets the terms presence to prohibited, i.e. it must not
+ * appear in a document, e.g. `-foo bar` is a search for documents that do not contain 'foo' but may contain 'bar'.
+ *
+ * To escape special characters the backslash character '\' can be used, this allows searches to include
+ * characters that would normally be considered modifiers, e.g. `foo\~2` will search for a term "foo~2" instead
+ * of attempting to apply a boost of 2 to the search term "foo".
+ *
+ * @typedef {string} lunr.Index~QueryString
+ * @example <caption>Simple single term query</caption>
+ * hello
+ * @example <caption>Multiple term query</caption>
+ * hello world
+ * @example <caption>term scoped to a field</caption>
+ * title:hello
+ * @example <caption>term with a boost of 10</caption>
+ * hello^10
+ * @example <caption>term with an edit distance of 2</caption>
+ * hello~2
+ * @example <caption>terms with presence modifiers</caption>
+ * -foo +bar baz
+ */
+
+/**
+ * Performs a search against the index using lunr query syntax.
+ *
+ * Results will be returned sorted by their score, the most relevant results
+ * will be returned first.  For details on how the score is calculated, please see
+ * the {@link https://lunrjs.com/guides/searching.html#scoring|guide}.
+ *
+ * For more programmatic querying use lunr.Index#query.
+ *
+ * @param {lunr.Index~QueryString} queryString - A string containing a lunr query.
+ * @throws {lunr.QueryParseError} If the passed query string cannot be parsed.
+ * @returns {lunr.Index~Result[]}
+ */
+lunr.Index.prototype.search = function (queryString) {
+  return this.query(function (query) {
+    var parser = new lunr.QueryParser(queryString, query)
+    parser.parse()
+  })
+}
+
+/**
+ * A query builder callback provides a query object to be used to express
+ * the query to perform on the index.
+ *
+ * @callback lunr.Index~queryBuilder
+ * @param {lunr.Query} query - The query object to build up.
+ * @this lunr.Query
+ */
+
+/**
+ * Performs a query against the index using the yielded lunr.Query object.
+ *
+ * If performing programmatic queries against the index, this method is preferred
+ * over lunr.Index#search so as to avoid the additional query parsing overhead.
+ *
+ * A query object is yielded to the supplied function which should be used to
+ * express the query to be run against the index.
+ *
+ * Note that although this function takes a callback parameter it is _not_ an
+ * asynchronous operation, the callback is just yielded a query object to be
+ * customized.
+ *
+ * @param {lunr.Index~queryBuilder} fn - A function that is used to build the query.
+ * @returns {lunr.Index~Result[]}
+ */
+lunr.Index.prototype.query = function (fn) {
+  // for each query clause
+  // * process terms
+  // * expand terms from token set
+  // * find matching documents and metadata
+  // * get document vectors
+  // * score documents
+
+  var query = new lunr.Query(this.fields),
+      matchingFields = Object.create(null),
+      queryVectors = Object.create(null),
+      termFieldCache = Object.create(null),
+      requiredMatches = Object.create(null),
+      prohibitedMatches = Object.create(null)
+
+  /*
+   * To support field level boosts a query vector is created per
+   * field. An empty vector is eagerly created to support negated
+   * queries.
+   */
+  for (var i = 0; i < this.fields.length; i++) {
+    queryVectors[this.fields[i]] = new lunr.Vector
+  }
+
+  fn.call(query, query)
+
+  for (var i = 0; i < query.clauses.length; i++) {
+    /*
+     * Unless the pipeline has been disabled for this term, which is
+     * the case for terms with wildcards, we need to pass the clause
+     * term through the search pipeline. A pipeline returns an array
+     * of processed terms. Pipeline functions may expand the passed
+     * term, which means we may end up performing multiple index lookups
+     * for a single query term.
+     */
+    var clause = query.clauses[i],
+        terms = null,
+        clauseMatches = lunr.Set.empty
+
+    if (clause.usePipeline) {
+      terms = this.pipeline.runString(clause.term, {
+        fields: clause.fields
+      })
+    } else {
+      terms = [clause.term]
+    }
+
+    for (var m = 0; m < terms.length; m++) {
+      var term = terms[m]
+
+      /*
+       * Each term returned from the pipeline needs to use the same query
+       * clause object, e.g. the same boost and or edit distance. The
+       * simplest way to do this is to re-use the clause object but mutate
+       * its term property.
+       */
+      clause.term = term
+
+      /*
+       * From the term in the clause we create a token set which will then
+       * be used to intersect the indexes token set to get a list of terms
+       * to lookup in the inverted index
+       */
+      var termTokenSet = lunr.TokenSet.fromClause(clause),
+          expandedTerms = this.tokenSet.intersect(termTokenSet).toArray()
+
+      /*
+       * If a term marked as required does not exist in the tokenSet it is
+       * impossible for the search to return any matches. We set all the field
+       * scoped required matches set to empty and stop examining any further
+       * clauses.
+       */
+      if (expandedTerms.length === 0 && clause.presence === lunr.Query.presence.REQUIRED) {
+        for (var k = 0; k < clause.fields.length; k++) {
+          var field = clause.fields[k]
+          requiredMatches[field] = lunr.Set.empty
+        }
+
+        break
+      }
+
+      for (var j = 0; j < expandedTerms.length; j++) {
+        /*
+         * For each term get the posting and termIndex, this is required for
+         * building the query vector.
+         */
+        var expandedTerm = expandedTerms[j],
+            posting = this.invertedIndex[expandedTerm],
+            termIndex = posting._index
+
+        for (var k = 0; k < clause.fields.length; k++) {
+          /*
+           * For each field that this query term is scoped by (by default
+           * all fields are in scope) we need to get all the document refs
+           * that have this term in that field.
+           *
+           * The posting is the entry in the invertedIndex for the matching
+           * term from above.
+           */
+          var field = clause.fields[k],
+              fieldPosting = posting[field],
+              matchingDocumentRefs = Object.keys(fieldPosting),
+              termField = expandedTerm + "/" + field,
+              matchingDocumentsSet = new lunr.Set(matchingDocumentRefs)
+
+          /*
+           * if the presence of this term is required ensure that the matching
+           * documents are added to the set of required matches for this clause.
+           *
+           */
+          if (clause.presence == lunr.Query.presence.REQUIRED) {
+            clauseMatches = clauseMatches.union(matchingDocumentsSet)
+
+            if (requiredMatches[field] === undefined) {
+              requiredMatches[field] = lunr.Set.complete
+            }
+          }
+
+          /*
+           * if the presence of this term is prohibited ensure that the matching
+           * documents are added to the set of prohibited matches for this field,
+           * creating that set if it does not yet exist.
+           */
+          if (clause.presence == lunr.Query.presence.PROHIBITED) {
+            if (prohibitedMatches[field] === undefined) {
+              prohibitedMatches[field] = lunr.Set.empty
+            }
+
+            prohibitedMatches[field] = prohibitedMatches[field].union(matchingDocumentsSet)
+
+            /*
+             * Prohibited matches should not be part of the query vector used for
+             * similarity scoring and no metadata should be extracted so we continue
+             * to the next field
+             */
+            continue
+          }
+
+          /*
+           * The query field vector is populated using the termIndex found for
+           * the term and a unit value with the appropriate boost applied.
+           * Using upsert because there could already be an entry in the vector
+           * for the term we are working with. In that case we just add the scores
+           * together.
+           */
+          queryVectors[field].upsert(termIndex, clause.boost, function (a, b) { return a + b })
+
+          /**
+           * If we've already seen this term, field combo then we've already collected
+           * the matching documents and metadata, no need to go through all that again
+           */
+          if (termFieldCache[termField]) {
+            continue
+          }
+
+          for (var l = 0; l < matchingDocumentRefs.length; l++) {
+            /*
+             * All metadata for this term/field/document triple
+             * are then extracted and collected into an instance
+             * of lunr.MatchData ready to be returned in the query
+             * results
+             */
+            var matchingDocumentRef = matchingDocumentRefs[l],
+                matchingFieldRef = new lunr.FieldRef (matchingDocumentRef, field),
+                metadata = fieldPosting[matchingDocumentRef],
+                fieldMatch
+
+            if ((fieldMatch = matchingFields[matchingFieldRef]) === undefined) {
+              matchingFields[matchingFieldRef] = new lunr.MatchData (expandedTerm, field, metadata)
+            } else {
+              fieldMatch.add(expandedTerm, field, metadata)
+            }
+
+          }
+
+          termFieldCache[termField] = true
+        }
+      }
+    }
+
+    /**
+     * If the presence was required we need to update the requiredMatches field sets.
+     * We do this after all fields for the term have collected their matches because
+     * the clause terms presence is required in _any_ of the fields not _all_ of the
+     * fields.
+     */
+    if (clause.presence === lunr.Query.presence.REQUIRED) {
+      for (var k = 0; k < clause.fields.length; k++) {
+        var field = clause.fields[k]
+        requiredMatches[field] = requiredMatches[field].intersect(clauseMatches)
+      }
+    }
+  }
+
+  /**
+   * Need to combine the field scoped required and prohibited
+   * matching documents into a global set of required and prohibited
+   * matches
+   */
+  var allRequiredMatches = lunr.Set.complete,
+      allProhibitedMatches = lunr.Set.empty
+
+  for (var i = 0; i < this.fields.length; i++) {
+    var field = this.fields[i]
+
+    if (requiredMatches[field]) {
+      allRequiredMatches = allRequiredMatches.intersect(requiredMatches[field])
+    }
+
+    if (prohibitedMatches[field]) {
+      allProhibitedMatches = allProhibitedMatches.union(prohibitedMatches[field])
+    }
+  }
+
+  var matchingFieldRefs = Object.keys(matchingFields),
+      results = [],
+      matches = Object.create(null)
+
+  /*
+   * If the query is negated (contains only prohibited terms)
+   * we need to get _all_ fieldRefs currently existing in the
+   * index. This is only done when we know that the query is
+   * entirely prohibited terms to avoid any cost of getting all
+   * fieldRefs unnecessarily.
+   *
+   * Additionally, blank MatchData must be created to correctly
+   * populate the results.
+   */
+  if (query.isNegated()) {
+    matchingFieldRefs = Object.keys(this.fieldVectors)
+
+    for (var i = 0; i < matchingFieldRefs.length; i++) {
+      var matchingFieldRef = matchingFieldRefs[i]
+      var fieldRef = lunr.FieldRef.fromString(matchingFieldRef)
+      matchingFields[matchingFieldRef] = new lunr.MatchData
+    }
+  }
+
+  for (var i = 0; i < matchingFieldRefs.length; i++) {
+    /*
+     * Currently we have document fields that match the query, but we
+     * need to return documents. The matchData and scores are combined
+     * from multiple fields belonging to the same document.
+     *
+     * Scores are calculated by field, using the query vectors created
+     * above, and combined into a final document score using addition.
+     */
+    var fieldRef = lunr.FieldRef.fromString(matchingFieldRefs[i]),
+        docRef = fieldRef.docRef
+
+    if (!allRequiredMatches.contains(docRef)) {
+      continue
+    }
+
+    if (allProhibitedMatches.contains(docRef)) {
+      continue
+    }
+
+    var fieldVector = this.fieldVectors[fieldRef],
+        score = queryVectors[fieldRef.fieldName].similarity(fieldVector),
+        docMatch
+
+    if ((docMatch = matches[docRef]) !== undefined) {
+      docMatch.score += score
+      docMatch.matchData.combine(matchingFields[fieldRef])
+    } else {
+      var match = {
+        ref: docRef,
+        score: score,
+        matchData: matchingFields[fieldRef]
+      }
+      matches[docRef] = match
+      results.push(match)
+    }
+  }
+
+  /*
+   * Sort the results objects by score, highest first.
+   */
+  return results.sort(function (a, b) {
+    return b.score - a.score
+  })
+}
+
+/**
+ * Prepares the index for JSON serialization.
+ *
+ * The schema for this JSON blob will be described in a
+ * separate JSON schema file.
+ *
+ * @returns {Object}
+ */
+lunr.Index.prototype.toJSON = function () {
+  var invertedIndex = Object.keys(this.invertedIndex)
+    .sort()
+    .map(function (term) {
+      return [term, this.invertedIndex[term]]
+    }, this)
+
+  var fieldVectors = Object.keys(this.fieldVectors)
+    .map(function (ref) {
+      return [ref, this.fieldVectors[ref].toJSON()]
+    }, this)
+
+  return {
+    version: lunr.version,
+    fields: this.fields,
+    fieldVectors: fieldVectors,
+    invertedIndex: invertedIndex,
+    pipeline: this.pipeline.toJSON()
+  }
+}
+
+/**
+ * Loads a previously serialized lunr.Index
+ *
+ * @param {Object} serializedIndex - A previously serialized lunr.Index
+ * @returns {lunr.Index}
+ */
+lunr.Index.load = function (serializedIndex) {
+  var attrs = {},
+      fieldVectors = {},
+      serializedVectors = serializedIndex.fieldVectors,
+      invertedIndex = Object.create(null),
+      serializedInvertedIndex = serializedIndex.invertedIndex,
+      tokenSetBuilder = new lunr.TokenSet.Builder,
+      pipeline = lunr.Pipeline.load(serializedIndex.pipeline)
+
+  if (serializedIndex.version != lunr.version) {
+    lunr.utils.warn("Version mismatch when loading serialised index. Current version of lunr '" + lunr.version + "' does not match serialized index '" + serializedIndex.version + "'")
+  }
+
+  for (var i = 0; i < serializedVectors.length; i++) {
+    var tuple = serializedVectors[i],
+        ref = tuple[0],
+        elements = tuple[1]
+
+    fieldVectors[ref] = new lunr.Vector(elements)
+  }
+
+  for (var i = 0; i < serializedInvertedIndex.length; i++) {
+    var tuple = serializedInvertedIndex[i],
+        term = tuple[0],
+        posting = tuple[1]
+
+    tokenSetBuilder.insert(term)
+    invertedIndex[term] = posting
+  }
+
+  tokenSetBuilder.finish()
+
+  attrs.fields = serializedIndex.fields
+
+  attrs.fieldVectors = fieldVectors
+  attrs.invertedIndex = invertedIndex
+  attrs.tokenSet = tokenSetBuilder.root
+  attrs.pipeline = pipeline
+
+  return new lunr.Index(attrs)
+}
+/*!
+ * lunr.Builder
+ * Copyright (C) 2020 Oliver Nightingale
+ */
+
+/**
+ * lunr.Builder performs indexing on a set of documents and
+ * returns instances of lunr.Index ready for querying.
+ *
+ * All configuration of the index is done via the builder, the
+ * fields to index, the document reference, the text processing
+ * pipeline and document scoring parameters are all set on the
+ * builder before indexing.
+ *
+ * @constructor
+ * @property {string} _ref - Internal reference to the document reference field.
+ * @property {string[]} _fields - Internal reference to the document fields to index.
+ * @property {object} invertedIndex - The inverted index maps terms to document fields.
+ * @property {object} documentTermFrequencies - Keeps track of document term frequencies.
+ * @property {object} documentLengths - Keeps track of the length of documents added to the index.
+ * @property {lunr.tokenizer} tokenizer - Function for splitting strings into tokens for indexing.
+ * @property {lunr.Pipeline} pipeline - The pipeline performs text processing on tokens before indexing.
+ * @property {lunr.Pipeline} searchPipeline - A pipeline for processing search terms before querying the index.
+ * @property {number} documentCount - Keeps track of the total number of documents indexed.
+ * @property {number} _b - A parameter to control field length normalization, setting this to 0 disabled normalization, 1 fully normalizes field lengths, the default value is 0.75.
+ * @property {number} _k1 - A parameter to control how quickly an increase in term frequency results in term frequency saturation, the default value is 1.2.
+ * @property {number} termIndex - A counter incremented for each unique term, used to identify a terms position in the vector space.
+ * @property {array} metadataWhitelist - A list of metadata keys that have been whitelisted for entry in the index.
+ */
+lunr.Builder = function () {
+  this._ref = "id"
+  this._fields = Object.create(null)
+  this._documents = Object.create(null)
+  this.invertedIndex = Object.create(null)
+  this.fieldTermFrequencies = {}
+  this.fieldLengths = {}
+  this.tokenizer = lunr.tokenizer
+  this.pipeline = new lunr.Pipeline
+  this.searchPipeline = new lunr.Pipeline
+  this.documentCount = 0
+  this._b = 0.75
+  this._k1 = 1.2
+  this.termIndex = 0
+  this.metadataWhitelist = []
+}
+
+/**
+ * Sets the document field used as the document reference. Every document must have this field.
+ * The type of this field in the document should be a string, if it is not a string it will be
+ * coerced into a string by calling toString.
+ *
+ * The default ref is 'id'.
+ *
+ * The ref should _not_ be changed during indexing, it should be set before any documents are
+ * added to the index. Changing it during indexing can lead to inconsistent results.
+ *
+ * @param {string} ref - The name of the reference field in the document.
+ */
+lunr.Builder.prototype.ref = function (ref) {
+  this._ref = ref
+}
+
+/**
+ * A function that is used to extract a field from a document.
+ *
+ * Lunr expects a field to be at the top level of a document, if however the field
+ * is deeply nested within a document an extractor function can be used to extract
+ * the right field for indexing.
+ *
+ * @callback fieldExtractor
+ * @param {object} doc - The document being added to the index.
+ * @returns {?(string|object|object[])} obj - The object that will be indexed for this field.
+ * @example <caption>Extracting a nested field</caption>
+ * function (doc) { return doc.nested.field }
+ */
+
+/**
+ * Adds a field to the list of document fields that will be indexed. Every document being
+ * indexed should have this field. Null values for this field in indexed documents will
+ * not cause errors but will limit the chance of that document being retrieved by searches.
+ *
+ * All fields should be added before adding documents to the index. Adding fields after
+ * a document has been indexed will have no effect on already indexed documents.
+ *
+ * Fields can be boosted at build time. This allows terms within that field to have more
+ * importance when ranking search results. Use a field boost to specify that matches within
+ * one field are more important than other fields.
+ *
+ * @param {string} fieldName - The name of a field to index in all documents.
+ * @param {object} attributes - Optional attributes associated with this field.
+ * @param {number} [attributes.boost=1] - Boost applied to all terms within this field.
+ * @param {fieldExtractor} [attributes.extractor] - Function to extract a field from a document.
+ * @throws {RangeError} fieldName cannot contain unsupported characters '/'
+ */
+lunr.Builder.prototype.field = function (fieldName, attributes) {
+  if (/\//.test(fieldName)) {
+    throw new RangeError ("Field '" + fieldName + "' contains illegal character '/'")
+  }
+
+  this._fields[fieldName] = attributes || {}
+}
+
+/**
+ * A parameter to tune the amount of field length normalisation that is applied when
+ * calculating relevance scores. A value of 0 will completely disable any normalisation
+ * and a value of 1 will fully normalise field lengths. The default is 0.75. Values of b
+ * will be clamped to the range 0 - 1.
+ *
+ * @param {number} number - The value to set for this tuning parameter.
+ */
+lunr.Builder.prototype.b = function (number) {
+  if (number < 0) {
+    this._b = 0
+  } else if (number > 1) {
+    this._b = 1
+  } else {
+    this._b = number
+  }
+}
+
+/**
+ * A parameter that controls the speed at which a rise in term frequency results in term
+ * frequency saturation. The default value is 1.2. Setting this to a higher value will give
+ * slower saturation levels, a lower value will result in quicker saturation.
+ *
+ * @param {number} number - The value to set for this tuning parameter.
+ */
+lunr.Builder.prototype.k1 = function (number) {
+  this._k1 = number
+}
+
+/**
+ * Adds a document to the index.
+ *
+ * Before adding fields to the index the index should have been fully setup, with the document
+ * ref and all fields to index already having been specified.
+ *
+ * The document must have a field name as specified by the ref (by default this is 'id') and
+ * it should have all fields defined for indexing, though null or undefined values will not
+ * cause errors.
+ *
+ * Entire documents can be boosted at build time. Applying a boost to a document indicates that
+ * this document should rank higher in search results than other documents.
+ *
+ * @param {object} doc - The document to add to the index.
+ * @param {object} attributes - Optional attributes associated with this document.
+ * @param {number} [attributes.boost=1] - Boost applied to all terms within this document.
+ */
+lunr.Builder.prototype.add = function (doc, attributes) {
+  var docRef = doc[this._ref],
+      fields = Object.keys(this._fields)
+
+  this._documents[docRef] = attributes || {}
+  this.documentCount += 1
+
+  for (var i = 0; i < fields.length; i++) {
+    var fieldName = fields[i],
+        extractor = this._fields[fieldName].extractor,
+        field = extractor ? extractor(doc) : doc[fieldName],
+        tokens = this.tokenizer(field, {
+          fields: [fieldName]
+        }),
+        terms = this.pipeline.run(tokens),
+        fieldRef = new lunr.FieldRef (docRef, fieldName),
+        fieldTerms = Object.create(null)
+
+    this.fieldTermFrequencies[fieldRef] = fieldTerms
+    this.fieldLengths[fieldRef] = 0
+
+    // store the length of this field for this document
+    this.fieldLengths[fieldRef] += terms.length
+
+    // calculate term frequencies for this field
+    for (var j = 0; j < terms.length; j++) {
+      var term = terms[j]
+
+      if (fieldTerms[term] == undefined) {
+        fieldTerms[term] = 0
+      }
+
+      fieldTerms[term] += 1
+
+      // add to inverted index
+      // create an initial posting if one doesn't exist
+      if (this.invertedIndex[term] == undefined) {
+        var posting = Object.create(null)
+        posting["_index"] = this.termIndex
+        this.termIndex += 1
+
+        for (var k = 0; k < fields.length; k++) {
+          posting[fields[k]] = Object.create(null)
+        }
+
+        this.invertedIndex[term] = posting
+      }
+
+      // add an entry for this term/fieldName/docRef to the invertedIndex
+      if (this.invertedIndex[term][fieldName][docRef] == undefined) {
+        this.invertedIndex[term][fieldName][docRef] = Object.create(null)
+      }
+
+      // store all whitelisted metadata about this token in the
+      // inverted index
+      for (var l = 0; l < this.metadataWhitelist.length; l++) {
+        var metadataKey = this.metadataWhitelist[l],
+            metadata = term.metadata[metadataKey]
+
+        if (this.invertedIndex[term][fieldName][docRef][metadataKey] == undefined) {
+          this.invertedIndex[term][fieldName][docRef][metadataKey] = []
+        }
+
+        this.invertedIndex[term][fieldName][docRef][metadataKey].push(metadata)
+      }
+    }
+
+  }
+}
+
+/**
+ * Calculates the average document length for this index
+ *
+ * @private
+ */
+lunr.Builder.prototype.calculateAverageFieldLengths = function () {
+
+  var fieldRefs = Object.keys(this.fieldLengths),
+      numberOfFields = fieldRefs.length,
+      accumulator = {},
+      documentsWithField = {}
+
+  for (var i = 0; i < numberOfFields; i++) {
+    var fieldRef = lunr.FieldRef.fromString(fieldRefs[i]),
+        field = fieldRef.fieldName
+
+    documentsWithField[field] || (documentsWithField[field] = 0)
+    documentsWithField[field] += 1
+
+    accumulator[field] || (accumulator[field] = 0)
+    accumulator[field] += this.fieldLengths[fieldRef]
+  }
+
+  var fields = Object.keys(this._fields)
+
+  for (var i = 0; i < fields.length; i++) {
+    var fieldName = fields[i]
+    accumulator[fieldName] = accumulator[fieldName] / documentsWithField[fieldName]
+  }
+
+  this.averageFieldLength = accumulator
+}
+
+/**
+ * Builds a vector space model of every document using lunr.Vector
+ *
+ * @private
+ */
+lunr.Builder.prototype.createFieldVectors = function () {
+  var fieldVectors = {},
+      fieldRefs = Object.keys(this.fieldTermFrequencies),
+      fieldRefsLength = fieldRefs.length,
+      termIdfCache = Object.create(null)
+
+  for (var i = 0; i < fieldRefsLength; i++) {
+    var fieldRef = lunr.FieldRef.fromString(fieldRefs[i]),
+        fieldName = fieldRef.fieldName,
+        fieldLength = this.fieldLengths[fieldRef],
+        fieldVector = new lunr.Vector,
+        termFrequencies = this.fieldTermFrequencies[fieldRef],
+        terms = Object.keys(termFrequencies),
+        termsLength = terms.length
+
+
+    var fieldBoost = this._fields[fieldName].boost || 1,
+        docBoost = this._documents[fieldRef.docRef].boost || 1
+
+    for (var j = 0; j < termsLength; j++) {
+      var term = terms[j],
+          tf = termFrequencies[term],
+          termIndex = this.invertedIndex[term]._index,
+          idf, score, scoreWithPrecision
+
+      if (termIdfCache[term] === undefined) {
+        idf = lunr.idf(this.invertedIndex[term], this.documentCount)
+        termIdfCache[term] = idf
+      } else {
+        idf = termIdfCache[term]
+      }
+
+      score = idf * ((this._k1 + 1) * tf) / (this._k1 * (1 - this._b + this._b * (fieldLength / this.averageFieldLength[fieldName])) + tf)
+      score *= fieldBoost
+      score *= docBoost
+      scoreWithPrecision = Math.round(score * 1000) / 1000
+      // Converts 1.23456789 to 1.234.
+      // Reducing the precision so that the vectors take up less
+      // space when serialised. Doing it now so that they behave
+      // the same before and after serialisation. Also, this is
+      // the fastest approach to reducing a number's precision in
+      // JavaScript.
+
+      fieldVector.insert(termIndex, scoreWithPrecision)
+    }
+
+    fieldVectors[fieldRef] = fieldVector
+  }
+
+  this.fieldVectors = fieldVectors
+}
+
+/**
+ * Creates a token set of all tokens in the index using lunr.TokenSet
+ *
+ * @private
+ */
+lunr.Builder.prototype.createTokenSet = function () {
+  this.tokenSet = lunr.TokenSet.fromArray(
+    Object.keys(this.invertedIndex).sort()
+  )
+}
+
+/**
+ * Builds the index, creating an instance of lunr.Index.
+ *
+ * This completes the indexing process and should only be called
+ * once all documents have been added to the index.
+ *
+ * @returns {lunr.Index}
+ */
+lunr.Builder.prototype.build = function () {
+  this.calculateAverageFieldLengths()
+  this.createFieldVectors()
+  this.createTokenSet()
+
+  return new lunr.Index({
+    invertedIndex: this.invertedIndex,
+    fieldVectors: this.fieldVectors,
+    tokenSet: this.tokenSet,
+    fields: Object.keys(this._fields),
+    pipeline: this.searchPipeline
+  })
+}
+
+/**
+ * Applies a plugin to the index builder.
+ *
+ * A plugin is a function that is called with the index builder as its context.
+ * Plugins can be used to customise or extend the behaviour of the index
+ * in some way. A plugin is just a function, that encapsulated the custom
+ * behaviour that should be applied when building the index.
+ *
+ * The plugin function will be called with the index builder as its argument, additional
+ * arguments can also be passed when calling use. The function will be called
+ * with the index builder as its context.
+ *
+ * @param {Function} plugin The plugin to apply.
+ */
+lunr.Builder.prototype.use = function (fn) {
+  var args = Array.prototype.slice.call(arguments, 1)
+  args.unshift(this)
+  fn.apply(this, args)
+}
+/**
+ * Contains and collects metadata about a matching document.
+ * A single instance of lunr.MatchData is returned as part of every
+ * lunr.Index~Result.
+ *
+ * @constructor
+ * @param {string} term - The term this match data is associated with
+ * @param {string} field - The field in which the term was found
+ * @param {object} metadata - The metadata recorded about this term in this field
+ * @property {object} metadata - A cloned collection of metadata associated with this document.
+ * @see {@link lunr.Index~Result}
+ */
+lunr.MatchData = function (term, field, metadata) {
+  var clonedMetadata = Object.create(null),
+      metadataKeys = Object.keys(metadata || {})
+
+  // Cloning the metadata to prevent the original
+  // being mutated during match data combination.
+  // Metadata is kept in an array within the inverted
+  // index so cloning the data can be done with
+  // Array#slice
+  for (var i = 0; i < metadataKeys.length; i++) {
+    var key = metadataKeys[i]
+    clonedMetadata[key] = metadata[key].slice()
+  }
+
+  this.metadata = Object.create(null)
+
+  if (term !== undefined) {
+    this.metadata[term] = Object.create(null)
+    this.metadata[term][field] = clonedMetadata
+  }
+}
+
+/**
+ * An instance of lunr.MatchData will be created for every term that matches a
+ * document. However only one instance is required in a lunr.Index~Result. This
+ * method combines metadata from another instance of lunr.MatchData with this
+ * objects metadata.
+ *
+ * @param {lunr.MatchData} otherMatchData - Another instance of match data to merge with this one.
+ * @see {@link lunr.Index~Result}
+ */
+lunr.MatchData.prototype.combine = function (otherMatchData) {
+  var terms = Object.keys(otherMatchData.metadata)
+
+  for (var i = 0; i < terms.length; i++) {
+    var term = terms[i],
+        fields = Object.keys(otherMatchData.metadata[term])
+
+    if (this.metadata[term] == undefined) {
+      this.metadata[term] = Object.create(null)
+    }
+
+    for (var j = 0; j < fields.length; j++) {
+      var field = fields[j],
+          keys = Object.keys(otherMatchData.metadata[term][field])
+
+      if (this.metadata[term][field] == undefined) {
+        this.metadata[term][field] = Object.create(null)
+      }
+
+      for (var k = 0; k < keys.length; k++) {
+        var key = keys[k]
+
+        if (this.metadata[term][field][key] == undefined) {
+          this.metadata[term][field][key] = otherMatchData.metadata[term][field][key]
+        } else {
+          this.metadata[term][field][key] = this.metadata[term][field][key].concat(otherMatchData.metadata[term][field][key])
+        }
+
+      }
+    }
+  }
+}
+
+/**
+ * Add metadata for a term/field pair to this instance of match data.
+ *
+ * @param {string} term - The term this match data is associated with
+ * @param {string} field - The field in which the term was found
+ * @param {object} metadata - The metadata recorded about this term in this field
+ */
+lunr.MatchData.prototype.add = function (term, field, metadata) {
+  if (!(term in this.metadata)) {
+    this.metadata[term] = Object.create(null)
+    this.metadata[term][field] = metadata
+    return
+  }
+
+  if (!(field in this.metadata[term])) {
+    this.metadata[term][field] = metadata
+    return
+  }
+
+  var metadataKeys = Object.keys(metadata)
+
+  for (var i = 0; i < metadataKeys.length; i++) {
+    var key = metadataKeys[i]
+
+    if (key in this.metadata[term][field]) {
+      this.metadata[term][field][key] = this.metadata[term][field][key].concat(metadata[key])
+    } else {
+      this.metadata[term][field][key] = metadata[key]
+    }
+  }
+}
+/**
+ * A lunr.Query provides a programmatic way of defining queries to be performed
+ * against a {@link lunr.Index}.
+ *
+ * Prefer constructing a lunr.Query using the {@link lunr.Index#query} method
+ * so the query object is pre-initialized with the right index fields.
+ *
+ * @constructor
+ * @property {lunr.Query~Clause[]} clauses - An array of query clauses.
+ * @property {string[]} allFields - An array of all available fields in a lunr.Index.
+ */
+lunr.Query = function (allFields) {
+  this.clauses = []
+  this.allFields = allFields
+}
+
+/**
+ * Constants for indicating what kind of automatic wildcard insertion will be used when constructing a query clause.
+ *
+ * This allows wildcards to be added to the beginning and end of a term without having to manually do any string
+ * concatenation.
+ *
+ * The wildcard constants can be bitwise combined to select both leading and trailing wildcards.
+ *
+ * @constant
+ * @default
+ * @property {number} wildcard.NONE - The term will have no wildcards inserted, this is the default behaviour
+ * @property {number} wildcard.LEADING - Prepend the term with a wildcard, unless a leading wildcard already exists
+ * @property {number} wildcard.TRAILING - Append a wildcard to the term, unless a trailing wildcard already exists
+ * @see lunr.Query~Clause
+ * @see lunr.Query#clause
+ * @see lunr.Query#term
+ * @example <caption>query term with trailing wildcard</caption>
+ * query.term('foo', { wildcard: lunr.Query.wildcard.TRAILING })
+ * @example <caption>query term with leading and trailing wildcard</caption>
+ * query.term('foo', {
+ *   wildcard: lunr.Query.wildcard.LEADING | lunr.Query.wildcard.TRAILING
+ * })
+ */
+
+lunr.Query.wildcard = new String ("*")
+lunr.Query.wildcard.NONE = 0
+lunr.Query.wildcard.LEADING = 1
+lunr.Query.wildcard.TRAILING = 2
+
+/**
+ * Constants for indicating what kind of presence a term must have in matching documents.
+ *
+ * @constant
+ * @enum {number}
+ * @see lunr.Query~Clause
+ * @see lunr.Query#clause
+ * @see lunr.Query#term
+ * @example <caption>query term with required presence</caption>
+ * query.term('foo', { presence: lunr.Query.presence.REQUIRED })
+ */
+lunr.Query.presence = {
+  /**
+   * Term's presence in a document is optional, this is the default value.
+   */
+  OPTIONAL: 1,
+
+  /**
+   * Term's presence in a document is required, documents that do not contain
+   * this term will not be returned.
+   */
+  REQUIRED: 2,
+
+  /**
+   * Term's presence in a document is prohibited, documents that do contain
+   * this term will not be returned.
+   */
+  PROHIBITED: 3
+}
+
+/**
+ * A single clause in a {@link lunr.Query} contains a term and details on how to
+ * match that term against a {@link lunr.Index}.
+ *
+ * @typedef {Object} lunr.Query~Clause
+ * @property {string[]} fields - The fields in an index this clause should be matched against.
+ * @property {number} [boost=1] - Any boost that should be applied when matching this clause.
+ * @property {number} [editDistance] - Whether the term should have fuzzy matching applied, and how fuzzy the match should be.
+ * @property {boolean} [usePipeline] - Whether the term should be passed through the search pipeline.
+ * @property {number} [wildcard=lunr.Query.wildcard.NONE] - Whether the term should have wildcards appended or prepended.
+ * @property {number} [presence=lunr.Query.presence.OPTIONAL] - The terms presence in any matching documents.
+ */
+
+/**
+ * Adds a {@link lunr.Query~Clause} to this query.
+ *
+ * Unless the clause contains the fields to be matched all fields will be matched. In addition
+ * a default boost of 1 is applied to the clause.
+ *
+ * @param {lunr.Query~Clause} clause - The clause to add to this query.
+ * @see lunr.Query~Clause
+ * @returns {lunr.Query}
+ */
+lunr.Query.prototype.clause = function (clause) {
+  if (!('fields' in clause)) {
+    clause.fields = this.allFields
+  }
+
+  if (!('boost' in clause)) {
+    clause.boost = 1
+  }
+
+  if (!('usePipeline' in clause)) {
+    clause.usePipeline = true
+  }
+
+  if (!('wildcard' in clause)) {
+    clause.wildcard = lunr.Query.wildcard.NONE
+  }
+
+  if ((clause.wildcard & lunr.Query.wildcard.LEADING) && (clause.term.charAt(0) != lunr.Query.wildcard)) {
+    clause.term = "*" + clause.term
+  }
+
+  if ((clause.wildcard & lunr.Query.wildcard.TRAILING) && (clause.term.slice(-1) != lunr.Query.wildcard)) {
+    clause.term = "" + clause.term + "*"
+  }
+
+  if (!('presence' in clause)) {
+    clause.presence = lunr.Query.presence.OPTIONAL
+  }
+
+  this.clauses.push(clause)
+
+  return this
+}
+
+/**
+ * A negated query is one in which every clause has a presence of
+ * prohibited. These queries require some special processing to return
+ * the expected results.
+ *
+ * @returns boolean
+ */
+lunr.Query.prototype.isNegated = function () {
+  for (var i = 0; i < this.clauses.length; i++) {
+    if (this.clauses[i].presence != lunr.Query.presence.PROHIBITED) {
+      return false
+    }
+  }
+
+  return true
+}
+
+/**
+ * Adds a term to the current query, under the covers this will create a {@link lunr.Query~Clause}
+ * to the list of clauses that make up this query.
+ *
+ * The term is used as is, i.e. no tokenization will be performed by this method. Instead conversion
+ * to a token or token-like string should be done before calling this method.
+ *
+ * The term will be converted to a string by calling `toString`. Multiple terms can be passed as an
+ * array, each term in the array will share the same options.
+ *
+ * @param {object|object[]} term - The term(s) to add to the query.
+ * @param {object} [options] - Any additional properties to add to the query clause.
+ * @returns {lunr.Query}
+ * @see lunr.Query#clause
+ * @see lunr.Query~Clause
+ * @example <caption>adding a single term to a query</caption>
+ * query.term("foo")
+ * @example <caption>adding a single term to a query and specifying search fields, term boost and automatic trailing wildcard</caption>
+ * query.term("foo", {
+ *   fields: ["title"],
+ *   boost: 10,
+ *   wildcard: lunr.Query.wildcard.TRAILING
+ * })
+ * @example <caption>using lunr.tokenizer to convert a string to tokens before using them as terms</caption>
+ * query.term(lunr.tokenizer("foo bar"))
+ */
+lunr.Query.prototype.term = function (term, options) {
+  if (Array.isArray(term)) {
+    term.forEach(function (t) { this.term(t, lunr.utils.clone(options)) }, this)
+    return this
+  }
+
+  var clause = options || {}
+  clause.term = term.toString()
+
+  this.clause(clause)
+
+  return this
+}
+lunr.QueryParseError = function (message, start, end) {
+  this.name = "QueryParseError"
+  this.message = message
+  this.start = start
+  this.end = end
+}
+
+lunr.QueryParseError.prototype = new Error
+lunr.QueryLexer = function (str) {
+  this.lexemes = []
+  this.str = str
+  this.length = str.length
+  this.pos = 0
+  this.start = 0
+  this.escapeCharPositions = []
+}
+
+lunr.QueryLexer.prototype.run = function () {
+  var state = lunr.QueryLexer.lexText
+
+  while (state) {
+    state = state(this)
+  }
+}
+
+lunr.QueryLexer.prototype.sliceString = function () {
+  var subSlices = [],
+      sliceStart = this.start,
+      sliceEnd = this.pos
+
+  for (var i = 0; i < this.escapeCharPositions.length; i++) {
+    sliceEnd = this.escapeCharPositions[i]
+    subSlices.push(this.str.slice(sliceStart, sliceEnd))
+    sliceStart = sliceEnd + 1
+  }
+
+  subSlices.push(this.str.slice(sliceStart, this.pos))
+  this.escapeCharPositions.length = 0
+
+  return subSlices.join('')
+}
+
+lunr.QueryLexer.prototype.emit = function (type) {
+  this.lexemes.push({
+    type: type,
+    str: this.sliceString(),
+    start: this.start,
+    end: this.pos
+  })
+
+  this.start = this.pos
+}
+
+lunr.QueryLexer.prototype.escapeCharacter = function () {
+  this.escapeCharPositions.push(this.pos - 1)
+  this.pos += 1
+}
+
+lunr.QueryLexer.prototype.next = function () {
+  if (this.pos >= this.length) {
+    return lunr.QueryLexer.EOS
+  }
+
+  var char = this.str.charAt(this.pos)
+  this.pos += 1
+  return char
+}
+
+lunr.QueryLexer.prototype.width = function () {
+  return this.pos - this.start
+}
+
+lunr.QueryLexer.prototype.ignore = function () {
+  if (this.start == this.pos) {
+    this.pos += 1
+  }
+
+  this.start = this.pos
+}
+
+lunr.QueryLexer.prototype.backup = function () {
+  this.pos -= 1
+}
+
+lunr.QueryLexer.prototype.acceptDigitRun = function () {
+  var char, charCode
+
+  do {
+    char = this.next()
+    charCode = char.charCodeAt(0)
+  } while (charCode > 47 && charCode < 58)
+
+  if (char != lunr.QueryLexer.EOS) {
+    this.backup()
+  }
+}
+
+lunr.QueryLexer.prototype.more = function () {
+  return this.pos < this.length
+}
+
+lunr.QueryLexer.EOS = 'EOS'
+lunr.QueryLexer.FIELD = 'FIELD'
+lunr.QueryLexer.TERM = 'TERM'
+lunr.QueryLexer.EDIT_DISTANCE = 'EDIT_DISTANCE'
+lunr.QueryLexer.BOOST = 'BOOST'
+lunr.QueryLexer.PRESENCE = 'PRESENCE'
+
+lunr.QueryLexer.lexField = function (lexer) {
+  lexer.backup()
+  lexer.emit(lunr.QueryLexer.FIELD)
+  lexer.ignore()
+  return lunr.QueryLexer.lexText
+}
+
+lunr.QueryLexer.lexTerm = function (lexer) {
+  if (lexer.width() > 1) {
+    lexer.backup()
+    lexer.emit(lunr.QueryLexer.TERM)
+  }
+
+  lexer.ignore()
+
+  if (lexer.more()) {
+    return lunr.QueryLexer.lexText
+  }
+}
+
+lunr.QueryLexer.lexEditDistance = function (lexer) {
+  lexer.ignore()
+  lexer.acceptDigitRun()
+  lexer.emit(lunr.QueryLexer.EDIT_DISTANCE)
+  return lunr.QueryLexer.lexText
+}
+
+lunr.QueryLexer.lexBoost = function (lexer) {
+  lexer.ignore()
+  lexer.acceptDigitRun()
+  lexer.emit(lunr.QueryLexer.BOOST)
+  return lunr.QueryLexer.lexText
+}
+
+lunr.QueryLexer.lexEOS = function (lexer) {
+  if (lexer.width() > 0) {
+    lexer.emit(lunr.QueryLexer.TERM)
+  }
+}
+
+// This matches the separator used when tokenising fields
+// within a document. These should match otherwise it is
+// not possible to search for some tokens within a document.
 //
-.: .g.e ,gnirts hcraes eht nihtiw desu ydaerla sretcarahc //
-laiceps eht fo rehto yna htiw hsalc _thgim_ ti os rezinekot //
-eht no rotarapes eht egnahc ot resu eht rof elbissop si tI //
+// It is possible for the user to change the separator on the
+// tokenizer so it _might_ clash with any other of the special
+// characters already used within the search string, e.g. :.
 //
-.tnemucod a nihtiw snekot emos rof hcraes ot elbissop ton //
-si ti esiwrehto hctam dluohs esehT .tnemucod a nihtiw //
-sdleif gnisinekot nehw desu rotarapes eht sehctam sihT //
+// This means that it is possible to change the separator in
+// such a way that makes some words unsearchable using a search
+// string.
+lunr.QueryLexer.termSeparator = lunr.tokenizer.separator
 
-}
-}  
-)MRET.rexeLyreuQ.rnul(time.rexel    
-{ )0 > )(htdiw.rexel( fi  
-{ )rexel( noitcnuf = SOExel.rexeLyreuQ.rnul
-
-}
-txeTxel.rexeLyreuQ.rnul nruter  
-)TSOOB.rexeLyreuQ.rnul(time.rexel  
-)(nuRtigiDtpecca.rexel  
-)(erongi.rexel  
-{ )rexel( noitcnuf = tsooBxel.rexeLyreuQ.rnul
-
-}
-txeTxel.rexeLyreuQ.rnul nruter  
-)ECNATSID_TIDE.rexeLyreuQ.rnul(time.rexel  
-)(nuRtigiDtpecca.rexel  
-)(erongi.rexel  
-{ )rexel( noitcnuf = ecnatsiDtidExel.rexeLyreuQ.rnul
-
-}
-}  
-txeTxel.rexeLyreuQ.rnul nruter    
-{ ))(erom.rexel( fi  
-
-)(erongi.rexel  
-
-}  
-)MRET.rexeLyreuQ.rnul(time.rexel    
-)(pukcab.rexel    
-{ )1 > )(htdiw.rexel( fi  
-{ )rexel( noitcnuf = mreTxel.rexeLyreuQ.rnul
-
-}
-txeTxel.rexeLyreuQ.rnul nruter  
-)(erongi.rexel  
-)DLEIF.rexeLyreuQ.rnul(time.rexel  
-)(pukcab.rexel  
-{ )rexel( noitcnuf = dleiFxel.rexeLyreuQ.rnul
-
-'ECNESERP' = ECNESERP.rexeLyreuQ.rnul
-'TSOOB' = TSOOB.rexeLyreuQ.rnul
-'ECNATSID_TIDE' = ECNATSID_TIDE.rexeLyreuQ.rnul
-'MRET' = MRET.rexeLyreuQ.rnul
-'DLEIF' = DLEIF.rexeLyreuQ.rnul
-'SOE' = SOE.rexeLyreuQ.rnul
-
-}
-htgnel.siht < sop.siht nruter  
-{ )( noitcnuf = erom.epytotorp.rexeLyreuQ.rnul
-
-}
-}  
-)(pukcab.siht    
-{ )SOE.rexeLyreuQ.rnul =! rahc( fi  
-
-)85 < edoCrahc && 74 > edoCrahc( elihw }  
-)0(tAedoCrahc.rahc = edoCrahc    
-)(txen.siht = rahc    
-{ od  
-
-edoCrahc ,rahc rav  
-{ )( noitcnuf = nuRtigiDtpecca.epytotorp.rexeLyreuQ.rnul
-
-}
-1 =- sop.siht  
-{ )( noitcnuf = pukcab.epytotorp.rexeLyreuQ.rnul
-
-}
-sop.siht = trats.siht  
-
-}  
-1 =+ sop.siht    
-{ )sop.siht == trats.siht( fi  
-{ )( noitcnuf = erongi.epytotorp.rexeLyreuQ.rnul
-
-}
-trats.siht - sop.siht nruter  
-{ )( noitcnuf = htdiw.epytotorp.rexeLyreuQ.rnul
-
-}
-rahc nruter  
-1 =+ sop.siht  
-)sop.siht(tArahc.rts.siht = rahc rav  
-
-}  
-SOE.rexeLyreuQ.rnul nruter    
-{ )htgnel.siht => sop.siht( fi  
-{ )( noitcnuf = txen.epytotorp.rexeLyreuQ.rnul
-
-}
-1 =+ sop.siht  
-)1 - sop.siht(hsup.snoitisoPrahCepacse.siht  
-{ )( noitcnuf = retcarahCepacse.epytotorp.rexeLyreuQ.rnul
-
-}
-sop.siht = trats.siht  
-
-)}  
-sop.siht :dne    
-,trats.siht :trats    
-,)(gnirtSecils.siht :rts    
-,epyt :epyt    
-{(hsup.semexel.siht  
-{ )epyt( noitcnuf = time.epytotorp.rexeLyreuQ.rnul
-
-}
-)''(nioj.secilSbus nruter  
-
-0 = htgnel.snoitisoPrahCepacse.siht  
-))sop.siht ,tratSecils(ecils.rts.siht(hsup.secilSbus  
-
-}  
-1 + dnEecils = tratSecils    
-))dnEecils ,tratSecils(ecils.rts.siht(hsup.secilSbus    
-]i[snoitisoPrahCepacse.siht = dnEecils    
-{ )++i ;htgnel.snoitisoPrahCepacse.siht < i ;0 = i rav( rof  
-
-sop.siht = dnEecils      
-,trats.siht = tratSecils      
-,][ = secilSbus rav  
-{ )( noitcnuf = gnirtSecils.epytotorp.rexeLyreuQ.rnul
-
-}
-}  
-)siht(etats = etats    
-{ )etats( elihw  
-
-txeTxel.rexeLyreuQ.rnul = etats rav  
-{ )( noitcnuf = nur.epytotorp.rexeLyreuQ.rnul
-
-}
-][ = snoitisoPrahCepacse.siht  
-0 = trats.siht  
-0 = sop.siht  
-htgnel.rts = htgnel.siht  
-rts = rts.siht  
-][ = semexel.siht  
-{ )rts( noitcnuf = rexeLyreuQ.rnul
-rorrE wen = epytotorp.rorrEesraPyreuQ.rnul
-
-}
-dne = dne.siht  
-trats = trats.siht  
-egassem = egassem.siht  
-"rorrEesraPyreuQ" = eman.siht  
-{ )dne ,trats ,egassem( noitcnuf = rorrEesraPyreuQ.rnul
-}
-siht nruter  
-
-)esualc(esualc.siht  
-
-)(gnirtSot.mret = mret.esualc  
-}{ || snoitpo = esualc rav  
-
-}  
-siht nruter    
-)siht ,} ))snoitpo(enolc.slitu.rnul ,t(mret.siht { )t( noitcnuf(hcaErof.mret    
-{ ))mret(yarrAsi.yarrA( fi  
-{ )snoitpo ,mret( noitcnuf = mret.epytotorp.yreuQ.rnul
-/* 
-))"rab oof"(rezinekot.rnul(mret.yreuq * 
->noitpac/<smret sa meht gnisu erofeb snekot ot gnirts a trevnoc ot rezinekot.rnul gnisu>noitpac< elpmaxe@ * 
-)} * 
-GNILIART.dracdliw.yreuQ.rnul :dracdliw   * 
-,01 :tsoob   * 
-,]"eltit"[ :sdleif   * 
-{ ,"oof"(mret.yreuq * 
->noitpac/<dracdliw gniliart citamotua dna tsoob mret ,sdleif hcraes gniyficeps dna yreuq a ot mret elgnis a gnidda>noitpac< elpmaxe@ * 
-)"oof"(mret.yreuq * 
->noitpac/<yreuq a ot mret elgnis a gnidda>noitpac< elpmaxe@ * 
-esualC~yreuQ.rnul ees@ * 
-esualc#yreuQ.rnul ees@ * 
-}yreuQ.rnul{ snruter@ * 
-.esualc yreuq eht ot dda ot seitreporp lanoitidda ynA - ]snoitpo[ }tcejbo{ marap@ * 
-.yreuq eht ot dda ot )s(mret ehT - mret }][tcejbo|tcejbo{ marap@ * 
-* 
-.snoitpo emas eht erahs lliw yarra eht ni mret hcae ,yarra * 
-na sa dessap eb nac smret elpitluM .`gnirtSot` gnillac yb gnirts a ot detrevnoc eb lliw mret ehT * 
-* 
-.dohtem siht gnillac erofeb enod eb dluohs gnirts ekil-nekot ro nekot a ot * 
-noisrevnoc daetsnI .dohtem siht yb demrofrep eb lliw noitazinekot on .e.i ,si sa desu si mret ehT * 
-* 
-.yreuq siht pu ekam taht sesualc fo tsil eht ot * 
-}esualC~yreuQ.rnul knil@{ a etaerc lliw siht srevoc eht rednu ,yreuq tnerruc eht ot mret a sddA * 
-**/
-
-}
-eurt nruter  
-
-}  
-}    
-eslaf nruter      
-{ )DETIBIHORP.ecneserp.yreuQ.rnul =! ecneserp.]i[sesualc.siht( fi    
-{ )++i ;htgnel.sesualc.siht < i ;0 = i rav( rof  
-{ )( noitcnuf = detageNsi.epytotorp.yreuQ.rnul
-/* 
-naeloob snruter@ * 
-* 
-.stluser detcepxe eht * 
-nruter ot gnissecorp laiceps emos eriuqer seireuq esehT .detibihorp * 
-fo ecneserp a sah esualc yreve hcihw ni eno si yreuq detagen A * 
-**/
-
-}
-siht nruter  
-
-)esualc(hsup.sesualc.siht  
-
-}  
-LANOITPO.ecneserp.yreuQ.rnul = ecneserp.esualc    
-{ ))esualc ni 'ecneserp'(!( fi  
-
-}  
-"*" + mret.esualc + "" = mret.esualc    
-{ ))dracdliw.yreuQ.rnul =! )1-(ecils.mret.esualc( && )GNILIART.dracdliw.yreuQ.rnul & dracdliw.esualc(( fi  
-
-}  
-mret.esualc + "*" = mret.esualc    
-{ ))dracdliw.yreuQ.rnul =! )0(tArahc.mret.esualc( && )GNIDAEL.dracdliw.yreuQ.rnul & dracdliw.esualc(( fi  
-
-}  
-ENON.dracdliw.yreuQ.rnul = dracdliw.esualc    
-{ ))esualc ni 'dracdliw'(!( fi  
-
-}  
-eurt = enilepiPesu.esualc    
-{ ))esualc ni 'enilepiPesu'(!( fi  
-
-}  
-1 = tsoob.esualc    
-{ ))esualc ni 'tsoob'(!( fi  
-
-}  
-sdleiFlla.siht = sdleif.esualc    
-{ ))esualc ni 'sdleif'(!( fi  
-{ )esualc( noitcnuf = esualc.epytotorp.yreuQ.rnul
-/* 
-}yreuQ.rnul{ snruter@ * 
-esualC~yreuQ.rnul ees@ * 
-.yreuq siht ot dda ot esualc ehT - esualc }esualC~yreuQ.rnul{ marap@ * 
-* 
-.esualc eht ot deilppa si 1 fo tsoob tluafed a * 
-noitidda nI .dehctam eb lliw sdleif lla dehctam eb ot sdleif eht sniatnoc esualc eht sselnU * 
-* 
-.yreuq siht ot }esualC~yreuQ.rnul knil@{ a sddA * 
-**/
-
-/* 
-.stnemucod gnihctam yna ni ecneserp smret ehT - ]LANOITPO.ecneserp.yreuQ.rnul=ecneserp[ }rebmun{ ytreporp@ * 
-.dedneperp ro dedneppa sdracdliw evah dluohs mret eht rehtehW - ]ENON.dracdliw.yreuQ.rnul=dracdliw[ }rebmun{ ytreporp@ * 
-.enilepip hcraes eht hguorht dessap eb dluohs mret eht rehtehW - ]enilepiPesu[ }naeloob{ ytreporp@ * 
-.eb dluohs hctam eht yzzuf woh dna ,deilppa gnihctam yzzuf evah dluohs mret eht rehtehW - ]ecnatsiDtide[ }rebmun{ ytreporp@ * 
-.esualc siht gnihctam nehw deilppa eb dluohs taht tsoob ynA - ]1=tsoob[ }rebmun{ ytreporp@ * 
-.tsniaga dehctam eb dluohs esualc siht xedni na ni sdleif ehT - sdleif }][gnirts{ ytreporp@ * 
-esualC~yreuQ.rnul }tcejbO{ fedepyt@ * 
-* 
-.}xednI.rnul knil@{ a tsniaga mret taht hctam * 
-ot woh no sliated dna mret a sniatnoc }yreuQ.rnul knil@{ a ni esualc elgnis A * 
-**/
-
-}
-3 :DETIBIHORP  
-/*   
-.denruter eb ton lliw mret siht *   
-niatnoc od taht stnemucod ,detibihorp si tnemucod a ni ecneserp s'mreT *   
-**/  
-
-,2 :DERIUQER  
-/*   
-.denruter eb ton lliw mret siht *   
-niatnoc ton od taht stnemucod ,deriuqer si tnemucod a ni ecneserp s'mreT *   
-**/  
-
-,1 :LANOITPO  
-/*   
-.eulav tluafed eht si siht ,lanoitpo si tnemucod a ni ecneserp s'mreT *   
-**/  
-{ = ecneserp.yreuQ.rnul
-/* 
-)} DERIUQER.ecneserp.yreuQ.rnul :ecneserp { ,'oof'(mret.yreuq * 
->noitpac/<ecneserp deriuqer htiw mret yreuq>noitpac< elpmaxe@ * 
-mret#yreuQ.rnul ees@ * 
-esualc#yreuQ.rnul ees@ * 
-esualC~yreuQ.rnul ees@ * 
-}rebmun{ mune@ * 
-tnatsnoc@ * 
-* 
-.stnemucod gnihctam ni evah tsum mret a ecneserp fo dnik tahw gnitacidni rof stnatsnoC * 
-**/
-
-2 = GNILIART.dracdliw.yreuQ.rnul
-1 = GNIDAEL.dracdliw.yreuQ.rnul
-0 = ENON.dracdliw.yreuQ.rnul
-)"*"( gnirtS wen = dracdliw.yreuQ.rnul
-
-/* 
-)} * 
-GNILIART.dracdliw.yreuQ.rnul | GNIDAEL.dracdliw.yreuQ.rnul :dracdliw   * 
-{ ,'oof'(mret.yreuq * 
->noitpac/<dracdliw gniliart dna gnidael htiw mret yreuq>noitpac< elpmaxe@ * 
-)} GNILIART.dracdliw.yreuQ.rnul :dracdliw { ,'oof'(mret.yreuq * 
->noitpac/<dracdliw gniliart htiw mret yreuq>noitpac< elpmaxe@ * 
-mret#yreuQ.rnul ees@ * 
-esualc#yreuQ.rnul ees@ * 
-esualC~yreuQ.rnul ees@ * 
-stsixe ydaerla dracdliw gniliart a sselnu ,mret eht ot dracdliw a dneppA - GNILIART.dracdliw }rebmun{ ytreporp@ * 
-stsixe ydaerla dracdliw gnidael a sselnu ,dracdliw a htiw mret eht dneperP - GNIDAEL.dracdliw }rebmun{ ytreporp@ * 
-ruoivaheb tluafed eht si siht ,detresni sdracdliw on evah lliw mret ehT - ENON.dracdliw }rebmun{ ytreporp@ * 
-tluafed@ * 
-tnatsnoc@ * 
-* 
-.sdracdliw gniliart dna gnidael htob tceles ot denibmoc esiwtib eb nac stnatsnoc dracdliw ehT * 
-* 
-.noitanetacnoc * 
-gnirts yna od yllaunam ot gnivah tuohtiw mret a fo dne dna gninnigeb eht ot dedda eb ot sdracdliw swolla sihT * 
-* 
-.esualc yreuq a gnitcurtsnoc nehw desu eb lliw noitresni dracdliw citamotua fo dnik tahw gnitacidni rof stnatsnoC * 
-**/
-
-}
-sdleiFlla = sdleiFlla.siht  
-][ = sesualc.siht  
-{ )sdleiFlla( noitcnuf = yreuQ.rnul
-/* 
-.xednI.rnul a ni sdleif elbaliava lla fo yarra nA - sdleiFlla }][gnirts{ ytreporp@ * 
-.sesualc yreuq fo yarra nA - sesualc }][esualC~yreuQ.rnul{ ytreporp@ * 
-rotcurtsnoc@ * 
-* 
-.sdleif xedni thgir eht htiw dezilaitini-erp si tcejbo yreuq eht os * 
-dohtem }yreuq#xednI.rnul knil@{ eht gnisu yreuQ.rnul a gnitcurtsnoc referP * 
-* 
-.}xednI.rnul knil@{ a tsniaga * 
-demrofrep eb ot seireuq gninifed fo yaw citammargorp a sedivorp yreuQ.rnul A * 
-**/
-}
-}  
-}    
-]yek[atadatem = ]yek[]dleif[]mret[atadatem.siht      
-{ esle }    
-)]yek[atadatem(tacnoc.]yek[]dleif[]mret[atadatem.siht = ]yek[]dleif[]mret[atadatem.siht      
-{ )]dleif[]mret[atadatem.siht ni yek( fi    
-
-]i[syeKatadatem = yek rav    
-{ )++i ;htgnel.syeKatadatem < i ;0 = i rav( rof  
-
-)atadatem(syek.tcejbO = syeKatadatem rav  
-
-}  
-nruter    
-atadatem = ]dleif[]mret[atadatem.siht    
-{ ))]mret[atadatem.siht ni dleif(!( fi  
-
-}  
-nruter    
-atadatem = ]dleif[]mret[atadatem.siht    
-)llun(etaerc.tcejbO = ]mret[atadatem.siht    
-{ ))atadatem.siht ni mret(!( fi  
-{ )atadatem ,dleif ,mret( noitcnuf = dda.epytotorp.ataDhctaM.rnul
-/* 
-dleif siht ni mret siht tuoba dedrocer atadatem ehT - atadatem }tcejbo{ marap@ * 
-dnuof saw mret eht hcihw ni dleif ehT - dleif }gnirts{ marap@ * 
-htiw detaicossa si atad hctam siht mret ehT - mret }gnirts{ marap@ * 
-* 
-.atad hctam fo ecnatsni siht ot riap dleif/mret a rof atadatem ddA * 
-**/
-
-}
-}  
-}    
-}      
-
-}        
-)]yek[]dleif[]mret[atadatem.ataDhctaMrehto(tacnoc.]yek[]dleif[]mret[atadatem.siht = ]yek[]dleif[]mret[atadatem.siht          
-{ esle }        
-]yek[]dleif[]mret[atadatem.ataDhctaMrehto = ]yek[]dleif[]mret[atadatem.siht          
-{ )denifednu == ]yek[]dleif[]mret[atadatem.siht( fi        
-
-]k[syek = yek rav        
-{ )++k ;htgnel.syek < k ;0 = k rav( rof      
-
-}      
-)llun(etaerc.tcejbO = ]dleif[]mret[atadatem.siht        
-{ )denifednu == ]dleif[]mret[atadatem.siht( fi      
-
-)]dleif[]mret[atadatem.ataDhctaMrehto(syek.tcejbO = syek          
-,]j[sdleif = dleif rav      
-{ )++j ;htgnel.sdleif < j ;0 = j rav( rof    
-
-}    
-)llun(etaerc.tcejbO = ]mret[atadatem.siht      
-{ )denifednu == ]mret[atadatem.siht( fi    
-
-)]mret[atadatem.ataDhctaMrehto(syek.tcejbO = sdleif        
-,]i[smret = mret rav    
-{ )++i ;htgnel.smret < i ;0 = i rav( rof  
-
-)atadatem.ataDhctaMrehto(syek.tcejbO = smret rav  
-{ )ataDhctaMrehto( noitcnuf = enibmoc.epytotorp.ataDhctaM.rnul
-/* 
-}tluseR~xednI.rnul knil@{ ees@ * 
-.eno siht htiw egrem ot atad hctam fo ecnatsni rehtonA - ataDhctaMrehto }ataDhctaM.rnul{ marap@ * 
-* 
-.atadatem stcejbo * 
-siht htiw ataDhctaM.rnul fo ecnatsni rehtona morf atadatem senibmoc dohtem * 
-sihT .tluseR~xednI.rnul a ni deriuqer si ecnatsni eno ylno revewoH .tnemucod * 
-a sehctam taht mret yreve rof detaerc eb lliw ataDhctaM.rnul fo ecnatsni nA * 
-**/
-
-}
-}  
-atadateMdenolc = ]dleif[]mret[atadatem.siht    
-)llun(etaerc.tcejbO = ]mret[atadatem.siht    
-{ )denifednu ==! mret( fi  
-
-)llun(etaerc.tcejbO = atadatem.siht  
-
-}  
-)(ecils.]yek[atadatem = ]yek[atadateMdenolc    
-]i[syeKatadatem = yek rav    
-{ )++i ;htgnel.syeKatadatem < i ;0 = i rav( rof  
-ecils#yarrA //  
-htiw enod eb nac atad eht gninolc os xedni //  
-detrevni eht nihtiw yarra na ni tpek si atadateM //  
-.noitanibmoc atad hctam gnirud detatum gnieb //  
-lanigiro eht tneverp ot atadatem eht gninolC //  
-
-)}{ || atadatem(syek.tcejbO = syeKatadatem      
-,)llun(etaerc.tcejbO = atadateMdenolc rav  
-{ )atadatem ,dleif ,mret( noitcnuf = ataDhctaM.rnul
-/* 
-}tluseR~xednI.rnul knil@{ ees@ * 
-.tnemucod siht htiw detaicossa atadatem fo noitcelloc denolc A - atadatem }tcejbo{ ytreporp@ * 
-dleif siht ni mret siht tuoba dedrocer atadatem ehT - atadatem }tcejbo{ marap@ * 
-dnuof saw mret eht hcihw ni dleif ehT - dleif }gnirts{ marap@ * 
-htiw detaicossa si atad hctam siht mret ehT - mret }gnirts{ marap@ * 
-rotcurtsnoc@ * 
-* 
-.tluseR~xednI.rnul * 
-yreve fo trap sa denruter si ataDhctaM.rnul fo ecnatsni elgnis A * 
-.tnemucod gnihctam a tuoba atadatem stcelloc dna sniatnoC * 
-**/
-}
-)sgra ,siht(ylppa.nf  
-)siht(tfihsnu.sgra  
-)1 ,stnemugra(llac.ecils.epytotorp.yarrA = sgra rav  
-{ )nf( noitcnuf = esu.epytotorp.redliuB.rnul
-/* 
-.ylppa ot nigulp ehT nigulp }noitcnuF{ marap@ * 
-* 
-.txetnoc sti sa redliub xedni eht htiw * 
-dellac eb lliw noitcnuf ehT .esu gnillac nehw dessap eb osla nac stnemugra * 
-lanoitidda ,tnemugra sti sa redliub xedni eht htiw dellac eb lliw noitcnuf nigulp ehT * 
-* 
-.xedni eht gnidliub nehw deilppa eb dluohs taht ruoivaheb * 
-motsuc eht detaluspacne taht ,noitcnuf a tsuj si nigulp A .yaw emos ni * 
-xedni eht fo ruoivaheb eht dnetxe ro esimotsuc ot desu eb nac snigulP * 
-.txetnoc sti sa redliub xedni eht htiw dellac si taht noitcnuf a si nigulp A * 
-* 
-.redliub xedni eht ot nigulp a seilppA * 
-**/
-
-}
-)}  
-enilepiPhcraes.siht :enilepip    
-,)sdleif_.siht(syek.tcejbO :sdleif    
-,teSnekot.siht :teSnekot    
-,srotceVdleif.siht :srotceVdleif    
-,xednIdetrevni.siht :xednIdetrevni    
-{(xednI.rnul wen nruter  
-
-)(teSnekoTetaerc.siht  
-)(srotceVdleiFetaerc.siht  
-)(shtgneLdleiFegarevAetaluclac.siht  
-{ )( noitcnuf = dliub.epytotorp.redliuB.rnul
-/* 
-}xednI.rnul{ snruter@ * 
-* 
-.xedni eht ot dedda neeb evah stnemucod lla ecno * 
-dellac eb ylno dluohs dna ssecorp gnixedni eht setelpmoc sihT * 
-* 
-.xednI.rnul fo ecnatsni na gnitaerc ,xedni eht sdliuB * 
-**/
-
-}
-)  
-)(tros.)xednIdetrevni.siht(syek.tcejbO    
-(yarrAmorf.teSnekoT.rnul = teSnekot.siht  
-{ )( noitcnuf = teSnekoTetaerc.epytotorp.redliuB.rnul
-/* 
-etavirp@ * 
-* 
-teSnekoT.rnul gnisu xedni eht ni snekot lla fo tes nekot a setaerC * 
-**/
-
-}
-srotceVdleif = srotceVdleif.siht  
-
-}  
-rotceVdleif = ]feRdleif[srotceVdleif    
-
-}    
-)noisicerPhtiWerocs ,xednImret(tresni.rotceVdleif      
-
-.tpircSavaJ //      
-ni noisicerp s'rebmun a gnicuder ot hcaorppa tsetsaf eht //      
-si siht ,oslA .noitasilaires retfa dna erofeb emas eht //      
-evaheb yeht taht os won ti gnioD .desilaires nehw ecaps //      
-ssel pu ekat srotcev eht taht os noisicerp eht gnicudeR //      
-.432.1 ot 98765432.1 strevnoC //      
-0001 / )0001 * erocs(dnuor.htaM = noisicerPhtiWerocs      
-tsooBcod =* erocs      
-tsooBdleif =* erocs      
-)ft + ))]emaNdleif[htgneLdleiFegareva.siht / htgneLdleif( * b_.siht + b_.siht - 1( * 1k_.siht( / )ft * )1 + 1k_.siht(( * fdi = erocs      
-
-}      
-]mret[ehcaCfdImret = fdi        
-{ esle }      
-fdi = ]mret[ehcaCfdImret        
-)tnuoCtnemucod.siht ,]mret[xednIdetrevni.siht(fdi.rnul = fdi        
-{ )denifednu === ]mret[ehcaCfdImret( fi      
-
-noisicerPhtiWerocs ,erocs ,fdi          
-,xedni_.]mret[xednIdetrevni.siht = xednImret          
-,]mret[seicneuqerFmret = ft          
-,]j[smret = mret rav      
-{ )++j ;htgneLsmret < j ;0 = j rav( rof    
-
-1 || tsoob.]feRcod.feRdleif[stnemucod_.siht = tsooBcod        
-,1 || tsoob.]emaNdleif[sdleif_.siht = tsooBdleif rav    
-
-
-htgnel.smret = htgneLsmret        
-,)seicneuqerFmret(syek.tcejbO = smret        
-,]feRdleif[seicneuqerFmreTdleif.siht = seicneuqerFmret        
-,rotceV.rnul wen = rotceVdleif        
-,]feRdleif[shtgneLdleif.siht = htgneLdleif        
-,emaNdleif.feRdleif = emaNdleif        
-,)]i[sfeRdleif(gnirtSmorf.feRdleiF.rnul = feRdleif rav    
-{ )++i ;htgneLsfeRdleif < i ;0 = i rav( rof  
-
-)llun(etaerc.tcejbO = ehcaCfdImret      
-,htgnel.sfeRdleif = htgneLsfeRdleif      
-,)seicneuqerFmreTdleif.siht(syek.tcejbO = sfeRdleif      
-,}{ = srotceVdleif rav  
-{ )( noitcnuf = srotceVdleiFetaerc.epytotorp.redliuB.rnul
-/* 
-etavirp@ * 
-* 
-rotceV.rnul gnisu tnemucod yreve fo ledom ecaps rotcev a sdliuB * 
-**/
-
-}
-rotalumucca = htgneLdleiFegareva.siht  
-
-}  
-]emaNdleif[dleiFhtiWstnemucod / ]emaNdleif[rotalumucca = ]emaNdleif[rotalumucca    
-]i[sdleif = emaNdleif rav    
-{ )++i ;htgnel.sdleif < i ;0 = i rav( rof  
-
-)sdleif_.siht(syek.tcejbO = sdleif rav  
-
-}  
-]feRdleif[shtgneLdleif.siht =+ ]dleif[rotalumucca    
-)0 = ]dleif[rotalumucca( || ]dleif[rotalumucca    
-
-1 =+ ]dleif[dleiFhtiWstnemucod    
-)0 = ]dleif[dleiFhtiWstnemucod( || ]dleif[dleiFhtiWstnemucod    
-
-emaNdleif.feRdleif = dleif        
-,)]i[sfeRdleif(gnirtSmorf.feRdleiF.rnul = feRdleif rav    
-{ )++i ;sdleiFfOrebmun < i ;0 = i rav( rof  
-
-}{ = dleiFhtiWstnemucod      
-,}{ = rotalumucca      
-,htgnel.sfeRdleif = sdleiFfOrebmun      
-,)shtgneLdleif.siht(syek.tcejbO = sfeRdleif rav  
-
-{ )( noitcnuf = shtgneLdleiFegarevAetaluclac.epytotorp.redliuB.rnul
-/* 
-etavirp@ * 
-* 
-xedni siht rof htgnel tnemucod egareva eht setaluclaC * 
-**/
-
-}
-}  
-
-}    
-}      
-)atadatem(hsup.]yeKatadatem[]feRcod[]emaNdleif[]mret[xednIdetrevni.siht        
-
-}        
-][ = ]yeKatadatem[]feRcod[]emaNdleif[]mret[xednIdetrevni.siht          
-{ )denifednu == ]yeKatadatem[]feRcod[]emaNdleif[]mret[xednIdetrevni.siht( fi        
-
-]yeKatadatem[atadatem.mret = atadatem            
-,]l[tsiletihWatadatem.siht = yeKatadatem rav        
-{ )++l ;htgnel.tsiletihWatadatem.siht < l ;0 = l rav( rof      
-xedni detrevni //      
-eht ni nekot siht tuoba atadatem detsiletihw lla erots //      
-
-}      
-)llun(etaerc.tcejbO = ]feRcod[]emaNdleif[]mret[xednIdetrevni.siht        
-{ )denifednu == ]feRcod[]emaNdleif[]mret[xednIdetrevni.siht( fi      
-xednIdetrevni eht ot feRcod/emaNdleif/mret siht rof yrtne na dda //      
-
-}      
-gnitsop = ]mret[xednIdetrevni.siht        
-
-}        
-)llun(etaerc.tcejbO = ]]k[sdleif[gnitsop          
-{ )++k ;htgnel.sdleif < k ;0 = k rav( rof        
-
-1 =+ xednImret.siht        
-xednImret.siht = ]"xedni_"[gnitsop        
-)llun(etaerc.tcejbO = gnitsop rav        
-{ )denifednu == ]mret[xednIdetrevni.siht( fi      
-tsixe t'nseod eno fi gnitsop laitini na etaerc //      
-xedni detrevni ot dda //      
-
-1 =+ ]mret[smreTdleif      
-
-}      
-0 = ]mret[smreTdleif        
-{ )denifednu == ]mret[smreTdleif( fi      
-
-]j[smret = mret rav      
-{ )++j ;htgnel.smret < j ;0 = j rav( rof    
-dleif siht rof seicneuqerf mret etaluclac //    
-
-htgnel.smret =+ ]feRdleif[shtgneLdleif.siht    
-tnemucod siht rof dleif siht fo htgnel eht erots //    
-
-0 = ]feRdleif[shtgneLdleif.siht    
-smreTdleif = ]feRdleif[seicneuqerFmreTdleif.siht    
-
-)llun(etaerc.tcejbO = smreTdleif        
-,)emaNdleif ,feRcod( feRdleiF.rnul wen = feRdleif        
-,)snekot(nur.enilepip.siht = smret        
-,)}        
-]emaNdleif[ :sdleif          
-{ ,dleif(rezinekot.siht = snekot        
-,]emaNdleif[cod : )cod(rotcartxe ? rotcartxe = dleif        
-,rotcartxe.]emaNdleif[sdleif_.siht = rotcartxe        
-,]i[sdleif = emaNdleif rav    
-{ )++i ;htgnel.sdleif < i ;0 = i rav( rof  
-
-1 =+ tnuoCtnemucod.siht  
-}{ || setubirtta = ]feRcod[stnemucod_.siht  
-
-)sdleif_.siht(syek.tcejbO = sdleif      
-,]fer_.siht[cod = feRcod rav  
-{ )setubirtta ,cod( noitcnuf = dda.epytotorp.redliuB.rnul
-/* 
-.tnemucod siht nihtiw smret lla ot deilppa tsooB - ]1=tsoob.setubirtta[ }rebmun{ marap@ * 
-.tnemucod siht htiw detaicossa setubirtta lanoitpO - setubirtta }tcejbo{ marap@ * 
-.xedni eht ot dda ot tnemucod ehT - cod }tcejbo{ marap@ * 
-* 
-.stnemucod rehto naht stluser hcraes ni rehgih knar dluohs tnemucod siht * 
-taht setacidni tnemucod a ot tsoob a gniylppA .emit dliub ta detsoob eb nac stnemucod eritnE * 
-* 
-.srorre esuac * 
-ton lliw seulav denifednu ro llun hguoht ,gnixedni rof denifed sdleif lla evah dluohs ti * 
-dna )'di' si siht tluafed yb( fer eht yb deificeps sa eman dleif a evah tsum tnemucod ehT * 
-* 
-.deificeps neeb gnivah ydaerla xedni ot sdleif lla dna fer * 
-tnemucod eht htiw ,putes ylluf neeb evah dluohs xedni eht xedni eht ot sdleif gnidda erofeB * 
-* 
-.xedni eht ot tnemucod a sddA * 
-**/
-
-}
-rebmun = 1k_.siht  
-{ )rebmun( noitcnuf = 1k.epytotorp.redliuB.rnul
-/* 
-.retemarap gninut siht rof tes ot eulav ehT - rebmun }rebmun{ marap@ * 
-* 
-.noitarutas rekciuq ni tluser lliw eulav rewol a ,slevel noitarutas rewols * 
-evig lliw eulav rehgih a ot siht gnitteS .2.1 si eulav tluafed ehT .noitarutas ycneuqerf * 
-mret ni stluser ycneuqerf mret ni esir a hcihw ta deeps eht slortnoc taht retemarap A * 
-**/
-
-}
-}  
-rebmun = b_.siht    
-{ esle }  
-1 = b_.siht    
-{ )1 > rebmun( fi esle }  
-0 = b_.siht    
-{ )0 < rebmun( fi  
-{ )rebmun( noitcnuf = b.epytotorp.redliuB.rnul
-/* 
-.retemarap gninut siht rof tes ot eulav ehT - rebmun }rebmun{ marap@ * 
-* 
-.1 - 0 egnar eht ot depmalc eb lliw * 
-b fo seulaV .57.0 si tluafed ehT .shtgnel dleif esilamron ylluf lliw 1 fo eulav a dna * 
-noitasilamron yna elbasid yletelpmoc lliw 0 fo eulav A .serocs ecnaveler gnitaluclac * 
-nehw deilppa si taht noitasilamron htgnel dleif fo tnuoma eht enut ot retemarap A * 
-**/
-
-}
-}{ || setubirtta = ]emaNdleif[sdleif_.siht  
-
-}  
-)"'/' retcarahc lagelli sniatnoc '" + emaNdleif + "' dleiF"( rorrEegnaR wen worht    
-{ ))emaNdleif(tset.//\/( fi  
-{ )setubirtta ,emaNdleif( noitcnuf = dleif.epytotorp.redliuB.rnul
-/* 
-'/' sretcarahc detroppusnu niatnoc tonnac emaNdleif }rorrEegnaR{ sworht@ * 
-.tnemucod a morf dleif a tcartxe ot noitcnuF - ]rotcartxe.setubirtta[ }rotcartxEdleif{ marap@ * 
-.dleif siht nihtiw smret lla ot deilppa tsooB - ]1=tsoob.setubirtta[ }rebmun{ marap@ * 
-.dleif siht htiw detaicossa setubirtta lanoitpO - setubirtta }tcejbo{ marap@ * 
-.stnemucod lla ni xedni ot dleif a fo eman ehT - emaNdleif }gnirts{ marap@ * 
-* 
-.sdleif rehto naht tnatropmi erom era dleif eno * 
-nihtiw sehctam taht yficeps ot tsoob dleif a esU .stluser hcraes gniknar nehw ecnatropmi * 
-erom evah ot dleif taht nihtiw smret swolla sihT .emit dliub ta detsoob eb nac sdleiF * 
-* 
-.stnemucod dexedni ydaerla no tceffe on evah lliw dexedni neeb sah tnemucod a * 
-retfa sdleif gniddA .xedni eht ot stnemucod gnidda erofeb dedda eb dluohs sdleif llA * 
-* 
-.sehcraes yb deveirter gnieb tnemucod taht fo ecnahc eht timil lliw tub srorre esuac ton * 
-lliw stnemucod dexedni ni dleif siht rof seulav lluN .dleif siht evah dluohs dexedni * 
-gnieb tnemucod yrevE .dexedni eb lliw taht sdleif tnemucod fo tsil eht ot dleif a sddA * 
-**/
-
-/* 
-} dleif.detsen.cod nruter { )cod( noitcnuf * 
->noitpac/<dleif detsen a gnitcartxE>noitpac< elpmaxe@ * 
-.dleif siht rof dexedni eb lliw taht tcejbo ehT - jbo })][tcejbo|tcejbo|gnirts(?{ snruter@ * 
-.xedni eht ot dedda gnieb tnemucod ehT - cod }tcejbo{ marap@ * 
-rotcartxEdleif kcabllac@ * 
-* 
-.gnixedni rof dleif thgir eht * 
-tcartxe ot desu eb nac noitcnuf rotcartxe na tnemucod a nihtiw detsen ylpeed si * 
-dleif eht revewoh fi ,tnemucod a fo level pot eht ta eb ot dleif a stcepxe rnuL * 
-* 
-.tnemucod a morf dleif a tcartxe ot desu si taht noitcnuf A * 
-**/
-
-}
-fer = fer_.siht  
-{ )fer( noitcnuf = fer.epytotorp.redliuB.rnul
-/* 
-.tnemucod eht ni dleif ecnerefer eht fo eman ehT - fer }gnirts{ marap@ * 
-* 
-.stluser tnetsisnocni ot dael nac gnixedni gnirud ti gnignahC .xedni eht ot dedda * 
-era stnemucod yna erofeb tes eb dluohs ti ,gnixedni gnirud degnahc eb _ton_ dluohs fer ehT * 
-* 
-.'di' si fer tluafed ehT * 
-* 
-.gnirtSot gnillac yb gnirts a otni decreoc * 
-eb lliw ti gnirts a ton si ti fi ,gnirts a eb dluohs tnemucod eht ni dleif siht fo epyt ehT * 
-.dleif siht evah tsum tnemucod yrevE .ecnerefer tnemucod eht sa desu dleif tnemucod eht steS * 
-**/
-
-}
-][ = tsiletihWatadatem.siht  
-0 = xednImret.siht  
-2.1 = 1k_.siht  
-57.0 = b_.siht  
-0 = tnuoCtnemucod.siht  
-enilepiP.rnul wen = enilepiPhcraes.siht  
-enilepiP.rnul wen = enilepip.siht  
-rezinekot.rnul = rezinekot.siht  
-}{ = shtgneLdleif.siht  
-}{ = seicneuqerFmreTdleif.siht  
-)llun(etaerc.tcejbO = xednIdetrevni.siht  
-)llun(etaerc.tcejbO = stnemucod_.siht  
-)llun(etaerc.tcejbO = sdleif_.siht  
-"di" = fer_.siht  
-{ )( noitcnuf = redliuB.rnul
-/* 
-.xedni eht ni yrtne rof detsiletihw neeb evah taht syek atadatem fo tsil A - tsiletihWatadatem }yarra{ ytreporp@ * 
-.ecaps rotcev eht ni noitisop smret a yfitnedi ot desu ,mret euqinu hcae rof detnemercni retnuoc A - xednImret }rebmun{ ytreporp@ * 
-.2.1 si eulav tluafed eht ,noitarutas ycneuqerf mret ni stluser ycneuqerf mret ni esaercni na ylkciuq woh lortnoc ot retemarap A - 1k_ }rebmun{ ytreporp@ * 
-.57.0 si eulav tluafed eht ,shtgnel dleif sezilamron ylluf 1 ,noitazilamron delbasid 0 ot siht gnittes ,noitazilamron htgnel dleif lortnoc ot retemarap A - b_ }rebmun{ ytreporp@ * 
-.dexedni stnemucod fo rebmun latot eht fo kcart speeK - tnuoCtnemucod }rebmun{ ytreporp@ * 
-.xedni eht gniyreuq erofeb smret hcraes gnissecorp rof enilepip A - enilepiPhcraes }enilepiP.rnul{ ytreporp@ * 
-.gnixedni erofeb snekot no gnissecorp txet smrofrep enilepip ehT - enilepip }enilepiP.rnul{ ytreporp@ * 
-.gnixedni rof snekot otni sgnirts gnittilps rof noitcnuF - rezinekot }rezinekot.rnul{ ytreporp@ * 
-.xedni eht ot dedda stnemucod fo htgnel eht fo kcart speeK - shtgneLtnemucod }tcejbo{ ytreporp@ * 
-.seicneuqerf mret tnemucod fo kcart speeK - seicneuqerFmreTtnemucod }tcejbo{ ytreporp@ * 
-.sdleif tnemucod ot smret spam xedni detrevni ehT - xednIdetrevni }tcejbo{ ytreporp@ * 
-.xedni ot sdleif tnemucod eht ot ecnerefer lanretnI - sdleif_ }][gnirts{ ytreporp@ * 
-.dleif ecnerefer tnemucod eht ot ecnerefer lanretnI - fer_ }gnirts{ ytreporp@ * 
-rotcurtsnoc@ * 
-* 
-.gnixedni erofeb redliub * 
-eht no tes lla era sretemarap gnirocs tnemucod dna enilepip * 
-gnissecorp txet eht ,ecnerefer tnemucod eht ,xedni ot sdleif * 
-eht ,redliub eht aiv enod si xedni eht fo noitarugifnoc llA * 
-* 
-.gniyreuq rof ydaer xednI.rnul fo secnatsni snruter * 
-dna stnemucod fo tes a no gnixedni smrofrep redliuB.rnul * 
-**/
-
-/* 
-elagnithgiN revilO 0202 )C( thgirypoC * 
-redliuB.rnul * 
-!*/
-}
-)srtta(xednI.rnul wen nruter  
-
-enilepip = enilepip.srtta  
-toor.redliuBteSnekot = teSnekot.srtta  
-xednIdetrevni = xednIdetrevni.srtta  
-srotceVdleif = srotceVdleif.srtta  
-
-sdleif.xednIdezilaires = sdleif.srtta  
-
-)(hsinif.redliuBteSnekot  
-
-}  
-gnitsop = ]mret[xednIdetrevni    
-)mret(tresni.redliuBteSnekot    
-
-]1[elput = gnitsop        
-,]0[elput = mret        
-,]i[xednIdetrevnIdezilaires = elput rav    
-{ )++i ;htgnel.xednIdetrevnIdezilaires < i ;0 = i rav( rof  
-
-}  
-)stnemele(rotceV.rnul wen = ]fer[srotceVdleif    
-
-]1[elput = stnemele        
-,]0[elput = fer        
-,]i[srotceVdezilaires = elput rav    
-{ )++i ;htgnel.srotceVdezilaires < i ;0 = i rav( rof  
-
-}  
-)"'" + noisrev.xednIdezilaires + "' xedni dezilaires hctam ton seod '" + noisrev.rnul + "' rnul fo noisrev tnerruC .xedni desilaires gnidaol nehw hctamsim noisreV"(nraw.slitu.rnul    
-{ )noisrev.rnul =! noisrev.xednIdezilaires( fi  
-
-)enilepip.xednIdezilaires(daol.enilepiP.rnul = enilepip      
-,redliuB.teSnekoT.rnul wen = redliuBteSnekot      
-,xednIdetrevni.xednIdezilaires = xednIdetrevnIdezilaires      
-,)llun(etaerc.tcejbO = xednIdetrevni      
-,srotceVdleif.xednIdezilaires = srotceVdezilaires      
-,}{ = srotceVdleif      
-,}{ = srtta rav  
-{ )xednIdezilaires( noitcnuf = daol.xednI.rnul
-/* 
-}xednI.rnul{ snruter@ * 
-xednI.rnul dezilaires ylsuoiverp A - xednIdezilaires }tcejbO{ marap@ * 
-* 
-xednI.rnul dezilaires ylsuoiverp a sdaoL * 
-**/
-
-}
-}  
-)(NOSJot.enilepip.siht :enilepip    
-,xednIdetrevni :xednIdetrevni    
-,srotceVdleif :srotceVdleif    
-,sdleif.siht :sdleif    
-,noisrev.rnul :noisrev    
-{ nruter  
-
-)siht ,}    
-])(NOSJot.]fer[srotceVdleif.siht ,fer[ nruter      
-{ )fer( noitcnuf(pam.    
-)srotceVdleif.siht(syek.tcejbO = srotceVdleif rav  
-
-)siht ,}    
-]]mret[xednIdetrevni.siht ,mret[ nruter      
-{ )mret( noitcnuf(pam.    
-)(tros.    
-)xednIdetrevni.siht(syek.tcejbO = xednIdetrevni rav  
-{ )( noitcnuf = NOSJot.epytotorp.xednI.rnul
-/* 
-}tcejbO{ snruter@ * 
-* 
-.elif amehcs NOSJ etarapes * 
-a ni debircsed eb lliw bolb NOSJ siht rof amehcs ehT * 
-* 
-.noitazilaires NOSJ rof xedni eht seraperP * 
-**/
-
-}
-)}  
-erocs.a - erocs.b nruter    
-{ )b ,a( noitcnuf(tros.stluser nruter  
-/*   
-.tsrif tsehgih ,erocs yb stcejbo stluser eht troS *   
-*/  
-
-}  
-}    
-)hctam(hsup.stluser      
-hctam = ]feRcod[sehctam      
-}      
-]feRdleif[sdleiFgnihctam :ataDhctam        
-,erocs :erocs        
-,feRcod :fer        
-{ = hctam rav      
-{ esle }    
-)]feRdleif[sdleiFgnihctam(enibmoc.ataDhctam.hctaMcod      
-erocs =+ erocs.hctaMcod      
-{ )denifednu ==! )]feRcod[sehctam = hctaMcod(( fi    
-
-hctaMcod        
-,)rotceVdleif(ytiralimis.]emaNdleif.feRdleif[srotceVyreuq = erocs        
-,]feRdleif[srotceVdleif.siht = rotceVdleif rav    
-
-}    
-eunitnoc      
-{ ))feRcod(sniatnoc.sehctaMdetibihorPlla( fi    
-
-}    
-eunitnoc      
-{ ))feRcod(sniatnoc.sehctaMderiuqeRlla!( fi    
-
-feRcod.feRdleif = feRcod        
-,)]i[sfeRdleiFgnihctam(gnirtSmorf.feRdleiF.rnul = feRdleif rav    
-/*     
-.noitidda gnisu erocs tnemucod lanif a otni denibmoc dna ,evoba *     
-detaerc srotcev yreuq eht gnisu ,dleif yb detaluclac era serocS *     
-*     
-.tnemucod emas eht ot gnignoleb sdleif elpitlum morf *     
-denibmoc era serocs dna ataDhctam ehT .stnemucod nruter ot deen *     
-ew tub ,yreuq eht hctam taht sdleif tnemucod evah ew yltnerruC *     
-*/    
-{ )++i ;htgnel.sfeRdleiFgnihctam < i ;0 = i rav( rof  
-
-}  
-}    
-ataDhctaM.rnul wen = ]feRdleiFgnihctam[sdleiFgnihctam      
-)feRdleiFgnihctam(gnirtSmorf.feRdleiF.rnul = feRdleif rav      
-]i[sfeRdleiFgnihctam = feRdleiFgnihctam rav      
-{ )++i ;htgnel.sfeRdleiFgnihctam < i ;0 = i rav( rof    
-
-)srotceVdleif.siht(syek.tcejbO = sfeRdleiFgnihctam    
-{ ))(detageNsi.yreuq( fi  
-/*   
-.stluser eht etalupop *   
-yltcerroc ot detaerc eb tsum ataDhctaM knalb ,yllanoitiddA *   
-*   
-.ylirassecennu sfeRdleif *   
-lla gnitteg fo tsoc yna diova ot smret detibihorp yleritne *   
-si yreuq eht taht wonk ew nehw enod ylno si sihT .xedni *   
-eht ni gnitsixe yltnerruc sfeRdleif _lla_ teg ot deen ew *   
-)smret detibihorp ylno sniatnoc( detagen si yreuq eht fI *   
-*/  
-
-)llun(etaerc.tcejbO = sehctam      
-,][ = stluser      
-,)sdleiFgnihctam(syek.tcejbO = sfeRdleiFgnihctam rav  
-
-}  
-}    
-)]dleif[sehctaMdetibihorp(noinu.sehctaMdetibihorPlla = sehctaMdetibihorPlla      
-{ )]dleif[sehctaMdetibihorp( fi    
-
-}    
-)]dleif[sehctaMderiuqer(tcesretni.sehctaMderiuqeRlla = sehctaMderiuqeRlla      
-{ )]dleif[sehctaMderiuqer( fi    
-
-]i[sdleif.siht = dleif rav    
-{ )++i ;htgnel.sdleif.siht < i ;0 = i rav( rof  
-
-ytpme.teS.rnul = sehctaMdetibihorPlla      
-,etelpmoc.teS.rnul = sehctaMderiuqeRlla rav  
-/*   
-sehctam *   
-detibihorp dna deriuqer fo tes labolg a otni stnemucod gnihctam *   
-detibihorp dna deriuqer depocs dleif eht enibmoc ot deeN *   
-**/  
-
-}  
-}    
-}      
-)sehctaMesualc(tcesretni.]dleif[sehctaMderiuqer = ]dleif[sehctaMderiuqer        
-]k[sdleif.esualc = dleif rav        
-{ )++k ;htgnel.sdleif.esualc < k ;0 = k rav( rof      
-{ )DERIUQER.ecneserp.yreuQ.rnul === ecneserp.esualc( fi    
-/*     
-.sdleif *     
-eht fo _lla_ ton sdleif eht fo _yna_ ni deriuqer si ecneserp smret esualc eht *     
-esuaceb sehctam rieht detcelloc evah mret eht rof sdleif lla retfa siht od eW *     
-.stes dleif sehctaMderiuqer eht etadpu ot deen ew deriuqer saw ecneserp eht fI *     
-**/    
-
-}    
-}      
-}        
-eurt = ]dleiFmret[ehcaCdleiFmret          
-
-}          
-
-}            
-)atadatem ,dleif ,mreTdednapxe(dda.hctaMdleif              
-{ esle }            
-)atadatem ,dleif ,mreTdednapxe( ataDhctaM.rnul wen = ]feRdleiFgnihctam[sdleiFgnihctam              
-{ )denifednu === )]feRdleiFgnihctam[sdleiFgnihctam = hctaMdleif(( fi            
-
-hctaMdleif                
-,]feRtnemucoDgnihctam[gnitsoPdleif = atadatem                
-,)dleif ,feRtnemucoDgnihctam( feRdleiF.rnul wen = feRdleiFgnihctam                
-,]l[sfeRtnemucoDgnihctam = feRtnemucoDgnihctam rav            
-/*             
-stluser *             
-yreuq eht ni denruter eb ot ydaer ataDhctaM.rnul fo *             
-ecnatsni na otni detcelloc dna detcartxe neht era *             
-elpirt tnemucod/dleif/mret siht rof atadatem llA *             
-*/            
-{ )++l ;htgnel.sfeRtnemucoDgnihctam < l ;0 = l rav( rof          
-
-}          
-eunitnoc            
-{ )]dleiFmret[ehcaCdleiFmret( fi          
-/*           
-niaga taht lla hguorht og ot deen on ,atadatem dna stnemucod gnihctam eht *           
-detcelloc ydaerla ev'ew neht obmoc dleif ,mret siht nees ydaerla ev'ew fI *           
-**/          
-
-)} b + a nruter { )b ,a( noitcnuf ,tsoob.esualc ,xednImret(trespu.]dleif[srotceVyreuq          
-/*           
-.rehtegot *           
-serocs eht dda tsuj ew esac taht nI .htiw gnikrow era ew mret eht rof *           
-rotcev eht ni yrtne na eb ydaerla dluoc ereht esuaceb trespu gnisU *           
-.deilppa tsoob etairporppa eht htiw eulav tinu a dna mret eht *           
-rof dnuof xednImret eht gnisu detalupop si rotcev dleif yreuq ehT *           
-*/          
-
-}          
-eunitnoc            
-/*             
-dleif txen eht ot *             
-eunitnoc ew os detcartxe eb dluohs atadatem on dna gnirocs ytiralimis *             
-rof desu rotcev yreuq eht fo trap eb ton dluohs sehctam detibihorP *             
-*/            
-
-)teSstnemucoDgnihctam(noinu.]dleif[sehctaMdetibihorp = ]dleif[sehctaMdetibihorp            
-
-}            
-ytpme.teS.rnul = ]dleif[sehctaMdetibihorp              
-{ )denifednu === ]dleif[sehctaMdetibihorp( fi            
-{ )DETIBIHORP.ecneserp.yreuQ.rnul == ecneserp.esualc( fi          
-/*           
-.tsixe tey ton seod ti fi tes taht gnitaerc *           
-,dleif siht rof sehctam detibihorp fo tes eht ot dedda era stnemucod *           
-gnihctam eht taht erusne detibihorp si mret siht fo ecneserp eht fi *           
-*/          
-
-}          
-}            
-etelpmoc.teS.rnul = ]dleif[sehctaMderiuqer              
-{ )denifednu === ]dleif[sehctaMderiuqer( fi            
-
-)teSstnemucoDgnihctam(noinu.sehctaMesualc = sehctaMesualc            
-{ )DERIUQER.ecneserp.yreuQ.rnul == ecneserp.esualc( fi          
-/*           
-*           
-.esualc siht rof sehctam deriuqer fo tes eht ot dedda era stnemucod *           
-gnihctam eht taht erusne deriuqer si mret siht fo ecneserp eht fi *           
-*/          
-
-)sfeRtnemucoDgnihctam(teS.rnul wen = teSstnemucoDgnihctam              
-,dleif + "/" + mreTdednapxe = dleiFmret              
-,)gnitsoPdleif(syek.tcejbO = sfeRtnemucoDgnihctam              
-,]dleif[gnitsop = gnitsoPdleif              
-,]k[sdleif.esualc = dleif rav          
-/*           
-.evoba morf mret *           
-gnihctam eht rof xednIdetrevni eht ni yrtne eht si gnitsop ehT *           
-*           
-.dleif taht ni mret siht evah taht *           
-sfer tnemucod eht lla teg ot deen ew )epocs ni era sdleif lla *           
-tluafed yb( yb depocs si mret yreuq siht taht dleif hcae roF *           
-*/          
-{ )++k ;htgnel.sdleif.esualc < k ;0 = k rav( rof        
-
-xedni_.gnitsop = xednImret            
-,]mreTdednapxe[xednIdetrevni.siht = gnitsop            
-,]j[smreTdednapxe = mreTdednapxe rav        
-/*         
-.rotcev yreuq eht gnidliub *         
-rof deriuqer si siht ,xednImret dna gnitsop eht teg mret hcae roF *         
-*/        
-{ )++j ;htgnel.smreTdednapxe < j ;0 = j rav( rof      
-
-}      
-kaerb        
-
-}        
-ytpme.teS.rnul = ]dleif[sehctaMderiuqer          
-]k[sdleif.esualc = dleif rav          
-{ )++k ;htgnel.sdleif.esualc < k ;0 = k rav( rof        
-{ )DERIUQER.ecneserp.yreuQ.rnul === ecneserp.esualc && 0 === htgnel.smreTdednapxe( fi      
-/*       
-.sesualc *       
-rehtruf yna gninimaxe pots dna ytpme ot tes sehctam deriuqer depocs *       
-dleif eht lla tes eW .sehctam yna nruter ot hcraes eht rof elbissopmi *       
-si ti teSnekot eht ni tsixe ton seod deriuqer sa dekram mret a fI *       
-*/      
-
-)(yarrAot.)teSnekoTmret(tcesretni.teSnekot.siht = smreTdednapxe          
-,)esualc(esualCmorf.teSnekoT.rnul = teSnekoTmret rav      
-/*       
-xedni detrevni eht ni pukool ot *       
-smret fo tsil a teg ot tes nekot sexedni eht tcesretni ot desu eb *       
-neht lliw hcihw tes nekot a etaerc ew esualc eht ni mret eht morF *       
-*/      
-
-mret = mret.esualc      
-/*       
-.ytreporp mret sti *       
-etatum tub tcejbo esualc eht esu-er ot si siht od ot yaw tselpmis *       
-ehT .ecnatsid tide ro dna tsoob emas eht .g.e ,tcejbo esualc *       
-yreuq emas eht esu ot sdeen enilepip eht morf denruter mret hcaE *       
-*/      
-
-]m[smret = mret rav      
-{ )++m ;htgnel.smret < m ;0 = m rav( rof    
-
-}    
-]mret.esualc[ = smret      
-{ esle }    
-)}      
-sdleif.esualc :sdleif        
-{ ,mret.esualc(gnirtSnur.enilepip.siht = smret      
-{ )enilepiPesu.esualc( fi    
-
-ytpme.teS.rnul = sehctaMesualc        
-,llun = smret        
-,]i[sesualc.yreuq = esualc rav    
-/*     
-.mret yreuq elgnis a rof *     
-spukool xedni elpitlum gnimrofrep pu dne yam ew snaem hcihw ,mret *     
-dessap eht dnapxe yam snoitcnuf enilepiP .smret dessecorp fo *     
-yarra na snruter enilepip A .enilepip hcraes eht hguorht mret *     
-esualc eht ssap ot deen ew ,sdracdliw htiw smret rof esac eht *     
-si hcihw ,mret siht rof delbasid neeb sah enilepip eht sselnU *     
-*/    
-{ )++i ;htgnel.sesualc.yreuq < i ;0 = i rav( rof  
-
-)yreuq ,yreuq(llac.nf  
-
-}  
-rotceV.rnul wen = ]]i[sdleif.siht[srotceVyreuq    
-{ )++i ;htgnel.sdleif.siht < i ;0 = i rav( rof  
-/*   
-.seireuq *   
-detagen troppus ot detaerc ylregae si rotcev ytpme nA .dleif *   
-rep detaerc si rotcev yreuq a stsoob level dleif troppus oT *   
-*/  
-
-)llun(etaerc.tcejbO = sehctaMdetibihorp      
-,)llun(etaerc.tcejbO = sehctaMderiuqer      
-,)llun(etaerc.tcejbO = ehcaCdleiFmret      
-,)llun(etaerc.tcejbO = srotceVyreuq      
-,)llun(etaerc.tcejbO = sdleiFgnihctam      
-,)sdleif.siht(yreuQ.rnul wen = yreuq rav  
-
-stnemucod erocs * //  
-srotcev tnemucod teg * //  
-atadatem dna stnemucod gnihctam dnif * //  
-tes nekot morf smret dnapxe * //  
-smret ssecorp * //  
-esualc yreuq hcae rof //  
-{ )nf( noitcnuf = yreuq.epytotorp.xednI.rnul
-/* 
-}][tluseR~xednI.rnul{ snruter@ * 
-.yreuq eht dliub ot desu si taht noitcnuf A - nf }redliuByreuq~xednI.rnul{ marap@ * 
-* 
-.dezimotsuc * 
-eb ot tcejbo yreuq a dedleiy tsuj si kcabllac eht ,noitarepo suonorhcnysa * 
-na _ton_ si ti retemarap kcabllac a sekat noitcnuf siht hguohtla taht etoN * 
-* 
-.xedni eht tsniaga nur eb ot yreuq eht sserpxe * 
-ot desu eb dluohs hcihw noitcnuf deilppus eht ot dedleiy si tcejbo yreuq A * 
-* 
-.daehrevo gnisrap yreuq lanoitidda eht diova ot sa os hcraes#xednI.rnul revo * 
-derreferp si dohtem siht ,xedni eht tsniaga seireuq citammargorp gnimrofrep fI * 
-* 
-.tcejbo yreuQ.rnul dedleiy eht gnisu xedni eht tsniaga yreuq a smrofreP * 
-**/
-
-/* 
-yreuQ.rnul siht@ * 
-.pu dliub ot tcejbo yreuq ehT - yreuq }yreuQ.rnul{ marap@ * 
-redliuByreuq~xednI.rnul kcabllac@ * 
-* 
-.xedni eht no mrofrep ot yreuq eht * 
-sserpxe ot desu eb ot tcejbo yreuq a sedivorp kcabllac redliub yreuq A * 
-**/
-
-}
-)}  
-)(esrap.resrap    
-)yreuq ,gnirtSyreuq(resraPyreuQ.rnul wen = resrap rav    
-{ )yreuq( noitcnuf(yreuq.siht nruter  
-{ )gnirtSyreuq( noitcnuf = hcraes.epytotorp.xednI.rnul
-/* 
-}][tluseR~xednI.rnul{ snruter@ * 
-.desrap eb tonnac gnirts yreuq dessap eht fI }rorrEesraPyreuQ.rnul{ sworht@ * 
-.yreuq rnul a gniniatnoc gnirts A - gnirtSyreuq }gnirtSyreuQ~xednI.rnul{ marap@ * 
-* 
-.yreuq#xednI.rnul esu gniyreuq citammargorp erom roF * 
-* 
-.}ediug|gnirocs#lmth.gnihcraes/sediug/moc.sjrnul//:sptth knil@{ eht * 
-ees esaelp ,detaluclac si erocs eht woh no sliated roF  .tsrif denruter eb lliw * 
-stluser tnaveler tsom eht ,erocs rieht yb detros denruter eb lliw stluseR * 
-* 
-.xatnys yreuq rnul gnisu xedni eht tsniaga hcraes a smrofreP * 
-**/
-
-/* 
-zab rab+ oof- * 
->noitpac/<sreifidom ecneserp htiw smret>noitpac< elpmaxe@ * 
-2~olleh * 
->noitpac/<2 fo ecnatsid tide na htiw mret>noitpac< elpmaxe@ * 
-01^olleh * 
->noitpac/<01 fo tsoob a htiw mret>noitpac< elpmaxe@ * 
-olleh:eltit * 
->noitpac/<dleif a ot depocs mret>noitpac< elpmaxe@ * 
-dlrow olleh * 
->noitpac/<yreuq mret elpitluM>noitpac< elpmaxe@ * 
-olleh * 
->noitpac/<yreuq mret elgnis elpmiS>noitpac< elpmaxe@ * 
-gnirtSyreuQ~xednI.rnul }gnirts{ fedepyt@ * 
-* 
-."oof" mret hcraes eht ot 2 fo tsoob a ylppa ot gnitpmetta fo * 
-daetsni "2~oof" mret a rof hcraes lliw `2~\oof` .g.e ,sreifidom deredisnoc eb yllamron dluow taht sretcarahc * 
-edulcni ot sehcraes swolla siht ,desu eb nac '\' retcarahc hsalskcab eht sretcarahc laiceps epacse oT * 
-* 
-.'rab' niatnoc yam tub 'oof' niatnoc ton od taht stnemucod rof hcraes a si `rab oof-` .g.e ,tnemucod a ni raeppa * 
-ton tsum ti .e.i ,detibihorp ot ecneserp smret eht stes '-' gnidael a ylesrevnoC .'rab' niatnoc yllanoitpo * 
-dna 'oof' niatnoc tsum taht stnemucod rof hcraes a si `rab oof+` .g.e ,'+' a htiw dexiferp eb dluohs mret * 
-eht tnemucod a ni deriuqer eb ot ecneserp s'mret a roF .detibihorp ro deriuqer rehtie ot degnahc eb nac siht * 
-revewoh ,lanoitpo si tnemucod ni ecneserp s'mret a tluafed yB .reifidom ecneserp a stroppus osla mret hcaE * 
-* 
-.ecnamrofrep yreuq evorpmi ot ecnatsid tide rof seulav egral diovA * 
-.2 fo ecnatsid tide na htiw olleh htiw stnemucod hctam lliw '2~olleh' .g.e ,gnihctam yzzuf edivorp ot * 
-detroppus osla si ecnatsid tidE .`5^oof` .g.e ,rehgih erocs mret taht gnihctam stnemucod ekam lliw tsoob * 
-mret A .smret no sreifidom tsoob dna ecnatsid tide stroppus rnul ,smret ot dedda eb osla nac sreifidoM * 
-* 
-.nworht gnieb rorre na ot * 
-dael lliw xedni eht ni tneserp ton dleif a gnisU .yreuq siht hctam lliw dleif eltit eht ni olleh * 
-mret eht htiw stnemucod ylno ,`olleh:eltit` .g.e ,sdleif cificeps ot detcirtser eb nac smreT * 
-* 
-.mret a fo gninnigeb eht ta sdracdliw htiw yllaicepse ,ecnamrofrep yreuq no tcapmi * 
-evitagen a evah osla nac tub dnuof eb lliw taht stnemucod fo rebmun eht esaercni lliw sdracdliw * 
-gniddA .mret elgnis a ni tsixe nac dracdliw eno naht erom dna ,mret eht nihtiw erehwyna detresni eb * 
-nac sdracdliw eseht ,sretcarahc deificepsnu erom ro eno hctam ot smret ni dedulcni eb nac sdracdliW * 
-* 
-.stluser eht ni rehgih knar lliw htob niatnoc taht esoht hguoht ,'dlrow' ro * 
-'olleh' rehtie niatnoc taht stnemucod hctam lliw `dlrow olleh` g.e ,RO htiw denibmoc eb lliw dna * 
-detroppus osla era smret elpitlum ,`olleh` .g.e ,mret elgnis a eb tsuj nac seireuq tselpmis sti tA * 
-* 
-.txet detareneg margorp naht rehtar txet deretne namuh rof desu tseb si * 
-egaugnal yreuq eht ,yreuQ.rnul esu yltcerid ot desivda si ti seireuq gnidliub yllacitammargorp roF * 
-* 
-.yreuQ.rnul fo ecnatsni na otni desrap si flesti hcihw egaugnal yreuq * 
-elpmis a sedivorp osla ti ,yreuQ.rnul gnisu seireuq etaerc ot ytiliba eht sedivorp rnul hguohtlA * 
-**/
-
-/* 
-.hctam eht desuac )s(mret hcihw gnidulcni hctam siht tuoba atadatem sniatnoC - ataDhctam }ataDhctaM.rnul{ ytreporp@ * 
-.yreuq eht ot si tnemucod siht ralimis woh gnitneserper 1 dna 0 neewteb rebmun A - erocs }rebmun{ ytreporp@ * 
-.stneserper tluser siht tnemucod eht fo ecnerefer ehT - fer }gnirts{ ytreporp@ * 
-tluseR~xednI.rnul }tcejbO{ fedepyt@ * 
-.yreuq hcraes a gnihctam tnemucod a fo sliated sniatnoc tluser A * 
-**/
-
-}
-enilepip.srtta = enilepip.siht  
-sdleif.srtta = sdleif.siht  
-teSnekot.srtta = teSnekot.siht  
-srotceVdleif.srtta = srotceVdleif.siht  
-xednIdetrevni.srtta = xednIdetrevni.siht  
-{ )srtta( noitcnuf = xednI.rnul
-/* 
-.smret hcraes rof esu ot enilepip ehT - enilepip.srtta }enilepiP.rnul{ marap@ * 
-.sdleif tnemucod dexedni fo seman ehT - sdleif.srtta }][gnirts{ marap@ * 
-.snekot suproc lla fo tes nA - teSnekot.srtta }teSnekoT.rnul{ marap@ * 
-srotcev dleiF - srotceVdleif.srtta }>rotceV.rnul ,gnirts<tcejbO{ marap@ * 
-.ecnerefer tnemucod ot dleif/mret fo xedni nA - xednIdetrevni.srtta }tcejbO{ marap@ * 
-.xedni hcraes tliub eht fo setubirtta ehT - srtta }tcejbO{ marap@ * 
-rotcurtsnoc@ * 
-* 
-.sexedni dezilaires dna tliub ylsuoiverp daol ot desu * 
-eb dluohs daol.xednI.rnul ro ,sexedni wen tcurtsnoc ot desu eb dluohs redliuB.rnul * 
-daetsni ,rotcurtsnoc siht gnisu detaerc eb ton lliw xednI.rnul fo secnatsni yllausU * 
-* 
-.xedni eht ot * 
-ecafretni yreuq a sedivorp dna stnemucod lla fo xedni tliub eht sniatnoc xedni nA * 
-**/
-
-/* 
-elagnithgiN revilO 0202 )C( thgirypoC * 
-xednI.rnul * 
-!*/
-}
-}  
-)(pop.sedoNdekcehcnu.siht    
-
-}    
-dlihc.edon = ]yeKdlihc[sedoNdeziminim.siht      
-
-yeKdlihc = rts_.dlihc.edon      
-eromyna egnahc t'nac ti wonk ew //      
-ecnis edon siht rof yek eht ehcaC //      
-{ esle }    
-]yeKdlihc[sedoNdeziminim.siht = ]rahc.edon[segde.tnerap.edon      
-{ )sedoNdeziminim.siht ni yeKdlihc( fi    
-
-)(gnirtSot.dlihc.edon = yeKdlihc        
-,]i[sedoNdekcehcnu.siht = edon rav    
-{ )--i ;oTnwod => i ;1 - htgnel.sedoNdekcehcnu.siht = i rav( rof  
-{ )oTnwod( noitcnuf = eziminim.epytotorp.redliuB.teSnekoT.rnul
-
-}
-)0(eziminim.siht  
-{ )( noitcnuf = hsinif.epytotorp.redliuB.teSnekoT.rnul
-
-}
-drow = droWsuoiverp.siht  
-eurt = lanif.edon  
-
-}  
-edoNtxen = edon    
-
-)}    
-edoNtxen :dlihc      
-,rahc :rahc      
-,edon :tnerap      
-{(hsup.sedoNdekcehcnu.siht    
-
-edoNtxen = ]rahc[segde.edon    
-
-]i[drow = rahc        
-,teSnekoT.rnul wen = edoNtxen rav    
-{ )++i ;htgnel.drow < i ;xiferPnommoc = i rav( rof  
-
-}  
-dlihc.]1 - htgnel.sedoNdekcehcnu.siht[sedoNdekcehcnu.siht = edon    
-{ esle }  
-toor.siht = edon    
-{ )0 == htgnel.sedoNdekcehcnu.siht( fi  
-
-)xiferPnommoc(eziminim.siht  
-
-}  
-++xiferPnommoc    
-kaerb )]i[droWsuoiverp.siht =! ]i[drow( fi    
-{ )++i ;htgnel.droWsuoiverp.siht < i && htgnel.drow < i ;0 = i rav( rof  
-
-}  
-)"noitresni drow redro fo tuO"( rorrE wen worht    
-{ )droWsuoiverp.siht < drow( fi  
-
-0 = xiferPnommoc      
-,edon rav  
-{ )drow( noitcnuf = tresni.epytotorp.redliuB.teSnekoT.rnul
-
-}
-}{ = sedoNdeziminim.siht  
-][ = sedoNdekcehcnu.siht  
-teSnekoT.rnul wen = toor.siht  
-"" = droWsuoiverp.siht  
-{ )( noitcnuf = redliuB.teSnekoT.rnul
-}
-tuptuo nruter  
-
-}  
-}    
-}      
-}        
-)}          
-edon :edon            
-,txen :tuptuo            
-,edoNq :edoNq            
-{(hsup.kcats          
-
-}          
-txen = ]egdEn[segde.tuptuo.emarf            
-lanif = lanif.txen            
-teSnekoT.rnul wen = txen            
-tuptuo eht otni //            
-ti tresni dna tib ytilanif eht tes //            
-eno etaerc tsum ,tey stsixe egde on //            
-{ esle }          
-
-lanif || lanif.txen = lanif.txen            
-]egdEn[segde.tuptuo.emarf = txen            
-lanif ydaerla si edon siht sselnu tib //            
-ytilanif eht tes tsuj ,edon wen a etaerc ot deen on //            
-retcarahc siht rof stsixe ydaerla egde na //            
-{ )segde.tuptuo.emarf ni egdEn( fi          
-
-denifednu = txen              
-,lanif.edoNq && lanif.edon = lanif              
-,]egdEq[segde.edoNq.emarf = edoNq              
-,]egdEn[segde.edon.emarf = edon rav          
-{ )'*' == egdEq || egdEq == egdEn( fi        
-
-]n[segdEn = egdEn rav        
-{ )++n ;neLn < n ;0 = n rav( rof      
-
-]q[segdEq = egdEq rav      
-{ )++q ;neLq < q ;0 = q rav( rof    
-
-htgnel.segdEn = neLn        
-,)segde.edon.emarf(syek.tcejbO = segdEn        
-,htgnel.segdEq = neLq        
-,)segde.edoNq.emarf(syek.tcejbO = segdEq rav    
-8V ni desimitpo-ed eb ot noitcnuf eht //    
-gnisuac ,edom 'hsah' retne stcejbo eseht fo htob sa //    
-pool ni-rof a fo daetsni pool rof a dna syek.tcejbO //    
-gnisu era ew ,dohtem gnirtSot# eht htiw sA :ETON //    
-
-)(pop.kcats = emarf    
-{ )htgnel.kcats( elihw  
-
-]}  
-siht :edon    
-,tuptuo :tuptuo    
-,b :edoNq    
-{[ = kcats rav  
-
-denifednu = emarf      
-,teSnekoT.rnul wen = tuptuo rav  
-{ )b( noitcnuf = tcesretni.epytotorp.teSnekoT.rnul
-/* 
-}teSnekoT.rnul{ snruter@ * 
-.htiw tcesretni ot teSnekoT rehto nA - b }teSnekoT.rnul{ marap@ * 
-* 
-.teSnekoT eht nihtiw deniatnoc * 
-sdracdliw yna tnuocca otni ekat lliw noitcesretni sihT * 
-* 
-.teSnekoT dessap eht dna teSnekoT siht * 
-fo noitcesretni eht si taht teSnekoT wen a snruteR * 
-**/
-
-}
-rts nruter  
-
-}  
-di.edon + lebal + rts = rts    
-
-]lebal[segde.siht = edon        
-,]i[slebal = lebal rav    
-{ )++i ;nel < i ;0 = i rav( rof  
-
-htgnel.slebal = nel      
-,)(tros.)segde.siht(syek.tcejbO = slebal      
-,'0' : '1' ? lanif.siht = rts rav  
-
-}  
-rts_.siht nruter    
-{ )rts_.siht( fi  
-
-.erutuf eht ni sniw ecnamrofrep ysae naem yam ezimitpo ot 8V //  
-gniwolla tub ,elbarapmoc si ecnamrofrep eht skramhcneb //  
-elpmis emos morF .)8V ni tsael ta( desimitpo-ed gnieb //  
-noitcnuf eht ot sdael ti sa ereh pool ni-rof a gnidiova //  
-//  
-dedda gnieb syek ynam htiw 'edom-hsah' retne ot //  
-ylekil yrev si segde.siht sa ereh syek.tcejbO gnisU :ETON //  
-{ )( noitcnuf = gnirtSot.epytotorp.teSnekoT.rnul
-/* 
-}gnirts{ snruter@ * 
-* 
-.teSnekoT eht fo noitatneserper yldneirf * 
-namuh a eb ot dengised ton si ti hcus sA .teSnekoT a fo * 
-noitasiminim dna noitcurtsnoc eht dia ot ylegral ,stcejbo ni * 
-syek sa desu eb ot steSnekoT wolla ot dednetni si sihT * 
-* 
-.teSnekoT a fo noitatneserper gnirts a setareneG * 
-**/
-
-}
-sdrow nruter  
-
-}  
-}    
-)}      
-]egde[segde.edon.emarf :edon        
-,)egde(tacnoc.xiferp.emarf :xiferp        
-{(hsup.kcats      
-
-]i[segde = egde rav      
-{ )++i ;nel < i ;0 = i rav( rof    
-
-}    
-)xiferp.emarf(hsup.sdrow      
-)0(tArahc.xiferp.emarf      
-/* .gub eht gnixif ,eb ot desoppus s'ti *       
-tahw ot gnirts siht "tsac" ot irafaS secrof dohtem epytotorp.gnirtS *       
-yna gnillaC 972/seussi/sj.rnul/nnrevilo/moc.buhtig//:sptth *       
-:ees ,detpurroc semitemos si xiferp eht tniop siht ta ,irafaS nI */      
-{ )lanif.edon.emarf( fi    
-
-htgnel.segde = nel        
-,)segde.edon.emarf(syek.tcejbO = segde        
-,)(pop.kcats = emarf rav    
-{ )htgnel.kcats( elihw  
-
-]}  
-siht :edon    
-,"" :xiferp    
-{[ = kcats rav  
-
-][ = sdrow rav  
-{ )( noitcnuf = yarrAot.epytotorp.teSnekoT.rnul
-/* 
-}][gnirts{ snruter@ * 
-* 
-.pool etinifni na esuac ot ylekil era dna denifednu * 
-era stluser eht sesac eseht ni ,sdracdliw sniatnoc * 
-taht teSnekoT a no desu eb ot dednetni ton si sihT * 
-* 
-.teSnekoT eht nihtiw deniatnoc * 
-sgnirts fo yarra na otni teSnekoT siht strevnoC * 
-**/
-
-}
-toor nruter  
-
-}  
-}    
-txen = edon      
-txen = ]rahc[segde.edon      
-
-lanif = lanif.txen      
-teSnekoT.rnul wen = txen rav      
-{ esle }    
-
-lanif = lanif.edon      
-edon = ]rahc[segde.edon      
-{ )"*" == rahc( fi    
-
-)1 - nel == i( = lanif        
-,]i[rts = rahc rav    
-{ )++i ;nel < i ;htgnel.rts = nel ,0 = i rav( rof  
-/*   
-.sretcarahc yna fo rebmun yna *   
-hctam yllaunitnoc ot decudortni si egde gnicnerefer *   
-fles a neht dnuof si retcarahc dracdliw a nehW *   
-*   
-.retcarahc hcae rof edon a gnidneppa *   
-gnirts dessap eht nihtiw sretcarahc lla hguorht setaretI *   
-*/  
-
-edon = toor      
-,teSnekoT.rnul wen = edon rav  
-{ )rts( noitcnuf = gnirtSmorf.teSnekoT.rnul
-/* 
-}teSnekoT.rnul{ snruter@ * 
-.morf teSnekoT a etaerc ot gnirts ehT - rts }gnirts{ marap@ * 
-* 
-.teSnekoT rehtona * 
-htiw gnitcesretni nehw gnihctam dracdliw wolla lliw taht * 
-)*( sretcarahc dracdliw erom ro eno niatnoc yam gnirts ehT * 
-* 
-.gnirts a morf teSnekoT a setaerC * 
-**/
-
-}
-toor nruter  
-
-}  
-}    
-)}      
-)2(ecils.rts.emarf + Arahc :rts        
-,1 - gniniameRstide.emarf :gniniameRstide        
-,edoNesopsnart :edon        
-{(hsup.kcats      
-
-}      
-eurt = lanif.edoNesopsnart        
-{ )1 == htgnel.rts.emarf( fi      
-
-}      
-edoNesopsnart = ]Brahc[segde.edon.emarf        
-teSnekoT.rnul wen = edoNesopsnart        
-{ esle }      
-]Brahc[segde.edon.emarf = edoNesopsnart        
-{ )segde.edon.emarf ni Brahc( fi      
-
-edoNesopsnart          
-,)1(tArahc.rts.emarf = Brahc          
-,)0(tArahc.rts.emarf = Arahc rav      
-{ )1 > htgnel.rts.emarf( fi    
-esopsnart ot sretcarahc hguone era ereht dna //    
-gniniamer stide era ereht fi noitisopsnart a od ylno nac //    
-noitisopsnart //    
-
-}    
-)}      
-)1(ecils.rts.emarf :rts        
-,1 - gniniameRstide.emarf :gniniameRstide        
-,edoNnoitutitsbus :edon        
-{(hsup.kcats      
-
-}      
-eurt = lanif.edoNnoitutitsbus        
-{ )1 == htgnel.rts.emarf( fi      
-
-}      
-edoNnoitutitsbus = ]"*"[segde.edon.emarf        
-teSnekoT.rnul wen = edoNnoitutitsbus rav        
-{ esle }      
-]"*"[segde.edon.emarf = edoNnoitutitsbus rav        
-{ )segde.edon.emarf ni "*"( fi      
-{ )1 => htgnel.rts.emarf( fi    
-etutitsbus ot tfel sretcarahc era ereht fi dna //    
-gniniamer stide hguone evah ew fi noitutitsbus a od ylno nac //    
-noitutitsbus //    
-
-}    
-eurt = lanif.edon.emarf      
-{ )1 == htgnel.rts.emarf( fi    
-rts eht morf retcarahc tsal eht gnivomer tsuj //    
-noiteled //    
-
-}    
-)}      
-)1(ecils.rts.emarf :rts        
-,1 - gniniameRstide.emarf :gniniameRstide        
-,edon.emarf :edon        
-{(hsup.kcats      
-{ )1 > htgnel.rts.emarf( fi    
-gnirts eht ni eteled ot tfel sretcarahc era ereht fi dna //    
-gniniamer stide hguone evah ew fi noiteled a od ylno nac //    
-noiteled //    
-
-)}    
-rts.emarf :rts      
-,1 - gniniameRstide.emarf :gniniameRstide      
-,edoNnoitresni :edon      
-{(hsup.kcats    
-
-}    
-eurt = lanif.edoNnoitresni      
-{ )0 == htgnel.rts.emarf( fi    
-
-}    
-edoNnoitresni = ]"*"[segde.edon.emarf      
-teSnekoT.rnul wen = edoNnoitresni rav      
-{ esle }    
-]"*"[segde.edon.emarf = edoNnoitresni rav      
-{ )segde.edon.emarf ni "*"( fi    
-noitresni //    
-
-}    
-eunitnoc      
-{ )0 == gniniameRstide.emarf( fi    
-
-}    
-)}      
-)1(ecils.rts.emarf :rts        
-,gniniameRstide.emarf :gniniameRstide        
-,edoNtidEon :edon        
-{(hsup.kcats      
-
-}      
-eurt = lanif.edoNtidEon        
-{ )1 == htgnel.rts.emarf( fi      
-
-}      
-edoNtidEon = ]rahc[segde.edon.emarf        
-teSnekoT.rnul wen = edoNtidEon        
-{ esle }      
-]rahc[segde.edon.emarf = edoNtidEon        
-{ )segde.edon.emarf ni rahc( fi      
-
-edoNtidEon          
-,)0(tArahc.rts.emarf = rahc rav      
-{ )0 > htgnel.rts.emarf( fi    
-tide on //    
-
-)(pop.kcats = emarf rav    
-{ )htgnel.kcats( elihw  
-
-]}  
-rts :rts    
-,ecnatsiDtide :gniniameRstide    
-,toor :edon    
-{[ = kcats rav  
-
-teSnekoT.rnul wen = toor rav  
-{ )ecnatsiDtide ,rts( noitcnuf = gnirtSyzzuFmorf.teSnekoT.rnul
-/* 
-}rotceV.rnul{ snruter@ * 
-.hctam ot ecnatsid tide dewolla ehT - ecnatsiDtide }rebmun{ marap@ * 
-.morf tes nekot eht etaerc ot gnirts ehT - rts }gnirts{ marap@ * 
-* 
-.3 naht ssel ecnatsid tide eht peek ot desivda si tI * 
-.steSnekoT eseht gnitcesretni dna gnitaerc htob fo ecnamrofrep eht no * 
-tcapmi citamard a evah lliw ecnatsid tide dewolla eht gnisaercnI * 
-* 
-.1 fo ecnatsid tide na sa detaert * 
-hcae era snoitisopsnart dna snoitutitsbus ,snoiteled ,snoitresnI * 
-* 
-.ecnatsid tide * 
-deificeps a htiw gnirts elgnis a gnitneserper tes nekot a setaerC * 
-**/
-
-}
-}  
-)mret.esualc(gnirtSmorf.teSnekoT.rnul nruter    
-{ esle }  
-)ecnatsiDtide.esualc ,mret.esualc(gnirtSyzzuFmorf.teSnekoT.rnul nruter    
-{ )esualc ni 'ecnatsiDtide'( fi  
-{ )esualc( noitcnuf = esualCmorf.teSnekoT.rnul
-/* 
-}teSnekoT.rnul{ snruter@ * 
-.mret eht rof ecnatsid tide lanoitpo ehT - ]ecnatsiDtide.esualc[ }rebmun{ marap@ * 
-.mret esualc yreuq ehT - mret.esualc }gnirts{ marap@ * 
-.yreuQ.rnul morf esualc elgnis A - esualc }tcejbO{ marap@ * 
-etavirp@ * 
-* 
-.esualc yreuq a morf tes nekot a setaerC * 
-**/
-
-}
-toor.redliub nruter  
-)(hsinif.redliub  
-
-}  
-)]i[rra(tresni.redliub    
-{ )++i ;nel < i ;htgnel.rra = nel ,0 = i rav( rof  
-
-redliuB.teSnekoT.rnul wen = redliub rav  
-{ )rra( noitcnuf = yarrAmorf.teSnekoT.rnul
-/* 
-.detros ton si yarra tupni eht fi rorre na worht lliW sworht@ * 
-}teSnekoT.rnul{ snruter@ * 
-.morf tes eht etaerc ot sgnirts fo yarra detros A - rra }][gnirtS{ marap@ * 
-* 
-.sdrow fo yarra detros nevig eht morf ecnatsni teSnekoT a setaerC * 
-**/
-
-1 = dItxen_.teSnekoT.rnul
-/* 
-etavirp@ * 
-* 
-.desiminim yltcerroc eb ot reifitnedi euqinu a eriuqer steSnekoT * 
-* 
-.teSnekot wen a ot * 
-ngissa ot reifitnedi ,tnemercni otua ,txen eht fo kcart speeK * 
-**/
-
-}
-1 =+ dItxen_.teSnekoT.rnul  
-dItxen_.teSnekoT.rnul = di.siht  
-}{ = segde.siht  
-eslaf = lanif.siht  
-{ )( noitcnuf = teSnekoT.rnul
-/* 
-rotcurtsnoc@ * 
-* 
-.tes nekot eht gnirots rof desu ecaps eht ecuder ot spleh sihT * 
-.snekot neewteb derahs era sexiffus dna sexiferp nommoc htob erehw * 
-,atamotua etats etinif laminim a sa detnemelpmi era stes nekoT * 
-* 
-.dedivorp eb osla nac gnihctam ecnatsid tide siht morf * 
-dna ,detroppus era sdracdliw gniliart dna deniatnoc ,gnidaeL * 
-.gnihctam dracdliw mrofrep ot desu era stes nekot yllanoitiddA * 
-* 
-.tes nekot yreuq elpmis a fo esac * 
-eht ni sa nekot elgnis a dloh nac ti ro ,tes nekot xedni * 
-eht fo esac eht ni sa ,snekot elpitlum dloh nac tes nekot A * 
-* 
-.xedni detrevni eht ni pu * 
-kool ot snekot hcihw dnif ot detcesretni neht era tes nekot * 
-xedni dna tes nekot yreuq siht ,xedni eht ot yreuq gnimocni * 
-na tneserper ot desu osla era stes nekoT .xedni na nihtiw * 
-snekot lla fo tsil euqinu eht erots ot desu si tes nekot A * 
-**/
-
-/* 
-elagnithgiN revilO 0202 )C( thgirypoC * 
-teSnekoT.rnul * 
-!*/
-)'remmirt' ,remmirt.rnul(noitcnuFretsiger.enilepiP.rnul
-
-}
-)}  
-)'' ,/$+W\/(ecalper.)'' ,/+W\^/(ecalper.s nruter    
-{ )s( noitcnuf(etadpu.nekot nruter  
-{ )nekot( noitcnuf = remmirt.rnul
-/* 
-enilepiP.rnul ees@ * 
-}nekoT.rnul{ snruter@ * 
-retlif eht hguorht ssap ot nekot ehT nekot }nekoT.rnul{ marap@ * 
-}noitcnuFenilepiP.rnul{ stnemelpmi@ * 
-citats@ * 
-* 
-.sretcarahc nital-non htiw segaugnal htiw * 
-esu rof detpada ro devomer eb rehtie dluohs dna sretcarahc * 
-nital non rof yltcerroc krow ton yam noitatnemelpmi sihT * 
-* 
-.xedni eht retne * 
-yeht erofeb snekot fo dne dna gninnigeb eht morf sretcarahc * 
-drow non gnimmirt rof noitcnuf enilepip a si remmirt.rnul * 
-**/
-
-/* 
-elagnithgiN revilO 0202 )C( thgirypoC * 
-remmirt.rnul * 
-!*/
-)'retliFdroWpots' ,retliFdroWpots.rnul(noitcnuFretsiger.enilepiP.rnul
-
-)]
-'ruoy'  
-,'uoy'  
-,'tey'  
-,'dluow'  
-,'htiw'  
-,'lliw'  
-,'yhw'  
-,'mohw'  
-,'ohw'  
-,'elihw'  
-,'hcihw'  
-,'erehw'  
-,'nehw'  
-,'tahw'  
-,'erew'  
-,'ew'  
-,'saw'  
-,'stnaw'  
-,'su'  
-,'sawt'  
-,'oot'  
-,'ot'  
-,'sit'  
-,'siht'  
-,'yeht'  
-,'eseht'  
-,'ereht'  
-,'neht'  
-,'meht'  
-,'rieht'  
-,'eht'  
-,'taht'  
-,'naht'  
-,'emos'  
-,'os'  
-,'ecnis'  
-,'dluohs'  
-,'ehs'  
-,'syas'  
-,'yas'  
-,'dias'  
-,'rehtar'  
-,'nwo'  
-,'ruo'  
-,'rehto'  
-,'ro'  
-,'ylno'  
-,'no'  
-,'netfo'  
-,'ffo'  
-,'fo'  
-,'ton'  
-,'ron'  
-,'on'  
-,'rehtien'  
-,'ym'  
-,'tsum'  
-,'tsom'  
-,'thgim'  
-,'em'  
-,'yam'  
-,'ylekil'  
-,'ekil'  
-,'tel'  
-,'tsael'  
-,'tsuj'  
-,'sti'  
-,'ti'  
-,'si'  
-,'otni'  
-,'ni'  
-,'fi'  
-,'i'  
-,'revewoh'  
-,'woh'  
-,'sih'  
-,'mih'  
-,'sreh'  
-,'reh'  
-,'eh'  
-,'evah'  
-,'sah'  
-,'dah'  
-,'tog'  
-,'teg'  
-,'morf'  
-,'rof'  
-,'yreve'  
-,'reve'  
-,'esle'  
-,'rehtie'  
-,'seod'  
-,'od'  
-,'did'  
-,'raed'  
-,'dluoc'  
-,'tonnac'  
-,'nac'  
-,'yb'  
-,'tub'  
-,'neeb'  
-,'esuaceb'  
-,'eb'  
-,'ta'  
-,'sa'  
-,'era'  
-,'yna'  
-,'dna'  
-,'na'  
-,'gnoma'  
-,'ma'  
-,'osla'  
-,'tsomla'  
-,'lla'  
-,'retfa'  
-,'ssorca'  
-,'tuoba'  
-,'elba'  
-,'a'  
-[(retliFdroWpotSetareneg.rnul = retliFdroWpots.rnul
-/* 
-}enilepiP.rnul knil@{ ees@ * 
-}nekoT.rnul{ snruter@ * 
-.drow pots a gnieb rof kcehc ot nekot A - nekot }nekoT.rnul{ smarap@ * 
-}noitcnuFenilepiP.rnul{ stnemelpmi@ * 
-noitcnuf@ * 
-* 
-.denruter eb lliw denifednu neht retlif * 
-eht ssap ton seod nekot eht fI .enilepiP eht ni desu eb ot dednetni si sihT * 
-* 
-.retlif eht hguorht dessap eb ton lliw tsil eht ni deniatnoc * 
-sdrow yna ,retlif tsil drow pots egaugnal hsilgnE na si retliFdroWpots.rnul * 
-**/
-
-}
-}  
-nekot nruter ))(gnirtSot.nekot ==! ])(gnirtSot.nekot[sdrow && nekot( fi    
-{ )nekot( noitcnuf nruter  
-
-)}{ ,}  
-omem nruter    
-droWpots = ]droWpots[omem    
-{ )droWpots ,omem( noitcnuf(ecuder.sdroWpots = sdrow rav  
-{ )sdroWpots( noitcnuf = retliFdroWpotSetareneg.rnul
-/* 
-retliFdroWpots.rnul ees@ * 
-enilepiP.rnul ees@ * 
-}noitcnuFenilepiP.rnul{ snruter@ * 
-retlif eht hguorht ssap ot nekot ehT nekot }yarrA{ marap@ * 
-noitcnuf@ * 
-* 
-.segaugnal hsilgnE non ro snoitacilppa rof sretliFdroWpots motsuc etareneg ot * 
-desu eb nac dna rotareneg siht gnisu tliub si retliFdroWpots.rnul ni tliub ehT * 
-* 
-.sdrow pots fo tsil * 
-dedivorp eht morf noitcnuf retliFdroWpots a sdliub retliFdroWpotSetareneg.rnul * 
-**/
-
-/* 
-elagnithgiN revilO 0202 )C( thgirypoC * 
-retliFdroWpots.rnul * 
-!*/
-)'remmets' ,remmets.rnul(noitcnuFretsiger.enilepiP.rnul
-
-;)()}
-}  
-;)remmetSretrop(etadpu.nekot nruter    
-{ )nekot( noitcnuf nruter  
-
-;}  
-;w nruter    
-
-}    
-;)1(rtsbus.w + )(esaCrewoLot.hctsrif = w      
-{ )"y" == hctsrif( fi    
-
-y ot kcab Y laitini nrut dna //    
-
-}    
-;)"",er(ecalper.w = w      
-;2_b1_er = er      
-{ ))w(tset.2er && )w(tset.er( fi    
-;1rgm_er = 2er    
-;1_5_er = er    
-
-}    
-}      
-;mets = w        
-{ ))))mets(tset.3er(! && )mets(tset.2er( || )mets(tset.er( fi      
-;5_3er = 3er      
-;1qem_er = 2er      
-;1rgm_er = er      
-;]1[pf = mets      
-;)w(cexe.er = pf rav      
-{ ))w(tset.er( fi    
-;5_er = er    
-5 petS //    
-
-}    
-}      
-;mets = w        
-{ ))mets(tset.2er( fi      
-;1rgm_er = 2er      
-;]2[pf + ]1[pf = mets      
-;)w(cexe.2er = pf rav      
-{ ))w(tset.2er( fi esle }    
-}      
-;mets = w        
-{ ))mets(tset.er( fi      
-;1rgm_er = er      
-;]1[pf = mets      
-;)w(cexe.er = pf rav      
-{ ))w(tset.er( fi    
-;4_2er = 2er    
-;4_er = er    
-4 petS //    
-
-}    
-}      
-;]xiffus[tsil3pets + mets = w        
-{ ))mets(tset.er( fi      
-;0rgm_er = er      
-;]2[pf = xiffus      
-;]1[pf = mets      
-;)w(cexe.er = pf rav      
-{ ))w(tset.er( fi    
-;3_er = er    
-3 petS //    
-
-}    
-}      
-;]xiffus[tsil2pets + mets = w        
-{ ))mets(tset.er( fi      
-;0rgm_er = er      
-;]2[pf = xiffus      
-;]1[pf = mets      
-;)w(cexe.er = pf rav      
-{ ))w(tset.er( fi    
-;2_er = er    
-2 petS //    
-
-}    
-;"i" + mets = w      
-;]1[pf = mets      
-;)w(cexe.er = pf rav      
-{ ))w(tset.er( fi    
-;c1_er = er    
-)yas >- yas ,yb >- yb ,irc >- yrc os( drow eht fo rettel tsrif eht ton si hcihw lewov-non a yb dedecerp fi i yb Y ro y xiffus ecalper - c1 petS //    
-
-}    
-}      
-} ;"e" + w = w { ))w(tset.4er( fi esle        
-} ;)"",er(ecalper.w = w ;2_b1_er = er { ))w(tset.3er( fi esle        
-} ;"e" + w = w { ))w(tset.2er( fi        
-;2_b1_4er = 4er        
-;2_b1_3er = 3er        
-;2_b1_2er = 2er        
-;mets = w        
-{ ))mets(tset.2er( fi      
-;v_s_er = 2er      
-;]1[pf = mets      
-;)w(cexe.2er = pf rav      
-{ ))w(tset.2er( fi esle }    
-}      
-;)"",er(ecalper.w = w        
-;2_b1_er = er        
-{ ))]1[pf(tset.er( fi      
-;0rgm_er = er      
-;)w(cexe.er = pf rav      
-{ ))w(tset.er( fi    
-;b1_2er = 2er    
-;b1_er = er    
-b1 petS //    
-
-} ;)"2$1$",2er(ecalper.w = w { ))w(tset.2er( fi esle    
-} ;)"2$1$",er(ecalper.w = w { ))w(tset.er( fi    
-
-;a1_2er = 2er    
-a1_er = er    
-a1 petS //    
-
-}    
-;)1(rtsbus.w + )(esaCreppUot.hctsrif = w      
-{ )"y" == hctsrif( fi    
-;)1,0(rtsbus.w = hctsrif    
-
-} ;w nruter { )3 < htgnel.w( fi    
-
-;4er      
-,3er      
-,2er      
-,er      
-,hctsrif      
-,xiffus      
-,mets rav    
-{ )w(remmetSretrop noitcnuf = remmetSretrop rav  
-
-;)"$]yxwuoiea^[" + v + C + "^"(pxEgeR wen = 5_3er rav  
-;/$ll/ = 1_5_er rav  
-;/$e)?+.(^/ = 5_er rav  
-
-;/$)noi()t|s()?+.(^/ = 4_2er rav  
-;/$)ezi|evi|suo|iti|eta|msi|uo|tne|tnem|tneme|tna|elbi|elba|ci|re|ecne|ecna|la()?+.(^/ = 4_er rav  
-
-;/$)ssen|luf|laci|itici|ezila|evita|etaci()?+.(^/ = 3_er rav  
-
-;/$)igol|itilib|itivi|itila|ssensuo|ssenluf|ssenevi|msila|rota|noita|noitazi|ilsuo|ile|iltne|illa|ilb|rezi|icna|icne|lanoit|lanoita()?+.(^/ = 2_er rav  
-;/$y)]uoiea^[?+.(^/ = c1_er rav  
-
-;)"$]yxwuoiea^[" + v + C + "^"(pxEgeR wen = 2_b1_4er rav  
-;)"$1\\)]zslyuoiea^[("(pxEgeR wen = 2_b1_3er rav  
-;/$)zi|lb|ta(/ = 2_b1_2er rav  
-;/$./ = 2_b1_er rav  
-;/$)gni|de()?+.(^/ = b1_2er rav  
-;/$dee)?+.(^/ = b1_er rav  
-;/$s)]s^[()?+.(^/ = a1_2er rav  
-;/$se)i|ss()?+.(^/ = a1_er rav  
-
-;)v_s(pxEgeR wen = v_s_er rav  
-;)1qem(pxEgeR wen = 1qem_er rav  
-;)1rgm(pxEgeR wen = 1rgm_er rav  
-;)0rgm(pxEgeR wen = 0rgm_er rav  
-
-mets ni lewov //                   ;v + "?)" + C + "(^" = v_s    
-1>m si ...CVCV]C[ //       ,C + V + C + V + "?)" + C + "(^" = 1rgm    
-1=m si ]V[CV]C[ //  ,"$?)" + V + "(" + C + V + "?)" + C + "(^" = 1qem    
-0>m si ...CV]C[ //               ,C + V + "?)" + C + "(^" = 0rgm    
-
-ecneuqes lewov //      ,"*]uoiea[" + v = V    
-ecneuqes tnanosnoc //    ,"*]yuoiea^[" + c = C    
-lewov //          ,"]yuoiea[" = v    
-tnanosnoc //          ,"]uoiea^[" = c    
-
-,}    
-"" : "ssen"      
-,"" : "luf"      
-,"ci" : "laci"      
-,"ci" : "itici"      
-,"la" : "ezila"      
-,"" : "evita"      
-,"ci" : "etaci"      
-{ = tsil3pets    
-
-,}    
-"gol" : "igol"      
-,"elb" : "itilib"      
-,"evi" : "itivi"      
-,"la" : "itila"      
-,"suo" : "ssensuo"      
-,"luf" : "ssenluf"      
-,"evi" : "ssenevi"      
-,"la" : "msila"      
-,"eta" : "rota"      
-,"eta" : "noita"      
-,"ezi" : "noitazi"      
-,"suo" : "ilsuo"      
-,"e" : "ile"      
-,"tne" : "iltne"      
-,"la" : "illa"      
-,"elb" : "ilb"      
-,"ezi" : "rezi"      
-,"ecna" : "icna"      
-,"ecne" : "icne"      
-,"noit" : "lanoit"      
-,"eta" : "lanoita"      
-{ = tsil2pets rav  
-{)(noitcnuf( = remmets.rnul
-/* 
-noitcnuf@ * 
-}enilepiP.rnul knil@{ ees@ * 
-}nekoT.rnul{ snruter@ * 
-mets ot gnirts ehT - nekot }nekoT.rnul{ marap@ * 
-}noitcnuFenilepiP.rnul{ stnemelpmi@ * 
-citats@ * 
-* 
-nitram~/gro.suratrat//:ptth morf nekat remmetSretroP eht fo noitatnemelpmi * 
-tpircSavaJ a si siht ,remmets egaugnal hsilgne na si remmets.rnul * 
-**/
-
-/* 
-txt.sj/remmetSretroP/nitram~/gro.suratrat//:ptth - morf edoc sedulcnI * 
-elagnithgiN revilO 0202 )C( thgirypoC * 
-remmets.rnul * 
-!*/
-/* elbasid-tnilse */
-}
-stnemele.siht nruter  
-{ )( noitcnuf = NOSJot.epytotorp.rotceV.rnul
-/* 
-}][rebmuN{ snruter@ * 
-* 
-.rotcev eht fo noitatneserper elbazilaires NOSJ A * 
-**/
-
-}
-tuptuo nruter  
-
-}  
-]i[stnemele.siht = ]j[tuptuo    
-{ )++j ,2 =+ i ;htgnel.stnemele.siht < i ;0 = j ,1 = i rav( rof  
-
-)2 / htgnel.stnemele.siht( yarrA wen = tuptuo rav  
-{ )( noitcnuf = yarrAot.epytotorp.rotceV.rnul
-/* 
-}][rebmuN{ snruter@ * 
-* 
-.rotcev eht nihtiw stnemele eht fo yarra na ot rotcev eht strevnoC * 
-**/
-
-}
-0 || )(edutingam.siht / )rotceVrehto(tod.siht nruter  
-{ )rotceVrehto( noitcnuf = ytiralimis.epytotorp.rotceV.rnul
-/* 
-}rebmuN{ snruter@ * 
-.htiw ytiralimis * 
-eht etaluclac ot rotcev rehto ehT - rotceVrehto }rotceV.rnul{ marap@ * 
-* 
-.rotcev rehtona dna rotcev siht neewteb ytiralimis eht setaluclaC * 
-**/
-
-}
-tcudorPtod nruter  
-
-}  
-}    
-2 =+ j      
-2 =+ i      
-]1 + j[b * ]1 + i[a =+ tcudorPtod      
-{ )laVb == laVa( fi esle }    
-2 =+ j      
-{ )laVb > laVa( fi esle }    
-2 =+ i      
-{ )laVb < laVa( fi    
-]j[b = laVb ,]i[a = laVa    
-{ )neLb < j && neLa < i( elihw  
-
-0 = j ,0 = i      
-,0 = laVb ,0 = laVa      
-,htgnel.b = neLb ,htgnel.a = neLa      
-,stnemele.rotceVrehto = b ,stnemele.siht = a      
-,0 = tcudorPtod rav  
-{ )rotceVrehto( noitcnuf = tod.epytotorp.rotceV.rnul
-/* 
-}rebmuN{ snruter@ * 
-.htiw tcudorp tod eht etupmoc ot rotcev ehT - rotceVrehto }rotceV.rnul{ marap@ * 
-* 
-.rotcev rehtona dna rotcev siht fo tcudorp tod eht setaluclaC * 
-**/
-
-}
-)serauqSfOmus(trqs.htaM = edutingam_.siht nruter  
-
-}  
-lav * lav =+ serauqSfOmus    
-]i[stnemele.siht = lav rav    
-{ )2 =+ i ;htgneLstnemele < i ;1 = i rav( rof  
-
-htgnel.stnemele.siht = htgneLstnemele      
-,0 = serauqSfOmus rav  
-
-edutingam_.siht nruter )edutingam_.siht( fi  
-{ )( noitcnuf = edutingam.epytotorp.rotceV.rnul
-/* 
-}rebmuN{ snruter@ * 
-* 
-.rotcev siht fo edutingam eht setaluclaC * 
-**/
-
-}
-}  
-)lav ,xdItresni ,0 ,noitisop(ecilps.stnemele.siht    
-{ esle }  
-)lav ,]1 + noitisop[stnemele.siht(nf = ]1 + noitisop[stnemele.siht    
-{ )xdItresni == ]noitisop[stnemele.siht( fi  
-
-)xdItresni(xednIroFnoitisop.siht = noitisop rav  
-0 = edutingam_.siht  
-{ )nf ,lav ,xdItresni( noitcnuf = trespu.epytotorp.rotceV.rnul
-/* 
-stnemugra sa dessap era eulav detseuqer * 
-eht dna eulav gnitsixe eht ,setadpu rof dellac si taht noitcnuf A - nf }noitcnuf{ marap@ * 
-.rotcev eht otni detresni eb ot eulav ehT - lav }rebmuN{ marap@ * 
-.detresni eb dluohs tnemele eht hcihw ta xedni ehT - xdItresni }rebmuN{ marap@ * 
-* 
-.rotcev eht nihtiw xedni gnitsixe na setadpu ro stresnI * 
-**/
-
-}
-)}  
-"xedni etacilpud" worht    
-{ )( noitcnuf ,lav ,xdItresni(trespu.siht  
-{ )lav ,xdItresni( noitcnuf = tresni.epytotorp.rotceV.rnul
-/* 
-.rotcev eht otni detresni eb ot eulav ehT - lav }rebmuN{ marap@ * 
-.detresni eb dluohs tnemele eht hcihw ta xedni ehT - xdItresni }rebmuN{ marap@ * 
-* 
-.xedni siht rof * 
-yrtne na ydaerla si ereht fi rorre na worht lliw ,setacilpud wolla ton seoD * 
-* 
-.rotcev eht nihtiw xedni na ta tnemele na stresnI * 
-**/
-
-}
-}  
-2 * )1 + tnioPtovip( nruter    
-{ )xedni < xednItovip( fi  
-
-}  
-2 * tnioPtovip nruter    
-{ )xedni > xednItovip( fi  
-
-}  
-2 * tnioPtovip nruter    
-{ )xedni == xednItovip( fi  
-
-}  
-]2 * tnioPtovip[stnemele.siht = xednItovip    
-)2 / htgneLecils(roolf.htaM + trats = tnioPtovip    
-trats - dne = htgneLecils    
-
-}    
-kaerb      
-{ )xedni == xednItovip( fi    
-
-}    
-tnioPtovip = dne      
-{ )xedni > xednItovip( fi    
-
-}    
-tnioPtovip = trats      
-{ )xedni < xednItovip( fi    
-{ )1 > htgneLecils( elihw  
-
-]2 * tnioPtovip[stnemele.siht = xednItovip      
-,)2 / htgneLecils(roolf.htaM = tnioPtovip      
-,trats - dne = htgneLecils      
-,2 / htgnel.stnemele.siht = dne      
-,0 = trats rav  
-
-}  
-0 nruter    
-{ )0 == htgnel.stnemele.siht( fi  
-gninnigeb eht ta detresni eb nac elput eht rotcev ytpme na roF //  
-{ )xedni( noitcnuf = xednIroFnoitisop.epytotorp.rotceV.rnul
-/* 
-}rebmuN{ snruter@ * 
-.detresni eb dluohs tnemele eht hcihw ta xedni ehT - xdItresni }rebmuN{ marap@ * 
-* 
-xedni taht ta etacilpud a si ereht rehtehw kcehc ot ytilibisnopser srellac eht si * 
-ti tub ,detadpu eb ot erew xedni taht rof eulav eht fi sa denruter si noitisop eht * 
-neht sexedni etacilpud era ereht fI .trespu dna tresni yb yllanretni desu si sihT * 
-* 
-.xedni nevig a tresni ot rotcev eht nihtiw noitisop eht setaluclaC * 
-**/
-
-
-}
-][ || stnemele = stnemele.siht  
-0 = edutingam_.siht  
-{ )stnemele( noitcnuf = rotceV.rnul
-/* 
-.sriap eulav tnemele dna xedni tnemele fo tsil talf ehT - ]stnemele[ }][rebmuN{ marap@ * 
-rotcurtsnoc@ * 
-* 
-.snoitaluclac rotcev rof desu gnieb nehw ecnamrofrep * 
-tneced reffo llits dna elbissop sa esraps sa eb ot yarra gniylrednu eht swolla * 
-sihT .]eulav ,xedni ,eulav ,xedni[ .g.E .eulav sti yb dewollof yletaidemmi si xedni * 
-stnemele na erehw ,yarra talf a htiw detnemelpmi era srotcev snosaer ecnamrofrep roF * 
-* 
-.rotcurtsnoc eht ot dedivorp eb nac stnemele war eht rotcev depmud ylsuoiverp a gnidaol * 
-fo esac eht ni tub ,rotcev a gnizilaitini rof deriuqer era sretemarap on yllamroN * 
-* 
-.yreuq a dna tnemucod a * 
-ro stnemucod owt neewteb ytiralimis eht enimreted ot snoitarepo troppus srotcev * 
-esehT .seireuq dna stnemucod fo ecaps rotcev eht tcurtsnoc ot desu si rotcev A * 
-**/
-
-/* 
-elagnithgiN revilO 0202 )C( thgirypoC * 
-rotceV.rnul * 
-!*/
-}
-)}  
-lebal.nf nruter    
-
-)nf(deretsigeRtoNnoitcnuFfInraw.enilepiP.rnul    
-{ )nf( noitcnuf(pam.kcats_.siht nruter  
-{ )( noitcnuf = NOSJot.epytotorp.enilepiP.rnul
-/* 
-}yarrA{ snruter@ * 
-* 
-.deretsiger neeb ton sah noitcnuf eht fi gninraw a sgoL * 
-* 
-.noitasilaires rof ydaer enilepip eht fo noitatneserper a snruteR * 
-**/
-
-}
-][ = kcats_.siht  
-{ )( noitcnuf = teser.epytotorp.enilepiP.rnul
-/* 
-* 
-.srossecorp gnitsixe yna gnivomer yb enilepip eht steseR * 
-**/
-
-}
-)}  
-)(gnirtSot.t nruter    
-{ )t( noitcnuf(pam.)]nekot[(nur.siht nruter  
-
-)atadatem ,rts( nekoT.rnul wen = nekot rav  
-{ )atadatem ,rts( noitcnuf = gnirtSnur.epytotorp.enilepiP.rnul
-/* 
-}][gnirts{ snruter@ * 
-.enilepip eht ot dessap * 
-nekot eht htiw etaicossa ot atadatem lanoitpO - atadatem }tcejbo?{ marap@ * 
-.enilepip eht hguorht ssap ot gnirts ehT - rts }gnirts{ marap@ * 
-* 
-.sgnirts ot kcab snekot gnitluser eht gnippam dna nekot * 
-a ni gnirts dessap eht gnipparw fo erac sekat dohtem sihT .tuo sgnirts * 
-gnitteg dna enilepip a hguorht gnirts a gnissap rof dohtem ecneinevnoC * 
-**/
-
-}
-snekot nruter  
-
-}  
-omem = snekot    
-
-}    
-}      
-)tluser(hsup.omem        
-{ esle }      
-}        
-)]k[tluser(hsup.omem          
-{ )++k ;htgnel.tluser < k ;0 = k rav( rof        
-{ ))tluser(yarrAsi.yarrA( fi      
-
-eunitnoc )'' === tluser || 0 diov === tluser || llun === tluser( fi      
-
-)snekot ,j ,]j[snekot(nf = tluser rav      
-{ )++j ;htgnel.snekot < j ;0 = j rav( rof    
-
-][ = omem rav    
-]i[kcats_.siht = nf rav    
-{ )++i ;htgneLkcats < i ;0 = i rav( rof  
-
-htgnel.kcats_.siht = htgneLkcats rav  
-{ )snekot( noitcnuf = nur.epytotorp.enilepiP.rnul
-/* 
-}yarrA{ snruter@ * 
-.enilepip eht hguorht nur ot snekot ehT snekot }yarrA{ marap@ * 
-* 
-.snekot dessap * 
-eht tsniaga enilepip eht pu ekam taht snoitcnuf fo tsil tnerruc eht snuR * 
-**/
-
-}
-)1 ,sop(ecilps.kcats_.siht  
-
-}  
-nruter    
-{ )1- == sop( fi  
-)nf(fOxedni.kcats_.siht = sop rav  
-{ )nf( noitcnuf = evomer.epytotorp.enilepiP.rnul
-/* 
-.enilepip eht morf evomer ot noitcnuf ehT nf }noitcnuFenilepiP.rnul{ marap@ * 
-* 
-.enilepip eht morf noitcnuf a sevomeR * 
-**/
-
-}
-)nFwen ,0 ,sop(ecilps.kcats_.siht  
-
-}  
-)'nFgnitsixe dnif tonnaC'(rorrE wen worht    
-{ )1- == sop( fi  
-)nFgnitsixe(fOxedni.kcats_.siht = sop rav  
-
-)nFwen(deretsigeRtoNnoitcnuFfInraw.enilepiP.rnul  
-{ )nFwen ,nFgnitsixe( noitcnuf = erofeb.epytotorp.enilepiP.rnul
-/* 
-.enilepip eht ot dda ot noitcnuf wen ehT - nFwen }noitcnuFenilepiP.rnul{ marap@ * 
-.enilepip eht ni stsixe ydaerla taht noitcnuf A - nFgnitsixe }noitcnuFenilepiP.rnul{ marap@ * 
-* 
-.deretsiger neeb ton sah noitcnuf eht fi gninraw a sgoL * 
-* 
-.enilepip * 
-eht ni stsixe ydaerla taht noitcnuf a erofeb noitcnuf elgnis a sddA * 
-**/
-
-}
-)nFwen ,0 ,sop(ecilps.kcats_.siht  
-1 + sop = sop  
-
-}  
-)'nFgnitsixe dnif tonnaC'(rorrE wen worht    
-{ )1- == sop( fi  
-)nFgnitsixe(fOxedni.kcats_.siht = sop rav  
-
-)nFwen(deretsigeRtoNnoitcnuFfInraw.enilepiP.rnul  
-{ )nFwen ,nFgnitsixe( noitcnuf = retfa.epytotorp.enilepiP.rnul
-/* 
-.enilepip eht ot dda ot noitcnuf wen ehT - nFwen }noitcnuFenilepiP.rnul{ marap@ * 
-.enilepip eht ni stsixe ydaerla taht noitcnuf A - nFgnitsixe }noitcnuFenilepiP.rnul{ marap@ * 
-* 
-.deretsiger neeb ton sah noitcnuf eht fi gninraw a sgoL * 
-* 
-.enilepip * 
-eht ni stsixe ydaerla taht noitcnuf a retfa noitcnuf elgnis a sddA * 
-**/
-
-}
-)siht ,}  
-)nf(hsup.kcats_.siht    
-)nf(deretsigeRtoNnoitcnuFfInraw.enilepiP.rnul    
-{ )nf( noitcnuf(hcaErof.snf  
-
-)stnemugra(llac.ecils.epytotorp.yarrA = snf rav  
-{ )( noitcnuf = dda.epytotorp.enilepiP.rnul
-/* 
-.enilepip eht ot dda ot snoitcnuf fo rebmun ynA - snoitcnuf }][noitcnuFenilepiP.rnul{ marap@ * 
-* 
-.deretsiger neeb ton sah noitcnuf eht fi gninraw a sgoL * 
-* 
-.enilepip eht fo dne eht ot snoitcnuf wen sddA * 
-**/
-
-}
-enilepip nruter  
-
-)}  
-}    
-)emaNnf + ' :noitcnuf deretsigernu daol tonnaC'(rorrE wen worht      
-{ esle }    
-)nf(dda.enilepip      
-{ )nf( fi    
-
-]emaNnf[snoitcnuFderetsiger.enilepiP.rnul = nf rav    
-{ )emaNnf( noitcnuf(hcaErof.desilaires  
-
-enilepiP.rnul wen = enilepip rav  
-{ )desilaires( noitcnuf = daol.enilepiP.rnul
-/* 
-}enilepiP.rnul{ snruter@ * 
-.daol ot enilepip desilaires ehT - desilaires }tcejbO{ marap@ * 
-* 
-.nworht eb lliw rorre * 
-na neht deretsiger neeb ton sah atad desilaires eht morf noitcnuf yna fI * 
-.enilepiP.rnul htiw deretsiger eb ydaerla tsum dedaol eb ot snoitcnuf llA * 
-* 
-.enilepip desilaires ylsuoiverp a sdaoL * 
-**/
-
-}
-}  
-)nf ,'n\.xedni eht gnisilaires nehw smelborp esuac yam sihT .enilepip htiw deretsiger ton si noitcnuF'(nraw.slitu.rnul    
-{ )deretsigeRsi!( fi  
-
-)snoitcnuFderetsiger.siht ni lebal.nf( && lebal.nf = deretsigeRsi rav  
-{ )nf( noitcnuf = deretsigeRtoNnoitcnuFfInraw.enilepiP.rnul
-/* 
-etavirp@ * 
-.rof kcehc ot noitcnuf ehT - nf }noitcnuFenilepiP.rnul{ marap@ * 
-* 
-.noitcnuf enilepiP a sa deretsiger ton si noitcnuf eht fi snraW * 
-**/
-
-}
-nf = ]lebal.nf[snoitcnuFderetsiger.enilepiP.rnul  
-lebal = lebal.nf  
-
-}  
-)lebal + ' :noitcnuf deretsiger gnitsixe gnitirwrevO'(nraw.slitu.rnul    
-{ )snoitcnuFderetsiger.siht ni lebal( fi  
-{ )lebal ,nf( noitcnuf = noitcnuFretsiger.enilepiP.rnul
-/* 
-htiw noitcnuf siht retsiger ot lebal ehT - lebal }gnirtS{ marap@ * 
-.rof kcehc ot noitcnuf ehT - nf }noitcnuFenilepiP.rnul{ marap@ * 
-* 
-.enilepip a gninnur nehw desu eb ot meht rof enilepip eht fo secnatsni ot dedda * 
-eb llits tsum snoitcnuf ,enilepip a ot ti dda ton seod noitcnuf a gniretsigeR * 
-* 
-.dedaol eb ot sdeen enilepip desilaires a ro ,desilaires eb ot sdeen * 
-enilepip eht fi deretsiger eb dluohs enilepip eht ni desu era taht snoitcnuF * 
-* 
-.enilepip eht htiw noitcnuf a retsigeR * 
-**/
-
-/* 
-})][nekoT.rnul|nekoT.rnul?({ snruter@ * 
-.dleif/tnemucod siht rof snekot llA - snekot }][nekoT.rnul{ marap@ * 
-.dleif/tnemucod siht rof snekot fo tsil etelpmoc eht ni nekot siht fo xedni ehT - i }rebmun{ marap@ * 
-.dessecorp gnieb tnemucod eht morf nekot A - nekot }nekoT.rnul{ marap@ * 
-noitcnuFenilepiP.rnul ecafretni@ * 
-* 
-.enilepiP.rnul a gnisu rehtegot deniahc eb yam snoitcnuf enilepip fo rebmun ynA * 
-* 
-.xedni eht ot dedda eb lliw snekot denruter lliw lla dna snoitcnuf enilepip maertsnwod yna ot * 
-dessap eb lliw nekot hcaE .snekot fo yarra na gninruter yb denruter eb nac snekot elpitluM * 
-* 
-.xedni eht ot dedda eb ton lliw dna snoitcnuf * 
-enilepip maertsnwod yna ot dessap eb ton lliw nekot sihT .gnirts ytpme na ro denifednu ,llun * 
-gninruter yb dedracsid eb dluohs nekot dessap eht taht etacidni nac noitcnuf enilepip A * 
-* 
-.nekot nevig a rof atadatem )dda ro( etatum ro * 
-gnirts nekot eht etatum nac noitcnuf enilepip A .atadatem nwonk lla sa llew sa gnirts * 
-nekot eht sniatnoc nekoT.rnul A .nekoT.rnul ot nekoT.rnul spam noitcnuf enilepip A * 
-**/
-
-)llun(etaerc.tcejbO = snoitcnuFderetsiger.enilepiP.rnul
-
-}
-][ = kcats_.siht  
-{ )( noitcnuf = enilepiP.rnul
-/* 
-rotcurtsnoc@ * 
-* 
-.yrassecen ton si * 
-snoitcnuf enilepip gniretsiger neht enilepip eht gnisilaires no gninnalp ton fI * 
-* 
-.nworht eb lliw rorre na deretsiger ton era taht * 
-snoitcnuf sesu taht enilepip desilaires a daol ot gniyrt fI .dedaol eb neht * 
-nac snoitcnuf deretsigeR .enilepiP.rnul htiw deretsiger eb dluohs enilepip a * 
-fo ecnatsni na ni desu snoitcnuf lla ,krow ot senilepip fo noitasilaires roF * 
-* 
-.nekot siht * 
-htiw dellac eb ton lliw enilepip eht fo tser eht ,denifednu nruter dluohs * 
-noitcnuf eht xedni eht gniretne morf nekot a edulcxe oT .enilepip eht ni * 
-noitcnuf txen eht ot dessap eb lliw enilepip eht ni snoitcnuf fo tuptuo ehT * 
-* 
-.snekot lanigiro eht lla * 
-fo tsil a yllanif dna snekot lla fo tsil lanigiro eht ni nekot taht fo xedni * 
-eht ,nekot a gnissap ,nrut ni noitcnuf hcae llac lliw enilepip eht nur nehW * 
-* 
-.devomer eb nac snoitcnuf tluafed * 
-eseht ro snoitcnuf eseht fo rehtie retfa ro erofeb dedda eb nac snoitcnuf * 
-artxE .remmets egaugnal hsilgnE na dna retlif drow pots a htiw enilepip * 
-a niatnoc lliw tuctrohs rnul eht htiw detaerc xednI.rnul fo ecnatsni nA * 
-* 
-.xedni eht * 
-tsniaga nar gnieb seireuq dna xedni hcraes eht gniretne stnemucod ni snekot * 
-lla ot deilppa eb ot snoitcnuf fo tsil deredro na niatniam senilepiP.rnul * 
-**/
-
-/* 
-elagnithgiN revilO 0202 )C( thgirypoC * 
-enilepiP.rnul * 
-!*/
-/+]-\s\[/ = rotarapes.rezinekot.rnul
-/* 
-rezinekot.rnul ees@ * 
-citats@ * 
-* 
-.snehpyh dna ecapsetihw no stilps siht tluafed yB .sgnirts gnizinekot nehw ruoivaheb `rezinekot.rnul` * 
-fo ruoivaheb eht egnahc ot ytreporp siht edirrevO .snekot otni gnirts a tilps ot desu rotarapes ehT * 
-**/
-
-}
-snekot nruter  
-
-}  
-
-}    
-1 + dnEecils = tratSecils      
-
-}      
-)        
-)          
-atadateMnekot            
-,)dnEecils ,tratSecils(ecils.rts            
-( nekoT.rnul wen          
-(hsup.snekot        
-
-htgnel.snekot = ]"xedni"[atadateMnekot        
-]htgneLecils ,tratSecils[ = ]"noitisop"[atadateMnekot        
-}{ || )atadatem(enolc.slitu.rnul = atadateMnekot rav        
-{ )0 > htgneLecils( fi      
-
-{ ))nel == dnEecils || )rotarapes.rezinekot.rnul(hctam.rahc(( fi    
-
-tratSecils - dnEecils = htgneLecils        
-,)dnEecils(tArahc.rts = rahc rav    
-{ )++dnEecils ;nel =< dnEecils ;0 = tratSecils ,0 = dnEecils rav( rof  
-
-][ = snekot      
-,htgnel.rts = nel      
-,)(esaCrewoLot.)(gnirtSot.jbo = rts rav  
-
-}  
-)}    
-)      
-)atadatem(enolc.slitu.rnul        
-,)(esaCrewoLot.)t(gnirtSsa.slitu.rnul        
-(nekoT.rnul wen nruter      
-{ )t( noitcnuf(pam.jbo nruter    
-{ ))jbo(yarrAsi.yarrA( fi  
-
-}  
-][ nruter    
-{ )denifednu == jbo || llun == jbo( fi  
-{ )atadatem ,jbo( noitcnuf = rezinekot.rnul
-/* 
-}enilepiP.rnul knil@{ ees@ * 
-}][nekoT.rnul{ snruter@ * 
-nekot yreve htiw etaicossa ot atadatem lanoitpO - atadatem }tcejbo?{ marap@ * 
-snekot otni trevnoc ot tcejbo ehT - jbo })][tcejbo|tcejbo|gnirts(?{ marap@ * 
-citats@ * 
-* 
-.dezinekot eb ot tcejbo eht morf detaerc si taht nekot yreve ot atadatem sa dedda * 
-dna denolc eb lliw atadatem siht ,rezinekot eht ot dessap eb nac atadatem lanoitpO * 
-* 
-.nekoT.rnul a ni depparw dna sgnirts ot detrevnoc stnemele rieht evah lliw syarrA * 
-.`rotarapes.rezinekot.rnul` ni retcarahc eht no gnirts siht tilps lliw neht * 
-dna `gnirtSot` gnillac yb gnirts a ot retemarap sti trevnoc lliw rezinekot sihT * 
-* 
-.snekot otni tilps era sgnirts woh egnahc ot ytreporp siht fo eulav eht * 
-egnahc ,sgnirts tilps ot `rotarapes.rezinekot.rnul` sesU .xedni hcraes eht * 
-otni detresni eb ot ydaer snekot otni gnirts a gnittilps rof noitcnuf A * 
-**/
-
-/* 
-elagnithgiN revilO 0202 )C( thgirypoC * 
-rezinekot.rnul * 
-!*/
-}
-)atadatem.siht ,)atadatem.siht ,rts.siht(nf( nekoT.rnul wen nruter  
-} s nruter { )s( noitcnuf || nf = nf  
-{ )nf( noitcnuf = enolc.epytotorp.nekoT.rnul
-/* 
-}nekoT.rnul{ snruter@ * 
-.nekot denolc eht ot ylppa ot noitcnuf lanoitpo nA - ]nf[ }noitcnuFetadpu~nekoT.rnul{ marap@ * 
-* 
-.nekot denolc eht ot deilppa * 
-eb nac noitcnuf a yllanoitpO .nekot siht fo enolc a setaerC * 
-**/
-
-}
-siht nruter  
-)atadatem.siht ,rts.siht(nf = rts.siht  
-{ )nf( noitcnuf = etadpu.epytotorp.nekoT.rnul
-/* 
-}nekoT.rnul{ snruter@ * 
-.gnirts nekot eht ot ylppa ot noitcnuf A - nf }noitcnuFetadpu~nekoT.rnul{ marap@ * 
-* 
-)} * 
-)(esaCreppUot.rts nruter   * 
-{ )atadatem ,rts( noitcnuf(etadpu.nekot * 
-elpmaxe@ * 
-* 
-.nekot gnirts depparw eht ot noitcnuf nevig eht seilppA * 
-**/
-
-/* 
-.nekot siht htiw detaicossa atadatem llA - atadatem }tcejbO{ marap@ * 
-.nekot eht fo noitatneserper gnirts ehT - rts }gnirts{ marap@ * 
-noitcnuFetadpu~nekoT.rnul kcabllac@ * 
-* 
-.nekot a gninolc nehw * 
-yllanoitpo ro gnitadpu nehw desu si noitcnuf etadpu nekot A * 
-**/
-
-}
-rts.siht nruter  
-{ )( noitcnuf = gnirtSot.epytotorp.nekoT.rnul
-/* 
-}gnirts{ snruter@ * 
-* 
-.tcejbo siht yb depparw gnieb si taht gnirts nekot eht snruteR * 
-**/
-
-}
-}{ || atadatem = atadatem.siht  
-"" || rts = rts.siht  
-{ )atadatem ,rts( noitcnuf = nekoT.rnul
-/* 
-.nekot siht htiw detaicossa atadateM - ]}{=atadatem[ }tcejbo{ marap@ * 
-.depparw gnieb nekot gnirts ehT - ]''=rts[ }gnirts{ marap@ * 
-rotcurtsnoc@ * 
-* 
-.enilepip gnissecorp txet eht hguorht dessap si ti sa * 
-nekot a fo noitatneserper gnirts a sparw nekot A * 
-**/
-
-}
-))x(sba.htaM + 1(gol.htaM nruter  
-
-)5.0 + mreThtiWstnemucod( / )5.0 + mreThtiWstnemucod - tnuoCtnemucod( = x rav  
-
-}  
-htgnel.)]emaNdleif[gnitsop(syek.tcejbO =+ mreThtiWstnemucod    
-dleif a ton sti ,xedni mret eht erongI // eunitnoc )'xedni_' == emaNdleif( fi    
-{ )gnitsop ni emaNdleif rav( rof  
-
-0 = mreThtiWstnemucod rav  
-{ )tnuoCtnemucod ,gnitsop( noitcnuf = fdi.rnul
-/* 
-.stnemucod fo rebmun latot ehT - tnuoCtnemucod }rebmun{ marap@ * 
-mret nevig a rof gnitsop ehT - gnitsop }tcejbo{ marap@ * 
-etavirp@ * 
-* 
-xedni eht dna redliub eht neewteb derahs si sihT .gnitsop a * 
-rof ycneuqerf tnemucod esrevni eht etaluclac ot noitcnuf A * 
-**/
-}
-)))stnemele.rehto(syek.tcejbO(tacnoc.)stnemele.siht(syek.tcejbO(teS.rnul wen nruter  
-
-}  
-siht nruter    
-{ )ytpme.teS.rnul === rehto( fi  
-
-}  
-etelpmoc.teS.rnul nruter    
-{ )etelpmoc.teS.rnul === rehto( fi  
-{ )rehto( noitcnuf = noinu.epytotorp.teS.rnul
-
-/* 
-.tes deificeps eht dna siht fo noinu eht si taht tes wen a }teS.rnul{ nruter@ * 
-.tes siht htiw noinu ot tes - rehto }teS.rnul{ marap@ * 
-* 
-.tes deificeps eht dna siht fo stnemele eht gninibmoc tes wen a snruteR * 
-**/
-
-}
-)noitcesretni( teS.rnul wen nruter  
-
-}  
-}    
-)tnemele(hsup.noitcesretni      
-{ )stnemele.b ni tnemele( fi    
-]i[stnemele = tnemele rav    
-{ )++i ;htgnel.stnemele < i ;0 = i rav( rof  
-
-)stnemele.a(syek.tcejbO = stnemele  
-
-}  
-siht = b    
-rehto = a    
-{ esle }  
-rehto = b    
-siht = a    
-{ )htgnel.rehto < htgnel.siht( fi  
-
-}  
-rehto nruter    
-{ )ytpme.teS.rnul === rehto( fi  
-
-}  
-siht nruter    
-{ )etelpmoc.teS.rnul === rehto( fi  
-
-][ = noitcesretni ,stnemele ,b ,a rav  
-{ )rehto( noitcnuf = tcesretni.epytotorp.teS.rnul
-
-/* 
-.tes deificeps eht dna siht fo noitcesretni eht si taht tes wen a }teS.rnul{ snruter@ * 
-.tes siht htiw tcesretni ot tes - rehto }teS.rnul{ marap@ * 
-* 
-.tes deificeps eht dna tes siht * 
-htob ni tneserp era taht stnemele eht ylno gniniatnoc tes wen a snruteR * 
-**/
-
-}
-]tcejbo[stnemele.siht!! nruter  
-{ )tcejbo( noitcnuf = sniatnoc.epytotorp.teS.rnul
-/* 
-.tcejbo deificeps eht sniatnoc tes siht fi eurT - }naeloob{ snruter@ * 
-.detset eb ot si tes siht ni ecneserp esohw tcejbO - tcejbo }tcejbo{ marap@ * 
-* 
-.tcejbo deificeps eht sniatnoc tes siht fi eurt snruteR * 
-**/
-
-}
-}  
-eslaf nruter    
-{ )( noitcnuf :sniatnoc  
-
-,}  
-rehto nruter    
-{ )rehto( noitcnuf :noinu  
-
-,}  
-siht nruter    
-{ )( noitcnuf :tcesretni  
-{ = ytpme.teS.rnul
-/* 
-}teS.rnul{ epyt@ * 
-ylnodaer@ * 
-citats@ * 
-* 
-.stnemele on sniatnoc taht tes ytpme nA * 
-**/
-
-}
-}  
-eurt nruter    
-{ )( noitcnuf :sniatnoc  
-
-,}  
-siht nruter    
-{ )( noitcnuf :noinu  
-
-,}  
-rehto nruter    
-{ )rehto( noitcnuf :tcesretni  
-{ = etelpmoc.teS.rnul
-/* 
-}teS.rnul{ epyt@ * 
-ylnodaer@ * 
-citats@ * 
-* 
-.stnemele lla sniatnoc taht tes etelpmoc A * 
-**/
-
-}
-}  
-0 = htgnel.siht    
-{ esle }  
-}    
-eurt = ]]i[stnemele[stnemele.siht      
-{ )++i ;htgnel.siht < i ;0 = i rav( rof    
-
-htgnel.stnemele = htgnel.siht    
-{ )stnemele( fi  
-
-)llun(etaerc.tcejbO = stnemele.siht  
-{ )stnemele( noitcnuf = teS.rnul
-/* 
-rotcurtsnoc@ * 
-* 
-.tes rnul A * 
-**/
-
-/* 
-elagnithgiN revilO 0202 )C( thgirypoC * 
-teS.rnul * 
-!*/
-}
-eulaVgnirts_.siht nruter  
-
-}  
-feRcod.siht + renioj.feRdleiF.rnul + emaNdleif.siht = eulaVgnirts_.siht    
-{ )denifednu == eulaVgnirts_.siht( fi  
-{ )( noitcnuf = gnirtSot.epytotorp.feRdleiF.rnul
-
-}
-)s ,feRdleif ,feRcod( feRdleiF.rnul wen nruter  
-
-)1 + n(ecils.s = feRcod      
-,)n ,0(ecils.s = feRdleif rav  
-
-}  
-"gnirts fer dleif demroflam" worht    
-{ )1- === n( fi  
-
-)renioj.feRdleiF.rnul(fOxedni.s = n rav  
-{ )s( noitcnuf = gnirtSmorf.feRdleiF.rnul
-
-"/" = renioj.feRdleiF.rnul
-
-}
-eulaVgnirts = eulaVgnirts_.siht  
-emaNdleif = emaNdleif.siht  
-feRcod = feRcod.siht  
-{ )eulaVgnirts ,emaNdleif ,feRcod( noitcnuf = feRdleiF.rnul
-}
-enolc nruter  
-
-}  
-)"stcejbo detsen troppus ton seod dna peed ton si enolc"(rorrEepyT wen worht    
-
-}    
-eunitnoc      
-lav = ]yek[enolc      
-{ )'naeloob' === lav foepyt        
-|| 'rebmun' === lav foepyt        
-|| 'gnirts' === lav foepyt( fi    
-
-}    
-eunitnoc      
-)(ecils.lav = ]yek[enolc      
-{ ))lav(yarrAsi.yarrA( fi    
-
-]yek[jbo = lav        
-,]i[syek = yek rav    
-{ )++i ;htgnel.syek < i ;0 = i rav( rof  
-
-)jbo(syek.tcejbO = syek      
-,)llun(etaerc.tcejbO = enolc rav  
-
-}  
-jbo nruter    
-{ )denifednu === jbo || llun === jbo( fi  
-{ )jbo( noitcnuf = enolc.slitu.rnul
-/* 
-slitU fOrebmem@ * 
-.dessap si tcejbo detsen a nehw }rorrEepyT{ sworht@ * 
-.tcejbo dessap eht fo enolc a }tcejbO{ nruter@ * 
-.enolc ot tcejbo ehT jbo }tcejbO{ marap@ * 
-* 
-.detroppus era sevitimirp fo syarra dna ,sevitimirp htiw stcejbO * 
-* 
-.rorrEepyT a esuac lliw noitcnuf * 
-siht ot tcejbo detsen a gnissap ,detroppus era stcejbo wollahs ylnO * 
-* 
-.lanigiro eht tceffa tonnac ypoc eht no * 
-snoitatum yna taht hcus tcejbo gnitsixe na fo ypoc a etaerc lliW * 
-* 
-.tcejbo na senolC * 
-**/
-
-}
-}  
-)(gnirtSot.jbo nruter    
-{ esle }  
-"" nruter    
-{ )llun === jbo || 0 diov === jbo( fi  
-{ )jbo( noitcnuf = gnirtSsa.slitu.rnul
-/* 
-slitu.rnul fOrebmem@ * 
-.tcejbo dessap eht fo noitatneserper gnirts }gnirtS{ nruter@ * 
-.gnirts a ot trevnoc ot tcejbo ehT jbo }ynA{ marap@ * 
-* 
-.denruter si tcejbo dessap eht no `gnirtSot` * 
-gnillac fo tluser eht sesac rehto lla ni ,gnirts ytpme eht * 
-snruter noitcnuf eht `denifednu` dna `llun` fo esac eht nI * 
-* 
-.gnirts a ot tcejbo na trevnoC * 
-**/
-
-)siht()}
-/* elosnoc-on elbane-tnilse */  
-}  
-}    
-)egassem(nraw.elosnoc      
-{ )nraw.elosnoc && elosnoc.labolg( fi    
-{ )egassem( noitcnuf nruter  
-/* elosnoc-on elbasid-tnilse */  
-{ )labolg( noitcnuf( = nraw.slitu.rnul
-/* 
-noitcnuf@ * 
-slitu.rnul fOrebmem@ * 
-.detnirp eb ot egassem ehT egassem }gnirtS{ marap@ * 
-* 
-.elosnoc eht ot egassem gninraw a tnirP * 
-**/
-
-}{ = slitu.rnul
-/* 
-slitu.rnul ecapseman@ * 
-yrarbil rnul eht fo tser eht rof slitu gniniatnoc ecapseman A * 
-**/
-
-/* 
-elagnithgiN revilO 0202 )C( thgirypoC * 
-slitu.rnul * 
-!*/
-"9.3.2" = noisrev.rnul
-
-}
-)(dliub.redliub nruter  
-)redliub ,redliub(llac.gifnoc  
-
-)  
-remmets.rnul    
-(dda.enilepiPhcraes.redliub  
-
-)  
-remmets.rnul    
-,retliFdroWpots.rnul    
-,remmirt.rnul    
-(dda.enilepip.redliub  
-
-redliuB.rnul wen = redliub rav  
-{ )gifnoc( noitcnuf = rnul rav
-/* 
-rnul }noitcnuf{ ecapseman@ * 
-}remmets.rnul knil@{ ees@ * 
-}retliFdroWpots.rnul knil@{ ees@ * 
-}remmirt.rnul knil@{ ees@ * 
-}enilepiP.rnul knil@{ ees@ * 
-}redliuB.rnul knil@{ ees@ * 
-* 
-)} * 
-)siht ,}   * 
-)cod(dda.siht     * 
-{ )cod( noitcnuf(hcaErof.stnemucod   * 
-* 
-)'di'(fer.siht   * 
-)'ydob'(dleif.siht   * 
-)'eltit'(dleif.siht   * 
-{ )( noitcnuf(rnul = xdi rav * 
-elpmaxe@ * 
-* 
-.noitcnuf gifnoc dessap eht nihtiw dedda eb _tsum_ stnemucod llA * 
-* 
-.desimotsuc eb ot sretemarap redliub rehto dna * 
-sdleif fo tsil eht gniwolla ,retemarap a sa dessap si taht * 
-noitcnuf noitarugifnoc eht ot dedleiy si tcejbo redliub sihT * 
-* 
-.remmets dna retlif drow pots ,remmirt a htiw * 
-putes enilepip eht dna detaerc si ecnatsni redliuB.rnul A * 
-* 
-.xednI rnul wen a * 
-gnitcurtsnoc dna gnirugifnoc rof noitcnuf ecneinevnoc A * 
-**/
-
-{)(noitcnuf(;
-
-/* 
-TIM esnecil@ * 
-elagnithgiN revilO 0202 )C( thgirypoC * 
-9.3.2 - thgirb sa ton dna rellams hcum tub ,rloS ekil tib A - moc.sjrnul//:ptth - rnul * 
-**/
-
+lunr.QueryLexer.lexText = function (lexer) {
+  while (true) {
+    var char = lexer.next()
+
+    if (char == lunr.QueryLexer.EOS) {
+      return lunr.QueryLexer.lexEOS
+    }
+
+    // Escape character is '\'
+    if (char.charCodeAt(0) == 92) {
+      lexer.escapeCharacter()
+      continue
+    }
+
+    if (char == ":") {
+      return lunr.QueryLexer.lexField
+    }
+
+    if (char == "~") {
+      lexer.backup()
+      if (lexer.width() > 0) {
+        lexer.emit(lunr.QueryLexer.TERM)
+      }
+      return lunr.QueryLexer.lexEditDistance
+    }
+
+    if (char == "^") {
+      lexer.backup()
+      if (lexer.width() > 0) {
+        lexer.emit(lunr.QueryLexer.TERM)
+      }
+      return lunr.QueryLexer.lexBoost
+    }
+
+    // "+" indicates term presence is required
+    // checking for length to ensure that only
+    // leading "+" are considered
+    if (char == "+" && lexer.width() === 1) {
+      lexer.emit(lunr.QueryLexer.PRESENCE)
+      return lunr.QueryLexer.lexText
+    }
+
+    // "-" indicates term presence is prohibited
+    // checking for length to ensure that only
+    // leading "-" are considered
+    if (char == "-" && lexer.width() === 1) {
+      lexer.emit(lunr.QueryLexer.PRESENCE)
+      return lunr.QueryLexer.lexText
+    }
+
+    if (char.match(lunr.QueryLexer.termSeparator)) {
+      return lunr.QueryLexer.lexTerm
+    }
+  }
+}
+
+lunr.QueryParser = function (str, query) {
+  this.lexer = new lunr.QueryLexer (str)
+  this.query = query
+  this.currentClause = {}
+  this.lexemeIdx = 0
+}
+
+lunr.QueryParser.prototype.parse = function () {
+  this.lexer.run()
+  this.lexemes = this.lexer.lexemes
+
+  var state = lunr.QueryParser.parseClause
+
+  while (state) {
+    state = state(this)
+  }
+
+  return this.query
+}
+
+lunr.QueryParser.prototype.peekLexeme = function () {
+  return this.lexemes[this.lexemeIdx]
+}
+
+lunr.QueryParser.prototype.consumeLexeme = function () {
+  var lexeme = this.peekLexeme()
+  this.lexemeIdx += 1
+  return lexeme
+}
+
+lunr.QueryParser.prototype.nextClause = function () {
+  var completedClause = this.currentClause
+  this.query.clause(completedClause)
+  this.currentClause = {}
+}
+
+lunr.QueryParser.parseClause = function (parser) {
+  var lexeme = parser.peekLexeme()
+
+  if (lexeme == undefined) {
+    return
+  }
+
+  switch (lexeme.type) {
+    case lunr.QueryLexer.PRESENCE:
+      return lunr.QueryParser.parsePresence
+    case lunr.QueryLexer.FIELD:
+      return lunr.QueryParser.parseField
+    case lunr.QueryLexer.TERM:
+      return lunr.QueryParser.parseTerm
+    default:
+      var errorMessage = "expected either a field or a term, found " + lexeme.type
+
+      if (lexeme.str.length >= 1) {
+        errorMessage += " with value '" + lexeme.str + "'"
+      }
+
+      throw new lunr.QueryParseError (errorMessage, lexeme.start, lexeme.end)
+  }
+}
+
+lunr.QueryParser.parsePresence = function (parser) {
+  var lexeme = parser.consumeLexeme()
+
+  if (lexeme == undefined) {
+    return
+  }
+
+  switch (lexeme.str) {
+    case "-":
+      parser.currentClause.presence = lunr.Query.presence.PROHIBITED
+      break
+    case "+":
+      parser.currentClause.presence = lunr.Query.presence.REQUIRED
+      break
+    default:
+      var errorMessage = "unrecognised presence operator'" + lexeme.str + "'"
+      throw new lunr.QueryParseError (errorMessage, lexeme.start, lexeme.end)
+  }
+
+  var nextLexeme = parser.peekLexeme()
+
+  if (nextLexeme == undefined) {
+    var errorMessage = "expecting term or field, found nothing"
+    throw new lunr.QueryParseError (errorMessage, lexeme.start, lexeme.end)
+  }
+
+  switch (nextLexeme.type) {
+    case lunr.QueryLexer.FIELD:
+      return lunr.QueryParser.parseField
+    case lunr.QueryLexer.TERM:
+      return lunr.QueryParser.parseTerm
+    default:
+      var errorMessage = "expecting term or field, found '" + nextLexeme.type + "'"
+      throw new lunr.QueryParseError (errorMessage, nextLexeme.start, nextLexeme.end)
+  }
+}
+
+lunr.QueryParser.parseField = function (parser) {
+  var lexeme = parser.consumeLexeme()
+
+  if (lexeme == undefined) {
+    return
+  }
+
+  if (parser.query.allFields.indexOf(lexeme.str) == -1) {
+    var possibleFields = parser.query.allFields.map(function (f) { return "'" + f + "'" }).join(', '),
+        errorMessage = "unrecognised field '" + lexeme.str + "', possible fields: " + possibleFields
+
+    throw new lunr.QueryParseError (errorMessage, lexeme.start, lexeme.end)
+  }
+
+  parser.currentClause.fields = [lexeme.str]
+
+  var nextLexeme = parser.peekLexeme()
+
+  if (nextLexeme == undefined) {
+    var errorMessage = "expecting term, found nothing"
+    throw new lunr.QueryParseError (errorMessage, lexeme.start, lexeme.end)
+  }
+
+  switch (nextLexeme.type) {
+    case lunr.QueryLexer.TERM:
+      return lunr.QueryParser.parseTerm
+    default:
+      var errorMessage = "expecting term, found '" + nextLexeme.type + "'"
+      throw new lunr.QueryParseError (errorMessage, nextLexeme.start, nextLexeme.end)
+  }
+}
+
+lunr.QueryParser.parseTerm = function (parser) {
+  var lexeme = parser.consumeLexeme()
+
+  if (lexeme == undefined) {
+    return
+  }
+
+  parser.currentClause.term = lexeme.str.toLowerCase()
+
+  if (lexeme.str.indexOf("*") != -1) {
+    parser.currentClause.usePipeline = false
+  }
+
+  var nextLexeme = parser.peekLexeme()
+
+  if (nextLexeme == undefined) {
+    parser.nextClause()
+    return
+  }
+
+  switch (nextLexeme.type) {
+    case lunr.QueryLexer.TERM:
+      parser.nextClause()
+      return lunr.QueryParser.parseTerm
+    case lunr.QueryLexer.FIELD:
+      parser.nextClause()
+      return lunr.QueryParser.parseField
+    case lunr.QueryLexer.EDIT_DISTANCE:
+      return lunr.QueryParser.parseEditDistance
+    case lunr.QueryLexer.BOOST:
+      return lunr.QueryParser.parseBoost
+    case lunr.QueryLexer.PRESENCE:
+      parser.nextClause()
+      return lunr.QueryParser.parsePresence
+    default:
+      var errorMessage = "Unexpected lexeme type '" + nextLexeme.type + "'"
+      throw new lunr.QueryParseError (errorMessage, nextLexeme.start, nextLexeme.end)
+  }
+}
+
+lunr.QueryParser.parseEditDistance = function (parser) {
+  var lexeme = parser.consumeLexeme()
+
+  if (lexeme == undefined) {
+    return
+  }
+
+  var editDistance = parseInt(lexeme.str, 10)
+
+  if (isNaN(editDistance)) {
+    var errorMessage = "edit distance must be numeric"
+    throw new lunr.QueryParseError (errorMessage, lexeme.start, lexeme.end)
+  }
+
+  parser.currentClause.editDistance = editDistance
+
+  var nextLexeme = parser.peekLexeme()
+
+  if (nextLexeme == undefined) {
+    parser.nextClause()
+    return
+  }
+
+  switch (nextLexeme.type) {
+    case lunr.QueryLexer.TERM:
+      parser.nextClause()
+      return lunr.QueryParser.parseTerm
+    case lunr.QueryLexer.FIELD:
+      parser.nextClause()
+      return lunr.QueryParser.parseField
+    case lunr.QueryLexer.EDIT_DISTANCE:
+      return lunr.QueryParser.parseEditDistance
+    case lunr.QueryLexer.BOOST:
+      return lunr.QueryParser.parseBoost
+    case lunr.QueryLexer.PRESENCE:
+      parser.nextClause()
+      return lunr.QueryParser.parsePresence
+    default:
+      var errorMessage = "Unexpected lexeme type '" + nextLexeme.type + "'"
+      throw new lunr.QueryParseError (errorMessage, nextLexeme.start, nextLexeme.end)
+  }
+}
+
+lunr.QueryParser.parseBoost = function (parser) {
+  var lexeme = parser.consumeLexeme()
+
+  if (lexeme == undefined) {
+    return
+  }
+
+  var boost = parseInt(lexeme.str, 10)
+
+  if (isNaN(boost)) {
+    var errorMessage = "boost must be numeric"
+    throw new lunr.QueryParseError (errorMessage, lexeme.start, lexeme.end)
+  }
+
+  parser.currentClause.boost = boost
+
+  var nextLexeme = parser.peekLexeme()
+
+  if (nextLexeme == undefined) {
+    parser.nextClause()
+    return
+  }
+
+  switch (nextLexeme.type) {
+    case lunr.QueryLexer.TERM:
+      parser.nextClause()
+      return lunr.QueryParser.parseTerm
+    case lunr.QueryLexer.FIELD:
+      parser.nextClause()
+      return lunr.QueryParser.parseField
+    case lunr.QueryLexer.EDIT_DISTANCE:
+      return lunr.QueryParser.parseEditDistance
+    case lunr.QueryLexer.BOOST:
+      return lunr.QueryParser.parseBoost
+    case lunr.QueryLexer.PRESENCE:
+      parser.nextClause()
+      return lunr.QueryParser.parsePresence
+    default:
+      var errorMessage = "Unexpected lexeme type '" + nextLexeme.type + "'"
+      throw new lunr.QueryParseError (errorMessage, nextLexeme.start, nextLexeme.end)
+  }
+}
+
+  /**
+   * export the module via AMD, CommonJS or as a browser global
+   * Export code from https://github.com/umdjs/umd/blob/master/returnExports.js
+   */
+  ;(function (root, factory) {
+    if (typeof define === 'function' && define.amd) {
+      // AMD. Register as an anonymous module.
+      define(factory)
+    } else if (typeof exports === 'object') {
+      /**
+       * Node. Does not work with strict CommonJS, but
+       * only CommonJS-like environments that support module.exports,
+       * like Node.
+       */
+      module.exports = factory()
+    } else {
+      // Browser globals (root is window)
+      root.lunr = factory()
+    }
+  }(this, function () {
+    /**
+     * Just return a value to define the module export.
+     * This example returns an object, but the module
+     * can return a function as the exported value.
+     */
+    return lunr
+  }))
+})();
