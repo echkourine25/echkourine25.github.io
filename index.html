@@ -29,7 +29,7 @@
             
         </div>
         <div class="addwakeup" id="showWake">
-            <fieldset style="display: none;">
+            <fieldset>
                 <legend>Add Alarm :</legend>
                 <table><tr><td>Hours : </td><td><input type="number" id="wuhours" name="hours" min="0" max="23"/>
                 </td></tr><tr><td>Minutes  : </td><td><input type="number" id="wuminutes" name="minutes" min="0" max="59"/>
@@ -478,7 +478,7 @@ element.remove();
     // hide the link
     btn4.style.display = 'inline';
     btn=document.getElementById("showTimeBtn");
-    btn.style.display = 'inline';
+    btn.style.display = 'none';
 }
         function showWake(){
             btn = document.getElementById("showWake");
