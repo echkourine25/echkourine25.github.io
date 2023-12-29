@@ -153,6 +153,21 @@ setInterval(updateAgenda, 60000); // 60000 milliseconds = 1 minute
 
 // ... existing code ...
 
+
+
+
+
+
+function setCookie(name, value, days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + value + expires + "; path=/";
+}
+
 function addEventToAgenda(dateTime, event) {
     // Get existing agenda events from cookies
     var agendaEvents = getCookie('agendaEvents') || '[]';
@@ -221,13 +236,4 @@ function getCookie(name) {
         if (cookie.indexOf(nameEQ) === 0) return cookie.substring(nameEQ.length, cookie.length);
     }
     return null;
-}
-function setCookie(name, value, days) {
-    var expires = "";
-    if (days) {
-        var date = new Date();
-        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-        expires = "; expires=" + date.toUTCString();
-    }
-    document.cookie = name + "=" + value + expires + "; path=/";
 }
