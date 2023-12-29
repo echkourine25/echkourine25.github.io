@@ -108,9 +108,9 @@ themeButton.addEventListener('click', () => {
 })
 function updateAgenda() {
     var agendaItems = [
-        { dateTime: '2023-31-12T09:00:00', event: 'New Year\'s Meeting' },
-        { dateTime: '2023-31-12T12:30:00', event: 'Lunch Break' },
-        { dateTime: '2023-31-12T15:00:00', event: 'Project Review' },
+        { dateTime: '2023-12-31T09:00:00', event: 'New Year\'s Meeting' },
+        { dateTime: '2023-12-31T12:30:00', event: 'Lunch Break' },
+        { dateTime: '2023-12-29T15:00:00', event: 'Project Review' },
         // Add more agenda items as needed
     ];
 
@@ -119,7 +119,14 @@ function updateAgenda() {
     var agendaHTML = '<h2>Agenda</h2><ul>';
     for (var i = 0; i < agendaItems.length; i++) {
         var eventDate = new Date(agendaItems[i].dateTime);
-        var formattedDate = eventDate.toLocaleDateString();
+
+        // Extract month, day, and year
+        var month = (eventDate.getMonth() + 1).toString().padStart(2, '0');
+        var day = eventDate.getDate().toString().padStart(2, '0');
+        var year = eventDate.getFullYear();
+
+        // Format the date and time parts
+        var formattedDate = year + '-' + month + '-' + day;
         var formattedTime = eventDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
         // Check if the event is in the future
@@ -131,6 +138,9 @@ function updateAgenda() {
 
     document.getElementById('agenda').innerHTML = agendaHTML;
 }
+
+// ... existing code ...
+
 // Call the updateAgenda function to initially populate the agenda
 updateAgenda();
 
