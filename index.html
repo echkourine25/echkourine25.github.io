@@ -11,12 +11,6 @@
 <div style="background-color:black;float:center;height:100%;display:flex;align-items:flex-end;display:block;"><h3>
 <button onClick="utcm1()">-</button><span class="utc">UTC</span><span class="utcn">0</span><button onClick="utcp1()">+</button>
 </h3/></div>
-
-        <audio 
-            id="reveil"
-            hidden
-            src="ALRM.mp3">
-            </audio>
         <div style="display: inline-block;" class="myBody" id="myBody">
             <fieldset style="display: inline-block;">
                 <legend>Set Clock :</legend>
@@ -48,6 +42,7 @@
             <img class="" id="showTimeBtn" style="display:none;" src="h.jpg" width="50px" onClick="showTime()"/>
             <img class="" id="showWakeBtn" style="display:inline;" src="h.jpg" width="50px" onClick="showWake()"/>
             <img class="center-me" src="s.jpg" style="display:inline;"width="50px" id="reveilBtn"/>
+		<img class="center-me" src="s.jpg" style="diaplay:inline;"width="50px" id="start"/>
         </div>
     </body>
     <style>
@@ -625,6 +620,11 @@ var utc = document.querySelector('.utcn').innerHTML;
 positionNumbers(Number(utc)-1);
 document.querySelector('.utcn').innerHTML = Number(utc)-1;
 }
+	    btnStart=document.getElementById("start");
+	    btnStart.addEventListener('click', function() {
+    // Placez ici votre code de lecture audio
+    var audio = new Audio('ALRM.mp3');
+});
 startClock();
     </script>
 	<h1><a href="blog.html">Blog Link</a></h1>
