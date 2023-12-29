@@ -145,10 +145,7 @@ themeButton.addEventListener('click', () => {
     // Update the agenda every minute (adjust the interval as needed)
     setInterval(updateAgenda, 60000); // 60000 milliseconds = 1 minute
 
- // Fonction pour gérer la soumission du formulaire
-    document.getElementById('searchForm').addEventListener('submit', function(event) {
-        event.preventDefault(); // Empêche l'envoi du formulaire par défaut
-
+    function performSearch() {
         // Récupère les valeurs du formulaire
         var query = document.getElementById('searchQuery').value;
         var engine = document.getElementById('searchEngine').value;
@@ -168,4 +165,4 @@ themeButton.addEventListener('click', () => {
             default:
                 break;
         }
-    });
+    }
