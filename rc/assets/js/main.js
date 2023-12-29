@@ -82,7 +82,7 @@ function saveAgendaToCookie(agendaItems) {
     // Convert the agendaItems array to a JSON string
     var agendaData = JSON.stringify(agendaItems);
     // Save the JSON string to a cookie named 'agenda'
-    setCookie('agenda', agendaData, 7); // Expires in 7 days, adjust as needed
+    setCookie('agenda', agendaData, 365); // Expires in 7 days, adjust as needed
 }
 
 // Function to add a new event to the agenda
