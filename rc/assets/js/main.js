@@ -144,3 +144,28 @@ themeButton.addEventListener('click', () => {
 
     // Update the agenda every minute (adjust the interval as needed)
     setInterval(updateAgenda, 60000); // 60000 milliseconds = 1 minute
+
+ // Fonction pour gérer la soumission du formulaire
+    document.getElementById('searchForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Empêche l'envoi du formulaire par défaut
+
+        // Récupère les valeurs du formulaire
+        var query = document.getElementById('searchQuery').value;
+        var engine = document.getElementById('searchEngine').value;
+
+        // Redirige l'utilisateur vers le moteur de recherche sélectionné avec la requête de recherche
+        switch (engine) {
+            case 'google':
+                window.location.href = 'https://www.google.com/search?q=' + encodeURIComponent(query);
+                break;
+            case 'bing':
+                window.location.href = 'https://www.bing.com/search?q=' + encodeURIComponent(query);
+                break;
+            case 'yahoo':
+                window.location.href = 'https://search.yahoo.com/search?p=' + encodeURIComponent(query);
+                break;
+            // Ajoutez d'autres cas pour d'autres moteurs de recherche
+            default:
+                break;
+        }
+    });
