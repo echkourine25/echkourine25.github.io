@@ -206,3 +206,8 @@ function addEventToAgenda(dateTime, event) {
                 break;
         }
     }
+function addAgendaEvent(){
+      datetimeAgenda = document.getElementById("datetimeAgenda").innerHTML;
+      descriptionAgenda = document.getElementById("descriptionAgenda").innerHTML;
+      addEventToAgenda(datetimeAgenda, descriptionAgenda);
+}
