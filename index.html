@@ -622,7 +622,20 @@ document.querySelector('.utcn').innerHTML = Number(utc)-1;
 	    btnStart=document.getElementById("start");
 	    btnStart.addEventListener('click', function() {
     // Placez ici votre code de lecture audio
-    var audio = new Audio('ALRM.mp3');
+    var myAudio = new Audio('ALRM.mp3');
+		    for(i=0;i<wucount; i++){
+                    var myTime;
+                    myArray = new Array();
+                    console.log(document.querySelector("#wulisttd"+i).textContent)
+                    if(document.querySelector("#wulistbtnid"+i).checked){
+                        myArray=document.querySelector("#wulisttd"+i).textContent.split(":");
+                        if(hourl == myArray[0] && minutel == myArray[1] && secondl == myArray[2]){
+                            var reveilT=true;
+                            myAudio.loop = true;
+                            myAudio.play();
+                        }
+                    }
+                }
 });
 startClock();
     </script>
