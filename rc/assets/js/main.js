@@ -161,6 +161,12 @@ themeButton.addEventListener('click', () => {
             case 'yahoo':
                 window.location.href = 'https://search.yahoo.com/search?p=' + encodeURIComponent(query);
                 break;
+            case 'duckduckgo':
+                window.location.href = 'https://duckduckgo.com/?q=' + encodeURIComponent(query);
+                break;
+            case 'ask':
+                window.location.href = 'https://www.ask.com/web?q=' + encodeURIComponent(query);
+                break;
             // Ajoutez d'autres cas pour d'autres moteurs de recherche
             default:
                 break;
