@@ -106,39 +106,69 @@ themeButton.addEventListener('click', () => {
     localStorage.setItem('selected-theme', getCurrentTheme())
     localStorage.setItem('selected-icon', getCurrentIcon())
 })
-function updateAgenda() {
-    var agendaItems = [
-        { dateTime: '2023-12-31T09:00:00', event: 'New Year\'s Meeting' },
-        { dateTime: '2023-01-15T12:30:00', event: 'Lunch Break' },
-        { dateTime: '2023-12-29T14:00:00', event: 'Example Event Today' },
-        // Add more agenda items as needed
-    ];
+    function updateAgenda() {
+        var agendaItems = [
+            { dateTime: '2023-01-01T09:00:00', event: 'New Year\'s Meeting' },
+            { dateTime: '2023-01-15T12:30:00', event: 'Lunch Break' },
+            { dateTime: '2023-12-29T10:00:00', event: 'Team Meeting' },
+            // Add more agenda items as needed
+        ];
 
-    var now = new Date();
-    var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+        var agendaBody = document.getElementById('agendaBody');
+        agendaBody.innerHTML = ''; // Clear existing content
 
-    var agendaHTML = '<h2>Agenda</h2><ul>';
-    for (var i = 0; i < agendaItems.length; i++) {
-        var eventDate = new Date(agendaItems[i].dateTime);
+        var hours = Array.from({ length: 24 }, (_, i) => i); // Create an array from 0 to 23 representing hours
 
-        // Check if the event is today
-        if (eventDate >= today && eventDate < new Date(today.getTime() + 86400000)) { // 86400000 milliseconds = 1 day
-            // Format the date and time parts
-            var formattedDate = eventDate.toLocaleDateString();
-            var formattedTime = eventDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        hours.forEach(hour => {
+            var newRow = agendaBody.insertRow();
+            newRow.insertCell(0).textContent = hour + ':00'; // Time column
 
-            agendaHTML += '<li>' + formattedDate + ' à ' + formattedTime + ' - ' + agendaItems[i].event + '</li>';
+            for (var day = 1; day <= 5; day++) {
+                var cell = newRow.insertCell(day);
+                var eventsForHourAndDay = agendaItems.filter(item => {
+                    var eventDate = new Date(item.dateTime);
+                    return eventDate.getHours() === hour && eventDate.getDay() === day;
+                });
+
+                eventsForHourAndDay.forEach(event => {
+                    cell.textContent += event.event + '\n';
+                });
+            }
+        });
+    }
+
+    // ... existing code ...
+
+    // Call the updateAgenda function to initially populate the agenda
+    updateAgenda();
+
+    // Update the agenda every minute (adjust the interval as needed)
+    setInterval(updateAgenda, 60000); // 60000 milliseconds = 1 minute
+
+    function performSearch() {
+        // Récupère les valeurs du formulaire
+        var query = document.getElementById('searchQuery').value;
+        var engine = document.getElementById('searchEngine').value;
+
+        // Redirige l'utilisateur vers le moteur de recherche sélectionné avec la requête de recherche
+        switch (engine) {
+            case 'google':
+                window.location.href = 'https://www.google.com/search?q=' + encodeURIComponent(query);
+                break;
+            case 'bing':
+                window.location.href = 'https://www.bing.com/search?q=' + encodeURIComponent(query);
+                break;
+            case 'yahoo':
+                window.location.href = 'https://search.yahoo.com/search?p=' + encodeURIComponent(query);
+                break;
+            case 'duckduckgo':
+                window.location.href = 'https://duckduckgo.com/?q=' + encodeURIComponent(query);
+                break;
+            case 'ask':
+                window.location.href = 'https://www.ask.com/web?q=' + encodeURIComponent(query);
+                break;
+            // Ajoutez d'autres cas pour d'autres moteurs de recherche
+            default:
+                break;
         }
     }
-    agendaHTML += '</ul>';
-
-    document.getElementById('agenda').innerHTML = agendaHTML;
-}
-
-// ... existing code ...
-
-// Call the updateAgenda function to initially populate the agenda
-updateAgenda();
-
-// Update the agenda every minute (adjust the interval as needed)
-setInterval(updateAgenda, 60000); // 60000 milliseconds = 1 minute
