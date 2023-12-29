@@ -108,9 +108,9 @@ themeButton.addEventListener('click', () => {
 })
 function updateAgenda() {
     var agendaItems = [
-        { dateTime: '2023-01-01T09:00:00', event: 'New Year\'s Meeting' },
-        { dateTime: '2023-01-15T12:30:00', event: 'Lunch Break' },
-        { dateTime: '2023-02-01T15:00:00', event: 'Project Review' },
+        { dateTime: '2023-12-31T09:00:00', event: 'New Year\'s Meeting' },
+        { dateTime: '2023-12-31T12:30:00', event: 'Lunch Break' },
+        { dateTime: '2023-12-31T15:00:00', event: 'Project Review' },
         // Add more agenda items as needed
     ];
 
