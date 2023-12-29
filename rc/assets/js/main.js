@@ -28,14 +28,16 @@ function readAgendaFromCookie() {
 }
 
 agendaItems = readAgendaFromCookie();
-function updateAgenda(agendaItems) {
+function updateAgenda() {
+    var agendaItems = [
+        { dateTime: '2023-01-01T09:00:00', event: 'New Year\'s Meeting' },
+        { dateTime: '2023-01-15T12:30:00', event: 'Lunch Break' },
+        { dateTime: '2023-12-29T10:00:00', event: 'Team Meeting' },
+        // Add more agenda items as needed
+    ];
+
     var agendaBody = document.getElementById('agendaBody');
     agendaBody.innerHTML = ''; // Clear existing content
-
-    if (!agendaItems || agendaItems.length === 0) {
-        // Handle the case where agendaItems is undefined or empty
-        return;
-    }
 
     var hours = Array.from({ length: 24 }, (_, i) => i); // Create an array from 0 to 23 representing hours
 
@@ -43,8 +45,8 @@ function updateAgenda(agendaItems) {
         var newRow = agendaBody.insertRow();
         newRow.insertCell(0).textContent = hour + ':00'; // Time column
 
-        for (var day = 1; day <= 7; day++) {
-            var cell = newRow.insertCell(day);
+        for (var day = 0; day <= 6; day++) { // Adjusted loop to include Sunday (0) to Saturday (6)
+            var cell = newRow.insertCell(day + 1);
             var eventsForHourAndDay = agendaItems.filter(item => {
                 var eventDate = new Date(item.dateTime);
                 return eventDate.getHours() === hour && eventDate.getDay() === day;
