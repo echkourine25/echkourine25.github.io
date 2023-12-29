@@ -28,10 +28,14 @@ function readAgendaFromCookie() {
 }
 
 agendaItems = readAgendaFromCookie();
-
 function updateAgenda(agendaItems) {
     var agendaBody = document.getElementById('agendaBody');
     agendaBody.innerHTML = ''; // Clear existing content
+
+    if (!agendaItems || agendaItems.length === 0) {
+        // Handle the case where agendaItems is undefined or empty
+        return;
+    }
 
     var hours = Array.from({ length: 24 }, (_, i) => i); // Create an array from 0 to 23 representing hours
 
@@ -39,7 +43,7 @@ function updateAgenda(agendaItems) {
         var newRow = agendaBody.insertRow();
         newRow.insertCell(0).textContent = hour + ':00'; // Time column
 
-        for (var day = 1; day <= 7; day++) {
+        for (var day = 1; day <= 5; day++) {
             var cell = newRow.insertCell(day);
             var eventsForHourAndDay = agendaItems.filter(item => {
                 var eventDate = new Date(item.dateTime);
