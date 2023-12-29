@@ -140,6 +140,9 @@
                 .then(response => response.json())
                 .then(data => {
                     // Update weather information on the page
+                     var iconcode = data.weather[0].icon;
+                    var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
+                    document.getElementById('wicon').src = iconurl;
                     document.getElementById('weatherDescription').textContent = data.weather[0].description;
                     document.getElementById('temperature').textContent = `${Math.round(data.main.temp)}°C`;
                 })
