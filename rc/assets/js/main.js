@@ -71,7 +71,7 @@ const clockText = () =>{
 
     // We show the day, the month and the year
     dateDay.innerHTML = day
-    // dateWeek.innerHTML = `${week[dayweek]}`
+    dateWeek.innerHTML = `${week[dayweek]}`
     dateMonth.innerHTML = `${months[month]},`
     dateYear.innerHTML = year
 }
