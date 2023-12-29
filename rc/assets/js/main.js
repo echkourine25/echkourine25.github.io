@@ -44,7 +44,7 @@ function updateAgenda(agendaItems) {
         newRow.insertCell(0).textContent = hour + ':00'; // Time column
 
         for (var day = 0; day <= 6; day++) {
-            var cell = newRow.insertCell(day);
+            var cell = newRow.insertCell(day+1);
             var eventsForHourAndDay = agendaItems.filter(item => {
                 var eventDate = new Date(item.dateTime);
                 return eventDate.getHours() === hour && eventDate.getDay() === day;
