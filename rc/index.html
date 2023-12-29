@@ -50,22 +50,40 @@
     <label for="searchQuery">Search :</label>
     <input type="text" id="searchQuery" name="q" placeholder="Enter your search..." required>
 
-    <label for="searchEngine">Search engine :</label>
+    <label for="searchEngine">Engine :</label>
     <select id="searchEngine" name="engine">
         <option value="google">Google</option>
         <option value="bing">Bing</option>
         <option value="yahoo">Yahoo</option>
+        <option value="duckduckgo">DuckDuckGo</option>
+        <option value="ask">Ask.com</option>
         <!-- Ajoutez d'autres moteurs de recherche au besoin -->
     </select>
 
-    <button type="submit">Search</button>
+    <button type="button" onclick="performSearch()">Search</button>
+
 </form>
                     </div>
                 </div>
             </div>
-            <div id="agenda" class="agenda__container grid">
-                <!-- Agenda content will be inserted here dynamically -->
-            </div>
+            <table id="agendaTable">
+    <thead>
+        <tr>
+            <th>Heure</th>
+            <th>Lundi</th>
+            <th>Mardi</th>
+            <th>Mercredi</th>
+            <th>Jeudi</th>
+            <th>Vendredi</th>
+            <th>Samedi</th>
+            <th>Dimanche</th>
+            <!-- Ajoutez d'autres jours au besoin -->
+        </tr>
+    </thead>
+    <tbody id="agendaBody">
+        <!-- Agenda rows will be inserted here dynamically -->
+    </tbody>
+</table>
         </section>
 
         <!--==================== MAIN JS ====================-->
