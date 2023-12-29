@@ -19,6 +19,15 @@ function getCookie(name) {
     }
     return null;
 }
+// Function to read agenda data from a cookie
+function readAgendaFromCookie() {
+    // Get the JSON string from the 'agenda' cookie
+    var agendaData = getCookie('agenda');
+    // Parse the JSON string to convert it back to an array
+    return agendaData ? JSON.parse(agendaData) : [];
+}
+
+agendaItems = readAgendaFromCookie();
 
 function updateAgenda(agendaItems) {
     var agendaBody = document.getElementById('agendaBody');
@@ -30,7 +39,7 @@ function updateAgenda(agendaItems) {
         var newRow = agendaBody.insertRow();
         newRow.insertCell(0).textContent = hour + ':00'; // Time column
 
-        for (var day = 1; day <= 5; day++) {
+        for (var day = 1; day <= 7; day++) {
             var cell = newRow.insertCell(day);
             var eventsForHourAndDay = agendaItems.filter(item => {
                 var eventDate = new Date(item.dateTime);
@@ -72,13 +81,6 @@ function saveAgendaToCookie(agendaItems) {
     setCookie('agenda', agendaData, 7); // Expires in 7 days, adjust as needed
 }
 
-// Function to read agenda data from a cookie
-function readAgendaFromCookie() {
-    // Get the JSON string from the 'agenda' cookie
-    var agendaData = getCookie('agenda');
-    // Parse the JSON string to convert it back to an array
-    return agendaData ? JSON.parse(agendaData) : [];
-}
 // Function to add a new event to the agenda
 function addEventToAgenda(dateTime, event) {
     var agendaItems = readAgendaFromCookie();
@@ -107,9 +109,6 @@ document.getElementById('eventForm').addEventListener('submit', function (event)
     timeInput.value = '';
     eventInput.value = '';
 });
-
-// Example usage: Read agenda data from cookie on page load
-var agendaItems = readAgendaFromCookie();
 
 /*==================== CLOCK ====================*/
 const hour = document.getElementById('clock-hour'),
@@ -224,22 +223,17 @@ themeButton.addEventListener('click', () => {
 updateAgenda(agendaItems);
 
 // Update the agenda every minute (adjust the interval as needed)
-setInterval(function () {
+/*setInterval(function () {
     updateAgenda(agendaItems);
 }, 60000); // 60000 milliseconds = 1 minute
-
-// Example usage: Save agenda data to cookie when the agenda is updated
-
-    // Save the updated agenda data to the cookie
-    saveAgendaToCookie(agendaItems);
-
+*/
     // ... existing code ...
 
     // Call the updateAgenda function to initially populate the agenda
     updateAgenda();
 
     // Update the agenda every minute (adjust the interval as needed)
-    setInterval(updateAgenda, 60000); // 60000 milliseconds = 1 minute
+//    setInterval(updateAgenda, 60000); // 60000 milliseconds = 1 minute
 
     function performSearch() {
         // Récupère les valeurs du formulaire
