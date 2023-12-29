@@ -152,6 +152,33 @@ updateAgenda();
 setInterval(updateAgenda, 60000); // 60000 milliseconds = 1 minute
 
 // ... existing code ...
+
+function addEventToAgenda(dateTime, event) {
+    // Get existing agenda events from cookies
+    var agendaEvents = getCookie('agendaEvents') || '[]';
+    agendaEvents = JSON.parse(agendaEvents);
+
+    // Check if the event already exists, and update it if necessary
+    var existingEventIndex = agendaEvents.findIndex(function (e) {
+        return e.dateTime === dateTime;
+    });
+
+    if (existingEventIndex !== -1) {
+        agendaEvents[existingEventIndex].event = event;
+    } else {
+        // Add the new event
+        agendaEvents.push({ dateTime: dateTime, event: event });
+    }
+
+    // Save the updated agenda events to cookies
+    setCookie('agendaEvents', JSON.stringify(agendaEvents), 30);
+
+    // Update the agenda display
+    updateAgenda();
+}
+
+
+
     function performSearch() {
         // Récupère les valeurs du formulaire
         var query = document.getElementById('searchQuery').value;
