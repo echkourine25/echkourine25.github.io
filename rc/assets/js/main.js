@@ -43,7 +43,7 @@ function updateAgenda(agendaItems) {
         var newRow = agendaBody.insertRow();
         newRow.insertCell(0).textContent = hour + ':00'; // Time column
 
-        for (var day = 1; day <= 5; day++) {
+        for (var day = 1; day <= 7; day++) {
             var cell = newRow.insertCell(day);
             var eventsForHourAndDay = agendaItems.filter(item => {
                 var eventDate = new Date(item.dateTime);
