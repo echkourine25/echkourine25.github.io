@@ -20,6 +20,50 @@ function getCookie(name) {
     return null;
 }
 
+function updateAgenda(agendaItems) {
+    var agendaBody = document.getElementById('agendaBody');
+    agendaBody.innerHTML = ''; // Clear existing content
+
+    var hours = Array.from({ length: 24 }, (_, i) => i); // Create an array from 0 to 23 representing hours
+
+    hours.forEach(hour => {
+        var newRow = agendaBody.insertRow();
+        newRow.insertCell(0).textContent = hour + ':00'; // Time column
+
+        for (var day = 1; day <= 5; day++) {
+            var cell = newRow.insertCell(day);
+            var eventsForHourAndDay = agendaItems.filter(item => {
+                var eventDate = new Date(item.dateTime);
+                return eventDate.getHours() === hour && eventDate.getDay() === day;
+            });
+
+            eventsForHourAndDay.forEach(event => {
+                cell.textContent += event.event + '\n';
+            });
+        }
+    });
+}
+// Event listener for the form submission
+document.getElementById('eventForm').addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    // Get form values
+    var dateInput = document.getElementById('eventDate');
+    var timeInput = document.getElementById('eventTime');
+    var eventInput = document.getElementById('eventText');
+
+    // Combine date and time into a DateTime string
+    var dateTime = dateInput.value + 'T' + timeInput.value;
+
+    // Add the event to the agenda
+    addEventToAgenda(dateTime, eventInput.value);
+
+    // Clear the form fields
+    dateInput.value = '';
+    timeInput.value = '';
+    eventInput.value = '';
+});
+
 // Function to save agenda data to a cookie
 function saveAgendaToCookie(agendaItems) {
     // Convert the agendaItems array to a JSON string
@@ -185,36 +229,6 @@ setInterval(function () {
 }, 60000); // 60000 milliseconds = 1 minute
 
 // Example usage: Save agenda data to cookie when the agenda is updated
-function updateAgenda(agendaItems) {
-        var agendaItems = [
-            { dateTime: '2023-01-01T09:00:00', event: 'New Year\'s Meeting' },
-            { dateTime: '2023-01-15T12:30:00', event: 'Lunch Break' },
-            { dateTime: '2023-12-29T10:00:00', event: 'Team Meeting' },
-            // Add more agenda items as needed
-        ];
-
-        var agendaBody = document.getElementById('agendaBody');
-        agendaBody.innerHTML = ''; // Clear existing content
-
-        var hours = Array.from({ length: 24 }, (_, i) => i); // Create an array from 0 to 23 representing hours
-
-        hours.forEach(hour => {
-            var newRow = agendaBody.insertRow();
-            newRow.insertCell(0).textContent = hour + ':00'; // Time column
-
-            for (var day = 1; day <= 5; day++) {
-                var cell = newRow.insertCell(day);
-                var eventsForHourAndDay = agendaItems.filter(item => {
-                    var eventDate = new Date(item.dateTime);
-                    return eventDate.getHours() === hour && eventDate.getDay() === day;
-                });
-
-                eventsForHourAndDay.forEach(event => {
-                    cell.textContent += event.event + '\n';
-                });
-            }
-        });
-    }
 
     // Save the updated agenda data to the cookie
     saveAgendaToCookie(agendaItems);
