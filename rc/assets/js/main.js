@@ -106,3 +106,33 @@ themeButton.addEventListener('click', () => {
     localStorage.setItem('selected-theme', getCurrentTheme())
     localStorage.setItem('selected-icon', getCurrentIcon())
 })
+function updateAgenda() {
+    var agendaItems = [
+        { dateTime: '2023-01-01T09:00:00', event: 'New Year\'s Meeting' },
+        { dateTime: '2023-01-15T12:30:00', event: 'Lunch Break' },
+        { dateTime: '2023-02-01T15:00:00', event: 'Project Review' },
+        // Add more agenda items as needed
+    ];
+
+    var now = new Date();
+
+    var agendaHTML = '<h2>Agenda</h2><ul>';
+    for (var i = 0; i < agendaItems.length; i++) {
+        var eventDate = new Date(agendaItems[i].dateTime);
+        var formattedDate = eventDate.toLocaleDateString();
+        var formattedTime = eventDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+        // Check if the event is in the future
+        if (eventDate > now) {
+            agendaHTML += '<li>' + formattedDate + ' ' + formattedTime + ' - ' + agendaItems[i].event + '</li>';
+        }
+    }
+    agendaHTML += '</ul>';
+
+    document.getElementById('agenda').innerHTML = agendaHTML;
+}
+// Call the updateAgenda function to initially populate the agenda
+updateAgenda();
+
+// Update the agenda every minute (adjust the interval as needed)
+setInterval(updateAgenda, 60000); // 60000 milliseconds = 1 minute
