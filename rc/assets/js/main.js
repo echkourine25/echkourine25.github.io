@@ -227,10 +227,6 @@ updateAgenda(agendaItems);
     updateAgenda(agendaItems);
 }, 60000); // 60000 milliseconds = 1 minute
 */
-    // ... existing code ...
-
-    // Call the updateAgenda function to initially populate the agenda
-    updateAgenda();
 
     // Update the agenda every minute (adjust the interval as needed)
 //    setInterval(updateAgenda, 60000); // 60000 milliseconds = 1 minute
