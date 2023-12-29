@@ -39,22 +39,31 @@ function updateAgenda(agendaItems) {
 
     var hours = Array.from({ length: 24 }, (_, i) => i); // Create an array from 0 to 23 representing hours
 
+    var amCircle = document.getElementById('am-circle');
+    var pmCircle = document.getElementById('pm-circle');
+
+    // Clear existing circles
+    amCircle.style.display = 'none';
+    pmCircle.style.display = 'none';
+
     hours.forEach(hour => {
-        var newRow = agendaBody.insertRow();
-        newRow.insertCell(0).textContent = hour + ':00'; // Time column
+        var eventsForHour = agendaItems.filter(item => {
+            var eventDate = new Date(item.dateTime);
+            return eventDate.getHours() === hour;
+        });
 
-        for (var day = 1; day <= 5; day++) {
-            var cell = newRow.insertCell(day);
-            var eventsForHourAndDay = agendaItems.filter(item => {
-                var eventDate = new Date(item.dateTime);
-                return eventDate.getHours() === hour && eventDate.getDay() === day;
-            });
-
-            eventsForHourAndDay.forEach(event => {
-                cell.textContent += event.event + '\n';
-            });
-        }
+        eventsForHour.forEach(event => {
+            if (hour < 12) {
+                // AM Event
+                amCircle.style.display = 'block';
+            } else {
+                // PM Event
+                pmCircle.style.display = 'block';
+            }
+        });
     });
+
+    // ... rest of your existing code for updating the clock and agenda ...
 }
 // Event listener for the form submission
 document.getElementById('eventForm').addEventListener('submit', function (event) {
