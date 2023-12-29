@@ -48,8 +48,20 @@
                         </div>
                     </div>
                 </div>
-                
-                <a href="https://www.youtube.com/c/Bedimcode/" target="_blank" class="clock__logo">Bedimcode</a>
+                <form id="searchForm">
+    <label for="searchQuery">Search :</label>
+    <input type="text" id="searchQuery" name="q" placeholder="Enter your search..." required>
+
+    <label for="searchEngine">Search engine :</label>
+    <select id="searchEngine" name="engine">
+        <option value="google">Google</option>
+        <option value="bing">Bing</option>
+        <option value="yahoo">Yahoo</option>
+        <!-- Ajoutez d'autres moteurs de recherche au besoin -->
+    </select>
+
+    <button type="submit">Rechercher</button>
+</form>
             </div>
             <div id="agenda" class="agenda__container grid">
                 <!-- Agenda content will be inserted here dynamically -->
