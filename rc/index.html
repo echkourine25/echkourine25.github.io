@@ -125,7 +125,6 @@
                 .then(response => response.json())
                 .then(data => {
                     // Update weather information on the page
-                    document.getElementById('weatherIcon').innerHTML = `<i class='bx bxl-openweathermap'></i>`;
                     document.getElementById('weatherDescription').textContent = data.weather[0].description;
                     document.getElementById('temperature').textContent = `${Math.round(data.main.temp)}°C`;
                 })
