@@ -395,6 +395,8 @@ color:white;
  
 </style>
     <script>
+var myAudio = new Audio('ALRM.mp3');
+audio.loop = true; // Réglez cette propriété à true si vous souhaitez que l'audio boucle
 
 function plus1sec(dt){
     dt.setSeconds(dt.getSeconds() + 1);
@@ -439,7 +441,6 @@ const year = day * 365;*/
                         myArray=document.querySelector("#wulisttd"+i).textContent.split(":");
                         if(hourl == myArray[0] && minutel == myArray[1] && secondl == myArray[2]){
                             var reveilT=true;
-                            var myAudio = document.getElementById("reveil");
                             myAudio.loop = true;
                             myAudio.play();
                         }
@@ -522,8 +523,6 @@ element.remove();
         }
         var reveil = document.querySelector('#reveilBtn');
         reveil.onclick = function(){
-
-            var myAudio = document.querySelector('#reveil');
                 myAudio.loop = false;
                 myAudio.pause();
 
