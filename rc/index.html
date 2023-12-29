@@ -84,6 +84,15 @@
         <!-- Agenda rows will be inserted here dynamically -->
     </tbody>
 </table>
+<form id="addAgendaForm" style="text-align:center">
+    <label for="datetimeAgenda">DateTime :</label>
+    <input type="datetime-local" id="datetimeAgenda" name="datetimeAgenda" required>
+
+    <label for="descriptionAgenda">Description :</label>
+    <input type="text" id="descriptionAgenda" name="descriptionAgenda" placeholder="Enter description ...">
+    <button type="button" onclick="addAgendaEvent()">Add</button>
+
+</form>
         </section>
 
         <!--==================== MAIN JS ====================-->
