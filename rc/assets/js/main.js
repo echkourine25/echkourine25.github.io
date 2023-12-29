@@ -207,6 +207,7 @@ function addEventToAgenda(dateTime, event) {
         }
     }
 function addAgendaEvent(){
+      console.log("addAgendaEvent called");
       datetimeAgenda = document.getElementById("datetimeAgenda").value;
       descriptionAgenda = document.getElementById("descriptionAgenda").value;
       addEventToAgenda(datetimeAgenda, descriptionAgenda);
