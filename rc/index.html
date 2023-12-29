@@ -66,24 +66,36 @@
                     </div>
                 </div>
             </div>
+            <h2>Agenda</h2>
             <table id="agendaTable">
     <thead>
         <tr>
-            <th>Heure</th>
-            <th>Lundi</th>
-            <th>Mardi</th>
-            <th>Mercredi</th>
-            <th>Jeudi</th>
-            <th>Vendredi</th>
-            <th>Samedi</th>
-            <th>Dimanche</th>
+            <th>Local-Time</th>
+            <th>Monday</th>
+            <th>Tuesday</th>
+            <th>Wednesday</th>
+            <th>Thursday</th>
+            <th>Friday</th>
+            <th>Saturday</th>
+            <th>Sunday</th>
             <!-- Ajoutez d'autres jours au besoin -->
         </tr>
     </thead>
     <tbody id="agendaBody">
         <!-- Agenda rows will be inserted here dynamically -->
     </tbody>
-</table>
+</table><form id="eventForm">
+    <label for="eventDate">Date:</label>
+    <input type="date" id="eventDate" required>
+
+    <label for="eventTime">Time:</label>
+    <input type="time" id="eventTime" required>
+
+    <label for="eventText">Event:</label>
+    <input type="text" id="eventText" placeholder="Enter event details" required>
+
+    <button type="submit">Add Event</button>
+</form>
         </section>
 
         <!--==================== MAIN JS ====================-->
