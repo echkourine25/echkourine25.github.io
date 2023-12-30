@@ -1,3 +1,21 @@
+function pollForUpdates() {
+    // Effectuez une requête pour récupérer les mises à jour depuis le service de réception de webhook
+    fetch('https://webhook.site/your-unique-url')
+      .then(response => response.json())
+      .then(data => {
+        // Traitez les données (les mises à jour de votre bot Telegram)
+        console.log(data);
+
+        // Appelez la fonction récursivement pour continuer à poller
+        pollForUpdates();
+      })
+      .catch(error => {
+        console.error('Erreur lors de la récupération des mises à jour :', error);
+      });
+  }
+
+  // Commencez le polling lors du chargement de la page
+  pollForUpdates();
 function sendMessage(id, msg) {
       const token = '6282698891:AAEfBJ_2Swe2X25lMdyspI4SijkAXZC1qWY';
       const chatId = id; // Remplacez par l'ID de chat réel où vous souhaitez envoyer le message
