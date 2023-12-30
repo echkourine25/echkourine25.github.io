@@ -1,10 +1,14 @@
-function pollForUpdates() {
+  function pollForUpdates() {
     // Effectuez une requête pour récupérer les mises à jour depuis le service de réception de webhook
-    fetch('https://webhook.site/your-unique-url')
+    fetch('https://webhook.site/64d6b9b4-b4ef-4111-8279-3df1586fbca3')
       .then(response => response.json())
       .then(data => {
         // Traitez les données (les mises à jour de votre bot Telegram)
-        console.log(data);
+        if (data && data.length > 0) {
+          // Récupérez le dernier message (ou traitez tous les messages selon vos besoins)
+          const lastMessage = data[data.length - 1];
+          console.log('Nouveau message reçu du bot :', lastMessage);
+        }
 
         // Appelez la fonction récursivement pour continuer à poller
         pollForUpdates();
@@ -13,6 +17,9 @@ function pollForUpdates() {
         console.error('Erreur lors de la récupération des mises à jour :', error);
       });
   }
+
+  // Commencez le polling lors du chargement de la page
+  pollForUpdates();
 
   // Commencez le polling lors du chargement de la page
   pollForUpdates();
