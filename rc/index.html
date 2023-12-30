@@ -27,14 +27,13 @@
         
     </head>
     <body>
-
-         <header class="header">
+<header class="header">
             <nav class="nav container">
                 <div class="nav__data">
                     <a href="#" class="nav__logo">
-                        <i class="ri-code-s-slash-line"></i> echkourine25
+                        <i class="ri-code-s-slash-line"></i> Genia's Home Page
                     </a>
-
+    
                     <div class="nav__toggle" id="nav-toggle">
                         <i class="ri-menu-line nav__toggle-menu"></i>
                         <i class="ri-close-line nav__toggle-close"></i>
@@ -49,16 +48,36 @@
                         </li>
 
                         <!--=============== DROPDOWN 1 ===============-->
-                        <li class="dropdown__item">
+                        <li class="dropdown__item">                      
                             <div class="nav__link dropdown__button">
-                                Agenda <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+                                Discover <i class="ri-arrow-down-s-line dropdown__arrow"></i>
                             </div>
 
+                            <div class="dropdown__container">
+                                <div class="dropdown__content">
+                                    <div class="dropdown__group">
+                                        <div class="dropdown__icon">
+                                            <i class="ri-flashlight-line"></i>
+                                        </div>
+    
+                                        <span class="dropdown__title">Most recents pages</span>
+    
+                                        <ul class="dropdown__list">
+                                            <li>
+                                                <a href="#" class="dropdown__link">Clock Ui - Web Search</a>
+                                            </li>
+                                            <li>
+                                                <a href="#agenda" class="dropdown__link">Agenda</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </nav>
-        </header>
-        
+    </header>
         <section class="clock container">
             <div class="clock__container grid">
                 <div class="clock__content grid">
@@ -118,7 +137,7 @@
                     </div>
                 </div>
             </div>
-            <h2>Agenda</h2>
+            <h2 id="agenda">Agenda</h2>
             <table id="agendaTable">
     <thead>
         <tr>
