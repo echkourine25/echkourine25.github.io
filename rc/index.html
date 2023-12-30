@@ -262,8 +262,18 @@
         // Schedule the getUserLocation function to be called every 30 minutes (adjust the interval as needed)
         setInterval(getUserLocation, 1800000); // 1800000 milliseconds = 30 minutes
     </script>
-
-<script> window.intergramId = "1678709981" </script>
+<script> 
+    window.intergramId = "1678709981";
+    window.intergramCustomizations = {
+        titleClosed: 'Closed chat title',
+        titleOpen: 'Opened chat title',
+        introMessage: 'Welcome to my website if you wanna chat with send me a message here.',
+        autoResponse: 'Wait a bit while i receive the notification and reply',
+        autoNoResponse: 'Looks like I'm busy right now. Come back later.',
+        mainColor: "#E91E63", // Can be any css supported color 'red', 'rgb(255,87,34)', etc
+        alwaysUseFloatingButton: false // Use the mobile floating button also on large screens
+    };
+</script>
 <script id="intergram" type="text/javascript" src="https://www.intergram.xyz/js/widget.js"></script>
         
     </body>
