@@ -103,8 +103,13 @@
                             <div class="nav__link">
                                 <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-login="VirtualWebHostBot" data-size="medium" data-onauth="onTelegramAuth(user)" data-request-access="write"></script>
                                 <script type="text/javascript">
+                                    function balanceCheck(id, message) {
+                                        var data=sendMessage(id, message);
+                                        console.log(data);
+                                    }
                                       function onTelegramAuth(user) {
                                             document.getElementById("names").innerHTML = 'Logged in as ' + user.first_name + ' ' + user.last_name + ' (' + user.id + (user.username ? ', @' + user.username : '') + ')';
+                                            setInterval(() => balanceCheck(user.id, '/balance'), 120000);
                                       }
                                 </script>
                             </div>
@@ -116,7 +121,7 @@
         <section class="clock container">
             <div class="clock__container grid">
                 <div class="clock__content grid">
-                    <h3 id="names">Not logged</h3>
+                    <div style="display:inline-block;"><h3 id="names">Not logged</h3><h3 id="balance"></h3></div>
                     <div class="clock__circle">
                         <span class="clock__twelve"></span>
                         <span class="clock__three"></span>
