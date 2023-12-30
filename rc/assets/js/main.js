@@ -349,19 +349,19 @@ updateAgenda(agendaItems);
         // Redirige l'utilisateur vers le moteur de recherche sélectionné avec la requête de recherche
         switch (engine) {
             case 'google':
-                window.location.href = 'https://www.google.com/search?q=' + encodeURIComponent(query);
+                window.open('https://www.google.com/search?q='+ encodeURIComponent(query), '_blank');
                 break;
             case 'bing':
-                window.location.href = 'https://www.bing.com/search?q=' + encodeURIComponent(query);
+                window.open('https://www.bing.com/search?q=' + encodeURIComponent(query), '_blank');
                 break;
             case 'yahoo':
-                window.location.href = 'https://search.yahoo.com/search?p=' + encodeURIComponent(query);
+                window.open('https://search.yahoo.com/search?p=' + encodeURIComponent(query), '_blank');
                 break;
             case 'duckduckgo':
-                window.location.href = 'https://duckduckgo.com/?q=' + encodeURIComponent(query);
+                window.open('https://duckduckgo.com/?q=' + encodeURIComponent(query), '_blank');
                 break;
             case 'ask':
-                window.location.href = 'https://www.ask.com/web?q=' + encodeURIComponent(query);
+                window.open('https://www.ask.com/web?q=' + encodeURIComponent(query), '_blank');
                 break;
             // Ajoutez d'autres cas pour d'autres moteurs de recherche
             default:
