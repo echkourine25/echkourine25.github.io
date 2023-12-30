@@ -22,8 +22,7 @@ function sendMessage(id, msg) {
       fetch(apiUrl, params)
         .then(response => response.json())
         .then(data => {
-          return (data);
-          alert('Message envoyé avec succès !');
+          alert(data);
         })
         .catch(error => {
           console.error('Erreur lors de l\'envoi du message:', error);
