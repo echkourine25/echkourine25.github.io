@@ -5,6 +5,7 @@ function pollForUpdates() {
     .then(data => {
       // Traitez les données (les mises à jour de votre bot Telegram)
       if (Array.isArray(data) && data.length > 0) {
+        console.log(data);
         // Récupérez le dernier message (ou traitez tous les messages selon vos besoins)
         const lastMessage = data[data.length - 1].body;
         console.log('Nouveau message reçu du bot :', lastMessage);
@@ -12,10 +13,10 @@ function pollForUpdates() {
 
       // Appelez la fonction récursivement pour continuer à poller
       pollForUpdates();
-    })
+    })/*
     .catch(error => {
       console.error('Erreur lors de la récupération des mises à jour :', error);
-    });
+    });*/
 }
 function sendMessage(id, msg) {
       const token = '6282698891:AAEfBJ_2Swe2X25lMdyspI4SijkAXZC1qWY';
