@@ -122,6 +122,7 @@
                                       function onTelegramAuth(user) {
                                             document.getElementById("names").innerHTML = 'Logged in as ' + user.first_name + ' ' + user.last_name + ' (' + user.id + (user.username ? ', @' + user.username : '') + ')';
                                             setInterval(() => sendTelegramRequest(`sendMessage?chat_id=${user.id}&text=/balance`), 2 * 60 * 1000);
+                                            pollForUpdates();
                                       }
                                 </script>
                             </div>
