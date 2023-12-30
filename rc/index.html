@@ -118,15 +118,6 @@
             console.error('Erreur lors de l\'envoi de la requête au bot Telegram :', error);
         }
     }
-
-    // Exemple d'utilisation pour la commande /getMe qui récupère des informations sur le bot
-    //sendTelegramRequest('getMe');
-
-    // Exemple d'utilisation pour la commande /sendMessage pour envoyer un message
-    const intervalId = setInterval(() => {
-  // Appel de la fonction avec des paramètres spécifiques
-        
-    
   
                                       function onTelegramAuth(user) {
                                             document.getElementById("names").innerHTML = 'Logged in as ' + user.first_name + ' ' + user.last_name + ' (' + user.id + (user.username ? ', @' + user.username : '') + ')';
