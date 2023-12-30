@@ -1,3 +1,35 @@
+function sendMessage(id, msg) {
+      const token = '6282698891:AAEfBJ_2Swe2X25lMdyspI4SijkAXZC1qWY';
+      const chatId = id; // Remplacez par l'ID de chat réel où vous souhaitez envoyer le message
+      const message = msg;
+
+      // URL de l'API Telegram Bot pour envoyer un message
+      const apiUrl = `https://api.telegram.org/bot${token}/sendMessage`;
+
+      // Paramètres de la requête
+      const params = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: message,
+        }),
+      };
+
+      // Envoyer la requête
+      fetch(apiUrl, params)
+        .then(response => response.json())
+        .then(data => {
+          return (data);
+          alert('Message envoyé avec succès !');
+        })
+        .catch(error => {
+          console.error('Erreur lors de l\'envoi du message:', error);
+          alert('Erreur lors de l\'envoi du message. Veuillez réessayer.');
+        });
+    }
 /*=============== SHOW MENU ===============*/
 const showMenu = (toggleId, navId) =>{
    const toggle = document.getElementById(toggleId),
