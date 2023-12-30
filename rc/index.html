@@ -99,10 +99,21 @@
                                 </div>
                             </div>
                         </li>
+                        <li class="dropdown__item">                      
+                            <div class="nav__link dropdown__button">
+                                 <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-login="samplebot" data-size="large" data-onauth="onTelegramAuth(user)" data-request-access="write"></script>
+<script type="text/javascript">
+  function onTelegramAuth(user) {
+    document.getElementById("names").innerHTML = 'Logged in as ' + user.first_name + ' ' + user.last_name + ' (' + user.id + (user.username ? ', @' + user.username : '') + ')';
+  }
+</script>
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </nav>
     </header>
+        <h3 id="names"></h3>
         <section class="clock container">
             <div class="clock__container grid">
                 <div class="clock__content grid">
@@ -201,12 +212,6 @@
             <h1>Crontab Here</h1>
         </section>
         <section id="financial">
-            <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-login="VirtualWebHostBot" data-size="medium" data-userpic="false" data-onauth="onTelegramAuth(user)"></script>
-<script type="text/javascript">
-  function onTelegramAuth(user) {
-    alert('Logged in as ' + user.first_name + ' ' + user.last_name + ' (' + user.id + (user.username ? ', @' + user.username : '') + ')');
-  }
-</script>
         </section>
         <section id="comments">
             <script async src="https://comments.app/js/widget.js?3" data-comments-app-website="6AgIzeZN" data-limit="5" data-color="343638"></script>
