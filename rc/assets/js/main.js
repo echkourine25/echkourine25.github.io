@@ -341,7 +341,7 @@ updateAgenda(agendaItems);
     // Update the agenda every minute (adjust the interval as needed)
 //    setInterval(updateAgenda, 60000); // 60000 milliseconds = 1 minute
 
-    function performSearch() {
+function performSearch() {
     // Get the search query and engine from the form
     var searchQuery = document.getElementById('searchQuery').value;
     var searchEngine = document.getElementById('searchEngine').value;
@@ -351,6 +351,9 @@ updateAgenda(agendaItems);
 
     // Open the search URL in a new tab within the native app
     window.open(searchUrl, '_blank');
+
+    // Prevent the default form submission behavior
+    return false;
 }
 
 function getSearchUrl(query, engine) {
