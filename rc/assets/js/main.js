@@ -365,7 +365,7 @@ updateAgenda(agendaItems);
         iframe.src = searchUrl;
         iframe.style.width = '100%';
         iframe.style.height = '100%';
-        iframe.style.position = 'fixed';
+        //iframe.style.position = 'fixed';
         iframe.style.left = '0';
         iframe.style.border = 'none';
 
