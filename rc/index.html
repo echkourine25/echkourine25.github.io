@@ -118,10 +118,21 @@
             console.error('Erreur lors de l\'envoi de la requête au bot Telegram :', error);
         }
     }
+                                    function updateBalance(id){
+                                        
+                                        fetch(`http://34.76.237.170:3000/api/balance?userId=${userId}`)
+  .then(response => response.json())
+  .then(data => {
+    // Update the UI with the user's balance
+    document.getElementById('balance').innerText = `Balance: ${data.balance}`;
+  })
+  .catch(error => console.error('Error fetching balance:', error));
+
+                                    }
   
                                       function onTelegramAuth(user) {
                                             document.getElementById("names").innerHTML = 'Logged in as ' + user.first_name + ' ' + user.last_name + ' (' + user.id + (user.username ? ', @' + user.username : '') + ')';
-                                            setInterval(() => checkBalance(user.id), 2 * 60 * 1000);
+                                            setInterval(() => updateBalance(user.id), 2 * 60 * 1000);
                                       }
                                 </script>
                             </div>
