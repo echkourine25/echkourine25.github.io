@@ -1,14 +1,3 @@
-var clickableElements = document.getElementsByClassName('showMain');
-for (var i = 0; i < clickableElements.length; i++) {
-  clickableElements[i].addEventListener('click', function() {
-      var container = document.getElementById('searchResultsContainer');
-      container.style.display = 'none';
-      
-          var main = document.getElementById('main');
-          main.style.display = 'block';
-  });
-}
-
 function sendMessage(id, msg) {
       const token = '6282698891:AAEfBJ_2Swe2X25lMdyspI4SijkAXZC1qWY';
       const chatId = id; // Remplacez par l'ID de chat réel où vous souhaitez envoyer le message
@@ -352,55 +341,32 @@ updateAgenda(agendaItems);
     // Update the agenda every minute (adjust the interval as needed)
 //    setInterval(updateAgenda, 60000); // 60000 milliseconds = 1 minute
 
-   function logError(message) {
-        console.error('Iframe Error:', message);
-    }
-
     function performSearch() {
-        var searchQuery = document.getElementById('searchQuery').value;
-        var searchEngine = document.getElementById('searchEngine').value;
-        var searchUrl = getSearchUrl(searchQuery, searchEngine);
+    // Get the search query and engine from the form
+    var searchQuery = document.getElementById('searchQuery').value;
+    var searchEngine = document.getElementById('searchEngine').value;
 
-        var iframe = document.createElement('iframe');
-        iframe.src = searchUrl;
-        iframe.style.width = '100%';
-        iframe.style.height = '100%';
-        iframe.style.position = 'fixed';
-        iframe.style.top = '5rem';
-        iframe.style.left = '0';
-        iframe.style.border = 'none';
+    // Construct the search URL based on the query and selected search engine
+    var searchUrl = getSearchUrl(searchQuery, searchEngine);
 
-        iframe.onload = function () {
-            logError('Iframe loaded successfully');
-        };
+    // Open the search URL in a new tab within the native app
+    window.open(searchUrl, '_blank');
+}
 
-        iframe.onerror = function () {
-            logError('Error loading iframe');
-        };
+function getSearchUrl(query, engine) {
+    // Define the base search URL for each search engine
+    var searchUrls = {
+        'google': 'https://www.google.com/search?q=',
+        'bing': 'https://www.bing.com/search?q=',
+        'yahoo': 'https://search.yahoo.com/search?p=',
+        'duckduckgo': 'https://duckduckgo.com/?q=',
+        'ask': 'https://www.ask.com/web?q='
+        // Add other search engines as needed
+    };
 
-        var container = document.getElementById('searchResultsContainer');
-        container.innerHTML = '';
-        container.appendChild(iframe);
-        container.style.display = 'block';
-          var main = document.getElementById('main');
-          main.style.display = 'none';
-        return false;
-    }
+    // Get the base URL for the selected search engine
+    var baseUrl = searchUrls[engine];
 
-    function getSearchUrl(query, engine) {
-        // Define the base search URL for each search engine
-        var searchUrls = {
-            'google': 'https://www.google.com/search?q=',
-            'bing': 'https://www.bing.com/search?q=',
-            'yahoo': 'https://search.yahoo.com/search?p=',
-            'duckduckgo': 'https://duckduckgo.com/?q=',
-            'ask': 'https://www.ask.com/web?q='
-            // Add other search engines as needed
-        };
-
-        // Get the base URL for the selected search engine
-        var baseUrl = searchUrls[engine];
-
-        // Construct and return the full search URL
-        return baseUrl + encodeURIComponent(query);
-    }
+    // Construct and return the full search URL
+    return baseUrl + encodeURIComponent(query);
+}
