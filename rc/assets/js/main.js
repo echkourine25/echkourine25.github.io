@@ -341,27 +341,36 @@ updateAgenda(agendaItems);
     // Update the agenda every minute (adjust the interval as needed)
 //    setInterval(updateAgenda, 60000); // 60000 milliseconds = 1 minute
 
-  function performSearch() {
-        // Get the search query and engine from the form
+   function logError(message) {
+        console.error('Iframe Error:', message);
+    }
+
+    function performSearch() {
         var searchQuery = document.getElementById('searchQuery').value;
         var searchEngine = document.getElementById('searchEngine').value;
-
-        // Construct the search URL based on the query and selected search engine
         var searchUrl = getSearchUrl(searchQuery, searchEngine);
 
-        // Create an iframe and set its src to the search URL
         var iframe = document.createElement('iframe');
         iframe.src = searchUrl;
         iframe.style.width = '100%';
         iframe.style.height = '100%';
+        iframe.style.position = 'fixed';
+        iframe.style.top = '0';
+        iframe.style.left = '0';
         iframe.style.border = 'none';
 
-        // Replace the content of the current container with the iframe
+        iframe.onload = function () {
+            logError('Iframe loaded successfully');
+        };
+
+        iframe.onerror = function () {
+            logError('Error loading iframe');
+        };
+
         var container = document.getElementById('searchResultsContainer');
         container.innerHTML = '';
         container.appendChild(iframe);
 
-        // Prevent the default form submission behavior
         return false;
     }
 
