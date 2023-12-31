@@ -8,11 +8,7 @@ function pollForUpdates() {
     })
     .then(data => {
       // Traitez les données (les mises à jour de votre bot Telegram)
-      if (Array.isArray(data) && data.length > 0) {
-        // Récupérez le dernier message (ou traitez tous les messages selon vos besoins)
-        const lastMessage = data[data.length - 1].body;
-        console.log('Nouveau message reçu du bot :', lastMessage);
-      }
+     console.log(data);
 
       // Appelez la fonction récursivement pour continuer à poller
       pollForUpdates();
