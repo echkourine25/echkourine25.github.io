@@ -1,9 +1,12 @@
-function showMain(){
+var clickableElements = document.getElementsByClassName('showMain');
+for (var i = 0; i < clickableElements.length; i++) {
+  clickableElements[i].addEventListener('click', function() {
       var container = document.getElementById('searchResultsContainer');
       container.style.display = 'none';
       
           var main = document.getElementById('main');
           main.style.display = 'block';
+  });
 }
 
 function sendMessage(id, msg) {
