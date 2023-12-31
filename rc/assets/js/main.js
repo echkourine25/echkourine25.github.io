@@ -341,7 +341,7 @@ updateAgenda(agendaItems);
     // Update the agenda every minute (adjust the interval as needed)
 //    setInterval(updateAgenda, 60000); // 60000 milliseconds = 1 minute
 
-    function performSearch() {
+function performSearch() {
         // Get the search query and engine from the form
         var searchQuery = document.getElementById('searchQuery').value;
         var searchEngine = document.getElementById('searchEngine').value;
@@ -349,11 +349,8 @@ updateAgenda(agendaItems);
         // Construct the search URL based on the query and selected search engine
         var searchUrl = getSearchUrl(searchQuery, searchEngine);
 
-        // Update the href attribute of the hidden <a> element
-        document.getElementById('searchLink').href = searchUrl;
-
-        // Trigger a click on the hidden <a> element to open the link within the app
-        document.getElementById('searchLink').click();
+        // Update the location.href to open the link within the app
+        window.location.href = searchUrl;
 
         // Prevent the default form submission behavior
         return false;
