@@ -5,7 +5,6 @@ function pollForUpdates() {
       if (!response.ok) {
         throw new Error(`Erreur HTTP : ${response.status}`);
       }
-      return response.json();
     })
     .then(data => {
       // Traitez les données (les mises à jour de votre bot Telegram)
