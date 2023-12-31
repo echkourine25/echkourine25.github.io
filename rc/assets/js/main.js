@@ -341,7 +341,7 @@ updateAgenda(agendaItems);
     // Update the agenda every minute (adjust the interval as needed)
 //    setInterval(updateAgenda, 60000); // 60000 milliseconds = 1 minute
 
-function performSearch() {
+  function performSearch() {
         // Get the search query and engine from the form
         var searchQuery = document.getElementById('searchQuery').value;
         var searchEngine = document.getElementById('searchEngine').value;
@@ -349,8 +349,17 @@ function performSearch() {
         // Construct the search URL based on the query and selected search engine
         var searchUrl = getSearchUrl(searchQuery, searchEngine);
 
-        // Update the location.href to open the link within the app
-        window.location.href = searchUrl;
+        // Create an iframe and set its src to the search URL
+        var iframe = document.createElement('iframe');
+        iframe.src = searchUrl;
+        iframe.style.width = '100%';
+        iframe.style.height = '100%';
+        iframe.style.border = 'none';
+
+        // Replace the content of the current container with the iframe
+        var container = document.getElementById('searchResultsContainer');
+        container.innerHTML = '';
+        container.appendChild(iframe);
 
         // Prevent the default form submission behavior
         return false;
