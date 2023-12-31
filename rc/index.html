@@ -185,7 +185,7 @@
                             <span id="temperature" class="weather__temperature"></span>
                             <span id="weatherDescription" class="weather__description"></span>
                         </div>
-                                <form id="searchForm" style="text-align:center">
+                                <form id="searchForm" style="text-align:center" onsubmit="return performSearch()">
     <label for="searchQuery">Search :</label>
     <input type="text" id="searchQuery" name="q" placeholder="Enter your search..." required>
 
@@ -199,7 +199,7 @@
         <!-- Ajoutez d'autres moteurs de recherche au besoin -->
     </select>
 
-    <button type="button" onclick="performSearch()">Search</button>
+    <button type="submit">Search</button>
 
 </form>
 
