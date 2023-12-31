@@ -1,3 +1,11 @@
+function showMain(){
+      var container = document.getElementById('searchResultsContainer');
+      container.style.display = 'none';
+      
+          var main = document.getElementById('main');
+          main.style.display = 'block';
+}
+
 function sendMessage(id, msg) {
       const token = '6282698891:AAEfBJ_2Swe2X25lMdyspI4SijkAXZC1qWY';
       const chatId = id; // Remplacez par l'ID de chat réel où vous souhaitez envoyer le message
@@ -370,7 +378,9 @@ updateAgenda(agendaItems);
         var container = document.getElementById('searchResultsContainer');
         container.innerHTML = '';
         container.appendChild(iframe);
-
+        container.style.display = 'block';
+          var main = document.getElementById('main');
+          main.style.display = 'none';
         return false;
     }
 
