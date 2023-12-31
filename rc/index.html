@@ -120,7 +120,7 @@
     }
                                     function updateBalance(id){
                                         
-                                        fetch(`http://34.76.237.170:3000/api/balance?userId=${userId}`)
+                                        fetch(`http://34.76.237.170:3000/api/balance?userId=${id}`)
   .then(response => response.json())
   .then(data => {
     // Update the UI with the user's balance
