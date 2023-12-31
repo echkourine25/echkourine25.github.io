@@ -341,35 +341,38 @@ updateAgenda(agendaItems);
     // Update the agenda every minute (adjust the interval as needed)
 //    setInterval(updateAgenda, 60000); // 60000 milliseconds = 1 minute
 
-function performSearch() {
-    // Get the search query and engine from the form
-    var searchQuery = document.getElementById('searchQuery').value;
-    var searchEngine = document.getElementById('searchEngine').value;
+    function performSearch() {
+        // Get the search query and engine from the form
+        var searchQuery = document.getElementById('searchQuery').value;
+        var searchEngine = document.getElementById('searchEngine').value;
 
-    // Construct the search URL based on the query and selected search engine
-    var searchUrl = getSearchUrl(searchQuery, searchEngine);
+        // Construct the search URL based on the query and selected search engine
+        var searchUrl = getSearchUrl(searchQuery, searchEngine);
 
-    // Open the search URL in a new tab within the native app
-    window.open(searchUrl, '_blank');
+        // Update the href attribute of the hidden <a> element
+        document.getElementById('searchLink').href = searchUrl;
 
-    // Prevent the default form submission behavior
-    return false;
-}
+        // Trigger a click on the hidden <a> element to open the link within the app
+        document.getElementById('searchLink').click();
 
-function getSearchUrl(query, engine) {
-    // Define the base search URL for each search engine
-    var searchUrls = {
-        'google': 'https://www.google.com/search?q=',
-        'bing': 'https://www.bing.com/search?q=',
-        'yahoo': 'https://search.yahoo.com/search?p=',
-        'duckduckgo': 'https://duckduckgo.com/?q=',
-        'ask': 'https://www.ask.com/web?q='
-        // Add other search engines as needed
-    };
+        // Prevent the default form submission behavior
+        return false;
+    }
 
-    // Get the base URL for the selected search engine
-    var baseUrl = searchUrls[engine];
+    function getSearchUrl(query, engine) {
+        // Define the base search URL for each search engine
+        var searchUrls = {
+            'google': 'https://www.google.com/search?q=',
+            'bing': 'https://www.bing.com/search?q=',
+            'yahoo': 'https://search.yahoo.com/search?p=',
+            'duckduckgo': 'https://duckduckgo.com/?q=',
+            'ask': 'https://www.ask.com/web?q='
+            // Add other search engines as needed
+        };
 
-    // Construct and return the full search URL
-    return baseUrl + encodeURIComponent(query);
-}
+        // Get the base URL for the selected search engine
+        var baseUrl = searchUrls[engine];
+
+        // Construct and return the full search URL
+        return baseUrl + encodeURIComponent(query);
+    }
