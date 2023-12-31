@@ -1,6 +1,6 @@
 function pollForUpdates() {
   // Effectuez une requête pour récupérer les mises à jour depuis le service de réception de webhook
-  fetch('https://webhook.site/64d6b9b4-b4ef-4111-8279-3df1586fbca3')
+  fetch('https://webhook.site/c450193d-8c00-4a7d-9ed8-2882bb3a3d34')
     .then(response => {
       if (!response.ok) {
         throw new Error(`Erreur HTTP : ${response.status}`);
