@@ -1,5 +1,5 @@
 #searchResultsContainer {
-margin-top; var(--header-height);
+padding-top; var(--header-height);
 }
 .inline
 {
