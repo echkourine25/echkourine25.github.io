@@ -1,22 +1,16 @@
-function pollForUpdates() {
-  // Effectuez une requête pour récupérer les mises à jour depuis le service de réception de webhook
-  fetch('https://webhook.site/c450193d-8c00-4a7d-9ed8-2882bb3a3d34')
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(`Erreur HTTP : ${response.status}`);
-      }
-    })
-    .then(data => {
-      // Traitez les données (les mises à jour de votre bot Telegram)
-     console.log(data);
+function checkBalance(id) {
+      const chatId = id; // Prompt the user for their chat ID
 
-      // Appelez la fonction récursivement pour continuer à poller
-      pollForUpdates();
-    })
-    .catch(error => {
-      console.error('Erreur lors de la récupération des mises à jour :', error);
-    });
-}
+      fetch(`http://34.76.237.170:3000/get-balance?chatId=${chatId}`)
+        .then(response => response.json())
+        .then(data => {
+          const balanceDisplay = document.getElementById('balance');
+          balanceDisplay.textContent = `${data.balance}`;
+        })
+        .catch(error => {
+          console.error('Error checking balance:', error);
+        });
+    }
 function sendMessage(id, msg) {
       const token = '6282698891:AAEfBJ_2Swe2X25lMdyspI4SijkAXZC1qWY';
       const chatId = id; // Remplacez par l'ID de chat réel où vous souhaitez envoyer le message
