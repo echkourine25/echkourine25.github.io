@@ -7,30 +7,32 @@
 </head>
 <body>
 <button id="start">Start Listening</button>
+<button id="stop">Stop Listening</button>
 <div id="output"></div>
 
 <script>
-// Vérification de la prise en charge de l'API SpeechRecognition
 if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
   const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
   const output = document.getElementById('output');
 
-  recognition.continuous = true; // Définit si la reconnaissance vocale doit continuer indéfiniment
+  recognition.continuous = true;
 
-  // Événement déclenché lorsqu'un résultat de reconnaissance vocale est disponible
   recognition.onresult = (event) => {
     const transcript = event.results[event.results.length - 1][0].transcript;
     output.textContent += transcript;
   };
 
-  // Événement déclenché lorsqu'il y a une erreur de reconnaissance vocale
   recognition.onerror = (event) => {
     console.error('Speech recognition error:', event.error);
   };
 
   document.getElementById('start').addEventListener('click', () => {
     recognition.start();
-    output.textContent = ''; // Réinitialise le contenu de sortie
+    output.textContent = '';
+  });
+
+  document.getElementById('stop').addEventListener('click', () => {
+    recognition.stop();
   });
 } else {
   alert("Speech recognition not supported in this browser.");
