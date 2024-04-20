@@ -1,42 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Speech to Text</title>
+   <title>Speech to text</title>
 </head>
-<body>
-<button id="start">Start Listening</button>
-<button id="stop">Stop Listening</button>
-<div id="output"></div>
-
-<script>
-if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
-  const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-  const output = document.getElementById('output');
-
-  recognition.continuous = true;
-
-  recognition.onresult = (event) => {
-    const transcript = event.results[event.results.length - 1][0].transcript;
-    output.textContent += transcript;
-  };
-
-  recognition.onerror = (event) => {
-    console.error('Speech recognition error:', event.error);
-  };
-
-  document.getElementById('start').addEventListener('click', () => {
-    recognition.start();
-    output.textContent = '';
-  });
-
-  document.getElementById('stop').addEventListener('click', () => {
-    recognition.stop();
-  });
-} else {
-  alert("Speech recognition not supported in this browser.");
-}
-</script>
-</body>
+   <body>
+      <div class="speaker" style="display: flex;justify-content: space-between;width: 13rem;box-shadow: 0 0 13px #0000003d;border-radius: 5px;">
+         <p id="action" style="color: grey;font-weight: 800; padding: 0; padding-left: 2rem;"></p>
+         <button onclick="runSpeechRecog()" style="border: transparent;padding: 0 0.5rem;">
+            Speech
+         </button>
+      </div>
+      <h3 id="output" class="hide"></h3>
+      <script>
+         runSpeechRecog = () => {
+            document.getElementById("output").innerHTML = "Loading text...";
+            var output = document.getElementById('output');
+            var action = document.getElementById('action');
+            let recognization = new webkitSpeechRecognition();
+            recognization.onstart = () => {
+               action.innerHTML = "Listening...";
+            }
+            recognization.onresult = (e) => {
+               var transcript = e.results[0][0].transcript;
+               output.innerHTML = transcript;
+               output.classList.remove("hide")
+               action.innerHTML = "";
+            }
+            recognization.start();
+         }
+      </script>
+   </body>
 </html>
