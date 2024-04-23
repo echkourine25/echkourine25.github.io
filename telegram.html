@@ -3,9 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chat Bot Example</title>
+<title>Telegram Bot Client</title>
 </head>
 <body>
+<h1>Telegram Bot Client</h1>
 <div id="chat-container">
     <div id="chat-box"></div>
     <input type="text" id="user-input" placeholder="Type your message...">
@@ -13,29 +14,37 @@
 </div>
 
 <script>
+// Replace 'YOUR_BOT_TOKEN' with your actual Telegram Bot token
+const botToken = '6842212245:AAGHmzKqkmuRCRw6-QbCg-BISIoxMQ1oNkY';
+const baseUrl = `https://api.telegram.org/bot${botToken}`;
+
 function sendMessage() {
     var userInput = document.getElementById("user-input").value;
     if (userInput.trim() === "") return;
-    
+
     // Display user message
     displayMessage("You: " + userInput);
-    
-    // Send message to bot
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "6842212245:AAGHmzKqkmuRCRw6-QbCg-BISIoxMQ1oNkY", true);
-    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    xhr.onload = function() {
-        if (xhr.status === 200) {
-            var botResponse = JSON.parse(xhr.responseText);
-            displayMessage("Bot: " + botResponse.message);
+
+    // Send message to Telegram bot
+    var formData = new FormData();
+    formData.append('chat_id', '1678709981'); // Replace 'YOUR_CHAT_ID' with your chat ID
+    formData.append('text', userInput);
+
+    fetch(`${baseUrl}/sendMessage`, {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.ok) {
+            displayMessage("Bot: Message sent successfully.");
         } else {
-            console.error("Request failed. Status:", xhr.status);
+            console.error("Failed to send message:", data.description);
         }
-    };
-    xhr.onerror = function() {
-        console.error("Request failed.");
-    };
-    xhr.send(JSON.stringify({ message: userInput }));
+    })
+    .catch(error => {
+        console.error("Failed to send message:", error);
+    });
 }
 
 function displayMessage(message) {
