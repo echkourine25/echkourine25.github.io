@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Telegram Bot Client</title>
+<title>Telegram Client</title>
 </head>
 <body>
-<h1>Telegram Bot Client</h1>
+<h1>Telegram Client</h1>
 <div id="chat-container">
     <div id="chat-box"></div>
     <input type="text" id="user-input" placeholder="Type your message...">
@@ -14,30 +14,19 @@
 </div>
 
 <script>
-// Replace 'YOUR_BOT_TOKEN' with your actual Telegram Bot token
 const botToken = '6842212245:AAGHmzKqkmuRCRw6-QbCg-BISIoxMQ1oNkY';
-const baseUrl = `https://api.telegram.org/bot${botToken}`;
+const chatId = '1678709981';
 
 function sendMessage() {
     var userInput = document.getElementById("user-input").value;
     if (userInput.trim() === "") return;
 
-    // Display user message
-    displayMessage("You: " + userInput);
-
-    // Send message to Telegram bot
-    var formData = new FormData();
-    formData.append('chat_id', '1678709981'); // Replace 'YOUR_CHAT_ID' with your chat ID
-    formData.append('text', userInput);
-
-    fetch(`${baseUrl}/sendMessage`, {
-        method: 'POST',
-        body: formData
-    })
+    fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(userInput)}`)
     .then(response => response.json())
     .then(data => {
         if (data.ok) {
-            displayMessage("Bot: Message sent successfully.");
+            displayMessage("You: " + userInput);
+            document.getElementById("user-input").value = ""; // Clear input field
         } else {
             console.error("Failed to send message:", data.description);
         }
