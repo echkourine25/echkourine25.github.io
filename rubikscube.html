@@ -81,6 +81,70 @@ function onDocumentMouseMove(event) {
     }
 }
 
+// Function to rotate the face of the Rubik's Cube
+function rotateFace(axis, direction) {
+    const quaternion = new THREE.Quaternion().setFromAxisAngle(axis, direction * Math.PI / 2);
+    scene.traverse(child => {
+        if (child.isMesh) {
+            if (Math.abs(child.position[axis]) === 1) {
+                child.position.applyQuaternion(quaternion);
+                child.rotateOnWorldAxis(axis, direction * Math.PI / 2);
+            }
+        }
+    });
+}
+
+// Function to get rotation axis based on clicked position
+function getRotationAxis(position) {
+    if (Math.abs(position.x) === 1) {
+        return new THREE.Vector3(1, 0, 0);
+    } else if (Math.abs(position.y) === 1) {
+        return new THREE.Vector3(0, 1, 0);
+    } else {
+        return new THREE.Vector3(0, 0, 1);
+    }
+}
+
+// Add click event listener to rotate face
+document.addEventListener('click', onDocumentClick, false);
+
+function onDocumentClick(event) {
+    const mouse = new THREE.Vector2((event.clientX / window.innerWidth) * 2 - 1, -(event.clientY / window.innerHeight) * 2 + 1);
+    const raycaster = new THREE.Raycaster();
+    raycaster.setFromCamera(mouse, camera);
+    const intersects = raycaster.intersectObjects(scene.children);
+
+    if (intersects.length > 0) {
+        const intersection = intersects[0].point;
+        const nearestCubie = findNearestCubie(intersection);
+
+        if (nearestCubie) {
+            const axis = getRotationAxis(nearestCubie.position);
+            let direction = 1;
+            if (nearestCubie.position[axis] < 0) direction = -1;
+            rotateFace(axis, direction);
+        }
+    }
+}
+
+// Find the nearest cubie to the intersection point
+function findNearestCubie(intersection) {
+    let nearestDistance = Infinity;
+    let nearestCubie = null;
+
+    scene.traverse(cube => {
+        if (cube.isMesh) {
+            const distance = cube.position.distanceTo(intersection);
+            if (distance < nearestDistance) {
+                nearestDistance = distance;
+                nearestCubie = cube;
+            }
+        }
+    });
+
+    return nearestCubie;
+}
+
 // Render loop
 function animate() {
     requestAnimationFrame(animate);
