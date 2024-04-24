@@ -626,23 +626,3 @@ a {
     margin-bottom: 3rem;
   }
 }
-.clock__container {
-  height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr auto; /* Adjusted to have two columns */
-  align-items: center; /* Adjusted alignment */
-}
-
-.clock__content {
-  grid-column: 2; /* Positioned in the second column */
-}
-
-.calc__container {
-  grid-column: 1; /* Positioned in the first column */
-}
-
-/* Optional: Adjust the styles for better alignment */
-.calc__container {
-  text-align: left; /* Align the text to the left */
-  padding-left: 1rem; /* Add some padding to the left for spacing */
-}
