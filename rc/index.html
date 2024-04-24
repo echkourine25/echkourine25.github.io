@@ -269,6 +269,7 @@ function getWeatherForecast(city) {
             forecastList.forEach(forecast => {
                 const forecastDate = new Date(forecast.dt * 1000); // Convert timestamp to date
                 const dayOfWeek = forecastDate.toLocaleDateString('en-US', { weekday: 'long' });
+                const time = forecastDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
                 const temperature = Math.round(forecast.main.temp);
                 const weatherDescription = forecast.weather[0].description;
                 const iconCode = forecast.weather[0].icon;
@@ -278,6 +279,7 @@ function getWeatherForecast(city) {
                 const forecastRow = document.createElement('tr');
                 forecastRow.innerHTML = `
                     <td>${dayOfWeek}</td>
+                    <td>${time}</td>
                     <td><img src="${iconUrl}" alt="${weatherDescription}">${weatherDescription}</td>
                     <td>${temperature}°C</td>
                 `;
