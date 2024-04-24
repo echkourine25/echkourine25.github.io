@@ -16,157 +16,159 @@
 </head>
 <body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script>// Set up the scene, camera, and renderer
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(window.innerWidth, window.innerHeight);
-document.body.appendChild(renderer.domElement);
+    <script>
+        // Set up the scene, camera, and renderer
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
 
-// Create a Rubik's Cube
-const cubeSize = 1;
-const gap = 0.1;
-const colors = [0xff0000, 0x00ff00, 0x0000ff, 0xffff00, 0x00ffff, 0xff00ff];
-const cubes = [];
+        // Create a Rubik's Cube
+        const cubeSize = 1;
+        const gap = 0.1;
+        const colors = [0xff0000, 0x00ff00, 0x0000ff, 0xffff00, 0x00ffff, 0xff00ff];
+        const cubes = [];
 
-for (let x = -1; x <= 1; x++) {
-    for (let y = -1; y <= 1; y++) {
-        for (let z = -1; z <= 1; z++) {
-            const cubeGeometry = new THREE.BoxGeometry(cubeSize, cubeSize, cubeSize);
-            const cubeMaterials = colors.map(color => new THREE.MeshBasicMaterial({ color }));
-            const cube = new THREE.Mesh(cubeGeometry, cubeMaterials);
-            cube.position.set(x * (cubeSize + gap), y * (cubeSize + gap), z * (cubeSize + gap));
-            cubes.push(cube);
-            scene.add(cube);
+        for (let x = -1; x <= 1; x++) {
+            for (let y = -1; y <= 1; y++) {
+                for (let z = -1; z <= 1; z++) {
+                    const cubeGeometry = new THREE.BoxGeometry(cubeSize, cubeSize, cubeSize);
+                    const cubeMaterials = colors.map(color => new THREE.MeshBasicMaterial({ color }));
+                    const cube = new THREE.Mesh(cubeGeometry, cubeMaterials);
+                    cube.position.set(x * (cubeSize + gap), y * (cubeSize + gap), z * (cubeSize + gap));
+                    cubes.push(cube);
+                    scene.add(cube);
+                }
+            }
         }
-    }
-}
 
-camera.position.z = 5;
+        camera.position.z = 5;
 
-// Variables for rotation control
-let isDragging = false;
-let previousMousePosition = {
-    x: 0,
-    y: 0
-};
-
-// Mouse event listeners
-document.addEventListener('mousedown', onMouseDown);
-document.addEventListener('mouseup', onMouseUp);
-document.addEventListener('mousemove', onMouseMove);
-
-// Touch event listeners
-document.addEventListener('touchstart', onTouchStart);
-document.addEventListener('touchend', onTouchEnd);
-document.addEventListener('touchmove', onTouchMove);
-
-// Functions for mouse events
-function onMouseDown(event) {
-    isDragging = true;
-    previousMousePosition = {
-        x: event.clientX,
-        y: event.clientY
-    };
-}
-
-function onMouseUp() {
-    isDragging = false;
-}
-
-function onMouseMove(event) {
-    if (!isDragging) return;
-
-    const deltaMove = {
-        x: event.clientX - previousMousePosition.x,
-        y: event.clientY - previousMousePosition.y
-    };
-
-    rotateCube(deltaMove.x, deltaMove.y);
-
-    previousMousePosition = {
-        x: event.clientX,
-        y: event.clientY
-    };
-}
-
-// Functions for touch events
-function onTouchStart(event) {
-    if (event.touches.length === 1) {
-        isDragging = true;
-        previousMousePosition = {
-            x: event.touches[0].clientX,
-            y: event.touches[0].clientY
-        };
-    }
-}
-
-function onTouchEnd() {
-    isDragging = false;
-}
-
-function onTouchMove(event) {
-    if (!isDragging) return;
-
-    if (event.touches.length === 1) {
-        const deltaMove = {
-            x: event.touches[0].clientX - previousMousePosition.x,
-            y: event.touches[0].clientY - previousMousePosition.y
+        // Variables for rotation control
+        let isDragging = false;
+        let previousMousePosition = {
+            x: 0,
+            y: 0
         };
 
-        rotateCube(deltaMove.x, deltaMove.y);
+        // Mouse event listeners
+        document.addEventListener('mousedown', onMouseDown);
+        document.addEventListener('mouseup', onMouseUp);
+        document.addEventListener('mousemove', onMouseMove);
 
-        previousMousePosition = {
-            x: event.touches[0].clientX,
-            y: event.touches[0].clientY
-        };
-    }
-}
+        // Touch event listeners
+        document.addEventListener('touchstart', onTouchStart);
+        document.addEventListener('touchend', onTouchEnd);
+        document.addEventListener('touchmove', onTouchMove);
 
-// Function to rotate the cube's layers
-function rotateCube(deltaX, deltaY) {
-    // Adjust rotation speed
-    const speed = 0.005;
+        // Functions for mouse events
+        function onMouseDown(event) {
+            isDragging = true;
+            previousMousePosition = {
+                x: event.clientX,
+                y: event.clientY
+            };
+        }
 
-    // Rotate around the y-axis for horizontal movement
-    for (let i = 0; i < cubes.length; i++) {
-        cubes[i].rotation.y += deltaX * speed;
-    }
+        function onMouseUp() {
+            isDragging = false;
+        }
 
-    // Rotate around the x-axis for vertical movement
-    for (let i = 0; i < cubes.length; i++) {
-        cubes[i].rotation.x += deltaY * speed;
-    }
-}
+        function onMouseMove(event) {
+            if (!isDragging) return;
 
-// Function to rotate a face of the Rubik's Cube around the middle layer
-function rotateFace(direction) {
-    const middleLayerCubes = cubes.filter(cube => Math.abs(cube.position.x) < 0.5 && Math.abs(cube.position.y) < 0.5 && Math.abs(cube.position.z) < 0.5);
-    const faceCubes = cubes.filter(cube => Math.abs(cube.position.x - direction.x * (cubeSize + gap)) < 0.5 && Math.abs(cube.position.y - direction.y * (cubeSize + gap)) < 0.5 && Math.abs(cube.position.z - direction.z * (cubeSize + gap)) < 0.5);
-    
-    // Rotate face
-    const angle = Math.PI / 2;
-    for (let i = 0; i < faceCubes.length; i++) {
-        const cube = faceCubes[i];
-        const position = cube.position.clone();
+            const deltaMove = {
+                x: event.clientX - previousMousePosition.x,
+                y: event.clientY - previousMousePosition.y
+            };
 
-        cube.position.x = direction.x * position.x - direction.y * position.y;
-        cube.position.y = direction.y * position.x + direction.x * position.y;
-        cube.position.z = position.z;
-        cube.position.multiplyScalar(Math.sign(direction.x + direction.y));
-        cube.position.multiplyScalar(-1);
-        cube.rotation.z += angle;
-    }
-}
+            rotateCube(deltaMove.x, deltaMove.y);
 
-// Render loop
-function animate() {
-    requestAnimationFrame(animate);
-    renderer.render(scene, camera);
-}
+            previousMousePosition = {
+                x: event.clientX,
+                y: event.clientY
+            };
+        }
 
-// Example: Rotate the front face clockwise
-rotateFace(new THREE.Vector3(0, 1, 0));
-animate();
+        // Functions for touch events
+        function onTouchStart(event) {
+            if (event.touches.length === 1) {
+                isDragging = true;
+                previousMousePosition = {
+                    x: event.touches[0].clientX,
+                    y: event.touches[0].clientY
+                };
+            }
+        }
+
+        function onTouchEnd() {
+            isDragging = false;
+        }
+
+        function onTouchMove(event) {
+            if (!isDragging) return;
+
+            if (event.touches.length === 1) {
+                const deltaMove = {
+                    x: event.touches[0].clientX - previousMousePosition.x,
+                    y: event.touches[0].clientY - previousMousePosition.y
+                };
+
+                rotateCube(deltaMove.x, deltaMove.y);
+
+                previousMousePosition = {
+                    x: event.touches[0].clientX,
+                    y: event.touches[0].clientY
+                };
+            }
+        }
+
+        // Function to rotate the cube's layers
+        function rotateCube(deltaX, deltaY) {
+            // Adjust rotation speed
+            const speed = 0.005;
+
+            // Rotate around the y-axis for horizontal movement
+            for (let i = 0; i < cubes.length; i++) {
+                cubes[i].rotation.y += deltaX * speed;
+            }
+
+            // Rotate around the x-axis for vertical movement
+            for (let i = 0; i < cubes.length; i++) {
+                cubes[i].rotation.x += deltaY * speed;
+            }
+        }
+
+        // Function to rotate a face of the Rubik's Cube around the middle layer
+        function rotateFace(direction) {
+            const middleLayerCubes = cubes.filter(cube => Math.abs(cube.position.x) < 0.5 && Math.abs(cube.position.y) < 0.5 && Math.abs(cube.position.z) < 0.5);
+            const faceCubes = cubes.filter(cube => Math.abs(cube.position.x - direction.x * (cubeSize + gap)) < 0.5 && Math.abs(cube.position.y - direction.y * (cubeSize + gap)) < 0.5 && Math.abs(cube.position.z - direction.z * (cubeSize + gap)) < 0.5);
+
+            // Rotate face
+            const angle = Math.PI / 2;
+            for (let i = 0; i < faceCubes.length; i++) {
+                const cube = faceCubes[i];
+                const position = cube.position.clone();
+
+                cube.position.x = direction.x * position.x - direction.y * position.y;
+                cube.position.y = direction.y * position.x + direction.x * position.y;
+                cube.position.z = position.z;
+                cube.position.multiplyScalar(Math.sign(direction.x + direction.y));
+                cube.position.multiplyScalar(-1);
+                cube.rotation.z += angle;
+            }
+        }
+
+        // Render loop
+        function animate() {
+            requestAnimationFrame(animate);
+            renderer.render(scene, camera);
+        }
+
+        // Example: Rotate the front face clockwise
+        rotateFace(new THREE.Vector3(0, 1, 0));
+        animate();
+    </script>
 </body>
 </html>
