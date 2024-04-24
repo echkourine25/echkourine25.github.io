@@ -26,42 +26,67 @@
     .cell:hover {
       background-color: #f0f0f0;
     }
+    input[type="number"] {
+      width: 50px;
+      margin: 10px;
+    }
   </style>
 </head>
 <body>
   <h1>Puissance 5</h1>
+  <label for="width">Width:</label>
+  <input type="number" id="width" value="7">
+  <label for="height">Height:</label>
+  <input type="number" id="height" value="6">
+  <button onclick="startGame()">Start Game</button>
   <div class="board"></div>
   <script>
-    const ROWS = 6;
-    const COLS = 7;
+    let ROWS, COLS;
     let currentPlayer = 1;
     let board = [];
 
     const boardElement = document.querySelector('.board');
+    const widthInput = document.getElementById('width');
+    const heightInput = document.getElementById('height');
 
-    // Initialize the board
-    for (let i = 0; i < ROWS; i++) {
-      board[i] = [];
-      const row = document.createElement('div');
-      row.classList.add('row');
-      for (let j = 0; j < COLS; j++) {
-        board[i][j] = 0;
-        const cell = document.createElement('div');
-        cell.classList.add('cell');
-        cell.dataset.row = i;
-        cell.dataset.col = j;
-        cell.addEventListener('click', handleCellClick);
-        row.appendChild(cell);
+    function startGame() {
+      COLS = parseInt(widthInput.value);
+      ROWS = parseInt(heightInput.value);
+      initBoard();
+      renderBoard();
+    }
+
+    function initBoard() {
+      board = [];
+      for (let i = 0; i < ROWS; i++) {
+        board[i] = new Array(COLS).fill(0);
       }
-      boardElement.appendChild(row);
+    }
+
+    function renderBoard() {
+      boardElement.innerHTML = '';
+      for (let i = 0; i < ROWS; i++) {
+        const row = document.createElement('div');
+        row.classList.add('row');
+        for (let j = 0; j < COLS; j++) {
+          const cell = document.createElement('div');
+          cell.classList.add('cell');
+          cell.dataset.row = i;
+          cell.dataset.col = j;
+          cell.addEventListener('click', handleCellClick);
+          row.appendChild(cell);
+        }
+        boardElement.appendChild(row);
+      }
     }
 
     function handleCellClick(event) {
-      const row = parseInt(event.target.dataset.row);
       const col = parseInt(event.target.dataset.col);
-      if (board[row][col] === 0) {
+      const row = dropToken(col);
+      if (row !== -1) {
         board[row][col] = currentPlayer;
-        event.target.style.backgroundColor = currentPlayer === 1 ? 'red' : 'yellow';
+        const cell = document.querySelector(`.cell[data-row="${row}"][data-col="${col}"]`);
+        cell.style.backgroundColor = currentPlayer === 1 ? 'red' : 'yellow';
         if (checkWin(row, col)) {
           alert(`Player ${currentPlayer} wins!`);
           resetGame();
@@ -72,6 +97,15 @@
           currentPlayer = currentPlayer === 1 ? 2 : 1;
         }
       }
+    }
+
+    function dropToken(col) {
+      for (let i = ROWS - 1; i >= 0; i--) {
+        if (board[i][col] === 0) {
+          return i;
+        }
+      }
+      return -1; // Column is full
     }
 
     function checkWin(row, col) {
@@ -114,24 +148,9 @@
     }
 
     function resetGame() {
-      board = [];
+      initBoard();
+      renderBoard();
       currentPlayer = 1;
-      boardElement.innerHTML = '';
-      for (let i = 0; i < ROWS; i++) {
-        board[i] = [];
-        const row = document.createElement('div');
-        row.classList.add('row');
-        for (let j = 0; j < COLS; j++) {
-          board[i][j] = 0;
-          const cell = document.createElement('div');
-          cell.classList.add('cell');
-          cell.dataset.row = i;
-          cell.dataset.col = j;
-          cell.addEventListener('click', handleCellClick);
-          row.appendChild(cell);
-        }
-        boardElement.appendChild(row);
-      }
     }
   </script>
 </body>
