@@ -208,6 +208,28 @@ function rotateLayerXInverse() {
 function rotateLayerYInverse() {
     const cubesInLayer = cubes.filter(cube => Math.abs(cube.position.y) === 1);
     cubesInLayer.forEach(cube => {
-        cube.position.x = cube</script>
+        cube.position.x = cube.position.x;
+        cube.position.z = cube.position.z;
+    });
+}
+
+// Function to rotate a layer of the Rubik's Cube in the opposite direction around the Z-axis
+function rotateLayerZInverse() {
+    const cubesInLayer = cubes.filter(cube => Math.abs(cube.position.z) === 1);
+    cubesInLayer.forEach(cube => {
+        cube.position.x = cube.position.x;
+        cube.position.y = cube.position.y;
+    });
+}
+
+// Render loop
+function animate() {
+    requestAnimationFrame(animate);
+    renderer.render(scene, camera);
+}
+
+// Start scrambling the Rubik's Cube on load
+scrambleCube();
+animate();</script>
 </body>
 </html>
