@@ -13,6 +13,15 @@
         <title>Clock Ui</title>
 
         <style>
+             .chartContainer {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjust the size of each column */
+            grid-gap: 20px;
+        }
+        .chart {
+            width: 100%;
+            height: 300px; /* Adjust the height of each chart */
+        }
         table {
             border-collapse: collapse;
             width: 100%;
@@ -245,13 +254,15 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <!-- Créer des canvas pour les graphiques -->
-<canvas id="chartSunday" width="400" height="200"></canvas>
-<canvas id="chartMonday" width="400" height="200"></canvas>
-<canvas id="chartTuesday" width="400" height="200"></canvas>
-<canvas id="chartWednesday" width="400" height="200"></canvas>
-<canvas id="chartThursday" width="400" height="200"></canvas>
-<canvas id="chartFriday" width="400" height="200"></canvas>
-<canvas id="chartSaturday" width="400" height="200"></canvas>
+<div class="chartContainer">
+    <canvas id="chartSunday" class="chart"></canvas>
+    <canvas id="chartMonday" class="chart"></canvas>
+    <canvas id="chartTuesday" class="chart"></canvas>
+    <canvas id="chartWednesday" class="chart"></canvas>
+    <canvas id="chartThursday" class="chart"></canvas>
+    <canvas id="chartFriday" class="chart"></canvas>
+    <canvas id="chartSaturday" class="chart"></canvas>
+</div>
 
             <script>// Function to fetch weather forecast for the week
 function getWeatherForecast(city) {
