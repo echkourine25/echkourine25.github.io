@@ -240,6 +240,49 @@
                 </div>
             </div>
         </section>
+        <section id="weather2" class="clock conainer">
+            <h2>Weather Forecast</h2>
+    <div id="weatherForecast"></div>
+            <script>// Function to fetch weather forecast for the week
+function getWeatherForecast(city) {
+    const apiKey = '11c2fa2e41e93d0eeda9fcc1167cf902'; // Replace with your OpenWeatherMap API key
+    const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
+
+    fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+            // Update weather forecast information on the page
+            const forecastList = data.list;
+            const weatherForecastContainer = document.getElementById('weatherForecast');
+            weatherForecastContainer.innerHTML = ''; // Clear previous forecast
+
+            forecastList.forEach(forecast => {
+                const forecastDate = new Date(forecast.dt * 1000); // Convert timestamp to date
+                const dayOfWeek = forecastDate.toLocaleDateString('en-US', { weekday: 'long' });
+                const temperature = Math.round(forecast.main.temp);
+                const weatherDescription = forecast.weather[0].description;
+                const iconCode = forecast.weather[0].icon;
+                const iconUrl = `http://openweathermap.org/img/w/${iconCode}.png`;
+
+                // Create forecast card
+                const forecastCard = document.createElement('div');
+                forecastCard.classList.add('forecast-card');
+                forecastCard.innerHTML = `
+                    <div>${dayOfWeek}</div>
+                    <img src="${iconUrl}" alt="${weatherDescription}">
+                    <div>${temperature}°C</div>
+                    <div>${weatherDescription}</div>
+                `;
+                weatherForecastContainer.appendChild(forecastCard);
+            });
+        })
+        .catch(error => console.error('Error fetching weather forecast:', error));
+}
+
+// Call the getUserLocation function on page load
+getWeatherForecast();
+            </script>
+        </section>
         <section class="clock conainer">
             <h2 id="agenda">Agenda</h2>
             <table id="agendaTable">
