@@ -1,0 +1,85 @@
+
+Sure! Here's the HTML code to go along with the JavaScript:
+
+html
+Copy code
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rubik's Cube in Three.js</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>// Create a scene
+const scene = new THREE.Scene();
+
+// Create a camera
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+camera.position.z = 5;
+
+// Create a renderer
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+
+// Create a cube
+const cubeGeometry = new THREE.BoxGeometry(1, 1, 1);
+const cubeMaterials = [
+    new THREE.MeshBasicMaterial({ color: 0xff0000 }), // Right face
+    new THREE.MeshBasicMaterial({ color: 0x00ff00 }), // Left face
+    new THREE.MeshBasicMaterial({ color: 0x0000ff }), // Top face
+    new THREE.MeshBasicMaterial({ color: 0xffff00 }), // Bottom face
+    new THREE.MeshBasicMaterial({ color: 0x00ffff }), // Front face
+    new THREE.MeshBasicMaterial({ color: 0xff00ff })  // Back face
+];
+const cube = new THREE.Mesh(cubeGeometry, cubeMaterials);
+scene.add(cube);
+
+// Add interactivity
+const raycaster = new THREE.Raycaster();
+const mouse = new THREE.Vector2();
+
+document.addEventListener('mousedown', onDocumentMouseDown, false);
+
+function onDocumentMouseDown(event) {
+    event.preventDefault();
+    
+    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+    mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+    raycaster.setFromCamera(mouse, camera);
+
+    const intersects = raycaster.intersectObject(cube);
+    
+    if (intersects.length > 0) {
+        const normalMatrix = new THREE.Matrix3().getNormalMatrix(intersects[0].object.matrixWorld);
+        const intersectNormal = intersects[0].face.normal.clone().applyMatrix3(normalMatrix).normalize();
+        
+        rotateCubeLayer(intersectNormal);
+    }
+}
+
+// Rotate cube layer
+function rotateCubeLayer(axis) {
+    const quaternion = new THREE.Quaternion().setFromAxisAngle(axis, Math.PI / 2);
+    cube.quaternion.multiplyQuaternions(quaternion, cube.quaternion);
+}
+
+// Render loop
+function animate() {
+    requestAnimationFrame(animate);
+
+    renderer.render(scene, camera);
+}
+
+animate();</script>
+</body>
+</html>
