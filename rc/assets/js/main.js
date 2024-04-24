@@ -1,3 +1,8 @@
+var button = document.getElementById('performSearchButton');
+button.addEventListener('click', () =>{
+        performSearch();
+    })
+
 function sendMessage(id, msg) {
       const token = '6282698891:AAEfBJ_2Swe2X25lMdyspI4SijkAXZC1qWY';
       const chatId = id; // Remplacez par l'ID de chat réel où vous souhaitez envoyer le message
