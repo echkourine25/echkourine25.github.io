@@ -52,9 +52,8 @@
       <button onclick="appendToDisplay('.')">.</button>
       <button onclick="calculate()">=</button>
       <button onclick="appendToDisplay('+')">+</button>
-      <button onclick="trigFunction('sin')">sin</button>
-      <button onclick="trigFunction('cos')">cos</button>
-      <button onclick="trigFunction('tan')">tan</button>
+      <button onclick="calculateSquareRoot()">√</button>
+      <button onclick="calculateParentheses()">()</button>
     </div>
   </div>
 
@@ -76,23 +75,20 @@
       }
     }
 
-    function trigFunction(func) {
+    function calculateSquareRoot() {
       const input = document.getElementById('display').value;
-      let result;
-      switch (func) {
-          case 'sin':
-              result = Math.sin(eval(input));
-              break;
-          case 'cos':
-              result = Math.cos(eval(input));
-              break;
-          case 'tan':
-              result = Math.tan(eval(input));
-              break;
-          default:
-              result = 'Error';
-      }
+      const result = Math.sqrt(eval(input));
       document.getElementById('display').value = result;
+    }
+
+    function calculateParentheses() {
+      const input = document.getElementById('display').value;
+      let countOpen = (input.match(/\(/g) || []).length;
+      let countClose = (input.match(/\)/g) || []).length;
+      let diff = countOpen - countClose;
+      if (diff > 0) {
+        document.getElementById('display').value += ')'.repeat(diff);
+      }
     }
   </script>
 </body>
