@@ -47,8 +47,10 @@
 
         // Variables for rotation control
         let isDragging = false;
-        let previousMousePosition = { x: 0, y: 0 };
-        let clickedCube = null;
+        let previousMousePosition = {
+            x: 0,
+            y: 0
+        };
 
         // Mouse event listeners
         document.addEventListener('mousedown', onMouseDown);
@@ -63,56 +65,62 @@
         // Functions for mouse events
         function onMouseDown(event) {
             isDragging = true;
-            previousMousePosition = { x: event.clientX, y: event.clientY };
-            clickedCube = getCubeFromMouse(event.clientX, event.clientY);
+            previousMousePosition = {
+                x: event.clientX,
+                y: event.clientY
+            };
         }
 
         function onMouseUp() {
             isDragging = false;
-            clickedCube = null;
         }
 
         function onMouseMove(event) {
             if (!isDragging) return;
 
-            const deltaMove = { x: event.clientX - previousMousePosition.x, y: event.clientY - previousMousePosition.y };
+            const deltaMove = {
+                x: event.clientX - previousMousePosition.x,
+                y: event.clientY - previousMousePosition.y
+            };
 
-            if (clickedCube) {
-                rotateFace(clickedCube, deltaMove.x, deltaMove.y);
-            } else {
-                rotateCube(deltaMove.x, deltaMove.y);
-            }
+            rotateCube(deltaMove.x, deltaMove.y);
 
-            previousMousePosition = { x: event.clientX, y: event.clientY };
+            previousMousePosition = {
+                x: event.clientX,
+                y: event.clientY
+            };
         }
 
         // Functions for touch events
         function onTouchStart(event) {
             if (event.touches.length === 1) {
                 isDragging = true;
-                previousMousePosition = { x: event.touches[0].clientX, y: event.touches[0].clientY };
-                clickedCube = getCubeFromMouse(event.touches[0].clientX, event.touches[0].clientY);
+                previousMousePosition = {
+                    x: event.touches[0].clientX,
+                    y: event.touches[0].clientY
+                };
             }
         }
 
         function onTouchEnd() {
             isDragging = false;
-            clickedCube = null;
         }
 
         function onTouchMove(event) {
             if (!isDragging) return;
 
             if (event.touches.length === 1) {
-                const deltaMove = { x: event.touches[0].clientX - previousMousePosition.x, y: event.touches[0].clientY - previousMousePosition.y };
+                const deltaMove = {
+                    x: event.touches[0].clientX - previousMousePosition.x,
+                    y: event.touches[0].clientY - previousMousePosition.y
+                };
 
-                if (clickedCube) {
-                    rotateFace(clickedCube, deltaMove.x, deltaMove.y);
-                } else {
-                    rotateCube(deltaMove.x, deltaMove.y);
-                }
+                rotateCube(deltaMove.x, deltaMove.y);
 
-                previousMousePosition = { x: event.touches[0].clientX, y: event.touches[0].clientY };
+                previousMousePosition = {
+                    x: event.touches[0].clientX,
+                    y: event.touches[0].clientY
+                };
             }
         }
 
@@ -132,48 +140,18 @@
             }
         }
 
-        // Function to rotate the face around the middle cube
-        function rotateFace(clickedCube, deltaX, deltaY) {
-            // Adjust rotation speed
-            const speed = 0.005;
-
-            // Find the center cube of the face
-            const centerIndex = Math.floor(cubes.length / 2);
-            const centerCube = cubes[centerIndex];
-
-            // Determine the axis of rotation based on the clicked face
-            let axis;
-            if (clickedCube.position.x === centerCube.position.x) {
-                axis = 'x';
-            } else if (clickedCube.position.y === centerCube.position.y) {
-                axis = 'y';
-            } else if (clickedCube.position.z === centerCube.position.z) {
-                axis = 'z';
-            }
-
-            // Rotate around the determined axis
-            for (let i = 0; i < cubes.length; i++) {
-                if (axis === 'x') {
-                    cubes[i].rotation.x += deltaY * speed;
-                } else if (axis === 'y') {
-                    cubes[i].rotation.y += deltaX * speed;
-                } else if (axis === 'z') {
-                    cubes[i].rotation.z += Math.sqrt(deltaX * deltaX + deltaY * deltaY) * speed;
-                }
-            }
+        // Function to handle cube click
+        function onCubeClick(cube) {
+            const position = cube.position.clone();
+            alert(`Cube position: x=${position.x}, y=${position.y}, z=${position.z}`);
         }
 
-        // Function to get the cube clicked by mouse
-        function getCubeFromMouse(mouseX, mouseY) {
-            const mouseVector = new THREE.Vector2((mouseX / window.innerWidth) * 2 - 1, -(mouseY / window.innerHeight) * 2 + 1);
-            const raycaster = new THREE.Raycaster();
-            raycaster.setFromCamera(mouseVector, camera);
-            const intersects = raycaster.intersectObjects(cubes);
-            if (intersects.length > 0) {
-                return intersects[0].object;
-            }
-            return null;
-        }
+        // Add click event listeners to cubes
+        cubes.forEach(cube => {
+            cube.addEventListener('click', () => {
+                onCubeClick(cube);
+            });
+        });
 
         // Render loop
         function animate() {
