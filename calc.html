@@ -55,6 +55,7 @@
       <button onclick="trigFunction('sin')">sin</button>
       <button onclick="trigFunction('cos')">cos</button>
       <button onclick="trigFunction('tan')">tan</button>
+      <button onclick="calculateSquareRoot()">√</button>
     </div>
   </div>
 
@@ -92,6 +93,12 @@
           default:
               result = 'Error';
       }
+      document.getElementById('display').value = result;
+    }
+
+    function calculateSquareRoot() {
+      const input = document.getElementById('display').value;
+      const result = Math.sqrt(eval(input));
       document.getElementById('display').value = result;
     }
   </script>
