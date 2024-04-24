@@ -14,6 +14,14 @@
       flex-direction: column;
       align-items: center;
     }
+    .inputs {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .inputs > * {
+      margin-right: 10px;
+    }
     .board {
       border: 2px solid black;
       margin-top: 20px;
@@ -34,24 +42,25 @@
     }
     input[type="number"] {
       width: 50px;
-      margin: 10px;
     }
     button {
-      margin: 10px;
+      margin-left: 10px;
     }
   </style>
 </head>
 <body>
   <h1>Puissance 5</h1>
   <div class="container">
-    <label for="width">Width:</label>
-    <input type="number" id="width" value="7">
-    <label for="height">Height:</label>
-    <input type="number" id="height" value="6">
-    <button onclick="startGame()">Start Game</button>
-    <button onclick="returnAction()">Return</button>
+    <div class="inputs">
+      <label for="width">Width:</label>
+      <input type="number" id="width" value="7">
+      <label for="height">Height:</label>
+      <input type="number" id="height" value="6">
+      <button onclick="startGame()">Start Game</button>
+      <button onclick="returnAction()">Return</button>
+    </div>
+    <div class="board"></div>
   </div>
-  <div class="board"></div>
   <script>
     let ROWS, COLS;
     let currentPlayer = 1;
