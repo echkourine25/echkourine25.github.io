@@ -139,12 +139,34 @@ function rotateCube(deltaX, deltaY) {
     }
 }
 
+// Function to rotate a face of the Rubik's Cube around the middle layer
+function rotateFace(direction) {
+    const middleLayerCubes = cubes.filter(cube => Math.abs(cube.position.x) < 0.5 && Math.abs(cube.position.y) < 0.5 && Math.abs(cube.position.z) < 0.5);
+    const faceCubes = cubes.filter(cube => Math.abs(cube.position.x - direction.x * (cubeSize + gap)) < 0.5 && Math.abs(cube.position.y - direction.y * (cubeSize + gap)) < 0.5 && Math.abs(cube.position.z - direction.z * (cubeSize + gap)) < 0.5);
+    
+    // Rotate face
+    const angle = Math.PI / 2;
+    for (let i = 0; i < faceCubes.length; i++) {
+        const cube = faceCubes[i];
+        const position = cube.position.clone();
+
+        cube.position.x = direction.x * position.x - direction.y * position.y;
+        cube.position.y = direction.y * position.x + direction.x * position.y;
+        cube.position.z = position.z;
+        cube.position.multiplyScalar(Math.sign(direction.x + direction.y));
+        cube.position.multiplyScalar(-1);
+        cube.rotation.z += angle;
+    }
+}
+
 // Render loop
 function animate() {
     requestAnimationFrame(animate);
     renderer.render(scene, camera);
 }
 
-animate();</script>
+// Example: Rotate the front face clockwise
+rotateFace(new THREE.Vector3(0, 1, 0));
+animate();
 </body>
 </html>
