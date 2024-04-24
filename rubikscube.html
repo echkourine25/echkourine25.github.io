@@ -52,65 +52,32 @@ document.addEventListener('mousedown', onDocumentMouseDown, false);
 document.addEventListener('mouseup', onDocumentMouseUp, false);
 
 function onDocumentMouseDown(event) {
-    const mouse = new THREE.Vector2((event.clientX / window.innerWidth) * 2 - 1, -(event.clientY / window.innerHeight) * 2 + 1);
-    const raycaster = new THREE.Raycaster();
-    raycaster.setFromCamera(mouse, camera);
-    const intersects = raycaster.intersectObjects(scene.children);
-
-    if (intersects.length > 0) {
-        const intersection = intersects[0].point;
-        const nearestCubie = findNearestCubie(intersection);
-
-        if (nearestCubie) {
-            rotateLineOfCubies(nearestCubie);
-        }
-    }
+    isMouseDown = true;
+    prevMouseX = event.clientX;
+    prevMouseY = event.clientY;
+    prevCubeX = scene.rotation.y;
+    prevCubeY = scene.rotation.x;
 }
 
 function onDocumentMouseUp(event) {
     isMouseDown = false;
 }
 
-// Find the nearest cubie to the intersection point
-function findNearestCubie(intersection) {
-    let nearestDistance = Infinity;
-    let nearestCubie = null;
+// Add mousemove event listener
+document.addEventListener('mousemove', onDocumentMouseMove, false);
 
-    scene.traverse(cube => {
-        if (cube.isMesh) {
-            const distance = cube.position.distanceTo(intersection);
-            if (distance < nearestDistance) {
-                nearestDistance = distance;
-                nearestCubie = cube;
-            }
+function onDocumentMouseMove(event) {
+    if (isMouseDown) {
+        const deltaX = event.clientX - prevMouseX;
+        const deltaY = event.clientY - prevMouseY;
+
+        if (Math.abs(deltaX) > Math.abs(deltaY)) {
+            scene.rotation.y = prevCubeX + (deltaX * 0.01);
+            scene.rotation.x = prevCubeY;
+        } else {
+            scene.rotation.x = prevCubeY + (deltaY * 0.01);
+            scene.rotation.y = prevCubeX;
         }
-    });
-
-    return nearestCubie;
-}
-
-// Rotate the line of cubies
-function rotateLineOfCubies(cube) {
-    const axis = getRotationAxis(cube.position);
-    const quaternion = new THREE.Quaternion().setFromAxisAngle(axis, Math.PI / 2);
-    scene.traverse(child => {
-        if (child.isMesh) {
-            if (Math.abs(child.position[axis]) === Math.abs(cube.position[axis])) {
-                child.position.applyQuaternion(quaternion);
-                child.rotateOnWorldAxis(axis, Math.PI / 2);
-            }
-        }
-    });
-}
-
-// Determine the rotation axis based on the position of the clicked cubie
-function getRotationAxis(position) {
-    if (Math.abs(position.x) === 1) {
-        return new THREE.Vector3(1, 0, 0);
-    } else if (Math.abs(position.y) === 1) {
-        return new THREE.Vector3(0, 1, 0);
-    } else {
-        return new THREE.Vector3(0, 0, 1);
     }
 }
 
