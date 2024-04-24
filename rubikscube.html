@@ -31,17 +31,21 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
 // Create a cube
-const cubeGeometry = new THREE.BoxGeometry(1, 1, 1);
-const cubeMaterials = [
-    new THREE.MeshBasicMaterial({ color: 0xff0000 }), // Right face
-    new THREE.MeshBasicMaterial({ color: 0x00ff00 }), // Left face
-    new THREE.MeshBasicMaterial({ color: 0x0000ff }), // Top face
-    new THREE.MeshBasicMaterial({ color: 0xffff00 }), // Bottom face
-    new THREE.MeshBasicMaterial({ color: 0x00ffff }), // Front face
-    new THREE.MeshBasicMaterial({ color: 0xff00ff })  // Back face
-];
-const cube = new THREE.Mesh(cubeGeometry, cubeMaterials);
-scene.add(cube);
+const cubeSize = 1;
+const gap = 0.1;
+const colors = [0xff0000, 0x00ff00, 0x0000ff, 0xffff00, 0x00ffff, 0xff00ff];
+
+for (let x = -1; x <= 1; x++) {
+    for (let y = -1; y <= 1; y++) {
+        for (let z = -1; z <= 1; z++) {
+            const cubeGeometry = new THREE.BoxGeometry(cubeSize, cubeSize, cubeSize);
+            const cubeMaterials = colors.map(color => new THREE.MeshBasicMaterial({ color }));
+            const cube = new THREE.Mesh(cubeGeometry, cubeMaterials);
+            cube.position.set(x * (cubeSize + gap), y * (cubeSize + gap), z * (cubeSize + gap));
+            scene.add(cube);
+        }
+    }
+}
 
 // Add interactivity
 const raycaster = new THREE.Raycaster();
@@ -57,7 +61,7 @@ function onDocumentMouseDown(event) {
 
     raycaster.setFromCamera(mouse, camera);
 
-    const intersects = raycaster.intersectObject(cube);
+    const intersects = raycaster.intersectObjects(scene.children);
     
     if (intersects.length > 0) {
         const normalMatrix = new THREE.Matrix3().getNormalMatrix(intersects[0].object.matrixWorld);
@@ -70,7 +74,11 @@ function onDocumentMouseDown(event) {
 // Rotate cube layer
 function rotateCubeLayer(axis) {
     const quaternion = new THREE.Quaternion().setFromAxisAngle(axis, Math.PI / 2);
-    cube.quaternion.multiplyQuaternions(quaternion, cube.quaternion);
+    scene.traverse(cube => {
+        if (cube.isMesh) {
+            cube.quaternion.multiplyQuaternions(quaternion, cube.quaternion);
+        }
+    });
 }
 
 // Render loop
