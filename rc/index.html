@@ -241,13 +241,13 @@
             </div>
         </section>
         <section id="weather2" class="clock conainer">
-            <h2>Weather Forecast</h2>
+             <h2>Weather Forecast</h2>
     <table id="weatherTable">
         <thead>
             <tr>
                 <th>Day</th>
                 <th>Weather</th>
-                <th>Temperature (°C)</th>
+                <th>Average Temperature (°C)</th>
             </tr>
         </thead>
         <tbody id="weatherForecast"></tbody>
@@ -266,27 +266,40 @@ function getWeatherForecast(city) {
             const weatherForecastContainer = document.getElementById('weatherForecast');
             weatherForecastContainer.innerHTML = ''; // Clear previous forecast
 
+            // Create an object to store temperatures for each day
+            const dailyTemperatures = {};
+
             forecastList.forEach(forecast => {
                 const forecastDate = new Date(forecast.dt * 1000); // Convert timestamp to date
-                const dayOfWeek = forecastDate.toLocaleDateString('en-US', { weekday: 'long' });
-                const temperature = Math.round(forecast.main.temp);
-                const weatherDescription = forecast.weather[0].description;
-                const iconCode = forecast.weather[0].icon;
-                const iconUrl = `http://openweathermap.org/img/w/${iconCode}.png`;
+                const dayKey = forecastDate.toISOString().split('T')[0]; // Use date as key
+
+                // If dayKey doesn't exist in dailyTemperatures, create it with an empty array
+                if (!dailyTemperatures[dayKey]) {
+                    dailyTemperatures[dayKey] = [];
+                }
+
+                // Add temperature to the array for this day
+                dailyTemperatures[dayKey].push(forecast.main.temp);
+            });
+
+            // Calculate average temperature for each day and display in table
+            Object.keys(dailyTemperatures).forEach(dayKey => {
+                const temperatures = dailyTemperatures[dayKey];
+                const averageTemperature = temperatures.reduce((acc, curr) => acc + curr, 0) / temperatures.length;
+                const forecastDate = new Date(dayKey);
 
                 // Create table row
                 const forecastRow = document.createElement('tr');
                 forecastRow.innerHTML = `
-                    <td>${dayOfWeek}</td>
-                    <td><img src="${iconUrl}" alt="${weatherDescription}">${weatherDescription}</td>
-                    <td>${temperature}</td>
+                    <td>${forecastDate.toLocaleDateString('en-US', { weekday: 'long' })}</td>
+                    <td>${data.list[0].weather[0].description}</td>
+                    <td>${Math.round(averageTemperature)}</td>
                 `;
                 weatherForecastContainer.appendChild(forecastRow);
             });
         })
         .catch(error => console.error('Error fetching weather forecast:', error));
 }
-
 // Call the getUserLocation function on page load
             </script>
         </section>
