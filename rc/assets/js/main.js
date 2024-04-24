@@ -1,8 +1,3 @@
-var button = document.getElementById('performSearchButton');
-button.addEventListener('click', () =>{
-        performSearch();
-    })
-
 function sendMessage(id, msg) {
       const token = '6282698891:AAEfBJ_2Swe2X25lMdyspI4SijkAXZC1qWY';
       const chatId = id; // Remplacez par l'ID de chat réel où vous souhaitez envoyer le message
@@ -346,7 +341,7 @@ updateAgenda(agendaItems);
     // Update the agenda every minute (adjust the interval as needed)
 //    setInterval(updateAgenda, 60000); // 60000 milliseconds = 1 minute
 
-    function performSearch() {
+/*    function performSearch() {
     // Get the search query and engine from the form
     var searchQuery = document.getElementById('searchQuery').value;
     var searchEngine = document.getElementById('searchEngine').value;
@@ -381,7 +376,7 @@ var data = JSON.stringify({
 
 xhr.send(data);
 }
-
+*/
 function getSearchUrl(query, engine) {
     // Define the base search URL for each search engine
     var searchUrls = {
