@@ -215,7 +215,7 @@
                             <span id="temperature" class="weather__temperature"></span>
                             <span id="weatherDescription" class="weather__description"></span>
                         </div>
-                                <!-- <form id="searchForm" style="text-align:center" onsubmit="return performSearch()"> -->
+                                <form id="searchForm" style="text-align:center" onsubmit="return performSearch()">
     <label for="searchQuery">Search :</label>
     <input type="text" id="searchQuery" name="q" placeholder="Enter your search..." required>
 
@@ -229,46 +229,8 @@
         <!-- Ajoutez d'autres moteurs de recherche au besoin -->
     </select>
 
-    <button id="performSearchButton">Search</button>
-    <script>
-  var button = document.getElementById('performSearchButton');
-  button.addEventListener('click', () => {
-    performSearch();
-  });
-
-  function performSearch() {
-    var searchQuery = document.getElementById('searchQuery').value;
-    var xhr = new XMLHttpRequest();
-    var url = "https://api.openai.com/v1/chat/completions";
-    var apiKey = "sk-proj-gBuqaQGSmv2ws3I5evs5T3BlbkFJM1GgYqKrA36zgNSolPgK";
-
-    xhr.open("POST", url, true);
-    xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.setRequestHeader("Authorization", "Bearer " + apiKey);
-
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState === 4 && xhr.status === 200) {
-        var response = JSON.parse(xhr.responseText);
-        var openaiResponse = document.getElementById('openaiResponse');
-        openaiResponse.innerHTML = formatResponse(response);
-      }
-    };
-
-    var data = JSON.stringify({
-      "model": "gpt-3.5-turbo",
-      "messages": [{"role": "user", "content": searchQuery}],
-      "temperature": 0.7
-    });
-
-    xhr.send(data);
-  }
-
-  function formatResponse(response) {
-    // Extract the relevant information from the response object and format it
-    var completion = response.choices[0].text.trim();
-    return '<p>' + completion + '</p>';
-  }
-</script>                        
+    <button type="submit">Search</button>
+             
 </form>
 
 <div style="text-align:center;">
