@@ -280,7 +280,6 @@ function getWeatherForecast(city) {
 }
 
 // Call the getUserLocation function on page load
-getWeatherForecast();
             </script>
         </section>
         <section class="clock conainer">
@@ -340,6 +339,7 @@ getWeatherForecast();
 
                     // Call the getWeather function with the detected city
                     getWeather(city);
+                    getWeatherForecast(city);
                 })
                 .catch(error => console.error('Error fetching user location:', error));
         }
