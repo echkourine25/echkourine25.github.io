@@ -341,7 +341,7 @@ updateAgenda(agendaItems);
     // Update the agenda every minute (adjust the interval as needed)
 //    setInterval(updateAgenda, 60000); // 60000 milliseconds = 1 minute
 
-/*    function performSearch() {
+    function performSearch() {
     // Get the search query and engine from the form
     var searchQuery = document.getElementById('searchQuery').value;
     var searchEngine = document.getElementById('searchEngine').value;
@@ -350,33 +350,9 @@ updateAgenda(agendaItems);
     var searchUrl = getSearchUrl(searchQuery, searchEngine);
 
     // Open the search URL in a new tab within the native app
-    //window.open(searchUrl, '_blank');
-            var xhr = new XMLHttpRequest();
-var url = "https://api.openai.com/v1/chat/completions";
-var apiKey = "sk-proj-gBuqaQGSmv2ws3I5evs5T3BlbkFJM1GgYqKrA36zgNSolPgK"; // Replace YOUR_OPENAI_API_KEY with your actual OpenAI API key
-
-xhr.open("POST", url, true);
-xhr.setRequestHeader("Content-Type", "application/json");
-xhr.setRequestHeader("Authorization", "Bearer " + apiKey);
-
-xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-        var response = JSON.parse(xhr.responseText);
-        console.log(response);
-          var openaiResponse = document.getElementById('openaiResponse').innerHTML+=response;
-        // Handle response here
-    }
-};
-
-var data = JSON.stringify({
-    "model": "gpt-3.5-turbo",
-    "messages": [{"role": "user", "content": searchQuery}],
-    "temperature": 0.7
-});
-
-xhr.send(data);
+    window.open(searchUrl, '_blank');
 }
-*/
+
 function getSearchUrl(query, engine) {
     // Define the base search URL for each search engine
     var searchUrls = {
