@@ -26,10 +26,9 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
 // Variables to track mouse movement
-let mouseX = 0, mouseY = 0;
-let targetRotationX = 0, targetRotationY = 0;
-const windowHalfX = window.innerWidth / 2;
-const windowHalfY = window.innerHeight / 2;
+let isMouseDown = false;
+let prevMouseX = 0, prevMouseY = 0;
+let prevCubeX = 0, prevCubeY = 0;
 
 // Create a Rubik's Cube
 const cubeSize = 1;
@@ -48,25 +47,43 @@ for (let x = -1; x <= 1; x++) {
     }
 }
 
+// Add mousedown and mouseup event listeners
+document.addEventListener('mousedown', onDocumentMouseDown, false);
+document.addEventListener('mouseup', onDocumentMouseUp, false);
+
+function onDocumentMouseDown(event) {
+    isMouseDown = true;
+    prevMouseX = event.clientX;
+    prevMouseY = event.clientY;
+    prevCubeX = scene.rotation.y;
+    prevCubeY = scene.rotation.x;
+}
+
+function onDocumentMouseUp(event) {
+    isMouseDown = false;
+}
+
 // Add mousemove event listener
 document.addEventListener('mousemove', onDocumentMouseMove, false);
 
 function onDocumentMouseMove(event) {
-    mouseX = (event.clientX - windowHalfX);
-    mouseY = (event.clientY - windowHalfY);
+    if (isMouseDown) {
+        const deltaX = event.clientX - prevMouseX;
+        const deltaY = event.clientY - prevMouseY;
+
+        if (Math.abs(deltaX) > Math.abs(deltaY)) {
+            scene.rotation.y = prevCubeX - (deltaX * 0.01);
+            scene.rotation.x = prevCubeY;
+        } else {
+            scene.rotation.x = prevCubeY + (deltaY * 0.01);
+            scene.rotation.y = prevCubeX;
+        }
+    }
 }
 
 // Render loop
 function animate() {
     requestAnimationFrame(animate);
-
-    // Rotate the cube based on mouse movement
-    targetRotationX = mouseX * 0.01;
-    targetRotationY = mouseY * 0.01;
-
-    // Apply rotation to the Rubik's Cube
-    scene.rotation.x += (targetRotationY - scene.rotation.x) * 0.05;
-    scene.rotation.y += (targetRotationX - scene.rotation.y) * 0.05;
 
     renderer.render(scene, camera);
 }
