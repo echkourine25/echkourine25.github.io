@@ -27,6 +27,7 @@ document.body.appendChild(renderer.domElement);
 const cubeSize = 1;
 const gap = 0.1;
 const colors = [0xff0000, 0x00ff00, 0x0000ff, 0xffff00, 0x00ffff, 0xff00ff];
+const cubes = [];
 
 for (let x = -1; x <= 1; x++) {
     for (let y = -1; y <= 1; y++) {
@@ -35,6 +36,7 @@ for (let x = -1; x <= 1; x++) {
             const cubeMaterials = colors.map(color => new THREE.MeshBasicMaterial({ color }));
             const cube = new THREE.Mesh(cubeGeometry, cubeMaterials);
             cube.position.set(x * (cubeSize + gap), y * (cubeSize + gap), z * (cubeSize + gap));
+            cubes.push(cube);
             scene.add(cube);
         }
     }
@@ -42,12 +44,170 @@ for (let x = -1; x <= 1; x++) {
 
 camera.position.z = 5;
 
-// Render loop
-function animate() {
-    requestAnimationFrame(animate);
-    renderer.render(scene, camera);
+// Variables for rotation control
+let isDragging = false;
+let previousMousePosition = {
+    x: 0,
+    y: 0
+};
+
+// Mouse event listeners
+document.addEventListener('mousedown', onMouseDown);
+document.addEventListener('mouseup', onMouseUp);
+document.addEventListener('mousemove', onMouseMove);
+
+// Touch event listeners
+document.addEventListener('touchstart', onTouchStart);
+document.addEventListener('touchend', onTouchEnd);
+document.addEventListener('touchmove', onTouchMove);
+
+// Functions for mouse events
+function onMouseDown(event) {
+    isDragging = true;
+    previousMousePosition = {
+        x: event.clientX,
+        y: event.clientY
+    };
 }
 
-animate();</script>
+function onMouseUp() {
+    isDragging = false;
+}
+
+function onMouseMove(event) {
+    if (!isDragging) return;
+
+    const deltaMove = {
+        x: event.clientX - previousMousePosition.x,
+        y: event.clientY - previousMousePosition.y
+    };
+
+    rotateCube(deltaMove.x, deltaMove.y);
+
+    previousMousePosition = {
+        x: event.clientX,
+        y: event.clientY
+    };
+}
+
+// Functions for touch events
+function onTouchStart(event) {
+    if (event.touches.length === 1) {
+        isDragging = true;
+        previousMousePosition = {
+            x: event.touches[0].clientX,
+            y: event.touches[0].clientY
+        };
+    }
+}
+
+function onTouchEnd() {
+    isDragging = false;
+}
+
+function onTouchMove(event) {
+    if (!isDragging) return;
+
+    if (event.touches.length === 1) {
+        const deltaMove = {
+            x: event.touches[0].clientX - previousMousePosition.x,
+            y: event.touches[0].clientY - previousMousePosition.y
+        };
+
+        rotateCube(deltaMove.x, deltaMove.y);
+
+        previousMousePosition = {
+            x: event.touches[0].clientX,
+            y: event.touches[0].clientY
+        };
+    }
+}
+
+// Function to rotate the cube's layers
+function rotateCube(deltaX, deltaY) {
+    // Adjust rotation speed
+    const speed = 0.005;
+
+    // Rotate around the y-axis for horizontal movement
+    for (let i = 0; i < cubes.length; i++) {
+        cubes[i].rotation.y += deltaX * speed;
+    }
+
+    // Rotate around the x-axis for vertical movement
+    for (let i = 0; i < cubes.length; i++) {
+        cubes[i].rotation.x += deltaY * speed;
+    }
+}
+
+// Function to scramble the Rubik's Cube
+function scrambleCube() {
+    // List of possible moves
+    const moves = [
+        rotateLayerX, rotateLayerXInverse,
+        rotateLayerY, rotateLayerYInverse,
+        rotateLayerZ, rotateLayerZInverse
+    ];
+
+    // Number of random moves to perform
+    const numMoves = 20;
+
+    for (let i = 0; i < numMoves; i++) {
+        // Randomly select a move
+        const randomMove = moves[Math.floor(Math.random() * moves.length)];
+
+        // Perform the move
+        randomMove();
+    }
+}
+
+// Function to solve the Rubik's Cube
+function solveCube() {
+    // Reset the cube to its initial state
+    cubes.forEach(cube => {
+        cube.rotation.set(0, 0, 0);
+    });
+}
+
+// Function to rotate a layer of the Rubik's Cube around the X-axis
+function rotateLayerX() {
+    const cubesInLayer = cubes.filter(cube => Math.abs(cube.position.x) === 1);
+    cubesInLayer.forEach(cube => {
+        cube.position.y = cube.position.y;
+        cube.position.z = cube.position.z;
+    });
+}
+
+// Function to rotate a layer of the Rubik's Cube around the Y-axis
+function rotateLayerY() {
+    const cubesInLayer = cubes.filter(cube => Math.abs(cube.position.y) === 1);
+    cubesInLayer.forEach(cube => {
+        cube.position.x = cube.position.x;
+        cube.position.z = cube.position.z;
+    });
+}
+
+// Function to rotate a layer of the Rubik's Cube around the Z-axis
+function rotateLayerZ() {
+    const cubesInLayer = cubes.filter(cube => Math.abs(cube.position.z) === 1);
+    cubesInLayer.forEach(cube => {
+        cube.position.x = cube.position.x;
+        cube.position.y = cube.position.y;
+    });
+}
+
+// Function to rotate a layer of the Rubik's Cube in the opposite direction around the X-axis
+function rotateLayerXInverse() {
+    const cubesInLayer = cubes.filter(cube => Math.abs(cube.position.x) === 1);
+    cubesInLayer.forEach(cube => {
+        cube.position.y = cube.position.y;
+        cube.position.z = cube.position.z;
+    });
+}
+
+// Function to rotate a layer of the Rubik's Cube in the opposite direction around the Y-axis
+function rotateLayerYInverse() {
+    const cubesInLayer = cubes.filter(cube => Math.abs(cube.position.y) === 1);
+    cubesInLayer.forEach(cube => {
+        cube.position.x = cube</script>
 </body>
 </html>
