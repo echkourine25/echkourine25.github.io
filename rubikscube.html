@@ -139,97 +139,12 @@ function rotateCube(deltaX, deltaY) {
     }
 }
 
-// Function to scramble the Rubik's Cube
-function scrambleCube() {
-    // List of possible moves
-    const moves = [
-        rotateLayerX, rotateLayerXInverse,
-        rotateLayerY, rotateLayerYInverse,
-        rotateLayerZ, rotateLayerZInverse
-    ];
-
-    // Number of random moves to perform
-    const numMoves = 20;
-
-    for (let i = 0; i < numMoves; i++) {
-        // Randomly select a move
-        const randomMove = moves[Math.floor(Math.random() * moves.length)];
-
-        // Perform the move
-        randomMove();
-    }
-}
-
-// Function to solve the Rubik's Cube
-function solveCube() {
-    // Reset the cube to its initial state
-    cubes.forEach(cube => {
-        cube.rotation.set(0, 0, 0);
-    });
-}
-
-// Function to rotate a layer of the Rubik's Cube around the X-axis
-function rotateLayerX() {
-    const cubesInLayer = cubes.filter(cube => Math.abs(cube.position.x) === 1);
-    cubesInLayer.forEach(cube => {
-        cube.position.y = cube.position.y;
-        cube.position.z = cube.position.z;
-    });
-}
-
-// Function to rotate a layer of the Rubik's Cube around the Y-axis
-function rotateLayerY() {
-    const cubesInLayer = cubes.filter(cube => Math.abs(cube.position.y) === 1);
-    cubesInLayer.forEach(cube => {
-        cube.position.x = cube.position.x;
-        cube.position.z = cube.position.z;
-    });
-}
-
-// Function to rotate a layer of the Rubik's Cube around the Z-axis
-function rotateLayerZ() {
-    const cubesInLayer = cubes.filter(cube => Math.abs(cube.position.z) === 1);
-    cubesInLayer.forEach(cube => {
-        cube.position.x = cube.position.x;
-        cube.position.y = cube.position.y;
-    });
-}
-
-// Function to rotate a layer of the Rubik's Cube in the opposite direction around the X-axis
-function rotateLayerXInverse() {
-    const cubesInLayer = cubes.filter(cube => Math.abs(cube.position.x) === 1);
-    cubesInLayer.forEach(cube => {
-        cube.position.y = cube.position.y;
-        cube.position.z = cube.position.z;
-    });
-}
-
-// Function to rotate a layer of the Rubik's Cube in the opposite direction around the Y-axis
-function rotateLayerYInverse() {
-    const cubesInLayer = cubes.filter(cube => Math.abs(cube.position.y) === 1);
-    cubesInLayer.forEach(cube => {
-        cube.position.x = cube.position.x;
-        cube.position.z = cube.position.z;
-    });
-}
-
-// Function to rotate a layer of the Rubik's Cube in the opposite direction around the Z-axis
-function rotateLayerZInverse() {
-    const cubesInLayer = cubes.filter(cube => Math.abs(cube.position.z) === 1);
-    cubesInLayer.forEach(cube => {
-        cube.position.x = cube.position.x;
-        cube.position.y = cube.position.y;
-    });
-}
-
 // Render loop
 function animate() {
     requestAnimationFrame(animate);
     renderer.render(scene, camera);
 }
 
-// Start scrambling the Rubik's Cube on load
-scrambleCube();
 animate();</script>
 </body>
 </html>
