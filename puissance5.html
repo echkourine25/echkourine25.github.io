@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Puissance 5</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    .board {
+      display: inline-block;
+      border: 2px solid black;
+    }
+    .row {
+      display: flex;
+    }
+    .cell {
+      width: 40px;
+      height: 40px;
+      border: 1px solid black;
+      box-sizing: border-box;
+      cursor: pointer;
+    }
+    .cell:hover {
+      background-color: #f0f0f0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Puissance 5</h1>
+  <div class="board"></div>
+  <script>
+    const ROWS = 6;
+    const COLS = 7;
+    let currentPlayer = 1;
+    let board = [];
+
+    const boardElement = document.querySelector('.board');
+
+    // Initialize the board
+    for (let i = 0; i < ROWS; i++) {
+      board[i] = [];
+      const row = document.createElement('div');
+      row.classList.add('row');
+      for (let j = 0; j < COLS; j++) {
+        board[i][j] = 0;
+        const cell = document.createElement('div');
+        cell.classList.add('cell');
+        cell.dataset.row = i;
+        cell.dataset.col = j;
+        cell.addEventListener('click', handleCellClick);
+        row.appendChild(cell);
+      }
+      boardElement.appendChild(row);
+    }
+
+    function handleCellClick(event) {
+      const row = parseInt(event.target.dataset.row);
+      const col = parseInt(event.target.dataset.col);
+      if (board[row][col] === 0) {
+        board[row][col] = currentPlayer;
+        event.target.style.backgroundColor = currentPlayer === 1 ? 'red' : 'yellow';
+        if (checkWin(row, col)) {
+          alert(`Player ${currentPlayer} wins!`);
+          resetGame();
+        } else if (checkDraw()) {
+          alert("It's a draw!");
+          resetGame();
+        } else {
+          currentPlayer = currentPlayer === 1 ? 2 : 1;
+        }
+      }
+    }
+
+    function checkWin(row, col) {
+      return (
+        checkDirection(row, col, 0, 1) ||
+        checkDirection(row, col, 1, 0) ||
+        checkDirection(row, col, 1, 1) ||
+        checkDirection(row, col, -1, 1)
+      );
+    }
+
+    function checkDirection(row, col, dirX, dirY) {
+      const player = board[row][col];
+      let count = 1;
+      let r, c;
+
+      // Check in one direction
+      r = row + dirX;
+      c = col + dirY;
+      while (r >= 0 && r < ROWS && c >= 0 && c < COLS && board[r][c] === player) {
+        count++;
+        r += dirX;
+        c += dirY;
+      }
+
+      // Check in the opposite direction
+      r = row - dirX;
+      c = col - dirY;
+      while (r >= 0 && r < ROWS && c >= 0 && c < COLS && board[r][c] === player) {
+        count++;
+        r -= dirX;
+        c -= dirY;
+      }
+
+      return count >= 5;
+    }
+
+    function checkDraw() {
+      return board.every(row => row.every(cell => cell !== 0));
+    }
+
+    function resetGame() {
+      board = [];
+      currentPlayer = 1;
+      boardElement.innerHTML = '';
+      for (let i = 0; i < ROWS; i++) {
+        board[i] = [];
+        const row = document.createElement('div');
+        row.classList.add('row');
+        for (let j = 0; j < COLS; j++) {
+          board[i][j] = 0;
+          const cell = document.createElement('div');
+          cell.classList.add('cell');
+          cell.dataset.row = i;
+          cell.dataset.col = j;
+          cell.addEventListener('click', handleCellClick);
+          row.appendChild(cell);
+        }
+        boardElement.appendChild(row);
+      }
+    }
+  </script>
+</body>
+</html>
