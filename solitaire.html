@@ -25,6 +25,9 @@
             height: 50px;
             border-radius: 50%;
             cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .hole.black {
@@ -41,6 +44,17 @@
 
         .selected {
             outline: 2px solid red;
+        }
+
+        .marble {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: black;
+        }
+
+        .marble.white {
+            background-color: white;
         }
     </style>
 </head>
@@ -62,6 +76,12 @@
                     hole.dataset.row = row + 1;
                     hole.dataset.column = col + 1;
                     hole.addEventListener('click', () => selectHole(hole));
+
+                    // Crée une bille dans chaque trou
+                    const marble = document.createElement('div');
+                    marble.classList.add('marble');
+                    hole.appendChild(marble);
+
                     board.appendChild(hole);
                 }
             }
