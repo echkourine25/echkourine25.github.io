@@ -7,13 +7,11 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            display: block;
+            display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
-        }
-        #container {
-            display: flex;
         }
         #board {
             display: grid;
@@ -66,10 +64,8 @@
         holes with marbles, except one. The goal is to jump over a marble with
         another one to remove it from the board, until only one marble remains.
     </p>
-    <div id="container">
     <div id="board">
         <!-- Ajoutez des trous ici selon la taille du plateau -->
-    </div>
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
