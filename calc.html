@@ -60,20 +60,25 @@
       <button onclick="calculateSquareRoot()">√</button>
     </div>
   </div>
+  <div id="log">
+  </div>
 
   <script>
     function appendToDisplay(value) {
       document.getElementById('display').value += value;
+      document.getElementById('log').value += value;
     }
 
     function clearDisplay() {
       document.getElementById('display').value = '';
+      document.getElementById('log').value += ';\n';
     }
 
     function calculate() {
       try {
         const result = eval(document.getElementById('display').value);
         document.getElementById('display').value = result;
+        document.getElementById('log').value += '=' + result;
       } catch (error) {
         document.getElementById('display').value = 'Error';
       }
@@ -96,12 +101,14 @@
               result = 'Error';
       }
       document.getElementById('display').value = result;
+      ddocument.getElementById('log').value += '=' + result;
     }
 
     function calculateSquareRoot() {
       const input = document.getElementById('display').value;
       const result = Math.sqrt(eval(input));
       document.getElementById('display').value = result;
+      document.getElementById('log').value += 'V_' + result;
     }
   </script>
 </body>
