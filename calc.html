@@ -66,19 +66,19 @@
   <script>
     function appendToDisplay(value) {
       document.getElementById('display').value += value;
-      document.getElementById('log').value += value;
+      document.getElementById('log').innerHTML += value;
     }
 
     function clearDisplay() {
       document.getElementById('display').value = '';
-      document.getElementById('log').value += ';\n';
+      document.getElementById('log').innerHTML += ';\n';
     }
 
     function calculate() {
       try {
         const result = eval(document.getElementById('display').value);
         document.getElementById('display').value = result;
-        document.getElementById('log').value += '=' + result;
+        document.getElementById('log').innerHTML += '=' + result;
       } catch (error) {
         document.getElementById('display').value = 'Error';
       }
@@ -101,14 +101,14 @@
               result = 'Error';
       }
       document.getElementById('display').value = result;
-      ddocument.getElementById('log').value += '=' + result;
+      ddocument.getElementById('log').innerHTML += '=' + result;
     }
 
     function calculateSquareRoot() {
       const input = document.getElementById('display').value;
       const result = Math.sqrt(eval(input));
       document.getElementById('display').value = result;
-      document.getElementById('log').value += 'V_' + result;
+      document.getElementById('log').innerHTML += 'V_' + result;
     }
   </script>
 </body>
