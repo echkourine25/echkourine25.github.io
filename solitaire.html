@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solitaire avec des billes</title>
+    <title>Solitaire</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -59,7 +59,16 @@
     </style>
 </head>
 <body>
-    <div id="board">
+    <h1>Rules</h1>
+    <p>The objective is to remove all the marbles from the board except one, by making valid moves according to the following rules:/p>
+<ul><li>1: Player starts off by removing the centre piece.</li>
+<li>2: Select a piece and jump over the adjacent one into a vacant hole.</li>
+<li>3: Never jump diagonally, always horizontally or vertically.</li>
+<li>4: The ‘jumped over’ piece is removed from the board.</li>
+<li>5: The player repeats this move until there are no more pieces left to jump over.</li>
+<li>6: The game is over when the player cannot jump over any of the other pieces.</li>
+<li>7: The player can only finish a game successfully, by landing in the centre hole with the final move.</li>
+    </ul><div id="board">
         <!-- Ajoutez des trous ici selon la taille du plateau -->
     </div>
 
