@@ -31,6 +31,11 @@
         .hole.selected {
             background-color: red;
         }
+
+        .empty {
+            background-color: transparent;
+            pointer-events: none;
+        }
     </style>
 </head>
 <body>
@@ -55,37 +60,28 @@
                 }
             }
 
+            // Sélectionne ou déplace les billes
             function selectHole(hole) {
-                if (!selectedHole) {
-                    // Sélectionne le trou si aucun n'est sélectionné
+                // Si aucun trou n'est sélectionné, et que le trou cliqué est rempli, alors le sélectionne
+                if (!selectedHole && !hole.classList.contains('empty')) {
                     selectedHole = hole;
                     hole.classList.add('selected');
-                } else if (hole === selectedHole) {
-                    // Désélectionne le trou si le même trou est cliqué deux fois
+                } else if (selectedHole && !hole.classList.contains('empty')) {
+                    // Si un trou est déjà sélectionné et que le trou cliqué est rempli, le désélectionne
                     selectedHole.classList.remove('selected');
                     selectedHole = null;
-                } else {
-                    // Calcule la distance entre les trous
+                } else if (selectedHole) {
+                    // Si un trou est sélectionné et que le trou cliqué est vide, vérifie si le mouvement est valide
                     const distance = Math.abs(parseInt(selectedHole.dataset.row) - parseInt(hole.dataset.row)) +
                                     Math.abs(parseInt(selectedHole.dataset.column) - parseInt(hole.dataset.column));
-
-                    // Vérifie si la distance est de 2
                     if (distance === 2) {
-                        // Trouve le trou entre les deux trous sélectionnés
                         const middleHole = getMiddleHole(selectedHole, hole);
-
-                        if (middleHole && middleHole.classList.contains('hole')) {
-                            // Enlève le cercle du trou intermédiaire
-                            middleHole.classList.remove('hole');
-                            middleHole.classList.remove('selected');
-                            middleHole.classList.add('empty');
-
-                            // Déplace le cercle du trou sélectionné vers le nouveau trou
+                        if (middleHole && middleHole.classList.contains('hole') && !middleHole.classList.contains('empty')) {
+                            // Effectue le saut en déplaçant la bille sautante vers la position vide
                             hole.classList.remove('empty');
+                            middleHole.classList.remove('hole');
+                            middleHole.classList.add('empty');
                             selectedHole.classList.add('empty');
-
-                            // Désélectionne les trous
-                            hole.classList.remove('selected');
                             selectedHole.classList.remove('selected');
                             selectedHole = null;
                         }
@@ -93,6 +89,7 @@
                 }
             }
 
+            // Renvoie le trou entre deux trous donnés
             function getMiddleHole(start, end) {
                 const startRow = parseInt(start.dataset.row);
                 const startCol = parseInt(start.dataset.column);
