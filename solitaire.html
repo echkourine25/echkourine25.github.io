@@ -28,13 +28,17 @@
             cursor: pointer;
         }
 
-        .hole.selected {
-            background-color: red;
-        }
-
-        .empty {
+        .hole.empty {
             background-color: transparent;
             pointer-events: none;
+        }
+
+        .hole.white {
+            background-color: white;
+        }
+
+        .hole.selected {
+            background-color: red;
         }
     </style>
 </head>
@@ -85,6 +89,15 @@
                             selectedHole.classList.remove('selected');
                             selectedHole = null;
                         }
+                    }
+                } else {
+                    // Si aucun trou n'est sélectionné et que le trou cliqué est vide, change son état
+                    if (hole.classList.contains('empty')) {
+                        hole.classList.remove('empty');
+                        hole.classList.add('white');
+                    } else if (hole.classList.contains('white')) {
+                        hole.classList.remove('white');
+                        hole.classList.add('empty');
                     }
                 }
             }
