@@ -52,6 +52,10 @@
         .marble.white {
             background-color: white;
         }
+
+        .selected {
+            outline: none; /* Supprime le contour rouge */
+        }
     </style>
 </head>
 <body>
@@ -83,21 +87,9 @@
 
             // Alterne entre les cercles vides et remplis
             function toggleHole(hole) {
-                const marbles = document.querySelectorAll('.marble');
-                const filledMarbles = document.querySelectorAll('.marble.black, .marble.white');
                 const holeMarble = hole.querySelector('.marble');
-
-                if (filledMarbles.length === marbles.length && holeMarble.classList.contains('black')) {
-                    // Si tous les trous sont remplis et le trou cliqué est rempli de noir, le vide
-                    marbles.forEach(marble => {
-                        marble.classList.remove('black');
-                        marble.classList.remove('white');
-                    });
-                } else {
-                    // Sinon, alterne entre les cercles vides et remplis
-                    holeMarble.classList.toggle('black');
-                    holeMarble.classList.toggle('white');
-                }
+                holeMarble.classList.toggle('black');
+                holeMarble.classList.toggle('white');
             }
         });
     </script>
