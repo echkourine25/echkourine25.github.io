@@ -66,6 +66,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const board = document.getElementById('board');
+            const holes = document.querySelectorAll('.hole');
 
             // Crée les trous sur le plateau
             for (let row = 0; row < 7; row++) {
@@ -85,11 +86,25 @@
                 }
             }
 
+            // Vérifie si tous les trous sont remplis
+            function allHolesFilled() {
+                for (const hole of holes) {
+                    if (hole.querySelector('.marble').classList.contains('empty')) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+
             // Alterne entre les cercles vides et remplis
             function toggleHole(hole) {
                 const holeMarble = hole.querySelector('.marble');
-                holeMarble.classList.toggle('black');
-                holeMarble.classList.toggle('white');
+
+                // Si tous les trous sont remplis, alterne le statut rempli/non rempli
+                if (allHolesFilled()) {
+                    holeMarble.classList.toggle('black');
+                    holeMarble.classList.toggle('white');
+                }
             }
         });
     </script>
