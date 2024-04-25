@@ -88,7 +88,21 @@
 
             // Sélectionne un trou
             function selectHole(hole) {
-                if (!selectedHole) {
+                const marbles = document.querySelectorAll('.marble');
+                const filledMarbles = document.querySelectorAll('.marble.black, .marble.white');
+
+                if (hole.querySelector('.marble').classList.contains('black') || hole.querySelector('.marble').classList.contains('white')) {
+                    if (filledMarbles.length === marbles.length) {
+                        marbles.forEach(marble => {
+                            marble.classList.remove('black');
+                            marble.classList.remove('white');
+                        });
+                    } else {
+                        hole.querySelector('.marble').classList.remove('black');
+                        hole.querySelector('.marble').classList.remove('white');
+                        hole.querySelector('.marble').classList.add(hole.classList.contains('black') ? 'white' : 'black');
+                    }
+                } else if (!selectedHole) {
                     selectedHole = hole;
                     hole.classList.add('selected');
                 } else {
