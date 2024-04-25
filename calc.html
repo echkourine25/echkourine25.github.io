@@ -78,7 +78,7 @@
       try {
         const result = eval(document.getElementById('display').value);
         document.getElementById('display').value = result;
-        document.getElementById('log').innerHTML += '=' + result;
+        document.getElementById('log').innerHTML += '=' + result + ';\n' + result;
       } catch (error) {
         document.getElementById('display').value = 'Error';
       }
@@ -108,7 +108,7 @@
       const input = document.getElementById('display').value;
       const result = Math.sqrt(eval(input));
       document.getElementById('display').value = result;
-      document.getElementById('log').innerHTML += 'V_' + result;
+      document.getElementById('log').innerHTML += 'V^2=' + result + ';\nresult';
     }
   </script>
 </body>
