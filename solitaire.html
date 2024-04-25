@@ -41,6 +41,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const board = document.getElementById('board');
+            let selectedHole = null;
 
             // Crée les trous sur le plateau
             for (let row = 0; row < 7; row++) {
@@ -49,33 +50,48 @@
                     hole.classList.add('hole');
                     hole.dataset.row = row + 1;
                     hole.dataset.column = col + 1;
+                    hole.addEventListener('click', () => selectHole(hole));
                     board.appendChild(hole);
                 }
             }
 
-            const holes = document.querySelectorAll('.hole');
-            let selectedHole = null;
+            function selectHole(hole) {
+                if (!selectedHole) {
+                    // Sélectionne le trou si aucun n'est sélectionné
+                    selectedHole = hole;
+                    hole.classList.add('selected');
+                } else if (hole === selectedHole) {
+                    // Désélectionne le trou si le même trou est cliqué deux fois
+                    selectedHole.classList.remove('selected');
+                    selectedHole = null;
+                } else {
+                    // Calcule la distance entre les trous
+                    const distance = Math.abs(parseInt(selectedHole.dataset.row) - parseInt(hole.dataset.row)) +
+                                    Math.abs(parseInt(selectedHole.dataset.column) - parseInt(hole.dataset.column));
 
-            holes.forEach(hole => {
-                hole.addEventListener('click', function () {
-                    if (!selectedHole) {
-                        selectedHole = hole;
-                        hole.classList.add('selected');
-                    } else {
-                        const distance = Math.abs(selectedHole.dataset.row - hole.dataset.row) +
-                                         Math.abs(selectedHole.dataset.column - hole.dataset.column);
-                        if (distance === 2) {
-                            const middleHole = getMiddleHole(selectedHole, hole);
-                            if (middleHole && middleHole.classList.contains('hole') && !middleHole.classList.contains('selected')) {
-                                selectedHole.classList.remove('selected');
-                                middleHole.classList.remove('selected');
-                                hole.classList.remove('selected');
-                                selectedHole = null;
-                            }
+                    // Vérifie si la distance est de 2
+                    if (distance === 2) {
+                        // Trouve le trou entre les deux trous sélectionnés
+                        const middleHole = getMiddleHole(selectedHole, hole);
+
+                        if (middleHole && middleHole.classList.contains('hole')) {
+                            // Enlève le cercle du trou intermédiaire
+                            middleHole.classList.remove('hole');
+                            middleHole.classList.remove('selected');
+                            middleHole.classList.add('empty');
+
+                            // Déplace le cercle du trou sélectionné vers le nouveau trou
+                            hole.classList.remove('empty');
+                            selectedHole.classList.add('empty');
+
+                            // Désélectionne les trous
+                            hole.classList.remove('selected');
+                            selectedHole.classList.remove('selected');
+                            selectedHole = null;
                         }
                     }
-                });
-            });
+                }
+            }
 
             function getMiddleHole(start, end) {
                 const startRow = parseInt(start.dataset.row);
