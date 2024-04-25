@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solitaire avec des billes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #board {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            grid-template-rows: repeat(3, 100px);
+            gap: 10px;
+        }
+
+        .hole {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: black;
+            cursor: pointer;
+        }
+
+        .hole.selected {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="board">
+        <div class="hole" id="hole-1-1" data-row="1" data-column="1"></div>
+        <div class="hole" id="hole-1-2" data-row="1" data-column="2"></div>
+        <div class="hole" id="hole-1-3" data-row="1" data-column="3"></div>
+        <div class="hole" id="hole-2-1" data-row="2" data-column="1"></div>
+        <div class="hole" id="hole-2-2" data-row="2" data-column="2"></div>
+        <div class="hole" id="hole-2-3" data-row="2" data-column="3"></div>
+        <div class="hole" id="hole-3-1" data-row="3" data-column="1"></div>
+        <div class="hole" id="hole-3-2" data-row="3" data-column="2"></div>
+        <div class="hole" id="hole-3-3" data-row="3" data-column="3"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const holes = document.querySelectorAll('.hole');
+
+            let selectedHole = null;
+
+            holes.forEach(hole => {
+                hole.addEventListener('click', function () {
+                    if (!selectedHole) {
+                        selectedHole = hole;
+                        hole.classList.add('selected');
+                    } else {
+                        const distance = Math.abs(selectedHole.dataset.row - hole.dataset.row) +
+                                         Math.abs(selectedHole.dataset.column - hole.dataset.column);
+                        if (distance === 2) {
+                            const middleHole = getMiddleHole(selectedHole, hole);
+                            if (middleHole && middleHole.classList.contains('hole') && !middleHole.classList.contains('selected')) {
+                                selectedHole.classList.remove('selected');
+                                middleHole.classList.remove('selected');
+                                hole.classList.remove('selected');
+                                selectedHole = null;
+                            }
+                        }
+                    }
+                });
+            });
+
+            function getMiddleHole(start, end) {
+                const startRow = parseInt(start.dataset.row);
+                const startCol = parseInt(start.dataset.column);
+                const endRow = parseInt(end.dataset.row);
+                const endCol = parseInt(end.dataset.column);
+
+                const middleRow = (startRow + endRow) / 2;
+                const middleCol = (startCol + endCol) / 2;
+
+                return document.querySelector(`#hole-${middleRow}-${middleCol}`);
+            }
+        });
+    </script>
+</body>
+</html>
