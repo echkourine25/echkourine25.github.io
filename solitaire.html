@@ -7,12 +7,13 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            display: flex;
+            display: block;
             justify-content: center;
             align-items: center;
             height: 100vh;
         }
-
+        #container {
+            display: flex;
         #board {
             display: grid;
             grid-template-columns: repeat(7, 50px);
@@ -59,10 +60,16 @@
     </style>
 </head>
 <body>
+    <h1>Rules of Solitaire Game</h1>
+    <p>The Solitaire is a board game where you have to fill all the
+        holes with marbles, except one. The goal is to jump over a marble with
+        another one to remove it from the board, until only one marble remains.
+    </p>
+    <div id="container">
     <div id="board">
         <!-- Ajoutez des trous ici selon la taille du plateau -->
     </div>
-
+    </div>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const board = document.getElementById('board');
