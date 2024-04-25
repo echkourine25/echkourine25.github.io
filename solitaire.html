@@ -3,18 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solitaire avec des billes</title>
+    <title>Solitaire</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             display: flex;
-            flex-direction: column;
+            justify-content: center;
             align-items: center;
             height: 100vh;
-        }
-
-        #rules {
-            margin-bottom: 20px;
         }
 
         #board {
@@ -63,15 +59,6 @@
     </style>
 </head>
 <body>
-    <div id="rules">
-        <h2>Rules of the Game:</h2>
-        <p>
-            The game is played on a board with holes arranged in a pattern. At the beginning, all but one hole are filled with marbles.
-            A move consists of jumping a marble over an adjacent marble, either horizontally or vertically, into a hole two positions
-            away and then removing the jumped marble. The objective is to remove marbles until only one marble is left.
-        </p>
-    </div>
-
     <div id="board">
         <!-- Ajoutez des trous ici selon la taille du plateau -->
     </div>
@@ -113,18 +100,10 @@
             function toggleHole(hole) {
                 const holeMarble = hole.querySelector('.marble');
 
-                // Si tous les trous sont remplis et le trou est rempli, le vide
-                if (allHolesFilled() && !holeMarble.classList.contains('empty')) {
-                    holeMarble.classList.add('empty');
-                } else {
-                    // Sinon, alterne le statut rempli/non rempli
-                    if (holeMarble.classList.contains('black')) {
-                        holeMarble.classList.remove('black');
-                        holeMarble.classList.add('white');
-                    } else if (holeMarble.classList.contains('white')) {
-                        holeMarble.classList.remove('white');
-                        holeMarble.classList.add('black');
-                    }
+                // Si tous les trous sont remplis, alterne le statut rempli/non rempli
+                if (allHolesFilled()) {
+                    holeMarble.classList.toggle('black');
+                    holeMarble.classList.toggle('white');
                 }
             }
         });
