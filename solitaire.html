@@ -118,8 +118,13 @@
                     holeMarble.classList.add('empty');
                 } else {
                     // Sinon, alterne le statut rempli/non rempli
-                    holeMarble.classList.toggle('black');
-                    holeMarble.classList.toggle('white');
+                    if (holeMarble.classList.contains('black')) {
+                        holeMarble.classList.remove('black');
+                        holeMarble.classList.add('white');
+                    } else if (holeMarble.classList.contains('white')) {
+                        holeMarble.classList.remove('white');
+                        holeMarble.classList.add('black');
+                    }
                 }
             }
         });
