@@ -42,10 +42,6 @@
             background-color: transparent;
         }
 
-        .selected {
-            outline: 2px solid red;
-        }
-
         .marble {
             width: 40px;
             height: 40px;
@@ -66,7 +62,6 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const board = document.getElementById('board');
-            let selectedHole = null;
 
             // Crée les trous sur le plateau
             for (let row = 0; row < 7; row++) {
@@ -75,7 +70,7 @@
                     hole.classList.add('hole');
                     hole.dataset.row = row + 1;
                     hole.dataset.column = col + 1;
-                    hole.addEventListener('click', () => selectHole(hole));
+                    hole.addEventListener('click', () => toggleHole(hole));
 
                     // Crée une bille dans chaque trou
                     const marble = document.createElement('div');
@@ -86,62 +81,23 @@
                 }
             }
 
-            // Sélectionne un trou
-            function selectHole(hole) {
+            // Alterne entre les cercles vides et remplis
+            function toggleHole(hole) {
                 const marbles = document.querySelectorAll('.marble');
                 const filledMarbles = document.querySelectorAll('.marble.black, .marble.white');
+                const holeMarble = hole.querySelector('.marble');
 
-                if (hole.querySelector('.marble').classList.contains('black') || hole.querySelector('.marble').classList.contains('white')) {
-                    if (filledMarbles.length === marbles.length) {
-                        marbles.forEach(marble => {
-                            marble.classList.remove('black');
-                            marble.classList.remove('white');
-                        });
-                    } else {
-                        hole.querySelector('.marble').classList.remove('black');
-                        hole.querySelector('.marble').classList.remove('white');
-                        hole.querySelector('.marble').classList.add(hole.classList.contains('black') ? 'white' : 'black');
-                    }
-                } else if (!selectedHole) {
-                    selectedHole = hole;
-                    hole.classList.add('selected');
+                if (filledMarbles.length === marbles.length && holeMarble.classList.contains('black')) {
+                    // Si tous les trous sont remplis et le trou cliqué est rempli de noir, le vide
+                    marbles.forEach(marble => {
+                        marble.classList.remove('black');
+                        marble.classList.remove('white');
+                    });
                 } else {
-                    const distance = Math.abs(parseInt(selectedHole.dataset.row) - parseInt(hole.dataset.row)) +
-                                    Math.abs(parseInt(selectedHole.dataset.column) - parseInt(hole.dataset.column));
-                    if (distance === 2) {
-                        const middleHole = getMiddleHole(selectedHole, hole);
-                        if (middleHole && middleHole.classList.contains('hole') && middleHole.classList.contains('black') &&
-                            hole.classList.contains('empty')) {
-                            middleHole.classList.remove('black');
-                            middleHole.classList.add('empty');
-                            hole.classList.remove('empty');
-                            hole.classList.add('black');
-                            selectedHole.classList.remove('selected');
-                            selectedHole = null;
-                        } else if (middleHole && middleHole.classList.contains('hole') && middleHole.classList.contains('white') &&
-                            hole.classList.contains('empty')) {
-                            middleHole.classList.remove('white');
-                            middleHole.classList.add('empty');
-                            hole.classList.remove('empty');
-                            hole.classList.add('white');
-                            selectedHole.classList.remove('selected');
-                            selectedHole = null;
-                        }
-                    }
+                    // Sinon, alterne entre les cercles vides et remplis
+                    holeMarble.classList.toggle('black');
+                    holeMarble.classList.toggle('white');
                 }
-            }
-
-            // Renvoie le trou entre deux trous donnés
-            function getMiddleHole(start, end) {
-                const startRow = parseInt(start.dataset.row);
-                const startCol = parseInt(start.dataset.column);
-                const endRow = parseInt(end.dataset.row);
-                const endCol = parseInt(end.dataset.column);
-
-                const middleRow = (startRow + endRow) / 2;
-                const middleCol = (startCol + endCol) / 2;
-
-                return document.querySelector(`.hole[data-row='${middleRow}'][data-column='${middleCol}']`);
             }
         });
     </script>
