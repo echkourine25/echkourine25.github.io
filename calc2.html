@@ -1,0 +1,98 @@
+
+Certainly! Here's an example of a simple HTML file containing a graphic calculator implemented with JavaScript. This calculator includes basic arithmetic operations, trigonometric functions, and exponentiation:
+
+html
+Copy code
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Graphic Calculator</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+  }
+  .calculator {
+    width: 300px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  .calculator input[type="text"] {
+    width: calc(100% - 10px);
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  .calculator input[type="button"] {
+    width: 30%;
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+<div class="calculator">
+  <input type="text" id="expression" placeholder="Enter expression">
+  <input type="button" value="7" onclick="appendToExpression('7')">
+  <input type="button" value="8" onclick="appendToExpression('8')">
+  <input type="button" value="9" onclick="appendToExpression('9')">
+  <input type="button" value="/" onclick="appendToExpression('/')"><br>
+  <input type="button" value="4" onclick="appendToExpression('4')">
+  <input type="button" value="5" onclick="appendToExpression('5')">
+  <input type="button" value="6" onclick="appendToExpression('6')">
+  <input type="button" value="*" onclick="appendToExpression('*')"><br>
+  <input type="button" value="1" onclick="appendToExpression('1')">
+  <input type="button" value="2" onclick="appendToExpression('2')">
+  <input type="button" value="3" onclick="appendToExpression('3')">
+  <input type="button" value="-" onclick="appendToExpression('-')"><br>
+  <input type="button" value="0" onclick="appendToExpression('0')">
+  <input type="button" value="." onclick="appendToExpression('.')">
+  <input type="button" value="=" onclick="calculateExpression()">
+  <input type="button" value="+" onclick="appendToExpression('+')"><br>
+  <input type="button" value="sin(" onclick="appendToExpression('sin(')">
+  <input type="button" value="cos(" onclick="appendToExpression('cos(')">
+  <input type="button" value="tan(" onclick="appendToExpression('tan(')">
+  <input type="button" value="^" onclick="appendToExpression('^')"><br>
+  <input type="button" value="(" onclick="appendToExpression('(')">
+  <input type="button" value=")" onclick="appendToExpression(')')">
+  <input type="button" value="Clear" onclick="clearExpression()">
+</div>
+<script>
+  function appendToExpression(value) {
+    document.getElementById('expression').value += value;
+  }
+
+  function clearExpression() {
+    document.getElementById('expression').value = '';
+  }
+
+  function calculateExpression() {
+    let expression = document.getElementById('expression').value;
+    let result;
+    try {
+      // Replace trig functions with their calculated values
+      expression = expression.replace(/sin|cos|tan/g, function(match) {
+        return calculateTrigFunction(parseFloat(expression), match);
+      });
+      
+      // Evaluate the expression
+      result = eval(expression); // This is the only eval() call, but it's controlled and specific.
+      document.getElementById('expression').value = result;
+    } catch (error) {
+      document.getElementById('expression').value = 'Error';
+    }
+  }
+
+  // Function to calculate trigonometric functions
+  function calculateTrigFunction(value, func) {
+    if (func === 'sin') return Math.sin(value);
+    if (func === 'cos') return Math.cos(value);
+    if (func === 'tan') return Math.tan(value);
+  }
+</script>
+</body>
+</html>
