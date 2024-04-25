@@ -24,21 +24,23 @@
             width: 50px;
             height: 50px;
             border-radius: 50%;
-            background-color: black;
             cursor: pointer;
         }
 
-        .hole.empty {
-            background-color: transparent;
-            pointer-events: none;
+        .hole.black {
+            background-color: black;
         }
 
         .hole.white {
             background-color: white;
         }
 
-        .hole.selected {
-            background-color: red;
+        .hole.empty {
+            background-color: transparent;
+        }
+
+        .selected {
+            outline: 2px solid red;
         }
     </style>
 </head>
@@ -64,40 +66,33 @@
                 }
             }
 
-            // Sélectionne ou déplace les billes
+            // Sélectionne un trou
             function selectHole(hole) {
-                // Si aucun trou n'est sélectionné, et que le trou cliqué est rempli, alors le sélectionne
-                if (!selectedHole && !hole.classList.contains('empty')) {
+                if (!selectedHole) {
                     selectedHole = hole;
                     hole.classList.add('selected');
-                } else if (selectedHole && !hole.classList.contains('empty')) {
-                    // Si un trou est déjà sélectionné et que le trou cliqué est rempli, le désélectionne
-                    selectedHole.classList.remove('selected');
-                    selectedHole = null;
-                } else if (selectedHole) {
-                    // Si un trou est sélectionné et que le trou cliqué est vide, vérifie si le mouvement est valide
+                } else {
                     const distance = Math.abs(parseInt(selectedHole.dataset.row) - parseInt(hole.dataset.row)) +
                                     Math.abs(parseInt(selectedHole.dataset.column) - parseInt(hole.dataset.column));
                     if (distance === 2) {
                         const middleHole = getMiddleHole(selectedHole, hole);
-                        if (middleHole && middleHole.classList.contains('hole') && !middleHole.classList.contains('empty')) {
-                            // Effectue le saut en déplaçant la bille sautante vers la position vide
-                            hole.classList.remove('empty');
-                            middleHole.classList.remove('hole');
+                        if (middleHole && middleHole.classList.contains('hole') && middleHole.classList.contains('black') &&
+                            hole.classList.contains('empty')) {
+                            middleHole.classList.remove('black');
                             middleHole.classList.add('empty');
-                            selectedHole.classList.add('empty');
+                            hole.classList.remove('empty');
+                            hole.classList.add('black');
+                            selectedHole.classList.remove('selected');
+                            selectedHole = null;
+                        } else if (middleHole && middleHole.classList.contains('hole') && middleHole.classList.contains('white') &&
+                            hole.classList.contains('empty')) {
+                            middleHole.classList.remove('white');
+                            middleHole.classList.add('empty');
+                            hole.classList.remove('empty');
+                            hole.classList.add('white');
                             selectedHole.classList.remove('selected');
                             selectedHole = null;
                         }
-                    }
-                } else {
-                    // Si aucun trou n'est sélectionné et que le trou cliqué est vide, change son état
-                    if (hole.classList.contains('empty')) {
-                        hole.classList.remove('empty');
-                        hole.classList.add('white');
-                    } else if (hole.classList.contains('white')) {
-                        hole.classList.remove('white');
-                        hole.classList.add('empty');
                     }
                 }
             }
