@@ -127,12 +127,11 @@ if (base16Mode) {
 result = parseInt(result).toString(16).toUpperCase(); // Convert result to base16
 }
 document.getElementById('expression').value = result;
-document.getElementById('log').innerHTML += '=' + result + ';<br/>';
-} else {
-document.getElementById('expression').value = 'Error';
-}
+document.getElementById('log').innerHTML += '=' + result + ';
+<br/>";
 } catch (error) {
 document.getElementById('expression').value = 'Error';
+document.getElementById('log').innerHTML += 'Error; ';
 }
 }
 
