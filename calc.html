@@ -181,6 +181,8 @@ expression = parseInt(expression, 16).toString();
 result = eval(expression); // Use eval() to evaluate the expression
 if (base16Mode) {
 result = parseInt(result).toString(16).toUpperCase(); // Convert result to base16
+  // debug
+  console.log(result);
 }
 document.getElementById('expression').value = result;
 document.getElementById('log').innerHTML += '=' + result + ';<br/>' + result;
