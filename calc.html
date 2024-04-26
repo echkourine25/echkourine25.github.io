@@ -40,6 +40,9 @@
     border: 1px solid #ccc;
     background-color: #fff;
   }
+  .bg-green {
+    background-color: green;
+  }
 </style>
 </head>
 <body>
@@ -47,25 +50,25 @@
   <input type="text" id="expression" placeholder="Enter expression">
   <br>
   <div class="button-row">
-    <input type="button" value="7" onclick="appendToExpression('7')">
-    <input type="button" value="8" onclick="appendToExpression('8')">
-    <input type="button" value="9" onclick="appendToExpression('9')">
+    <input class="bg-green" type="button" value="7" onclick="appendToExpression('7')">
+    <input class="bg-green" type="button" value="8" onclick="appendToExpression('8')">
+    <input class="bg-green" type="button" value="9" onclick="appendToExpression('9')">
     <input type="button" value="/" onclick="appendToExpression('/')">
   </div>
   <div class="button-row">
-    <input type="button" value="4" onclick="appendToExpression('4')">
-    <input type="button" value="5" onclick="appendToExpression('5')">
-    <input type="button" value="6" onclick="appendToExpression('6')">
+    <input class="bg-green" type="button" value="4" onclick="appendToExpression('4')">
+    <input class="bg-green" type="button" value="5" onclick="appendToExpression('5')">
+    <input class="bg-green" type="button" value="6" onclick="appendToExpression('6')">
     <input type="button" value="*" onclick="appendToExpression('*')">
   </div>
   <div class="button-row">
-    <input type="button" value="1" onclick="appendToExpression('1')">
-    <input type="button" value="2" onclick="appendToExpression('2')">
-    <input type="button" value="3" onclick="appendToExpression('3')">
-    <input type="button" value="-" onclick="appendToExpression('-')">
+    <input class="bg-green" type="button" value="1" onclick="appendToExpression('1')">
+    <input class="bg-green" type="button" value="2" onclick="appendToExpression('2')">
+    <input class="bg-green" type="button" value="3" onclick="appendToExpression('3')">
+    <input class="bg-green" type="button" value="-" onclick="appendToExpression('-')">
   </div>
   <div class="button-row">
-    <input type="button" value="0" onclick="appendToExpression('0')">
+    <input class="bg-green" type="button" value="0" onclick="appendToExpression('0')">
     <input type="button" value="." onclick="appendToExpression('.')">
     <input type="button" value="=" onclick="calculateExpression()">
     <input type="button" value="+" onclick="appendToExpression('+')">
