@@ -171,31 +171,38 @@
     }
 
 function calculateExpression() {
-let expression = document.getElementById('expression').value;
-let result;
-try {
-if (base16Mode) {
-// Convert base16 expression to decimal before evaluating
-expression = parseInt(expression, 16).toString();
-}
-result = eval(expression); // Use eval() to evaluate the expression
-if (base16Mode) {
-result = parseInt(result).toString(16).toUpperCase(); // Convert result to base16
-  // debug
-  console.log(result);
-}
-document.getElementById('expression').value = result;
-document.getElementById('log').innerHTML += '=' + result + ';<br/>' + result;
-} catch (error) {
-document.getElementById('expression').value = 'Error';
-document.getElementById('log').innerHTML += 'Error; ';
-}
-}
+    let expression = document.getElementById('expression').value;
+    let result;
 
+    try {
+        if (base16Mode) {
+            // Convert base16 expression to decimal before evaluating
+            expression = parseInt(expression, 16).toString(); // Convert base16 to decimal
+        }
+
+        result = eval(expression); // Evaluate the expression
+
+        if (base16Mode) {
+            // Convert the result back to base16 format
+            result = Math.floor(result); // Ensure the result is an integer for base16 conversion
+            result = result.toString(16).toUpperCase(); // Convert the result to base16
+        }
+        // Update the calculator display with the result
+        document.getElementById('expression').value = result;
+        document.getElementById('log').innerHTML += '=' + result + ';<br/>' + result;
+    } catch (error) {
+        // Handle any errors that occurred during evaluation
+        document.getElementById('expression').value = 'Error';
+        document.getElementById('log').innerHTML += 'Error; ';
+    }
+}
 function toggleBase16() {
 base16Mode = !base16Mode;
 document.getElementById('log').innerHTML += base16Mode ? 'Switched to Base16 mode;<br/> ' : 'Switched to Decimal mode;<br/>';
 }
+  function selectBase(int){
+    
+  }
 </script>
 
 </body>
