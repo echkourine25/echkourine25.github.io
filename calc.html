@@ -103,11 +103,7 @@
     if (base16Mode && !isNaN(parseInt(value, 16))) {
       document.getElementById('expression').value += value;
       document.getElementById('log').innerHTML += value;
-    } else if (!base16Mode && !isNaN(value)) {
-      document.getElementById('expression').value += value;
-      document.getElementById('log').innerHTML += value;
-    }
-    else{
+    } else if (!base16Mode) {
       document.getElementById('expression').value += value;
       document.getElementById('log').innerHTML += value;
     }
