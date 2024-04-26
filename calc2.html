@@ -81,6 +81,14 @@
 </div>
 <script>
   function appendToExpression(value) {
+    let expression = document.getElementById('expression').value;
+    let lastChar = expression.slice(-1);
+    let operators = ['+', '-', '*', '/'];
+
+    if (!operators.includes(lastChar) && lastChar !== '(' && value !== '(') {
+      value = '*' + value;
+    }
+
     document.getElementById('expression').value += value;
   }
 
@@ -92,11 +100,22 @@
     let expression = document.getElementById('expression').value;
     let result;
     try {
-      result = eval(expression); // Utilisation de eval() pour évaluer l'expression
+      expression = expression.replace(/sin|cos|tan/g, function(match) {
+        return calculateTrigFunction(expression, match);
+      });
+
+      result = eval(expression);
       document.getElementById('expression').value = result;
     } catch (error) {
       document.getElementById('expression').value = 'Error';
     }
+  }
+
+  function calculateTrigFunction(expression, func) {
+    let value = parseFloat(expression.replace(func, ''));
+    if (func === 'sin') return Math.sin(value);
+    if (func === 'cos') return Math.cos(value);
+    if (func === 'tan') return Math.tan(value);
   }
 </script>
 </body>
