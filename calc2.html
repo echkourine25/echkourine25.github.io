@@ -7,6 +7,8 @@
 <style>
   body {
     font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
   }
   .calculator {
     width: 300px;
@@ -82,10 +84,12 @@
 <script>
   function appendToExpression(value) {
     document.getElementById('expression').value += value;
+    document.getElementById('log').innerHTML += value;
   }
 
   function clearExpression() {
     document.getElementById('expression').value = '';
+    document.getElementById('log').innerHTML += ';<br/>';
   }
 
   function calculateExpression() {
@@ -94,6 +98,7 @@
     try {
       result = eval(expression); // Utilisation de eval() pour évaluer l'expression
       document.getElementById('expression').value = result;
+      document.getElementById('log').innerHTML += result + ';<br/>' + result;
     } catch (error) {
       document.getElementById('expression').value = 'Error';
     }
