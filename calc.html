@@ -87,7 +87,7 @@
   .calculator input[value="D"],
   .calculator input[value="E"],
   .calculator input[value="F"],
-  .calculator input[value="0x"]{
+  .calculator input[value="BASE"]{
     background-color: orange;
     color: black;
   }
@@ -141,7 +141,7 @@
     <input type="button" value="sqrt(" onclick="appendToExpression('Math.sqrt(')">
     <input type="button" value="Clear" onclick="clearExpression()">
   </div>
-  <!-- Base16 (0xadecimal) mode buttons -->
+  <!-- Base16 (BASEadecimal) mode buttons -->
   <div class="button-row">
     <input type="button" value="A" onclick="appendToExpression('A')">
     <input type="button" value="B" onclick="appendToExpression('B')">
@@ -152,7 +152,7 @@
     <input type="button" value="E" onclick="appendToExpression('E')">
     <input type="button" value="F" onclick="appendToExpression('F')">
     <input type="button" value="XOR" onclick="apprendToExpression('XOR')">
-    <input type="button" value="0x" onclick="toggleBase16()">
+    <input type="button" value="BASE" onclick="toggleBase16()">
   </div>
 </div>
 <div id="log"></div>
