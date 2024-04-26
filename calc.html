@@ -1,120 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Calculator</title>
-  <style>
-    body{
-    display:flex;
-    flex-direction: column;
-      text-align:center;
-    }
-  .calculator {
-    width: 300px;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Graphic Calculator</title>
+<style>
+  body {
     margin: 0 auto;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
     text-align: center;
   }
-
-  #display {
+  .calculator {
+    width: 300px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    text-align: center;
+  }
+  .calculator input[type="text"] {
     width: 100%;
+    padding: 10px;
     margin-bottom: 10px;
-    font-size: 1.2rem; /* Increase font size */
-    color: black; /* Set text color to black */
+    box-sizing: border-box;
   }
-
-  .buttons button {
-    width: 50px;
-    height: 50px;
-    margin: 5px;
-    font-size: 20px;
+  .calculator .button-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
   }
-
-  .buttons button:nth-child(5) {
-    background-color: orange;
+  .calculator input[type="button"] {
+    width: 30%;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #fff;
   }
 </style>
 </head>
 <body>
-  <div class="calculator">
-    <input type="text" id="display" disabled>
-    <div class="buttons">
-      <button onclick="clearDisplay()">C</button>
-      <button onclick="appendToDisplay('(')">(</button>
-      <button onclick="appendToDisplay(')')">)</button>
-      <button onclick="appendToDisplay('^')">^</button>
-      <button onclick="appendToDisplay('7')">7</button>
-      <button onclick="appendToDisplay('8')">8</button>
-      <button onclick="appendToDisplay('9')">9</button>
-      <button onclick="appendToDisplay('/')">/</button>
-      <button onclick="appendToDisplay('4')">4</button>
-      <button onclick="appendToDisplay('5')">5</button>
-      <button onclick="appendToDisplay('6')">6</button>
-      <button onclick="appendToDisplay('*')">*</button>
-      <button onclick="appendToDisplay('1')">1</button>
-      <button onclick="appendToDisplay('2')">2</button>
-      <button onclick="appendToDisplay('3')">3</button>
-      <button onclick="appendToDisplay('-')">-</button>
-      <button onclick="appendToDisplay('0')">0</button>
-      <button onclick="appendToDisplay('.')">.</button>
-      <button onclick="calculate()">=</button>
-      <button onclick="appendToDisplay('+')">+</button>
-      <button onclick="trigFunction('sin')">sin</button>
-      <button onclick="trigFunction('cos')">cos</button>
-      <button onclick="trigFunction('tan')">tan</button>
-      <button onclick="appendToDisplay('sqrt(')">sqrt(</button>
-    </div>
+<div class="calculator">
+  <input type="text" id="expression" placeholder="Enter expression">
+  <br>
+  <div class="button-row">
+    <input type="button" value="7" onclick="appendToExpression('7')">
+    <input type="button" value="8" onclick="appendToExpression('8')">
+    <input type="button" value="9" onclick="appendToExpression('9')">
+    <input type="button" value="/" onclick="appendToExpression('/')">
   </div>
-  <div id="log">
+  <div class="button-row">
+    <input type="button" value="4" onclick="appendToExpression('4')">
+    <input type="button" value="5" onclick="appendToExpression('5')">
+    <input type="button" value="6" onclick="appendToExpression('6')">
+    <input type="button" value="*" onclick="appendToExpression('*')">
   </div>
+  <div class="button-row">
+    <input type="button" value="1" onclick="appendToExpression('1')">
+    <input type="button" value="2" onclick="appendToExpression('2')">
+    <input type="button" value="3" onclick="appendToExpression('3')">
+    <input type="button" value="-" onclick="appendToExpression('-')">
+  </div>
+  <div class="button-row">
+    <input type="button" value="0" onclick="appendToExpression('0')">
+    <input type="button" value="." onclick="appendToExpression('.')">
+    <input type="button" value="=" onclick="calculateExpression()">
+    <input type="button" value="+" onclick="appendToExpression('+')">
+  </div>
+  <div class="button-row">
+    <input type="button" value="sin(" onclick="appendToExpression('Math.sin(')">
+    <input type="button" value="cos(" onclick="appendToExpression('Math.cos(')">
+    <input type="button" value="tan(" onclick="appendToExpression('Math.tan(')">
+    <input type="button" value="^" onclick="appendToExpression('**')">
+  </div>
+  <div class="button-row">
+    <input type="button" value="(" onclick="appendToExpression('(')">
+    <input type="button" value=")" onclick="appendToExpression(')')">
+    <input type="button" value="sqrt(" onclick="appendToExpression('Math.sqrt(')">
+    <input type="button" value="Clear" onclick="clearExpression()">
+  </div>
+  <!-- Base16 (hexadecimal) mode buttons -->
+  <div class="button-row">
+    <input type="button" value="A" onclick="appendToExpression('A')">
+    <input type="button" value="B" onclick="appendToExpression('B')">
+    <input type="button" value="C" onclick="appendToExpression('C')">
+    <input type="button" value="D" onclick="appendToExpression('D')">
+  </div>
+  <div class="button-row">
+    <input type="button" value="E" onclick="appendToExpression('E')">
+    <input type="button" value="F" onclick="appendToExpression('F')">
+    <input type="button" value="Hex" onclick="toggleBase16()">
+  </div>
+</div>
+<div id="log"></div>
+<script>
+  let base16Mode = false;
 
-  <script>
-    function appendToDisplay(value) {
-      document.getElementById('display').value += value;
+  function appendToExpression(value) {
+    if (base16Mode && !isNaN(parseInt(value, 16))) {
+      document.getElementById('expression').value += value;
+      document.getElementById('log').innerHTML += value;
+    } else if (!base16Mode && !isNaN(value)) {
+      document.getElementById('expression').value += value;
       document.getElementById('log').innerHTML += value;
     }
+  }
 
-    function clearDisplay() {
-      document.getElementById('display').value = '';
-      document.getElementById('log').innerHTML += ';<br/>';
+  function clearExpression() {
+    document.getElementById('expression').value = '';
+    document.getElementById('log').innerHTML += ';<br/>';
     }
 
-    function calculate() {
-      try {
-        const result = eval(document.getElementById('display').value);
-        document.getElementById('display').value = result;
-        document.getElementById('log').innerHTML += '=' + result + ';<br/>' + result;
-      } catch (error) {
-        document.getElementById('display').value = 'Error';
-      }
-    }
+function calculateExpression() {
+let expression = document.getElementById('expression').value;
+let result;
+try {
+if (base16Mode) {
+// Convert base16 expression to decimal before evaluating
+expression = parseInt(expression, 16).toString();
+}
+result = eval(expression); // Use eval() to evaluate the expression
+if (base16Mode) {
+result = parseInt(result).toString(16).toUpperCase(); // Convert result to base16
+}
+document.getElementById('expression').value = result;
+document.getElementById('log').innerHTML += '=' + result + ';
+<br/>";
+} else {
+document.getElementById('expression').value = 'Error';
+}
+} catch (error) {
+document.getElementById('expression').value = 'Error';
+}
+}
 
-    function trigFunction(func) {
-      const input = document.getElementById('display').value;
-      let result;
-      switch (func) {
-          case 'sin':
-              result = Math.sin(eval(input));
-              break;
-          case 'cos':
-              result = Math.cos(eval(input));
-              break;
-          case 'tan':
-              result = Math.tan(eval(input));
-              break;
-          default:
-              result = 'Error';
-      }
-      document.getElementById('display').value = result;
-      document.getElementById('log').innerHTML += '=' + result;
-    }
+function toggleBase16() {
+base16Mode = !base16Mode;
+document.getElementById('log').innerHTML += base16Mode ? 'Switched to Base16 mode; ' : 'Switched to Decimal mode; ';
+}
+</script>
 
-    function calculateSquareRoot() {
-      const input = document.getElementById('display').value;
-      const result = Math.sqrt(eval(input));
-      document.getElementById('display').value = result;
-      document.getElementById('log').innerHTML += '√=' + result + ';<br/>' + result;
-    }
-  </script>
 </body>
 </html>
