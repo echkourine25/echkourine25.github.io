@@ -159,13 +159,8 @@
   let base16Mode = false;
 
   function appendToExpression(value) {
-    if (base16Mode) {
-      document.getElementById('expression').value += value;
-      document.getElementById('log').innerHTML += value;
-    } else if (!base16Mode) {
-      document.getElementById('expression').value += value;
-      document.getElementById('log').innerHTML += value;
-    }
+    document.getElementById('expression').value += value;
+    document.getElementById('log').innerHTML += value;
   }
 
   function clearExpression() {
