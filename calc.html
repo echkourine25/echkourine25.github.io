@@ -75,7 +75,8 @@
   .calculator input[value="sin("],
   .calculator input[value="cos("],
   .calculator input[value="tan("],
-  .calculator input[value="sqrt("]{
+  .calculator input[value="sqrt("],
+  .calculator input[value="**"]{
     background-color: yellow;
     color: black;
   }
@@ -131,7 +132,7 @@
     <input type="button" value="sin(" onclick="appendToExpression('Math.sin(')">
     <input type="button" value="cos(" onclick="appendToExpression('Math.cos(')">
     <input type="button" value="tan(" onclick="appendToExpression('Math.tan(')">
-    <input type="button" value="^" onclick="appendToExpression('**')">
+    <input type="button" value="**" onclick="appendToExpression('**')">
   </div>
   <div class="button-row">
     <input type="button" value="(" onclick="appendToExpression('(')">
@@ -149,6 +150,7 @@
   <div class="button-row">
     <input type="button" value="E" onclick="appendToExpression('E')">
     <input type="button" value="F" onclick="appendToExpression('F')">
+    <input type="button" value="^" onclick="apprendToExpression('^')">
     <input type="button" value="Hex" onclick="toggleBase16()">
   </div>
 </div>
