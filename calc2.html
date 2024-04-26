@@ -23,10 +23,14 @@
     margin-bottom: 10px;
     box-sizing: border-box;
   }
+  .calculator .button-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+  }
   .calculator input[type="button"] {
     width: 30%;
     padding: 10px;
-    margin: 5px;
     cursor: pointer;
     border-radius: 5px;
     border: 1px solid #ccc;
@@ -38,29 +42,41 @@
 <div class="calculator">
   <input type="text" id="expression" placeholder="Enter expression">
   <br>
-  <input type="button" value="7" onclick="appendToExpression('7')">
-  <input type="button" value="8" onclick="appendToExpression('8')">
-  <input type="button" value="9" onclick="appendToExpression('9')">
-  <input type="button" value="/" onclick="appendToExpression('/')"><br>
-  <input type="button" value="4" onclick="appendToExpression('4')">
-  <input type="button" value="5" onclick="appendToExpression('5')">
-  <input type="button" value="6" onclick="appendToExpression('6')">
-  <input type="button" value="*" onclick="appendToExpression('*')"><br>
-  <input type="button" value="1" onclick="appendToExpression('1')">
-  <input type="button" value="2" onclick="appendToExpression('2')">
-  <input type="button" value="3" onclick="appendToExpression('3')">
-  <input type="button" value="-" onclick="appendToExpression('-')"><br>
-  <input type="button" value="0" onclick="appendToExpression('0')">
-  <input type="button" value="." onclick="appendToExpression('.')">
-  <input type="button" value="=" onclick="calculateExpression()">
-  <input type="button" value="+" onclick="appendToExpression('+')"><br>
-  <input type="button" value="sin(" onclick="appendToExpression('Math.sin(')">
-  <input type="button" value="cos(" onclick="appendToExpression('Math.cos(')">
-  <input type="button" value="tan(" onclick="appendToExpression('Math.tan(')">
-  <input type="button" value="^" onclick="appendToExpression('**')"><br>
-  <input type="button" value="(" onclick="appendToExpression('(')">
-  <input type="button" value=")" onclick="appendToExpression(')')">
-  <input type="button" value="Clear" onclick="clearExpression()">
+  <div class="button-row">
+    <input type="button" value="7" onclick="appendToExpression('7')">
+    <input type="button" value="8" onclick="appendToExpression('8')">
+    <input type="button" value="9" onclick="appendToExpression('9')">
+    <input type="button" value="/" onclick="appendToExpression('/')">
+  </div>
+  <div class="button-row">
+    <input type="button" value="4" onclick="appendToExpression('4')">
+    <input type="button" value="5" onclick="appendToExpression('5')">
+    <input type="button" value="6" onclick="appendToExpression('6')">
+    <input type="button" value="*" onclick="appendToExpression('*')">
+  </div>
+  <div class="button-row">
+    <input type="button" value="1" onclick="appendToExpression('1')">
+    <input type="button" value="2" onclick="appendToExpression('2')">
+    <input type="button" value="3" onclick="appendToExpression('3')">
+    <input type="button" value="-" onclick="appendToExpression('-')">
+  </div>
+  <div class="button-row">
+    <input type="button" value="0" onclick="appendToExpression('0')">
+    <input type="button" value="." onclick="appendToExpression('.')">
+    <input type="button" value="=" onclick="calculateExpression()">
+    <input type="button" value="+" onclick="appendToExpression('+')">
+  </div>
+  <div class="button-row">
+    <input type="button" value="sin(" onclick="appendToExpression('Math.sin(')">
+    <input type="button" value="cos(" onclick="appendToExpression('Math.cos(')">
+    <input type="button" value="tan(" onclick="appendToExpression('Math.tan(')">
+    <input type="button" value="^" onclick="appendToExpression('**')">
+  </div>
+  <div class="button-row">
+    <input type="button" value="(" onclick="appendToExpression('(')">
+    <input type="button" value=")" onclick="appendToExpression(')')">
+    <input type="button" value="Clear" onclick="clearExpression()">
+  </div>
 </div>
 <script>
   function appendToExpression(value) {
