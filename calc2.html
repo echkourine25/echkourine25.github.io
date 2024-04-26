@@ -100,7 +100,7 @@
     try {
       result = eval(expression); // Utilisation de eval() pour évaluer l'expression
       document.getElementById('expression').value = result;
-      document.getElementById('log').innerHTML += result + ';<br/>' + result;
+      document.getElementById('log').innerHTML += " = " + result + ';<br/>' + result;
     } catch (error) {
       document.getElementById('expression').value = 'Error';
     }
