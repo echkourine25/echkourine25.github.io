@@ -1,8 +1,3 @@
-
-Certainly! Here's an example of a simple HTML file containing a graphic calculator implemented with JavaScript. This calculator includes basic arithmetic operations, trigonometric functions, and exponentiation:
-
-html
-Copy code
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,23 +15,29 @@ Copy code
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #f9f9f9;
+    text-align: center;
   }
   .calculator input[type="text"] {
-    width: calc(100% - 10px);
+    width: 100%;
     padding: 10px;
     margin-bottom: 10px;
+    box-sizing: border-box;
   }
   .calculator input[type="button"] {
     width: 30%;
     padding: 10px;
     margin: 5px;
     cursor: pointer;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #fff;
   }
 </style>
 </head>
 <body>
 <div class="calculator">
   <input type="text" id="expression" placeholder="Enter expression">
+  <br>
   <input type="button" value="7" onclick="appendToExpression('7')">
   <input type="button" value="8" onclick="appendToExpression('8')">
   <input type="button" value="9" onclick="appendToExpression('9')">
@@ -53,10 +54,10 @@ Copy code
   <input type="button" value="." onclick="appendToExpression('.')">
   <input type="button" value="=" onclick="calculateExpression()">
   <input type="button" value="+" onclick="appendToExpression('+')"><br>
-  <input type="button" value="sin(" onclick="appendToExpression('sin(')">
-  <input type="button" value="cos(" onclick="appendToExpression('cos(')">
-  <input type="button" value="tan(" onclick="appendToExpression('tan(')">
-  <input type="button" value="^" onclick="appendToExpression('^')"><br>
+  <input type="button" value="sin(" onclick="appendToExpression('Math.sin(')">
+  <input type="button" value="cos(" onclick="appendToExpression('Math.cos(')">
+  <input type="button" value="tan(" onclick="appendToExpression('Math.tan(')">
+  <input type="button" value="^" onclick="appendToExpression('**')"><br>
   <input type="button" value="(" onclick="appendToExpression('(')">
   <input type="button" value=")" onclick="appendToExpression(')')">
   <input type="button" value="Clear" onclick="clearExpression()">
@@ -74,24 +75,11 @@ Copy code
     let expression = document.getElementById('expression').value;
     let result;
     try {
-      // Replace trig functions with their calculated values
-      expression = expression.replace(/sin|cos|tan/g, function(match) {
-        return calculateTrigFunction(parseFloat(expression), match);
-      });
-      
-      // Evaluate the expression
-      result = eval(expression); // This is the only eval() call, but it's controlled and specific.
+      result = eval(expression); // Utilisation de eval() pour évaluer l'expression
       document.getElementById('expression').value = result;
     } catch (error) {
       document.getElementById('expression').value = 'Error';
     }
-  }
-
-  // Function to calculate trigonometric functions
-  function calculateTrigFunction(value, func) {
-    if (func === 'sin') return Math.sin(value);
-    if (func === 'cos') return Math.cos(value);
-    if (func === 'tan') return Math.tan(value);
   }
 </script>
 </body>
