@@ -43,6 +43,33 @@
   .bg-green {
     background-color: green;
   }
+  .calculator input[type="button"] {
+    width: 30%;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Style pour les boutons de chiffres (0-9) */
+.calculator input[value="0"],
+.calculator input[value="1"],
+.calculator input[value="2"],
+.calculator input[value="3"],
+.calculator input[value="4"],
+.calculator input[value="5"],
+.calculator input[value="6"],
+.calculator input[value="7"],
+.calculator input[value="8"],
+.calculator input[value="9"] {
+    background-color: cyan; /* Couleur bleue pour les boutons de chiffres */
+    color: black; /* Couleur du texte en blanc */
+}
+
+/* Style supplémentaire pour le bouton "Clear" */
+.calculator input[value="Clear"] {
+    background-color: red; /* Couleur rouge pour le bouton "Clear" */
+}
 </style>
 </head>
 <body>
