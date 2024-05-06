@@ -34,6 +34,7 @@ base16Mode = !base16Mode;
             console.log('result='+result);
         }
       document.getElementById('log').innerHTML += base16Mode ? 'Switched to Base16 mode;<br/>': 'Switched to Decimal mode;<br/>';
+      console.log('baseMode='+base16Mode);
       document.getElementById('log').innerHTML += result + '</br>';
     }
   </script>
