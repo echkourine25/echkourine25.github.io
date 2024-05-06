@@ -155,6 +155,9 @@
     <input type="button" value="^" onclick="appendToExpression('^')">
     <input type="button" value="Clear" onclick="clearExpression()">
   </div>
+  <div>
+    <input type="button" value="0x" onclick="appendToExpression('0x')">
+  </div>
 </div>
 <div id="log"></div>
 <script>
@@ -180,13 +183,14 @@ function calculateExpression() {
             expression = parseInt(expression, 16).toString(); // Convert base16 to decimal
         }
 
-        result = eval(expression); // Evaluate the expression
-
+      result = eval(expression); // Evaluate the expression
         if (base16Mode) {
             // Convert the result back to base16 format
             result = Math.floor(result); // Ensure the result is an integer for base16 conversion
             result = result.toString(16).toUpperCase(); // Convert the result to base16
         }
+
+      
         // Update the calculator display with the result
         document.getElementById('expression').value = result;
         document.getElementById('log').innerHTML += '=' + result + ';<br/>' + result;
