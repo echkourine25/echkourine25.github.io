@@ -166,11 +166,13 @@
   function appendToExpression(value) {
     document.getElementById('expression').value += value;
     document.getElementById('log').innerHTML += value;
+    console.log('appendToEpression('+value+'));
   }
 
   function clearExpression() {
     document.getElementById('expression').value = '';
     document.getElementById('log').innerHTML += ';<br/>';
+    console.log('clear expression');
     }
 
 function calculateExpression() {
@@ -189,12 +191,14 @@ function calculateExpression() {
             // Convert the result back to base16 format
             result = Math.floor(result); // Ensure the result is an integer for base16 conversion
             result = result.toString(16).toUpperCase(); // Convert the result to base16
+            console.log('if base16 result = mathfloor(result) + to.string(16)');
         }
 
       
         // Update the calculator display with the result
         document.getElementById('expression').value = result;
         document.getElementById('log').innerHTML += '=' + result + ';<br/>' + result;
+        console.log('result = '+ result);
     } catch (error) {
         // Handle any errors that occurred during evaluation
         document.getElementById('expression').value = 'Error';
