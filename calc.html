@@ -181,6 +181,7 @@ function calculateExpression() {
         if (base16Mode) {
             // Convert base16 expression to decimal before evaluating
             expression = parseInt(expression, 16).toString(); // Convert base16 to decimal
+            console.log('expression = parseInt =' + expression);
         }
 
       result = eval(expression); // Evaluate the expression
