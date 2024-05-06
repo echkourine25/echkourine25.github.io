@@ -4,6 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Graphic Calculator</title>
+  <script>
+      let base16Mode = false;
+    function toggleBase16() {
+base16Mode = !base16Mode;
+document.getElementById('log').innerHTML += base16Mode ? 'Switched to Base16 mode;<br/> ' : 'Switched to Decimal mode;<br/>';
+}
+  </script>
 <style>
   body {
     margin: 0 auto;
@@ -161,8 +168,6 @@
 </div>
 <div id="log"></div>
 <script>
-  let base16Mode = false;
-
   function appendToExpression(value) {
     document.getElementById('expression').value += value;
     document.getElementById('log').innerHTML += value;
@@ -204,10 +209,6 @@ function calculateExpression() {
         document.getElementById('expression').value = 'Error';
         document.getElementById('log').innerHTML += 'Error; ';
     }
-}
-function toggleBase16() {
-base16Mode = !base16Mode;
-document.getElementById('log').innerHTML += base16Mode ? 'Switched to Base16 mode;<br/> ' : 'Switched to Decimal mode;<br/>';
 }
   function selectBase(int){
     
