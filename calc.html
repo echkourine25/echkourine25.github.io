@@ -8,6 +8,32 @@
       let base16Mode = false;
     function toggleBase16() {
 base16Mode = !base16Mode;
+
+       if (base16Mode) {
+          console.log('in first if base 16')
+            // Utiliser une expression régulière pour trouver et remplacer toutes les valeurs hexadécimales
+            expression = expression.replace(/0x[0-9A-Fa-f]+/g, function(match) {
+                // Extraire le nombre hexadécimal (en ignorant le préfixe '0x') et le convertir en décimal
+                let hexValue = match.substring(2); // Ignorer le préfixe '0x'
+                return parseInt(hexValue, 16);
+            });
+            console.log('Expression after hex to decimal conversion:', expression);
+        }
+
+
+      result = eval(expression); // Evaluate the expression
+        if (base16Mode) {
+          console.log('2nd base 16 if')
+            // Convert the result back to base16 format
+          console.log('result = Math.floor('+result)
+            result = Math.floor(result); // Ensure the result is an integer for base16 conversion
+          console.log('result.toString\(16\).toUpperCase\(\)');
+            result = result.toString(16).toUpperCase(); // Convert the result to base16
+          result='0x'+result;
+            console.log('result='+result);
+        }
+
+      
 document.getElementById('log').innerHTML += base16Mode ? 'Switched to Base16 mode;<br/> ' : 'Switched to Decimal mode;<br/>';
 }
   </script>
