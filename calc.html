@@ -183,6 +183,7 @@ document.getElementById('log').innerHTML += base16Mode ? 'Switched to Base16 mod
 function calculateExpression() {
     let expression = document.getElementById('expression').value;
     let result;
+    console.log('let expression ='+expression);
 
     try {
         if (base16Mode) {
