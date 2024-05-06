@@ -10,6 +10,7 @@
 base16Mode = !base16Mode;
 
        if (base16Mode) {
+         try{
          expression = document.getElementById('expression');
           console.log('in first if base 16')
             // Utiliser une expression régulière pour trouver et remplacer toutes les valeurs hexadécimales
@@ -19,7 +20,7 @@ base16Mode = !base16Mode;
                 return parseInt(hexValue, 16);
             });
             console.log('Expression after hex to decimal conversion:', expression);
-        }
+         }}
 
 
       result = eval(expression); // Evaluate the expression
