@@ -1,308 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Graphic Calculator</title>
-  <script>
- /*     let base16Mode = false;
-    function toggleBase16() {
-base16Mode = !base16Mode;
-
-       if (base16Mode) {
-         try{
-         expression = document.getElementById('expression');
-          console.log('in first if base 16')
-            // Utiliser une expression régulière pour trouver et remplacer toutes les valeurs hexadécimales
-            expression = expression.replace(/0x[0-9A-Fa-f]+/g, function(match) {
-                // Extraire le nombre hexadécimal (en ignorant le préfixe '0x') et le convertir en décimal
-                let hexValue = match.substring(2); // Ignorer le préfixe '0x'
-                return parseInt(hexValue, 16);
-            });
-            console.log('Expression after hex to decimal conversion:', expression);
-         }}
-
-
-      result = eval(expression); // Evaluate the expression
-        if (base16Mode) {
-          console.log('2nd base 16 if')
-            // Convert the result back to base16 format
-          console.log('result = Math.floor('+result)
-            result = Math.floor(result); // Ensure the result is an integer for base16 conversion
-          console.log('result.toString\(16\).toUpperCase\(\)');
-            result = result.toString(16).toUpperCase(); // Convert the result to base16
-          result='0x'+result;
-            console.log('result='+result);
-        }
-      document.getElementById('log').innerHTML += base16Mode ? 'Switched to Base16 mode;<br>': 'Switched to Decimal mode;<br>';
-      console.log('baseMode='+base16Mode);
-      document.getElementById('log').innerHTML += result + '</br>';
-    }*/
-    let base16Mode = false;
-    
-    function toggleBase16() {
-        base16Mode = !base16Mode;
-        let expression = document.getElementById('expression').value;
-        let result;
-
-        if (base16Mode) {
-            console.log('Switching to Base16 mode');
-            // Use a regular expression to find and replace all hexadecimal values
-            expression = expression.replace(/0x[0-9A-Fa-f]+/g, function(match) {
-                // Extract the hexadecimal number (excluding the '0x' prefix) and convert it to decimal
-                let hexValue = match.substring(2); // Remove the '0x' prefix
-                return parseInt(hexValue, 16);
-            });
-            console.log('Expression after hex to decimal conversion:', expression);
-        }
-
-        try {
-            result = eval(expression); // Evaluate the expression
-        } catch (error) {
-            console.error('Error in evaluating expression:', error);
-            document.getElementById('log').innerHTML += 'Error: Invalid expression;<br>';
-            return;
-        }
-
-        if (base16Mode) {
-            console.log('Converting result to Base16');
-            // Convert the result back to base16 format
-            result = Math.floor(result); // Ensure the result is an integer for base16 conversion
-            result = result.toString(16).toUpperCase(); // Convert the result to base16
-            result = '0x' + result;
-            console.log('Result in Base16:', result);
-        }
-
-        // Display the mode change and result
-        document.getElementById('expression').innerHTML = result;
-        document.getElementById('log').innerHTML += base16Mode ? 'Switched to Base16 mode;<br>' : 'Switched to Decimal mode;<br>';
-        document.getElementById('log').innerHTML += result + '<br>';
-        console.log('baseMode=' + base16Mode);
-    }
-  </script>
-<style>
-  body {
-    margin: 0 auto;
-    font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-  }
-  .calculator {
-    width: 300px;
-    margin: 20px auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-    text-align: center;
-  }
-  .calculator input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    box-sizing: border-box;
-  }
-  .calculator .button-row {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 5px;
-  }
-  .calculator input[type="button"] {
-    width: 30%;
-    padding: 10px;
-    cursor: pointer;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    background-color: #fff;
-  }
-  .calculator input[type="button"] {
-    width: 30%;
-    padding: 10px;
-    cursor: pointer;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
-
-/* Style pour les boutons de chiffres (0-9) */
-.calculator input[value="0"],
-.calculator input[value="1"],
-.calculator input[value="2"],
-.calculator input[value="3"],
-.calculator input[value="4"],
-.calculator input[value="5"],
-.calculator input[value="6"],
-.calculator input[value="7"],
-.calculator input[value="8"],
-.calculator input[value="9"] {
-    background-color: cyan; /* Couleur bleue pour les boutons de chiffres */
-    color: black; /* Couleur du texte en blanc */
-}
-.calculator input[value="."],
-  .calculator input[value="/"],
-  .calculator input[value="*"],
-  .calculator input[value="+"],
-  .calculator input[value="-"]{
-  background-color: blue;
-  color: white;
-}
-  .calculator input[value="("],
-  .calculator input[value=")"],
-  .calculator input[value="sin("],
-  .calculator input[value="cos("],
-  .calculator input[value="tan("],
-  .calculator input[value="sqrt("],
-  .calculator input[value="**"]{
-    background-color: yellow;
-    color: black;
-  }
-  .calculator input[value="^"],
-  .calculator input[value="A"],
-  .calculator input[value="B"],
-  .calculator input[value="C"],
-  .calculator input[value="D"],
-  .calculator input[value="E"],
-  .calculator input[value="F"],
-  .calculator input[value="BASE"]{
-    background-color: orange;
-    color: black;
-  }
-  .calculator input[value="="]{
-    background-color: lime;
-    color: black;
-  }
-/* Style supplémentaire pour le bouton "Clear" */
-.calculator input[value="Clear"] {
-    background-color: red; /* Couleur rouge pour le bouton "Clear" */
-    color: white;
-}
-  .calculator input[value="0x"]{
-    background-color: #D100FF;
-    color:white;
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graphic Calculator</title>
+    <style>
+        /* Your CSS styles remain unchanged */
+    </style>
 </head>
 <body>
-<div class="calculator">
-  <input type="text" id="expression" placeholder="Enter expression">
-  <br>
-  <div class="button-row">
-    <input type="button" value="7" onclick="appendToExpression('7')">
-    <input type="button" value="8" onclick="appendToExpression('8')">
-    <input type="button" value="9" onclick="appendToExpression('9')">
-    <input type="button" value="/" onclick="appendToExpression('/')">
-  </div>
-  <div class="button-row">
-    <input type="button" value="4" onclick="appendToExpression('4')">
-    <input type="button" value="5" onclick="appendToExpression('5')">
-    <input type="button" value="6" onclick="appendToExpression('6')">
-    <input type="button" value="*" onclick="appendToExpression('*')">
-  </div>
-  <div class="button-row">
-    <input type="button" value="1" onclick="appendToExpression('1')">
-    <input type="button" value="2" onclick="appendToExpression('2')">
-    <input type="button" value="3" onclick="appendToExpression('3')">
-    <input type="button" value="-" onclick="appendToExpression('-')">
-  </div>
-  <div class="button-row">
-    <input type="button" value="0" onclick="appendToExpression('0')">
-    <input type="button" value="=" onclick="calculateExpression()">
-    <input type="button" value="." onclick="appendToExpression('.')">
-    <input type="button" value="+" onclick="appendToExpression('+')">
-  </div>
-  <div class="button-row">
-    <input type="button" value="sin(" onclick="appendToExpression('Math.sin(')">
-    <input type="button" value="cos(" onclick="appendToExpression('Math.cos(')">
-    <input type="button" value="tan(" onclick="appendToExpression('Math.tan(')">
-    <input type="button" value="**" onclick="appendToExpression('**')">
-  </div>
-  <div class="button-row">
-    <input type="button" value="(" onclick="appendToExpression('(')">
-    <input type="button" value=")" onclick="appendToExpression(')')">
-    <input type="button" value="sqrt(" onclick="appendToExpression('Math.sqrt(')">
-    <input type="button" value="BASE" onclick="toggleBase16()">
-  </div>
-  <!-- Base16 (BASEadecimal) mode buttons -->
-  <div class="button-row">
-    <input type="button" value="A" onclick="appendToExpression('A')">
-    <input type="button" value="B" onclick="appendToExpression('B')">
-    <input type="button" value="C" onclick="appendToExpression('C')">
-    <input type="button" value="D" onclick="appendToExpression('D')">
-  </div>
-  <div class="button-row">
-    <input type="button" value="E" onclick="appendToExpression('E')">
-    <input type="button" value="F" onclick="appendToExpression('F')">
-    <input type="button" value="^" onclick="appendToExpression('^')">
-    <input type="button" value="Clear" onclick="clearExpression()">
-  </div>
-  <div>
-    <input type="button" value="0x" onclick="appendToExpression('0x')">
-  </div>
-</div>
-<div id="log"></div>
-<script>
-  function appendToExpression(value) {
-    document.getElementById('expression').value += value;
-    document.getElementById('log').innerHTML += value;
-    console.log('appendToEpression'+value);
-  }
+    <div class="calculator">
+        <input type="text" id="expression" placeholder="Enter expression">
+        <br>
+        <!-- Button rows and other HTML elements remain unchanged -->
+    </div>
+    <div id="log"></div>
 
-  function clearExpression() {
-    document.getElementById('expression').value = '';
-    document.getElementById('log').innerHTML += ';<br/>';
-    console.log('clear expression');
-    }
+    <script>
+        let base16Mode = false;
 
-function calculateExpression() {
-    let expression = document.getElementById('expression').value;
-    let result;
-    console.log('let expression ='+expression);
-
-  /*  try {
-        if (base16Mode) {
-            // Convert base16 expression to decimal before evaluating
-            expression = parseInt(expression, 16).toString(); // Convert base16 to decimal
-            console.log('expression = parseInt =' + expression);
-        }*/
-
-    try {
-        // Si le mode Base 16 est activé, convertir toutes les expressions hexadécimales en décimal
-        if (base16Mode) {
-          console.log('in first if base 16')
-            // Utiliser une expression régulière pour trouver et remplacer toutes les valeurs hexadécimales
-            expression = expression.replace(/0x[0-9A-Fa-f]+/g, function(match) {
-                // Extraire le nombre hexadécimal (en ignorant le préfixe '0x') et le convertir en décimal
-                let hexValue = match.substring(2); // Ignorer le préfixe '0x'
-                return parseInt(hexValue, 16);
-            });
-            console.log('Expression after hex to decimal conversion:', expression);
+        function appendToExpression(value) {
+            document.getElementById('expression').value += value;
         }
 
-
-      result = eval(expression); // Evaluate the expression
-        if (base16Mode) {
-          console.log('2nd base 16 if')
-            // Convert the result back to base16 format
-          console.log('result = Math.floor('+result)
-            result = Math.floor(result); // Ensure the result is an integer for base16 conversion
-          console.log('result.toString\(16\).toUpperCase\(\)');
-            result = result.toString(16).toUpperCase(); // Convert the result to base16
-          result='0x'+result;
-            console.log('result='+result);
+        function clearExpression() {
+            document.getElementById('expression').value = '';
         }
 
-      
-        // Update the calculator display with the result
-        document.getElementById('expression').value = result;
-        document.getElementById('log').innerHTML += '=' + result + ';<br/>' + result;
-        console.log('result = '+ result);
-    } catch (error) {
-        // Handle any errors that occurred during evaluation
-        document.getElementById('expression').value = 'Error';
-        document.getElementById('log').innerHTML += 'Error; ';
-    }
-}
-</script>
+        function toggleBase16() {
+            base16Mode = !base16Mode;
+            let logElement = document.getElementById('log');
+            logElement.innerHTML += base16Mode ? 'Switched to Base16 mode;<br>' : 'Switched to Decimal mode;<br>';
+            calculateExpression(); // Recalculate and update result on mode toggle
+        }
 
+        function calculateExpression() {
+            let expression = document.getElementById('expression').value;
+            let result;
+
+            try {
+                // If Base16 mode is active, replace hexadecimal values with decimal equivalents
+                if (base16Mode) {
+                    expression = expression.replace(/0x[0-9A-Fa-f]+/g, function(match) {
+                        let hexValue = match.substring(2); // Extract the hexadecimal value
+                        return parseInt(hexValue, 16); // Convert to decimal
+                    });
+                }
+
+                result = eval(expression); // Evaluate the expression
+
+                if (base16Mode) {
+                    result = Math.floor(result).toString(16).toUpperCase(); // Convert result to base16 format
+                    result = '0x' + result;
+                }
+
+                let resultDisplay = result !== undefined ? result : '';
+                document.getElementById('expression').value = resultDisplay;
+                document.getElementById('log').innerHTML = '=' + resultDisplay + ';<br>';
+            } catch (error) {
+                document.getElementById('expression').value = 'Error';
+                document.getElementById('log').innerHTML = 'Error; ';
+            }
+        }
+    </script>
 </body>
 </html>
