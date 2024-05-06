@@ -250,7 +250,7 @@ base16Mode = !base16Mode;
   function appendToExpression(value) {
 
     // Append the value to the expression
-    inputElement.value = currentValue + value;
+    document.getElementById('expression').innerHTML += value;
     console.log('appendToExpression: ' + value);
     document.getElementById('expression').value += value;
     document.getElementById('log').innerHTML += value;
