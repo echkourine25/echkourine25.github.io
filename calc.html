@@ -10,6 +10,7 @@
 base16Mode = !base16Mode;
 
        if (base16Mode) {
+         expression = document.getElementById('expression');
           console.log('in first if base 16')
             // Utiliser une expression régulière pour trouver et remplacer toutes les valeurs hexadécimales
             expression = expression.replace(/0x[0-9A-Fa-f]+/g, function(match) {
@@ -32,10 +33,6 @@ base16Mode = !base16Mode;
           result='0x'+result;
             console.log('result='+result);
         }
-
-      
-document.getElementById('log').innerHTML += base16Mode ? 'Switched to Base16 mode;<br/> ' : 'Switched to Decimal mode;<br/>';
-}
   </script>
 <style>
   body {
