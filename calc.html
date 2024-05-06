@@ -176,10 +176,7 @@ base16Mode = !base16Mode;
     background-color: red; /* Couleur rouge pour le bouton "Clear" */
     color: white;
 }
-  .calculator input[value="0x"],
-  .calculator input[value="AND"],
-  .calculator input[value="OR"],
-  .calculator input[value="XOR"]{
+  .calculator input[value="0x"]{
     background-color: #D100FF;
     color:white;
   }
@@ -238,20 +235,13 @@ base16Mode = !base16Mode;
     <input type="button" value="^" onclick="appendToExpression('^')">
     <input type="button" value="Clear" onclick="clearExpression()">
   </div>
-  <div class="button-row">
+  <div>
     <input type="button" value="0x" onclick="appendToExpression('0x')">
-    <input type="button" value="AND" onclick="appendToExpression('AND')">
-    <input type="button" value="OR" onclick="appendToExpression('OR')">
-    <input type="button" value="XOR" onclick="appendToExpression('XOR')">
   </div>
 </div>
 <div id="log"></div>
 <script>
   function appendToExpression(value) {
-
-    // Append the value to the expression
-    document.getElementById('expression').innerHTML += value;
-    console.log('appendToExpression: ' + value);
     document.getElementById('expression').value += value;
     document.getElementById('log').innerHTML += value;
     console.log('appendToEpression'+value);
@@ -264,26 +254,8 @@ base16Mode = !base16Mode;
     }
 
 function calculateExpression() {
-   let expression = document.getElementById('expression').value;
+    let expression = document.getElementById('expression').value;
     let result;
-
-    try {
-        // Replace 'AND', 'OR', 'XOR' with their JavaScript equivalents
-        expression = expression.replace(/AND/g, '&&').replace(/OR/g, '||').replace(/XOR/g, '^');
-        
-        // Evaluate the modified expression
-        result = eval(expression);
-
-        // Display the result
-        document.getElementById('expression').value = result;
-        document.getElementById('log').innerHTML += '=' + result + '<br>';
-        console.log('result = ' + result);
-    } catch (error) {
-        // Handle any errors that occurred during evaluation
-        document.getElementById('expression').value = 'Error';
-        document.getElementById('log').innerHTML += 'Error: Invalid expression<br>';
-    }
-    expression = document.getElementById('expression').value;
     console.log('let expression ='+expression);
 
   /*  try {
