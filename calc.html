@@ -156,7 +156,6 @@ base16Mode = !base16Mode;
     background-color: yellow;
     color: black;
   }
-  .calculator input[value="^"],
   .calculator input[value="A"],
   .calculator input[value="B"],
   .calculator input[value="C"],
@@ -176,7 +175,10 @@ base16Mode = !base16Mode;
     background-color: red; /* Couleur rouge pour le bouton "Clear" */
     color: white;
 }
-  .calculator input[value="0x"]{
+  .calculator input[value="0x"],
+  .calculator input[value="&&"],
+  .calculator input[value="||"],
+  .calculator input[value="^"]{
     background-color: #D100FF;
     color:white;
   }
@@ -239,7 +241,6 @@ base16Mode = !base16Mode;
     <input type="button" value="0x" onclick="appendToExpression('0x')">
     <input type="button" value="&&" onclick="appendToExpression('&&')">
     <input type="button" value="||" onclick="appendToExpression('||')">
-    <input type="button" value="^" onclick="appendToExpression('^')">
   </div>
 </div>
 <div id="log"></div>
