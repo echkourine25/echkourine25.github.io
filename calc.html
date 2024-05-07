@@ -112,7 +112,7 @@ base16Mode = !base16Mode;
     function toggleBase16() {
         base16Mode = !base16Mode;
     expression = document.getElementById('expression').value;
-    plotGraph(expression, -10, 10, 1);
+    
         let expression = document.getElementById('expression').value;
         let result;
 
@@ -152,6 +152,7 @@ base16Mode = !base16Mode;
         document.getElementById('log').innerHTML += result + '<br>';
       }
         console.log('baseMode=' + base16Mode);
+      plotGraph(expression, -10, 10, 1);
     }
   </script>
 <style>
