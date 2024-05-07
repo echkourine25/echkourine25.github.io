@@ -77,7 +77,10 @@ base16Mode = !base16Mode;
         document.getElementById('expression').innerHTML = result;
         document.getElementById('log').innerHTML += base16Mode ? 'Switched to Base16 mode;<br>' : 'Switched to Decimal mode;<br>';
         document.getElementById('log').innerHTML += '<math>';
+      if (result != NAN){
+        
         document.getElementById('log').innerHTML += result + '</math><br>';
+      }
         console.log('baseMode=' + base16Mode);
     }
   </script>
