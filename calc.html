@@ -8,25 +8,44 @@
   <script>
     function plotGraph(expression, minX, maxX, step) {
     let xValues = [];
+    let yValues = [];
+
+    // Generate x values from minX to maxX with the specified step
     for (let x = minX; x <= maxX; x += step) {
         xValues.push(x);
+        try {
+            // Evaluate the expression at each x value
+            let y = eval(expression.replace(/x/g, x));
+            yValues.push(y);
+        } catch (error) {
+            console.error('Error evaluating expression:', error);
+            // Handle any evaluation errors here
+        }
     }
 
-    let yValues = evaluateFunction(expression, xValues);
+    // Get the canvas element and its 2D drawing context
+    let canvas = document.getElementById('graph');
+    let ctx = canvas.getContext('2d');
 
-    let ctx = document.getElementById('graph').getContext('2d');
+    // Clear the canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Create a new Chart instance using Chart.js
     let chart = new Chart(ctx, {
-        type: 'line',
+        type: 'line', // Use a line chart for plotting the function
         data: {
-            labels: xValues,
+            labels: xValues, // x values as labels
             datasets: [{
-                label: 'f(x)',
-                data: yValues,
-                borderColor: 'rgb(75, 192, 192)',
-                tension: 0.1
+                label: 'f(x)', // Label for the function plot
+                data: yValues, // y values corresponding to the function
+                borderColor: 'rgba(75, 192, 192, 1)', // Color of the line
+                borderWidth: 2, // Width of the line
+                pointRadius: 0 // No point markers for each data point
             }]
         },
         options: {
+            responsive: true,
+            maintainAspectRatio: false,
             scales: {
                 x: {
                     type: 'linear',
@@ -211,6 +230,7 @@ base16Mode = !base16Mode;
     background-color: yellow;
     color: black;
   }
+  .calculator input[value="plot"],
   .calculator input[value="A"],
   .calculator input[value="B"],
   .calculator input[value="C"],
@@ -226,7 +246,8 @@ base16Mode = !base16Mode;
     color: black;
   }
 /* Style supplémentaire pour le bouton "Clear" */
-.calculator input[value="Clear"] {
+.calculator input[value="Clear"],
+  {
     background-color: red; /* Couleur rouge pour le bouton "Clear" */
     color: white;
 }
@@ -290,6 +311,7 @@ base16Mode = !base16Mode;
   <div class="button-row">
     <input type="button" value="E" onclick="appendToExpression('E')">
     <input type="button" value="F" onclick="appendToExpression('F')">
+    <input type="button" value="plot">
     <input type="button" value="Clear" onclick="clearExpression()">
   </div>
   <div class="button-row">
@@ -362,6 +384,10 @@ function calculateExpression() {
         document.getElementById('log').innerHTML += 'Error; ';
     }
 }
+  document.getElementById('plotButton').addEventListener('click', function() {
+    let expression = document.getElementById('expression').value;
+    plotGraph(expression, -10, 10, 0.1); // Adjust minX, maxX, and step as needed
+});
 </script>
 
 </body>
