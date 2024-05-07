@@ -263,6 +263,11 @@ base16Mode = !base16Mode;
 <body>
 <div class="calculator">
   <canvas id="graph" width="400" height="200"></canvas>
+<div>
+  <strong>X-axis:</strong> Values of x
+  <br>
+  <strong>Y-axis:</strong> Values of f(x)
+</div>
   <input type="text" id="expression" placeholder="Enter expression">
   <br>
   <div class="button-row">
@@ -311,7 +316,7 @@ base16Mode = !base16Mode;
   <div class="button-row">
     <input type="button" value="E" onclick="appendToExpression('E')">
     <input type="button" value="F" onclick="appendToExpression('F')">
-    <input type="button" value="plot" id="plotButton">
+    <input type="button" value="plot" id="plotButton" title="Plot Graph">
     <input type="button" value="Clear" onclick="clearExpression()">
   </div>
   <div class="button-row">
