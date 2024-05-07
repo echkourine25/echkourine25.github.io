@@ -4,7 +4,57 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Graphic Calculator</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
+    function plotGraph(expression, minX, maxX, step) {
+    let xValues = [];
+    for (let x = minX; x <= maxX; x += step) {
+        xValues.push(x);
+    }
+
+    let yValues = evaluateFunction(expression, xValues);
+
+    let ctx = document.getElementById('graph').getContext('2d');
+    let chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: xValues,
+            datasets: [{
+                label: 'f(x)',
+                data: yValues,
+                borderColor: 'rgb(75, 192, 192)',
+                tension: 0.1
+            }]
+        },
+        options: {
+            scales: {
+                x: {
+                    type: 'linear',
+                    position: 'bottom'
+                },
+                y: {
+                    type: 'linear',
+                    position: 'left'
+                }
+            }
+        }
+    });
+}
+    function evaluateFunction(expression, xValues) {
+    let yValues = [];
+    for (let x of xValues) {
+        let result;
+        try {
+            result = eval(expression.replace(/x/g, x));
+            yValues.push(result);
+        } catch (error) {
+            console.error('Error evaluating expression:', error);
+            return [];
+        }
+    }
+          return yValues;
+    }
+
  /*     let base16Mode = false;
     function toggleBase16() {
 base16Mode = !base16Mode;
@@ -42,6 +92,8 @@ base16Mode = !base16Mode;
     
     function toggleBase16() {
         base16Mode = !base16Mode;
+    expression = document.getElementById('expression').value;
+    plotGraph(expression, -10, 10, 0.1);
         let expression = document.getElementById('expression').value;
         let result;
 
@@ -189,6 +241,7 @@ base16Mode = !base16Mode;
 </head>
 <body>
 <div class="calculator">
+  <canvas id="graph"></canvas>
   <input type="text" id="expression" placeholder="Enter expression">
   <br>
   <div class="button-row">
