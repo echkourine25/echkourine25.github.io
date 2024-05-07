@@ -112,7 +112,7 @@ base16Mode = !base16Mode;
     function toggleBase16() {
         base16Mode = !base16Mode;
     expression = document.getElementById('expression').value;
-    plotGraph(expression, -10, 10, 0.1);
+    plotGraph(expression, -10, 10, 1);
         let expression = document.getElementById('expression').value;
         let result;
 
@@ -262,7 +262,7 @@ base16Mode = !base16Mode;
 </head>
 <body>
 <div class="calculator">
-  <canvas id="graph"></canvas>
+  <canvas id="graph" width="800" height="600"></canvas>
   <input type="text" id="expression" placeholder="Enter expression">
   <br>
   <div class="button-row">
