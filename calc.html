@@ -6,12 +6,16 @@
 <title>Graphic Calculator</title>
   <script src="/chart.js"></script>
   <script>
-  function plotGraph(expression, minX, maxX, step) {
+  let myChart = null; // Variable to store the Chart instance
+
+function plotGraph(expression, minX, maxX, step) {
     let canvas = document.getElementById('graph');
     let ctx = canvas.getContext('2d');
 
     // Destroy the existing Chart instance if it exists
-    Chart.getChart(ctx).destroy();
+    if (myChart !== null) {
+        myChart.destroy();
+    }
 
     let xValues = [];
     let yValues = [];
@@ -30,7 +34,7 @@
     }
 
     // Create a new Chart instance using Chart.js
-    let chart = new Chart(ctx, {
+    myChart = new Chart(ctx, {
         type: 'line', // Use a line chart for plotting the function
         data: {
             labels: xValues, // x values as labels
@@ -44,7 +48,7 @@
         },
         options: {
             responsive: true,
-            maintainAspectRatio: true,
+            maintainAspectRatio: false,
             scales: {
                 x: {
                     type: 'linear',
