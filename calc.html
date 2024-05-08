@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Graphic Calculator</title>
   <script src="/chart.js"></script>
+  <script src="/math.js"></script>
   <script>
   let myChart = null; // Variable to store the Chart instance
 
@@ -314,7 +315,7 @@ base16Mode = !base16Mode;
     <input type="button" value="**" onclick="appendToExpression('**')">
   </div>
   <div class="button-row">
-    <input type="button" value="log10(" onclick="appendToExpression('math.log(')">
+    <input type="button" value="log(" onclick="appendToExpression('Math.log(')">
     <input type="button" value="ln(" onclick="appendToExpression('Math.ln(')">
     <input type="button" value="exp(" onclick="appendToExpression('Math.exp(')">
   </div>
