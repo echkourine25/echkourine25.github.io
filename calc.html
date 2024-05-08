@@ -152,7 +152,6 @@ base16Mode = !base16Mode;
         document.getElementById('log').innerHTML += result + '<br>';
       }
         console.log('baseMode=' + base16Mode);
-      plotGraph(expression, -10, 10, 1);
     }
   </script>
 <style>
@@ -392,7 +391,7 @@ function calculateExpression() {
 }
   document.getElementById('plotButton').addEventListener('click', function() {
     let expression = document.getElementById('expression').value;
-    plotGraph(expression, -10, 10, 0.1); // Adjust minX, maxX, and step as needed
+    plotGraph(expression, -10, 10, 1); // Adjust minX, maxX, and step as needed
 });
 </script>
 
