@@ -317,9 +317,9 @@ base16Mode = !base16Mode;
     <input type="button" value="plot" id="plotButton" title="Plot Graph">
   </div>
   <div class="button-row">
-    <input type="text" value="minX" placeholder="minX">
-    <input type="text" value="maxX" placeholder="maxX">
-    <input type="text" value="step" placeholder="step">  
+    <input type="text" id="minX" value="minX" placeholder="minX">
+    <input type="text" id="maxX" value="maxX" placeholder="maxX">
+    <input type="text" id="step" value="step" placeholder="step">  
   </div>
   <!-- Base16 (BASEadecimal) mode buttons -->
   <div class="button-row">
@@ -408,8 +408,10 @@ function calculateExpression() {
 }
   document.getElementById('plotButton').addEventListener('click', function() {
     let expression = document.getElementById('expression').value;
-   
-    plotGraph(expression, -10, 10, 0.1); // Adjust minX, maxX, and step as needed
+   var minX=document.getElementById('minX').value;
+    var maxX=document.getElementById('maxX').value;
+    var step=document.getElementById('step').value;
+    plotGraph(expression, minX, maxX, step); // Adjust minX, maxX, and step as needed
 });
 </script>
 
