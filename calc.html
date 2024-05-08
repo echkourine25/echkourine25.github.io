@@ -46,7 +46,7 @@
         },
         options: {
             responsive: true,
-            maintainAspectRatio: false,
+            maintainAspectRatio: true,
             scales: {
                 x: {
                     type: 'linear',
@@ -401,7 +401,7 @@ function calculateExpression() {
 }
   document.getElementById('plotButton').addEventListener('click', function() {
     let expression = document.getElementById('expression').value;
-    plotGraph(expression, 0, 1, 0.1); // Adjust minX, maxX, and step as needed
+    plotGraph(expression, 0, 10, 1); // Adjust minX, maxX, and step as needed
 });
 </script>
 
