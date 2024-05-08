@@ -9,7 +9,6 @@
   let myChart = null; // Variable to store the Chart instance
 
 function plotGraph(expression, minX, maxX, step) {
-    let expression = document.getElementById('expression');
     let canvas = document.getElementById('graph');
     let ctx = canvas.getContext('2d');
 
@@ -408,7 +407,7 @@ function calculateExpression() {
     }
 }
   document.getElementById('plotButton').addEventListener('click', function() {
-    let expression = parseInt(document.getElementById('expression').value);
+    let expression = document.getElementById('expression').value;
     let minX=parseInt(document.getElementById('minX').value);
     let maxX=parseInt(document.getElementById('maxX').value);
     let step=parseInt(document.getElementById('step').value);
