@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Graphic Calculator</title>
   <script src="/chart.js"></script>
-  <script src="/math.js"></script>
   <script>
   let myChart = null; // Variable to store the Chart instance
 
@@ -26,7 +25,7 @@ function plotGraph(expression, minX, maxX, step) {
         xValues.push(x);
         try {
             // Evaluate the expression at each x value
-            let y = math.evaluate((expression.replace(/x/g, x)));
+            let y = eval((expression.replace(/x/g, x)));
             yValues.push(y);
         } catch (error) {
             console.error('Error evaluating expression:', error);
@@ -63,12 +62,12 @@ function plotGraph(expression, minX, maxX, step) {
         }
     });
 }
-    function evaluateFunction(expression, xValues) {
+    function eval(expression, xValues) {
     let yValues = [];
     for (let x of xValues) {
         let result;
         try {
-            result = math.evaluate((expression.replace(/x/g, x)));
+            result = eval((expression.replace(/x/g, x)));
             yValues.push(result);
         } catch (error) {
             console.error('Error evaluating expression:', error);
@@ -96,7 +95,7 @@ base16Mode = !base16Mode;
          }}
 
 
-      result = math.evaluate((expression)); // Evaluate the expression
+      result = eval((expression)); // Evaluate the expression
         if (base16Mode) {
           console.log('2nd base 16 if')
             // Convert the result back to base16 format
