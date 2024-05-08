@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Graphic Calculator</title>
   <script src="/chart.js"></script>
-  <script src="/math.min.js"></script>
+  <script src="/math.js"></script>
   <script>
   let myChart = null; // Variable to store the Chart instance
 
@@ -358,7 +358,7 @@ base16Mode = !base16Mode;
     console.log('clear expression');
     }
 
-function calculateExpression() {
+/*function calculateExpression() {
     let expression = document.getElementById('expression').value;
     let result;
     console.log('let expression ='+expression);
@@ -405,6 +405,25 @@ function calculateExpression() {
         // Handle any errors that occurred during evaluation
         document.getElementById('expression').value = 'Error';
         document.getElementById('log').innerHTML += 'Error; ';
+    }
+}*/
+  function calculateExpression() {
+    let expression = document.getElementById('expression').value;
+    let result;
+
+    try {
+        // Evaluate the expression using math.js
+        result = math.evaluate(expression);
+
+        // Update the calculator display with the result
+        document.getElementById('expression').value = result;
+        document.getElementById('log').innerHTML += '=' + result + ';<br/>';
+        console.log('Result = ' + result);
+    } catch (error) {
+        // Handle any errors that occurred during evaluation
+        document.getElementById('expression').value = 'Error';
+        document.getElementById('log').innerHTML += 'Error; ';
+        console.error('Error in evaluating expression:', error);
     }
 }
   document.getElementById('plotButton').addEventListener('click', function() {
