@@ -25,7 +25,7 @@ function plotGraph(expression, minX, maxX, step) {
         xValues.push(x);
         try {
             // Evaluate the expression at each x value
-            let y = eval((expression.replace(/x/g, x)));
+            let y = eval(expression.replace(/x/g, x));
             yValues.push(y);
         } catch (error) {
             console.error('Error evaluating expression:', error);
@@ -62,12 +62,12 @@ function plotGraph(expression, minX, maxX, step) {
         }
     });
 }
-    function eval(expression, xValues) {
+    function evaluateFunction(expression, xValues) {
     let yValues = [];
     for (let x of xValues) {
         let result;
         try {
-            result = eval((expression.replace(/x/g, x)));
+            result = eval(expression.replace(/x/g, x));
             yValues.push(result);
         } catch (error) {
             console.error('Error evaluating expression:', error);
@@ -95,7 +95,7 @@ base16Mode = !base16Mode;
          }}
 
 
-      result = eval((expression)); // Evaluate the expression
+      result = eval(expression); // Evaluate the expression
         if (base16Mode) {
           console.log('2nd base 16 if')
             // Convert the result back to base16 format
@@ -131,7 +131,7 @@ base16Mode = !base16Mode;
         }
 
         try {
-            result = math.evaluate((expression)); // Evaluate the expression
+            result = eval(expression); // Evaluate the expression
         } catch (error) {
             console.error('Error in evaluating expression:', error);
             document.getElementById('log').innerHTML += 'Error: Invalid expression;<br>';
@@ -241,11 +241,6 @@ base16Mode = !base16Mode;
      color: black;
      text-align:center;
   }
-  .calculator input[value="log("],
-  .calculator input[value="ln("],
-  .calculator input[value="exp("]{
-    display: none;
-  }
   .calculator input[value="A"],
   .calculator input[value="B"],
   .calculator input[value="C"],
@@ -314,11 +309,6 @@ base16Mode = !base16Mode;
     <input type="button" value="cos(" onclick="appendToExpression('Math.cos(')">
     <input type="button" value="tan(" onclick="appendToExpression('Math.tan(')">
     <input type="button" value="**" onclick="appendToExpression('**')">
-  </div>
-  <div class="button-row">
-    <input type="button" value="log(" onclick="appendToExpression('Math.log(')">
-    <input type="button" value="ln(" onclick="appendToExpression('Math.ln(')">
-    <input type="button" value="exp(" onclick="appendToExpression('Math.exp(')">
   </div>
   <div class="button-row">
     <input type="button" value="(" onclick="appendToExpression('(')">
@@ -393,7 +383,7 @@ function calculateExpression() {
         }
 
 
-      result = math.evaluate((expression)); // Evaluate the expression
+      result = eval(expression); // Evaluate the expression
         if (base16Mode) {
           console.log('2nd base 16 if')
             // Convert the result back to base16 format
