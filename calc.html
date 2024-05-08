@@ -7,8 +7,14 @@
   <script src="/chart.js"></script>
   <script>
   function plotGraph(expression, minX, maxX, step) {
-    var xValues = [];
-    var yValues = [];
+    let canvas = document.getElementById('graph');
+    let ctx = canvas.getContext('2d');
+
+    // Destroy the existing Chart instance if it exists
+    Chart.getChart(ctx).destroy();
+
+    let xValues = [];
+    let yValues = [];
 
     // Generate x values from minX to maxX with the specified step
     for (let x = minX; x <= maxX; x += step) {
@@ -17,22 +23,14 @@
             // Evaluate the expression at each x value
             let y = eval(expression.replace(/x/g, x));
             yValues.push(y);
-            console.log('y='+y+';x='+x);
         } catch (error) {
             console.error('Error evaluating expression:', error);
             // Handle any evaluation errors here
         }
     }
 
-    // Get the canvas element and its 2D drawing context
-    var canvas = document.getElementById('graph');
-    var ctx = canvas.getContext('2d');
-
-    // Clear the canvas
-    ctx.clearRect(0, 0, 400, 200);
-
     // Create a new Chart instance using Chart.js
-    var chart = new Chart(ctx, {
+    let chart = new Chart(ctx, {
         type: 'line', // Use a line chart for plotting the function
         data: {
             labels: xValues, // x values as labels
