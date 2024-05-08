@@ -17,6 +17,7 @@
             // Evaluate the expression at each x value
             let y = eval(expression.replace(/x/g, x));
             yValues.push(y);
+            console.log('y='+y+';x='+x);
         } catch (error) {
             console.error('Error evaluating expression:', error);
             // Handle any evaluation errors here
