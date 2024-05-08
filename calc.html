@@ -223,6 +223,9 @@ base16Mode = !base16Mode;
   background-color: blue;
   color: white;
 }
+  .calculator input[value="minX"],
+  .calculator input[value="maxX"],
+  .calculator input[value="step"],
   .calculator input[value="plot"],
   .calculator input[value="("],
   .calculator input[value=")"],
@@ -306,6 +309,11 @@ base16Mode = !base16Mode;
     <input type="button" value="cos(" onclick="appendToExpression('Math.cos(')">
     <input type="button" value="tan(" onclick="appendToExpression('Math.tan(')">
     <input type="button" value="**" onclick="appendToExpression('**')">
+  </div>
+  <div class="button-row">
+    <input type="text" value="minX" placeholder="minX">
+    <input type="text" value="maxX" placeholder="maxX">
+    <input type="text" value="step" placeholder="step">  
   </div>
   <div class="button-row">
     <input type="button" value="(" onclick="appendToExpression('(')">
