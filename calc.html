@@ -223,12 +223,12 @@ base16Mode = !base16Mode;
   background-color: blue;
   color: white;
 }
+  .calculator input[value="plot"],
   .calculator input[value="("],
   .calculator input[value=")"],
   .calculator input[value="sin("],
   .calculator input[value="cos("],
   .calculator input[value="tan("],
-  .calculator input[value="sqrt("],
   .calculator input[value="**"]{
     background-color: yellow;
     color: black;
@@ -238,8 +238,6 @@ base16Mode = !base16Mode;
      color: black;
      text-align:center;
   }
-
-  .calculator input[value="plot"],
   .calculator input[value="A"],
   .calculator input[value="B"],
   .calculator input[value="C"],
@@ -312,8 +310,8 @@ base16Mode = !base16Mode;
   <div class="button-row">
     <input type="button" value="(" onclick="appendToExpression('(')">
     <input type="button" value=")" onclick="appendToExpression(')')">
-    <input type="button" value="sqrt(" onclick="appendToExpression('Math.sqrt(')">
     <input type="button" value="x" onclick="appendToExpression('x')">
+    <input type="button" value="plot" id="plotButton" title="Plot Graph">
   </div>
   <!-- Base16 (BASEadecimal) mode buttons -->
   <div class="button-row">
@@ -325,7 +323,6 @@ base16Mode = !base16Mode;
   <div class="button-row">
     <input type="button" value="E" onclick="appendToExpression('E')">
     <input type="button" value="F" onclick="appendToExpression('F')">
-    <input type="button" value="plot" id="plotButton" title="Plot Graph">
     <input type="button" value="BASE" onclick="toggleBase16()">
   </div>
   <div class="button-row">
