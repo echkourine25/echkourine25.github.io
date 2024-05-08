@@ -355,17 +355,6 @@ base16Mode = !base16Mode;
 <div id="log"></div>
 <script>
   function appendToExpression(value) {
-     let input = value;
-    switch (value) {
-        case 'ln(':
-        case 'log(':
-        case 'exp(':
-            input = value; // Use value as is for ln, log, and exp functions
-            break;
-        default:
-            input = "'" + value + "'"; // Wrap other values in quotes
-            break;
-    }
     document.getElementById('expression').value += value;
     document.getElementById('log').innerHTML += value;
     console.log('appendToEpression'+value);
