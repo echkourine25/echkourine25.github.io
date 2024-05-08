@@ -407,16 +407,11 @@ function calculateExpression() {
     }
 }
   document.getElementById('plotButton').addEventListener('click', function() {
-    let expression = document.getElementById('expression').value;
-    console.log("let expression = document.getElementById('expression').value;");
-    let minX=document.getElementById('minX').value;
-    console.log("let minX=document.getElementById('minX').value;");
-    let maxX=document.getElementById('maxX').value;
-    console.log("let maxX=document.getElementById('maxX').value;");
-    let step=document.getElementById('step').value;
-    console.log("let step=document.getElementById('step').value;")
+    let expression = parseInt(document.getElementById('expression').value);
+    let minX=parseInt(document.getElementById('minX').value);
+    let maxX=parseInt(maxX=document.getElementById('maxX').value);
+    let step=parseInt(document.getElementById('step').value;
     plotGraph(expression, minX, maxX, step); // Adjust minX, maxX, and step as needed
-    console.log("plotGraph("+expression+", "+minX+", "+maxX+", "+step);
   });
 </script>
 
