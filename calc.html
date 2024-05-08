@@ -9,6 +9,7 @@
   let myChart = null; // Variable to store the Chart instance
 
 function plotGraph(expression, minX, maxX, step) {
+    let expression = document.getElementById('expression');
     let canvas = document.getElementById('graph');
     let ctx = canvas.getContext('2d');
 
