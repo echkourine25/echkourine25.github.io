@@ -7,8 +7,8 @@
   <script src="/chart.js"></script>
   <script>
     function plotGraph(expression, minX, maxX, step) {
-    let xValues = [0,1,2,3,4,5,6,7,8,9];
-    let yValues = [0,1,2,3,4,5,6,7,8,9];
+    let xValues = [];
+    let yValues = [];
 
     // Generate x values from minX to maxX with the specified step
     for (let x = minX; x <= maxX; x += step) {
@@ -400,7 +400,7 @@ function calculateExpression() {
 }
   document.getElementById('plotButton').addEventListener('click', function() {
     let expression = document.getElementById('expression').value;
-    plotGraph(expression, 1, 10, 1); // Adjust minX, maxX, and step as needed
+    plotGraph(expression, 0, 1, 0.1); // Adjust minX, maxX, and step as needed
 });
 </script>
 
