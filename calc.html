@@ -155,6 +155,50 @@ function calculateExpression() {
 
     </script>
 <style>
+ body {
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+.calculator {
+    width: 300px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    text-align: center;
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+/* Light mode styles */
+body,
+.calculator {
+    color: black;
+    background-color: #f9f9f9;
+}
+
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+    body,
+    .calculator {
+        color: white;
+        background-color: #333;
+    }
+    
+    /* Additional styling for specific elements in dark mode */
+    .calculator input[type="button"],
+    .calculator select {
+        background-color: #222;
+        color: white;
+    }
+    
+    /* Modify other elements as needed for dark mode */
+}
   body {
     margin: 0 auto;
     font-family: Arial, sans-serif;
