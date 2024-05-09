@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Graphic Calculator</title>
   <script src="/chart.js"></script>
+  <script src="/mymath.js></script>
   <script>
   let myChart = null; // Variable to store the Chart instance
 
@@ -76,6 +77,7 @@ function plotGraph(expression, minX, maxX, step) {
     }
           return yValues;
     }
+    
 
  /*     let base16Mode = false;
     function toggleBase16() {
@@ -110,7 +112,7 @@ base16Mode = !base16Mode;
       console.log('baseMode='+base16Mode);
       document.getElementById('log').innerHTML += result + '</br>';
     }*/
-    let base16Mode = false;
+   /* let base16Mode = false;
     let expression = String(document.getElementById('expression'));
     function toggleBase16() {
       let result;
@@ -147,7 +149,7 @@ base16Mode = !base16Mode;
         document.getElementById('log').innerHTML += result + '<br>';
       
         console.log('baseMode=' + base16Mode);
-    }
+    }*/
   </script>
 <style>
   body {
