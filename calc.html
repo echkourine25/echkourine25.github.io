@@ -7,7 +7,7 @@
   <script src="/chart.js"></script>
   <script src="/myMath.js></script>
   <script>
-  let myChart = null; // Variable to store the Chart instance
+  let myChart = null; // Variable to store the Chart instancee
 
 function plotGraph(expression, minX, maxX, step) {
     let canvas = document.getElementById('graph');
@@ -77,80 +77,7 @@ function plotGraph(expression, minX, maxX, step) {
     }
           return yValues;
     }
-    
-
-      let base16Mode = false;
-    function toggleBase16() {
-base16Mode = !base16Mode;
-
-       if (base16Mode) {
-         try{
-         expression = document.getElementById('expression');
-          console.log('in first if base 16')
-            // Utiliser une expression régulière pour trouver et remplacer toutes les valeurs hexadécimales
-            expression = expression.replace(/0x[0-9A-Fa-f]+/g, function(match) {
-                // Extraire le nombre hexadécimal (en ignorant le préfixe '0x') et le convertir en décimal
-                let hexValue = match.substring(2); // Ignorer le préfixe '0x'
-                return parseInt(hexValue, 16);
-            });
-            console.log('Expression after hex to decimal conversion:', expression);
-         }}
-
-
-      result = eval(expression); // Evaluate the expression
-        if (base16Mode) {
-          console.log('2nd base 16 if')
-            // Convert the result back to base16 format
-          console.log('result = Math.floor('+result)
-            result = Math.floor(result); // Ensure the result is an integer for base16 conversion
-          console.log('result.toString\(16\).toUpperCase\(\)');
-            result = result.toString(16).toUpperCase(); // Convert the result to base16
-          result='0x'+result;
-            console.log('result='+result);
-        }
-      document.getElementById('log').innerHTML += base16Mode ? 'Switched to Base16 mode;<br>': 'Switched to Decimal mode;<br>';
-      console.log('baseMode='+base16Mode);
-      document.getElementById('log').innerHTML += result + '</br>';
-    }*/
-   /* let base16Mode = false;
-    let expression = String(document.getElementById('expression'));
-    function toggleBase16() {
-      let result;
-        base16Mode = !base16Mode;
-          console.log('Switching to Base16 mode');
-          console.log(expression);
-          // Use a regular expression to find and replace all hexadecimal values
-          expression = expression.replace(/0x[0-9A-Fa-f]+/g, function(match) {
-            // Extract the hexadecimal number (excluding the '0x' prefix) and convert it to decimal
-            let hexValue = match.substring(2); // Remove the '0x' prefix
-            return parseInt(hexValue, 16);
-          });
-            console.log('Expression after hex to decimal conversion:', expression);
-        
-        try {
-            result = eval(expression); // Evaluate the expression
-        } catch (error) {
-            console.error('Error in evaluating expression:', error);
-            document.getElementById('log').innerHTML += 'Error: Invalid expression;<br>';
-            return;
-        }
-
-        if (base16Mode) {
-            console.log('Converting result to Base16');
-            // Convert the result back to base16 format
-            result = Math.floor(result); // Ensure the result is an integer for base16 conversion
-            result = result.toString(16).toUpperCase(); // Convert the result to base16
-            result = '0x' + result;
-            console.log('Result in Base16:', result);
-        }
-        // Display the mode change and result
-        document.getElementById('expression').innerHTML = result;
-        document.getElementById('log').innerHTML += base16Mode ? 'Switched to Base16 mode;<br>' : 'Switched to Decimal mode;<br>';
-        document.getElementById('log').innerHTML += result + '<br>';
-      
-        console.log('baseMode=' + base16Mode);
-    }*/
-  </script>
+    </script>
 <style>
   body {
     margin: 0 auto;
