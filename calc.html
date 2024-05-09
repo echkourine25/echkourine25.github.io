@@ -412,7 +412,7 @@ function plotGraph(expression, minX, maxX, step) {
     console.log('clear expression');
     }
 
-function calculateExpression() {
+/*function calculateExpression() {
     let result;
     result = eval(document.getElementById('expression').value); // Evaluate the expression
      console.log(result);
@@ -420,6 +420,78 @@ function calculateExpression() {
         document.getElementById('expression').value = result;
         document.getElementById('log').innerHTML += '=' + result + ';<br/>' + result;
         console.log('result = '+ result);
+}*/
+ function calculateExpression() {
+    const baseMode = document.getElementById('base').value;
+    let result;
+
+    // Récupérer l'expression à évaluer
+    const expression = document.getElementById('expression').value;
+
+    // Effectuer le calcul en fonction du mode de base sélectionné
+    switch (baseMode) {
+        case 'base2':
+            // Convertir l'expression en base 2 et évaluer
+            result = evaluateExpressionInBase(expression, 2);
+            break;
+        case 'base8':
+            // Convertir l'expression en base 8 et évaluer
+            result = evaluateExpressionInBase(expression, 8);
+            break;
+        case 'base10':
+            // Évaluer l'expression normalement en base 10
+            result = evaluateExpression(expression);
+            break;
+        case 'base16':
+            // Convertir l'expression en base 16 et évaluer
+            result = evaluateExpressionInBase(expression, 16);
+            break;
+        case 'base32':
+            // Convertir l'expression en base 32 et évaluer
+            result = evaluateExpressionInBase(expression, 32);
+            break;
+        case 'base64':
+            // Convertir l'expression en base 64 et évaluer
+            result = evaluateExpressionInBase(expression, 64);
+            break;
+        default:
+            break;
+    }
+
+    // Mettre à jour l'affichage du résultat
+    document.getElementById('expression').value = result;
+    document.getElementById('log').innerHTML += '=' + result + ';<br/>' + result;
+}
+
+// Fonction pour évaluer une expression dans une base spécifique
+function evaluateExpressionInBase(expression, base) {
+    try {
+        // Analyser l'expression et convertir les nombres dans la base spécifiée
+        const convertedExpression = convertNumbersToBase(expression, base);
+        // Évaluer l'expression convertie
+        return eval(convertedExpression);
+    } catch (error) {
+        console.error('Erreur lors de l\'évaluation de l\'expression:', error);
+        return 'Erreur de calcul';
+    }
+}
+
+// Fonction pour convertir les nombres dans une expression en une base spécifique
+function convertNumbersToBase(expression, base) {
+    return expression.replace(/\b\d+\b/g, function(match) {
+        const decimalNumber = parseInt(match, 10); // Convertir le nombre décimal
+        return decimalToBase(decimalNumber, base); // Convertir en base spécifique
+    });
+}
+
+// Fonction pour convertir un nombre décimal en une base spécifique
+function decimalToBase(decimalNumber, base) {
+    return decimalNumber.toString(base);
+}
+
+// Fonction pour évaluer une expression normalement (base 10)
+function evaluateExpression(expression) {
+    return eval(expression);
 }
   // Add event listener to the base mode dropdown
 const selectDropdown = document.getElementById('base');
