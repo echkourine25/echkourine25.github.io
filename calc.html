@@ -91,7 +91,7 @@ function decimalToBase64(decimalNumber) {
 
 // Update expression based on selected base mode
 function updateBaseMode() {
-    const selectedMode = document.getElementById('base').value;
+    let selectedMode = document.getElementById('base').value;
     let currentExpression = document.getElementById('expression').value;
     let updatedExpression = currentExpression;
 
