@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Graphic Calculator</title>
   <script src="/chart.js"></script>
-  <script src="/mymath.js></script>
+  <script src="/myMath.js></script>
   <script>
   let myChart = null; // Variable to store the Chart instance
 
@@ -79,7 +79,7 @@ function plotGraph(expression, minX, maxX, step) {
     }
     
 
- /*     let base16Mode = false;
+      let base16Mode = false;
     function toggleBase16() {
 base16Mode = !base16Mode;
 
@@ -325,7 +325,12 @@ base16Mode = !base16Mode;
   <div class="button-row">
     <input type="button" value="E" onclick="appendToExpression('E')">
     <input type="button" value="F" onclick="appendToExpression('F')">
-    <input type="button" value="BASE" onclick="toggleBase16()">
+    <select name="base" id="base" value="base10">
+      <option value="base10">base10</option>
+      <option value="base16">base16</option>
+      <option value="base32">base32</option>
+      <option value="base64>base64</option>
+    </select>
   </div>
   <div class="button-row">
     <input type="button" value="0x" onclick="appendToExpression('0x')">
