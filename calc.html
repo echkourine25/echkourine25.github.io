@@ -53,13 +53,13 @@ function updateBaseMode() {
 }
 
     // Update the expression field with the converted expression
-    document.getElementById('expression').value = updatedExpression;
+    document.getElementById('expression').value = eval(updatedExpression);
 
     // Update the log with the selected base mode
-    document.getElementById('log').innerHTML += ';<br/>Base mode changed to ' + baseMode + ';<br/>'+updatedExpression;
+    document.getElementById('log').innerHTML += ';<br/>Base mode changed to ' + baseMode + ';<br/>'+eval(updatedExpression);
 
     // Log the updated expression with the selected base mode
-    console.log('Updated expression (' + baseMode + '):', updatedExpression);
+    console.log('Updated expression (' + baseMode + '):', eval(updatedExpression));
 }
 
 
@@ -367,14 +367,14 @@ function calculateExpression() {
     let expression = document.getElementById('expression').value;
     let result;
     console.log('let expression ='+expression);
-    result = eval(updateBaseMode(expression)); // Evaluate the expression
+    result = eval(expression); // Evaluate the expression
       
         // Update the calculator display with the result
         document.getElementById('expression').value = result;
         document.getElementById('log').innerHTML += '=' + result + ';<br/>' + result;
         console.log('result = '+ result);
 }
- // Add event listener to the base mode dropdown
+  // Add event listener to the base mode dropdown
 const selectDropdown = document.getElementById('base');
 selectDropdown.addEventListener('change', updateBaseMode);
   function decimalToHexadecimal(decimalNumber) {
