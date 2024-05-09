@@ -414,7 +414,7 @@ function plotGraph(expression, minX, maxX, step) {
 
 function calculateExpression() {
     let result;
-    const base=document.getElementById('base');
+    const base=document.getElementById('base').value;
     result = eval(document.getElementById('expression').value); // Evaluate the expression
      console.log(base);
         // Update the calculator display with the result
