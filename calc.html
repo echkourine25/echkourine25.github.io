@@ -116,6 +116,8 @@ base16Mode = !base16Mode;
         base16Mode = !base16Mode;
       try{
         let expression = document.getElementById('expression').value;
+      }catch(error){
+        console.log(error);
       }
         let result;
 
