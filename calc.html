@@ -403,12 +403,6 @@ function calculateExpression() {
                 return parseInt(hexValue, 16);
             });
             console.log('Expression after hex to decimal conversion:', expression);
-        }
-
-
-      result = eval(expression); // Evaluate the expression
-        if (base16Mode) {
-          console.log('2nd base 16 if')
             // Convert the result back to base16 format
           console.log('result = Math.floor('+result)
             result = Math.floor(result); // Ensure the result is an integer for base16 conversion
@@ -416,13 +410,11 @@ function calculateExpression() {
             result = result.toString(16).toUpperCase(); // Convert the result to base16
           result='0x'+result;
             console.log('result='+result);
+            document.getElementById('expression').innerHTML = result;
+        }else {
+          console.log('base10;result:'+result');
+          document.getElementById('expression').innerHTML = result;
         }
-
-      
-        // Update the calculator display with the result
-        document.getElementById('expression').innerHTML = result;
-        document.getElementById('log').innerHTML += '=' + result + ';<br/>' + result;
-        console.log('result = '+ result);
     } catch (error) {
         // Handle any errors that occurred during evaluation
         document.getElementById('expression').value = 'error';
