@@ -425,8 +425,9 @@ function calculateExpression() {
         console.log('result = '+ result);
     } catch (error) {
         // Handle any errors that occurred during evaluation
-        document.getElementById('expression').value = 'Error';
-        document.getElementById('log').innerHTML += 'Error; ';
+        document.getElementById('expression').value = 'error';
+        document.getElementById('log').innerHTML += 'error; ';
+        console.log(error);
     }
 }
   document.getElementById('plotButton').addEventListener('click', function() {
