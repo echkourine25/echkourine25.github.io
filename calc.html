@@ -6,8 +6,9 @@
 <title>Graphic Calculator</title>
  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
  <script>
-  // Define a variable to store the current base mode
-
+  function decimalToBinary(decimalNumber) {
+    return decimalNumber.toString(2);
+}
 // Update expression and log based on the selected base mode
 let baseMode = 'base2'; // Initialize base mode
 
@@ -44,15 +45,22 @@ function updateBaseMode() {
                 return decimalToOctal(parseInt(match));
             });
             break;
+        case 'base2':
+            // Convert decimal numbers to binary (base2) representation in the expression
+            updatedExpression = currentExpression.replace(/\b\d+\b/g, function(match) {
+                return decimalToBinary(parseInt(match));
+            });
+            break;
         default:
             break;
     }
 
     // Update the expression field with the converted expression
     document.getElementById('expression').value = updatedExpression;
-    document.getElementById('log').innerHTML += updatedExpression;
+    document.getElementById('log').innerHTML += ';<br/>Switched base mode to '+selectedMode+'='+updatedExpression;
 }
 
+// Function to convert a decimal number to binary (base2) representation
 
 function decimalToBase32(decimalNumber) {
     const alphabet = '0123456789ABCDEFGHIJKLMNOPQRSTUV';
@@ -357,12 +365,12 @@ function plotGraph(expression, minX, maxX, step) {
 function calculateExpression() {
     let result;
     result = updateBaseMode(eval(document.getElementById('expression').value)); // Evaluate the expression
-      console.log(result);
+/*      console.log(result);
         // Update the calculator display with the result
         document.getElementById('expression').value = result;
         document.getElementById('log').innerHTML += '=' + result + ';<br/>' + result;
         console.log('result = '+ result);
-}
+*/}
   // Add event listener to the base mode dropdown
 const selectDropdown = document.getElementById('base');
 selectDropdown.addEventListener('change', updateBaseMode);
