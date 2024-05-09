@@ -53,12 +53,7 @@ function updateBaseMode() {
     console.log('Updated expression (' + baseMode + '):', updatedExpression);
 }
 
-// Add event listener to the base mode dropdown
-const selectDropdown = document.getElementById('base');
-selectDropdown.addEventListener('change', updateBaseMode);
-  function decimalToHexadecimal(decimalNumber) {
-    return decimalNumber.toString(16).toUpperCase();
-}
+
 function decimalToBase32(decimalNumber) {
     const alphabet = '0123456789ABCDEFGHIJKLMNOPQRSTUV';
     let base32Value = '';
@@ -413,6 +408,12 @@ function calculateExpression() {
         document.getElementById('expression').value = 'Error';
         document.getElementById('log').innerHTML += 'Error; ';
     }
+}
+ // Add event listener to the base mode dropdown
+const selectDropdown = document.getElementById('base');
+selectDropdown.addEventListener('change', updateBaseMode);
+  function decimalToHexadecimal(decimalNumber) {
+    return decimalNumber.toString(16).toUpperCase();
 }
   document.getElementById('plotButton').addEventListener('click', function() {
     let expression = document.getElementById('expression').value;
