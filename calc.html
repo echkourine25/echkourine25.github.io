@@ -37,10 +37,20 @@ function updateBaseMode() {
                 return decimalToBase64(parseInt(match));
             });
             break;
-        default:
-            // Default to base10 (decimal) representation
-            updatedExpression = currentExpression;
-    }
+         case 'base10':
+        // Default to base10 (decimal) representation (no conversion needed)
+        updatedExpression = currentExpression;
+        break;
+    case 'base8':
+        // Convert decimal numbers to octal representation in the expression
+        updatedExpression = currentExpression.replace(/\b\d+\b/g, function(match) {
+            return decimalToOctal(parseInt(match));
+        });
+        break;
+    default:
+        // Default case (handling unknown base modes)
+        updatedExpression = currentExpression;
+}
 
     // Update the expression field with the converted expression
     document.getElementById('expression').value = updatedExpression;
