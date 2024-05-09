@@ -114,7 +114,9 @@ base16Mode = !base16Mode;
     
     function toggleBase16() {
         base16Mode = !base16Mode;
-         = document.getElementById('expression').value;
+    expression = document.getElementById('expression').value;
+    
+        let expression = document.getElementById('expression').value;
         let result;
 
         if (base16Mode) {
@@ -356,9 +358,9 @@ base16Mode = !base16Mode;
     }
 
 function calculateExpression() {
-     = document.getElementById('expression').value;
+    let expression = document.getElementById('expression').value;
     let result;
-    console.log(' ='+expression);
+    console.log('let expression ='+expression);
 
   /*  try {
         if (base16Mode) {
@@ -405,7 +407,7 @@ function calculateExpression() {
     }
 }
   document.getElementById('plotButton').addEventListener('click', function() {
-     = document.getElementById('expression').value;
+    let expression = document.getElementById('expression').value;
     let minX=parseInt(document.getElementById('minX').value);
     let maxX=parseInt(document.getElementById('maxX').value);
     let step=parseInt(document.getElementById('step').value);
