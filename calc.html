@@ -355,16 +355,14 @@ function plotGraph(expression, minX, maxX, step) {
     console.log('clear expression');
     }
 
-function calculateExpression() {
-    let expression = document.getElementById('expression').value;
+function calculateExpression() 
     let result;
-    console.log('let expression ='+expression);
     result = updateBaseMode(eval(expression)); // Evaluate the expression
       console.log(result);
         // Update the calculator display with the result
-        //document.getElementById('expression').value = result;
-        //document.getElementById('log').innerHTML += '=' + result + ';<br/>' + result;
-        //console.log('result = '+ result);
+        document.getElementById('expression').value = result;
+        document.getElementById('log').innerHTML += '=' + result + ';<br/>' + result;
+        console.log('result = '+ result);
 }
   // Add event listener to the base mode dropdown
 const selectDropdown = document.getElementById('base');
