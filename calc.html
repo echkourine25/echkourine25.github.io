@@ -131,6 +131,7 @@ function updateBaseMode() {
 
     // Update the expression field with the converted expression
     document.getElementById('expression').value = updatedExpression;
+    document.getElementById('log').innerHTML += ';<br/>Base:'+selectedMode+':'+updatedExpression;
 }
 
 // Function to evaluate the expression
