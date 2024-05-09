@@ -420,7 +420,7 @@ function calculateExpression() {
 
       
         // Update the calculator display with the result
-        document.getElementById('expression').value = result;
+        document.getElementById('expression').innerHTML = result;
         document.getElementById('log').innerHTML += '=' + result + ';<br/>' + result;
         console.log('result = '+ result);
     } catch (error) {
