@@ -99,12 +99,12 @@ function updateBaseMode() {
     switch (selectedMode) {
         case '2':
             updatedExpression = currentExpression.replace(/\b\d+\b/g, function(match) {
-                return decimalToBinary(parseInt(match));
+                return '0b'+decimalToBinary(parseInt(match));
             });
             break;
         case '8':
             updatedExpression = currentExpression.replace(/\b\d+\b/g, function(match) {
-                return decimalToOctal(parseInt(match));
+                return '0o'+decimalToOctal(parseInt(match));
             });
             break;
         case '10':
