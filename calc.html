@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+e<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -42,13 +42,13 @@ function updateBaseMode() {
             break;
         case 'base8':
             updatedExpression = currentExpression.replace(/\b\d+\b/g, function(match) {
-                return decimalToOctal(parseInt(match));
+                return '0o'+decimalToOctal(parseInt(match));
             });
             break;
         case 'base2':
             // Convert decimal numbers to binary (base2) representation in the expression
             updatedExpression = currentExpression.replace(/\b\d+\b/g, function(match) {
-                return decimalToBinary(parseInt(match));
+                return '0b'+decimalToBinary(parseInt(match));
             });
             break;
         default:
