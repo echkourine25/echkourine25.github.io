@@ -122,6 +122,7 @@ base16Mode = !base16Mode;
 
         if (base16Mode) {
             console.log('Switching to Base16 mode');
+          console.log(expression);
             // Use a regular expression to find and replace all hexadecimal values
             expression = expression.replace(/0x[0-9A-Fa-f]+/g, function(match) {
                 // Extract the hexadecimal number (excluding the '0x' prefix) and convert it to decimal
