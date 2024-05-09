@@ -61,7 +61,17 @@ function updateBaseMode() {
 }
 
 // Function to convert a decimal number to binary (base2) representation
+function decimalToOctal(decimalNumber) {
+    // Use toString() with radix 8 to convert decimalNumber to octal representation
+    let octalValue = (decimalNumber).toString(8);
 
+    // Ensure that the octal representation starts with '0o'
+    if (!octalValue.startsWith('0o')) {
+        octalValue = '0o' + octalValue;
+    }
+
+    return octalValue;
+}
 function decimalToBase32(decimalNumber) {
     const alphabet = '0123456789ABCDEFGHIJKLMNOPQRSTUV';
     let base32Value = '';
