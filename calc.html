@@ -130,6 +130,7 @@ base16Mode = !base16Mode;
 
         try {
             result = eval(expression); // Evaluate the expression
+            console.log('toggleBase16TryEval='+result);
         } catch (error) {
             console.error('Error in evaluating expression:', error);
             document.getElementById('log').innerHTML += 'Error: Invalid expression;<br>';
@@ -137,14 +138,14 @@ base16Mode = !base16Mode;
         }
 
         if (base16Mode) {
-            console.log('Converting result to Base16');
+            console.log('toggleBase16IfBase16');
             // Convert the result back to base16 format
             result = Math.floor(result); // Ensure the result is an integer for base16 conversion
             result = result.toString(16).toUpperCase(); // Convert the result to base16
             result = '0x' + result;
             console.log('Result in Base16:', result);
         }else{
-
+          console.log('toggleBase16ModeElse;result='+result);
           // Display the mode change and result
           document.getElementById('expression').innerHTML = result;
           document.getElementById('log').innerHTML += base16Mode ? 'Switched to Base16 mode;<br>' : 'Switched to Decimal mode;<br>';
