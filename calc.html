@@ -229,6 +229,7 @@ base16Mode = !base16Mode;
   .calculator input[value="plot"],
   .calculator input[value="("],
   .calculator input[value=")"],
+  .calculator input[value="log("],
   .calculator input[value="sin("],
   .calculator input[value="cos("],
   .calculator input[value="tan("],
@@ -305,6 +306,9 @@ base16Mode = !base16Mode;
     <input type="button" value="+" onclick="appendToExpression('+')">
   </div>
   <div class="button-row">
+  <div class="button-row">
+    <input type="button" value="log(" onclick="appendToExpression('Math.log(')">
+  </div>
     <input type="button" value="sin(" onclick="appendToExpression('Math.sin(')">
     <input type="button" value="cos(" onclick="appendToExpression('Math.cos(')">
     <input type="button" value="tan(" onclick="appendToExpression('Math.tan(')">
