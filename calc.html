@@ -22,44 +22,36 @@ function updateBaseMode() {
         case 'base16':
             // Convert decimal numbers to hexadecimal representation in the expression
             updatedExpression = currentExpression.replace(/\b\d+\b/g, function(match) {
-                return decimalToHexadecimal(parseInt(match));
+                return decimalToHexadecimal(parseInt(match)).toString(16);
             });
             break;
         case 'base32':
             // Convert decimal numbers to base32 representation in the expression
             updatedExpression = currentExpression.replace(/\b\d+\b/g, function(match) {
-                return decimalToBase32(parseInt(match));
+                return decimalToBase32(parseInt(match)).toString(32);
             });
             break;
         case 'base64':
             // Convert decimal numbers to base64 representation in the expression
             updatedExpression = currentExpression.replace(/\b\d+\b/g, function(match) {
-                return decimalToBase64(parseInt(match));
+                return decimalToBase64(parseInt(match)).toString(64);
             });
             break;
          case 'base10':
         // Default to base10 (decimal) representation (no conversion needed)
-        updatedExpression = eval(currentExpression);
+        updatedExpression = eval(currentExpression).toString(10);
         break;
     case 'base8':
         // Convert decimal numbers to octal representation in the expression
         updatedExpression = currentExpression.replace(/\b\d+\b/g, function(match) {
-            return decimalToOctal(parseInt(match));
+            return decimalToOctal(parseInt(match)).toString(8);
         });
         break;
     default:
-        // Default case (handling unknown base modes)
-        updatedExpression = eval(currentExpression);
+        break;
 }
 
-    // Update the expression field with the converted expression
-    document.getElementById('expression').value = eval(updatedExpression);
-
-    // Update the log with the selected base mode
-    document.getElementById('log').innerHTML += ';<br/>Base mode changed to ' + baseMode + ';<br/>'+eval(updatedExpression);
-
-    // Log the updated expression with the selected base mode
-    console.log('Updated expression (' + baseMode + '):', eval(updatedExpression));
+   
 }
 
 
