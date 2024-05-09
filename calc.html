@@ -43,31 +43,31 @@ function updateBaseMode() {
 
     // Handle conversion of the current expression based on the selected base mode
     switch (selectedMode) {
-        case 'base16':
+        case '16':
             updatedExpression = currentExpression.replace(/\b\d+\b/g, function(match) {
                 return '0x'+decimalToHexadecimal(parseInt(match));
             });
             break;
-        case 'base32':
+        case '32':
             updatedExpression = currentExpression.replace(/\b\d+\b/g, function(match) {
                 return decimalToBase32(parseInt(match));
             });
             break;
-        case 'base64':
+        case '64':
             updatedExpression = currentExpression.replace(/\b\d+\b/g, function(match) {
                 return decimalToBase64(parseInt(match));
             });
             break;
-        case 'base10':
+        case '10':
             // Default to base10 (decimal) representation (no conversion needed)
             updatedExpression = eval(currentExpression).toString();
             break;
-        case 'base8':
+        case '8':
             updatedExpression = currentExpression.replace(/\b\d+\b/g, function(match) {
                 return decimalToOctal(parseInt(match));
             });
             break;
-        case 'base2':
+        case '2':
             // Convert decimal numbers to binary (base2) representation in the expression
             updatedExpression = currentExpression.replace(/\b\d+\b/g, function(match) {
                 return decimalToBinary(parseInt(match));
@@ -370,12 +370,12 @@ function plotGraph(expression, minX, maxX, step) {
     <input type="button" value="E" onclick="appendToExpression('E')">
     <input type="button" value="F" onclick="appendToExpression('F')">
     <select name="base" id="base">
-      <option value="base2">base2</option>
-      <option value="base8">base8</option>
-      <option selected value="base10">base10</option>
-      <option value="base16">base16</option>
-      <option value="base32">base32</option>
-      <option value="base64">base64</option>
+      <option value="2">base2</option>
+      <option value="8">base8</option>
+      <option selected value="10">base10</option>
+      <option value="16">base16</option>
+      <option value="32">base32</option>
+      <option value="64">base64</option>
     </select>
   </div>
   <div class="button-row">
@@ -414,8 +414,9 @@ function plotGraph(expression, minX, maxX, step) {
 
 function calculateExpression() {
     let result;
+    const base=document.getElementById('base');
     result = eval(document.getElementById('expression').value); // Evaluate the expression
-     console.log(result);
+     console.log(result).toString(base);
         // Update the calculator display with the result
         document.getElementById('expression').value = result;
         document.getElementById('log').innerHTML += '=' + result + ';<br/>' + result;
