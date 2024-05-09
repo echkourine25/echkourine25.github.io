@@ -23,7 +23,7 @@ function updateBaseMode() {
     switch (selectedMode) {
         case 'base16':
             updatedExpression = currentExpression.replace(/\b\d+\b/g, function(match) {
-                return 'Ox'+decimalToHexadecimal(parseInt(match));
+                return '0x'+decimalToHexadecimal(parseInt(match));
             });
             break;
         case 'base32':
