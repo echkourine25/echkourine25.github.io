@@ -144,13 +144,13 @@ base16Mode = !base16Mode;
             result = result.toString(16).toUpperCase(); // Convert the result to base16
             result = '0x' + result;
             console.log('Result in Base16:', result);
-        }else{
-          console.log('toggleBase16ModeElse;result='+result);
+        }
+          console.log('result='+result);
           // Display the mode change and result
           document.getElementById('expression').innerHTML = result;
           document.getElementById('log').innerHTML += base16Mode ? 'Switched to Base16 mode;<br>' : 'Switched to Decimal mode;<br>';
           console.log('baseMode=' + base16Mode);
-        }
+      
     }
   </script>
 <style>
