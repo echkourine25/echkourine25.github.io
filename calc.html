@@ -120,7 +120,7 @@ base16Mode = !base16Mode;
         }
         let result;
 
-        if (base16Mode) {
+        if (base16Mode & expression != 0) {
             console.log('Switching to Base16 mode');
           console.log(expression);
             // Use a regular expression to find and replace all hexadecimal values
