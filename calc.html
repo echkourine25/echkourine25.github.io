@@ -6,123 +6,6 @@
 <title>Graphic Calculator</title>
  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
  <script>
-  function octalToBinary(octalValue) {
-    // Remove the '0o' prefix to get the actual octal string
-    let octalString = octalValue.slice(2);
-
-    // Parse the octal string to its decimal equivalent
-    let decimalNumber = parseInt(octalString, 8);
-
-    // Convert the decimal number to binary representation
-    let binaryValue = decimalNumber.toString(2);
-
-    return binaryValue;
-}function decimalToOctal(decimalNumber) {
-    // Use toString() with radix 8 to convert decimalNumber to octal representation
-    let octalValue = (decimalNumber).toString(8);
-
-    // Ensure that the octal representation starts with '0o'
-    if (!octalValue.startsWith('0o')) {
-        octalValue = '0o' + octalValue;
-    }
-
-    return octalValue;
-}
-  function decimalToBinary(decimalNumber) {
-    return decimalNumber.toString(2);
-}
-// Update expression and log based on the selected base mode
-let baseMode = 'base10'; // Initialize base mode
-
-function updateBaseMode() {
-    const selectedMode = document.getElementById('base').value;
-
-    // Get the current expression and update it based on the new base mode
-    let currentExpression = document.getElementById('expression').value;
-    let updatedExpression = currentExpression;
-
-    // Handle conversion of the current expression based on the selected base mode
-    switch (selectedMode) {
-        case '16':
-            updatedExpression = currentExpression.replace(/\b\d+\b/g, function(match) {
-                return '0x'+decimalToHexadecimal(parseInt(match));
-            });
-            break;
-        case '32':
-            updatedExpression = currentExpression.replace(/\b\d+\b/g, function(match) {
-                return decimalToBase32(parseInt(match));
-            });
-            break;
-        case '64':
-            updatedExpression = currentExpression.replace(/\b\d+\b/g, function(match) {
-                return decimalToBase64(parseInt(match));
-            });
-            break;
-        case '10':
-            // Default to base10 (decimal) representation (no conversion needed)
-            updatedExpression = eval(currentExpression).toString();
-            break;
-        case '8':
-            updatedExpression = currentExpression.replace(/\b\d+\b/g, function(match) {
-                return decimalToOctal(parseInt(match));
-            });
-            break;
-        case '2':
-            // Convert decimal numbers to binary (base2) representation in the expression
-            updatedExpression = currentExpression.replace(/\b\d+\b/g, function(match) {
-                return decimalToBinary(parseInt(match));
-            });
-            break;
-        default:
-            break;
-    }
-
-    // Update the expression field with the converted expression
-    document.getElementById('expression').value = updatedExpression;
-    document.getElementById('log').innerHTML += ';<br/>Switched base mode to '+selectedMode+'='+updatedExpression;
-}
-
-// Function to convert a decimal number to binary (base2) representation
-function decimalToOctal(decimalNumber) {
-    // Use toString() with radix 8 to convert decimalNumber to octal representation
-    let octalValue = (decimalNumber).toString(8);
-
-    // Ensure that the octal representation starts with '0o'
-    if (!octalValue.startsWith('0o')) {
-        octalValue = '0o' + octalValue;
-    }
-
-    return octalValue;
-}
-function decimalToBase32(decimalNumber) {
-    const alphabet = '0123456789ABCDEFGHIJKLMNOPQRSTUV';
-    let base32Value = '';
-    while (decimalNumber > 0) {
-        base32Value = alphabet[decimalNumber % 32] + base32Value;
-        decimalNumber = Math.floor(decimalNumber / 32);
-    }
-    return base32Value;
-}
-function decimalToBase64(decimalNumber) {
-    return btoa(decimalNumber.toString());
-}
-function octalToDecimal(octalValue) {
-    return parseInt(octalValue, 8);
-}
-function hexadecimalToDecimal(hexadecimalValue) {
-    return parseInt(hexadecimalValue, 16);
-}
-function base32ToDecimal(base32Value) {
-    const alphabet = '0123456789ABCDEFGHIJKLMNOPQRSTUV';
-    let decimalNumber = 0;
-    for (let char of base32Value) {
-        decimalNumber = decimalNumber * 32 + alphabet.indexOf(char);
-    }
-    return decimalNumber;
-}
-function base64ToDecimal(base64Value) {
-    return parseInt(atob(base64Value), 10);
-}
   let myChart = null; // Variable to store the Chart instancee
 
 function plotGraph(expression, minX, maxX, step) {
@@ -179,20 +62,91 @@ function plotGraph(expression, minX, maxX, step) {
         }
     });
 }
-    function evaluateFunction(expression, xValues) {
-    let yValues = [];
-    for (let x of xValues) {
-        let result;
-        try {
-            result = eval(expression.replace(/x/g, x));
-            yValues.push(result);
-        } catch (error) {
-            console.error('Error evaluating expression:', error);
-            return [];
-        }
+<script>
+// Helper functions for base conversions
+function decimalToBinary(decimalNumber) {
+    return decimalNumber.toString(2);
+}
+
+function decimalToOctal(decimalNumber) {
+    return decimalNumber.toString(8);
+}
+
+function decimalToHexadecimal(decimalNumber) {
+    return decimalNumber.toString(16).toUpperCase();
+}
+
+function decimalToBase32(decimalNumber) {
+    const alphabet = '0123456789ABCDEFGHIJKLMNOPQRSTUV';
+    let base32Value = '';
+    while (decimalNumber > 0) {
+        base32Value = alphabet[decimalNumber % 32] + base32Value;
+        decimalNumber = Math.floor(decimalNumber / 32);
     }
-          return yValues;
+    return base32Value;
+}
+
+function decimalToBase64(decimalNumber) {
+    return btoa(decimalNumber.toString());
+}
+
+// Update expression based on selected base mode
+function updateBaseMode() {
+    const selectedMode = document.getElementById('base').value;
+    let currentExpression = document.getElementById('expression').value;
+    let updatedExpression = currentExpression;
+
+    // Handle conversion of the current expression based on the selected base mode
+    switch (selectedMode) {
+        case '2':
+            updatedExpression = currentExpression.replace(/\b\d+\b/g, function(match) {
+                return decimalToBinary(parseInt(match));
+            });
+            break;
+        case '8':
+            updatedExpression = currentExpression.replace(/\b\d+\b/g, function(match) {
+                return decimalToOctal(parseInt(match));
+            });
+            break;
+        case '10':
+            // Default to decimal representation (no conversion needed)
+            break;
+        case '16':
+            updatedExpression = currentExpression.replace(/\b\d+\b/g, function(match) {
+                return '0x' + decimalToHexadecimal(parseInt(match));
+            });
+            break;
+        case '32':
+            updatedExpression = currentExpression.replace(/\b\d+\b/g, function(match) {
+                return decimalToBase32(parseInt(match));
+            });
+            break;
+        case '64':
+            updatedExpression = currentExpression.replace(/\b\d+\b/g, function(match) {
+                return decimalToBase64(parseInt(match));
+            });
+            break;
+        default:
+            break;
     }
+
+    // Update the expression field with the converted expression
+    document.getElementById('expression').value = updatedExpression;
+}
+
+// Function to evaluate the expression
+function calculateExpression() {
+    const expression = document.getElementById('expression').value;
+    let result;
+    
+    try {
+        result = eval(expression); // Evaluate the expression
+        document.getElementById('result').textContent = '= ' + result;
+    } catch (error) {
+        console.error('Error evaluating expression:', error);
+        document.getElementById('result').textContent = 'Error';
+    }
+}
 
     </script>
 <style>
