@@ -114,8 +114,9 @@ base16Mode = !base16Mode;
     
     function toggleBase16() {
         base16Mode = !base16Mode;
-        if(let expression = document.getElementById('expression').value ==null‘){
-         let expression =0; 
+        let expression = 0;
+        if(document.getElementById('expression').value == null){
+          expression=document.getElementById('expression').value;
         }
         let result;
 
