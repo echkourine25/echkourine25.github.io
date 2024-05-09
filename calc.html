@@ -356,7 +356,7 @@ function plotGraph(expression, minX, maxX, step) {
 
 function calculateExpression() {
     let result;
-    result = updateBaseMode(eval(expression)); // Evaluate the expression
+    result = updateBaseMode(eval(document.getElementById('expression').value)); // Evaluate the expression
       console.log(result);
         // Update the calculator display with the result
         document.getElementById('expression').value = result;
