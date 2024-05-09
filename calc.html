@@ -116,9 +116,7 @@ base16Mode = !base16Mode;
         base16Mode = !base16Mode;
       try{
         let expression = document.getElementById('expression').value;
-      }catch(error){
-        console.log(error);
-      }
+      
         let result;
 
         if (base16Mode) {
@@ -157,6 +155,9 @@ base16Mode = !base16Mode;
         document.getElementById('log').innerHTML += result + '<br>';
       }
         console.log('baseMode=' + base16Mode);
+        }catch(error){
+        console.log(error);
+      }
     }
   </script>
 <style>
