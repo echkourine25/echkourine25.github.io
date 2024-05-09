@@ -77,48 +77,85 @@ function plotGraph(expression, minX, maxX, step) {
           return yValues;
     }
 
-let base16Mode = false;
+ /*     let base16Mode = false;
+    function toggleBase16() {
+base16Mode = !base16Mode;
 
-function toggleBase16() {
-    base16Mode = !base16Mode;
-    let expressionInput = document.getElementById('expression');
-    let expression = expressionInput.value;
-    let result;
+       if (base16Mode) {
+         try{
+         expression = document.getElementById('expression');
+          console.log('in first if base 16')
+            // Utiliser une expression régulière pour trouver et remplacer toutes les valeurs hexadécimales
+            expression = expression.replace(/0x[0-9A-Fa-f]+/g, function(match) {
+                // Extraire le nombre hexadécimal (en ignorant le préfixe '0x') et le convertir en décimal
+                let hexValue = match.substring(2); // Ignorer le préfixe '0x'
+                return parseInt(hexValue, 16);
+            });
+            console.log('Expression after hex to decimal conversion:', expression);
+         }}
 
-    if (base16Mode) {
-        console.log('Switched to Base16 mode');
-        // Convert any hexadecimal values in the expression to decimal
-        expression = expression.replace(/0x[0-9A-Fa-f]+/g, function(match) {
-            let hexValue = match.substring(2); // Extract the hexadecimal part
-            return parseInt(hexValue, 16); // Convert to decimal
-        });
-        console.log('Expression after hex to decimal conversion:', expression);
-    }
 
+      result = eval(expression); // Evaluate the expression
+        if (base16Mode) {
+          console.log('2nd base 16 if')
+            // Convert the result back to base16 format
+          console.log('result = Math.floor('+result)
+            result = Math.floor(result); // Ensure the result is an integer for base16 conversion
+          console.log('result.toString\(16\).toUpperCase\(\)');
+            result = result.toString(16).toUpperCase(); // Convert the result to base16
+          result='0x'+result;
+            console.log('result='+result);
+        }
+      document.getElementById('log').innerHTML += base16Mode ? 'Switched to Base16 mode;<br>': 'Switched to Decimal mode;<br>';
+      console.log('baseMode='+base16Mode);
+      document.getElementById('log').innerHTML += result + '</br>';
+    }*/
+    let base16Mode = false;
     
-        result = eval(expression); // Evaluate the expression
-        console.log('Evaluated result:', result);
-try {
+    function toggleBase16() {
+        base16Mode = !base16Mode;
+    expression = document.getElementById('expression').value;
+    
+        let expression = document.getElementById('expression').value;
+        let result;
+
+        if (base16Mode) {
+            console.log('Switching to Base16 mode');
+            // Use a regular expression to find and replace all hexadecimal values
+            expression = expression.replace(/0x[0-9A-Fa-f]+/g, function(match) {
+                // Extract the hexadecimal number (excluding the '0x' prefix) and convert it to decimal
+                let hexValue = match.substring(2); // Remove the '0x' prefix
+                return parseInt(hexValue, 16);
+            });
+            console.log('Expression after hex to decimal conversion:', expression);
+        }
+
+        try {
+            result = eval(expression); // Evaluate the expression
+        } catch (error) {
+            console.error('Error in evaluating expression:', error);
+            document.getElementById('log').innerHTML += 'Error: Invalid expression;<br>';
+            return;
+        }
+
         if (base16Mode) {
             console.log('Converting result to Base16');
-            // Convert the result from decimal to hexadecimal
-            result = result.toString(16).toUpperCase(); // Convert to base16
-            result = '0x' + result; // Add '0x' prefix
+            // Convert the result back to base16 format
+            result = Math.floor(result); // Ensure the result is an integer for base16 conversion
+            result = result.toString(16).toUpperCase(); // Convert the result to base16
+            result = '0x' + result;
             console.log('Result in Base16:', result);
         }
-    } catch (error) {
-        console.error('Error in evaluating expression:', error);
-        document.getElementById('log').innerHTML += 'Error: Invalid expression;<br>';
-        return;
+
+        // Display the mode change and result
+        document.getElementById('expression').innerHTML = result;
+        document.getElementById('log').innerHTML += base16Mode ? 'Switched to Base16 mode;<br>' : 'Switched to Decimal mode;<br>';
+      if (parseInt(result)){
+        
+        document.getElementById('log').innerHTML += result + '<br>';
+      }
+        console.log('baseMode=' + base16Mode);
     }
-
-    // Update the expression field with the converted expression (if needed)
-    expressionInput.value = expression;
-
-    // Display the mode change and result in the log
-    document.getElementById('log').innerHTML += base16Mode ? 'Switched to Base16 mode;<br>' : 'Switched to Decimal mode;<br>';
-    document.getElementById('log').innerHTML += 'Result: ' + result + '<br>';
-}
   </script>
 <style>
   body {
@@ -192,13 +229,10 @@ try {
   .calculator input[value="plot"],
   .calculator input[value="("],
   .calculator input[value=")"],
-  .calculator input[value="log("],
   .calculator input[value="sin("],
   .calculator input[value="cos("],
   .calculator input[value="tan("],
-  .calculator input[value="**"],
-  .calculator input[value="%"],
-  .calculator input[value="exp("]{
+  .calculator input[value="**"]{
     background-color: yellow;
     color: black;
   }
@@ -228,13 +262,9 @@ try {
     color: white;
 }
   .calculator input[value="0x"],
-  .calculator input[value="&"],
-  .calculator input[value="|"],
-  .calculator input[value="^"],
-  .calculator input[value="~"],
-  .calculator input[value="<"],
-  .calculator input[value=">"],
-  .calculator input[value="!"]{
+  .calculator input[value="&&"],
+  .calculator input[value="||"],
+  .calculator input[value="^"]{
     background-color: #D100FF;
     color:white;
   }
@@ -275,11 +305,6 @@ try {
     <input type="button" value="+" onclick="appendToExpression('+')">
   </div>
   <div class="button-row">
-    <input type="button" value="log(" onclick="appendToExpression('Math.log(')">
-    <input type="button" value="exp(" onclick="appendToExpression('Math.exp(')">
-    <input type="button" value="%" onclick="appendToExpression('%')">
-  </div>
-  <div class="button-row">
     <input type="button" value="sin(" onclick="appendToExpression('Math.sin(')">
     <input type="button" value="cos(" onclick="appendToExpression('Math.cos(')">
     <input type="button" value="tan(" onclick="appendToExpression('Math.tan(')">
@@ -310,15 +335,9 @@ try {
   </div>
   <div class="button-row">
     <input type="button" value="0x" onclick="appendToExpression('0x')">
-    <input type="button" value="&" onclick="appendToExpression('&')">
-    <input type="button" value="|" onclick="appendToExpression('|')">
+    <input type="button" value="&&" onclick="appendToExpression('&&')">
+    <input type="button" value="||" onclick="appendToExpression('||')">
     <input type="button" value="^" onclick="appendToExpression('^')">
-  </div>
-   <div class="button-row">
-    <input type="button" value="~" onclick="appendToExpression('~')">
-     <input type="button" value="<" onclick="appendToExpression('<')">
-     <input type="button" value=">" onclick="appendToExpression('>')">
-     <input type="button" value="!" onclick="appendToExpression('!')">
   </div>
   <div class="button-row">
     <input type="button" value="Clear" onclick="clearExpression()">
@@ -375,6 +394,8 @@ function calculateExpression() {
           result='0x'+result;
             console.log('result='+result);
         }
+
+      
         // Update the calculator display with the result
         document.getElementById('expression').value = result;
         document.getElementById('log').innerHTML += '=' + result + ';<br/>' + result;
