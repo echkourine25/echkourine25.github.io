@@ -6,6 +6,56 @@
 <title>Graphic Calculator</title>
  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
  <script>
+  // Define a variable to store the current base mode
+let baseMode = 'base10';
+
+// Update expression and log based on the selected base mode
+function updateBaseMode() {
+    const selectedMode = document.getElementById('base').value;
+    baseMode = selectedMode;
+
+    // Get the current expression and update it based on the new base mode
+    let currentExpression = document.getElementById('expression').value;
+    let updatedExpression = currentExpression;
+
+    // Handle conversion of the current expression based on the selected base mode
+    switch (baseMode) {
+        case 'base16':
+            // Convert decimal numbers to hexadecimal representation in the expression
+            updatedExpression = currentExpression.replace(/\b\d+\b/g, function(match) {
+                return decimalToHexadecimal(parseInt(match));
+            });
+            break;
+        case 'base32':
+            // Convert decimal numbers to base32 representation in the expression
+            updatedExpression = currentExpression.replace(/\b\d+\b/g, function(match) {
+                return decimalToBase32(parseInt(match));
+            });
+            break;
+        case 'base64':
+            // Convert decimal numbers to base64 representation in the expression
+            updatedExpression = currentExpression.replace(/\b\d+\b/g, function(match) {
+                return decimalToBase64(parseInt(match));
+            });
+            break;
+        default:
+            // Default to base10 (decimal) representation
+            updatedExpression = currentExpression;
+    }
+
+    // Update the expression field with the converted expression
+    document.getElementById('expression').value = updatedExpression;
+
+    // Update the log with the selected base mode
+    document.getElementById('log').innerHTML += 'Base mode changed to ' + baseMode + ';<br/>';
+
+    // Log the updated expression with the selected base mode
+    console.log('Updated expression (' + baseMode + '):', updatedExpression);
+}
+
+// Add event listener to the base mode dropdown
+const selectDropdown = document.getElementById('base');
+selectDropdown.addEventListener('change', updateBaseMode);
   function decimalToHexadecimal(decimalNumber) {
     return decimalNumber.toString(16).toUpperCase();
 }
