@@ -101,11 +101,13 @@ function updateBaseMode() {
             updatedExpression = currentExpression.replace(/\b\d+\b/g, function(match) {
                 return '0b'+decimalToBinary(parseInt(match));
             });
+            selectedMode=10;
             break;
         case '8':
             updatedExpression = currentExpression.replace(/\b\d+\b/g, function(match) {
                 return '0o'+decimalToOctal(parseInt(match));
             });
+            selectedMode=10;
             break;
         case '10':
             // Default to decimal representation (no conversion needed)
@@ -114,16 +116,19 @@ function updateBaseMode() {
             updatedExpression = currentExpression.replace(/\b\d+\b/g, function(match) {
                 return '0x' + decimalToHexadecimal(parseInt(match));
             });
+            selectedMode=10;
             break;
         case '32':
             updatedExpression = currentExpression.replace(/\b\d+\b/g, function(match) {
                 return decimalToBase32(parseInt(match));
             });
+            selectedMode=10;
             break;
         case '64':
             updatedExpression = currentExpression.replace(/\b\d+\b/g, function(match) {
                 return decimalToBase64(parseInt(match));
             });
+            selectedMode=10;
             break;
         default:
             break;
