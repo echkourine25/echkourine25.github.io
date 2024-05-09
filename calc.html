@@ -115,7 +115,6 @@ base16Mode = !base16Mode;
     function toggleBase16() {
       let result;
         base16Mode = !base16Mode;
-        if (typeof document.getElementById !== 'undefined' && base16Mode){
           console.log('Switching to Base16 mode');
           console.log(expression);
           // Use a regular expression to find and replace all hexadecimal values
@@ -125,7 +124,7 @@ base16Mode = !base16Mode;
             return parseInt(hexValue, 16);
           });
             console.log('Expression after hex to decimal conversion:', expression);
-        }
+        
         try {
             result = eval(expression); // Evaluate the expression
         } catch (error) {
@@ -143,12 +142,10 @@ base16Mode = !base16Mode;
             console.log('Result in Base16:', result);
         }
         // Display the mode change and result
-        
-      if (parseInt(result)){
         document.getElementById('expression').innerHTML = result;
         document.getElementById('log').innerHTML += base16Mode ? 'Switched to Base16 mode;<br>' : 'Switched to Decimal mode;<br>';
         document.getElementById('log').innerHTML += result + '<br>';
-      }
+      
         console.log('baseMode=' + base16Mode);
     }
   </script>
