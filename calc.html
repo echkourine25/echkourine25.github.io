@@ -359,7 +359,7 @@ function calculateExpression() {
     let expression = document.getElementById('expression').value;
     let result;
     console.log('let expression ='+expression);
-    result = eval(expression); // Evaluate the expression
+    result = updateBaseMode(eval(expression)); // Evaluate the expression
       
         // Update the calculator display with the result
         document.getElementById('expression').value = result;
