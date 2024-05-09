@@ -266,7 +266,8 @@ base16Mode = !base16Mode;
   .calculator input[value="0x"],
   .calculator input[value="&"],
   .calculator input[value="|"],
-  .calculator input[value="^"]{
+  .calculator input[value="^"],
+  .calculator input[value="~"]{
     background-color: #D100FF;
     color:white;
   }
@@ -344,6 +345,9 @@ base16Mode = !base16Mode;
     <input type="button" value="&" onclick="appendToExpression('&')">
     <input type="button" value="|" onclick="appendToExpression('|')">
     <input type="button" value="^" onclick="appendToExpression('^')">
+  </div>
+   <div class="button-row">
+    <input type="button" value="~" onclick="appendToExpression('~')">
   </div>
   <div class="button-row">
     <input type="button" value="Clear" onclick="clearExpression()">
