@@ -1,3 +1,8 @@
+// Add event listener to the base mode dropdown
+const selectDropdown = document.getElementById('base');
+selectDropdown.addEventListener('change', updateBaseMode);
+  function decimalToHexadecimal(decimalNumber) {
+    return decimalNumber.toString(16).toUpperCase();
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,10 +49,10 @@ function updateBaseMode() {
     }
 
     // Update the expression field with the converted expression
-    document.getElementById('expression').innerHTML = updatedExpression;
+    document.getElementById('expression').value = updatedExpression;
 
     // Update the log with the selected base mode
-    document.getElementById('log').innerHTML += 'Base mode changed to ' + baseMode + ';<br/>';
+    document.getElementById('log').innerHTML += ';<br/>Base mode changed to ' + baseMode + ';<br/>'+updatedExpression;
 
     // Log the updated expression with the selected base mode
     console.log('Updated expression (' + baseMode + '):', updatedExpression);
