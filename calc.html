@@ -39,7 +39,7 @@ function updateBaseMode() {
             break;
          case 'base10':
         // Default to base10 (decimal) representation (no conversion needed)
-        updatedExpression = currentExpression;
+        updatedExpression = eval(currentExpression);
         break;
     case 'base8':
         // Convert decimal numbers to octal representation in the expression
@@ -49,7 +49,7 @@ function updateBaseMode() {
         break;
     default:
         // Default case (handling unknown base modes)
-        updatedExpression = currentExpression;
+        updatedExpression = eval(currentExpression);
 }
 
     // Update the expression field with the converted expression
