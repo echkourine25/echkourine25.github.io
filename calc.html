@@ -6,6 +6,28 @@ ca<!DOCTYPE html>
 <title>Graphic Calculator</title>
  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
  <script>
+  function octalToBinary(octalValue) {
+    // Remove the '0o' prefix to get the actual octal string
+    let octalString = octalValue.slice(2);
+
+    // Parse the octal string to its decimal equivalent
+    let decimalNumber = parseInt(octalString, 8);
+
+    // Convert the decimal number to binary representation
+    let binaryValue = decimalNumber.toString(2);
+
+    return binaryValue;
+}function decimalToOctal(decimalNumber) {
+    // Use toString() with radix 8 to convert decimalNumber to octal representation
+    let octalValue = (decimalNumber).toString(8);
+
+    // Ensure that the octal representation starts with '0o'
+    if (!octalValue.startsWith('0o')) {
+        octalValue = '0o' + octalValue;
+    }
+
+    return octalValue;
+}
   function decimalToBinary(decimalNumber) {
     return decimalNumber.toString(2);
 }
