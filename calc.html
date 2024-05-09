@@ -114,9 +114,9 @@ base16Mode = !base16Mode;
     
     function toggleBase16() {
         base16Mode = !base16Mode;
-      try{
+    expression = document.getElementById('expression').value;
+    
         let expression = document.getElementById('expression').value;
-      
         let result;
 
         if (base16Mode) {
@@ -151,13 +151,10 @@ base16Mode = !base16Mode;
         document.getElementById('expression').innerHTML = result;
         document.getElementById('log').innerHTML += base16Mode ? 'Switched to Base16 mode;<br>' : 'Switched to Decimal mode;<br>';
       if (parseInt(result)){
-        document.getElementById('expression').innerHTML = result;
+        
         document.getElementById('log').innerHTML += result + '<br>';
       }
         console.log('baseMode=' + base16Mode);
-        }catch(error){
-        console.log(error);
-      }
     }
   </script>
 <style>
@@ -233,7 +230,6 @@ base16Mode = !base16Mode;
   .calculator input[value="("],
   .calculator input[value=")"],
   .calculator input[value="log("],
-  .calculator input[value="sqrt("],
   .calculator input[value="sin("],
   .calculator input[value="cos("],
   .calculator input[value="tan("],
@@ -316,7 +312,6 @@ base16Mode = !base16Mode;
     <input type="button" value="+" onclick="appendToExpression('+')">
   </div>
   <div class="button-row">
-    <input type="button" value="sqrt(" onclick="appendToExpression('Math.sqrt(')">
     <input type="button" value="log(" onclick="appendToExpression('Math.log(')">
     <input type="button" value="exp(" onclick="appendToExpression('Math.exp(')">
     <input type="button" value="%" onclick="appendToExpression('%')">
@@ -403,6 +398,12 @@ function calculateExpression() {
                 return parseInt(hexValue, 16);
             });
             console.log('Expression after hex to decimal conversion:', expression);
+        }
+
+
+      result = eval(expression); // Evaluate the expression
+        if (base16Mode) {
+          console.log('2nd base 16 if')
             // Convert the result back to base16 format
           console.log('result = Math.floor('+result)
             result = Math.floor(result); // Ensure the result is an integer for base16 conversion
@@ -410,16 +411,17 @@ function calculateExpression() {
             result = result.toString(16).toUpperCase(); // Convert the result to base16
           result='0x'+result;
             console.log('result='+result);
-            document.getElementById('expression').innerHTML = result;
-        }else {
-          console.log('base10;result:'+result');
-          document.getElementById('expression').innerHTML = result;
         }
+
+      
+        // Update the calculator display with the result
+        document.getElementById('expression').value = result;
+        document.getElementById('log').innerHTML += '=' + result + ';<br/>' + result;
+        console.log('result = '+ result);
     } catch (error) {
         // Handle any errors that occurred during evaluation
-        document.getElementById('expression').value = 'error';
-        document.getElementById('log').innerHTML += 'error; ';
-        console.log(error);
+        document.getElementById('expression').value = 'Error';
+        document.getElementById('log').innerHTML += 'Error; ';
     }
 }
   document.getElementById('plotButton').addEventListener('click', function() {
