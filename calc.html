@@ -44,7 +44,7 @@ function updateBaseMode() {
     }
 
     // Update the expression field with the converted expression
-    document.getElementById('expression').value = updatedExpression;
+    document.getElementById('expression').innerHTML = updatedExpression;
 
     // Update the log with the selected base mode
     document.getElementById('log').innerHTML += 'Base mode changed to ' + baseMode + ';<br/>';
