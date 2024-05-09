@@ -113,25 +113,19 @@ base16Mode = !base16Mode;
     let base16Mode = false;
     
     function toggleBase16() {
+      let result;
         base16Mode = !base16Mode;
-        let expression = 0;
-        if(document.getElementById('expression').value){
-          expression=document.getElementById('expression').value;
-        }
-        let result;
-
-        if (base16Mode & expression != 0) {
-            console.log('Switching to Base16 mode');
+        if (typeof docuement.getElementById !== 'undefined' && base16Mode){
+          console.log('Switching to Base16 mode');
           console.log(expression);
-            // Use a regular expression to find and replace all hexadecimal values
-            expression = expression.replace(/0x[0-9A-Fa-f]+/g, function(match) {
-                // Extract the hexadecimal number (excluding the '0x' prefix) and convert it to decimal
-                let hexValue = match.substring(2); // Remove the '0x' prefix
-                return parseInt(hexValue, 16);
-            });
+          // Use a regular expression to find and replace all hexadecimal values
+          expression = expression.replace(/0x[0-9A-Fa-f]+/g, function(match) {
+            // Extract the hexadecimal number (excluding the '0x' prefix) and convert it to decimal
+            let hexValue = match.substring(2); // Remove the '0x' prefix
+            return parseInt(hexValue, 16);
+          });
             console.log('Expression after hex to decimal conversion:', expression);
         }
-
         try {
             result = eval(expression); // Evaluate the expression
         } catch (error) {
