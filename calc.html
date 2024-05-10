@@ -159,7 +159,7 @@ function calculateExpression() {
     margin: 0 auto;
     font-family: Arial, sans-serif;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     text-align: center;
     transition: background-color 0.3s ease; /* Smooth transition for background color */
 }
@@ -315,12 +315,12 @@ body,
 </style>
 </head>
 <body>
-<div class="calculator">
-  <canvas id="graph" width="400" height="200"></canvas>
-<div>
-  <strong>X-axis:</strong> Values of x
-  <br>
-  <strong>Y-axis:</strong> Values of f(x)
+ <div class="calculator">
+   <canvas id="graph" width="400" height="200"></canvas>
+ <div>
+   <strong>X-axis:</strong> Values of x
+   <br>
+   <strong>Y-axis:</strong> Values of f(x)
 </div>
   <input type="text" placeholder="expression" id="expression">
   <br>
