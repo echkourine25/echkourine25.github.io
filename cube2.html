@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rubik's Cube</title>
+    <style>
+        body { margin: 0; }
+        canvas { display: block; }
+    </style>
+</head>
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        // Set up the scene, camera, and renderer
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // Create a Rubik's Cube
+        const cubeSize = 1;
+        const gap = 0.05;
+        const cubes = [];
+
+        const colors = {
+            'U': 0xffffff, // White
+            'D': 0xffff00, // Yellow
+            'F': 0xff0000, // Red
+            'B': 0x0000ff, // Blue
+            'L': 0x00ff00, // Green
+            'R': 0xffa500  // Orange
+        };
+
+        const createCubelet = (x, y, z) => {
+            const geometry = new THREE.BoxGeometry(cubeSize, cubeSize, cubeSize);
+            const materials = [
+                new THREE.MeshBasicMaterial({ color: colors.R }), // Right
+                new THREE.MeshBasicMaterial({ color: colors.L }), // Left
+                new THREE.MeshBasicMaterial({ color: colors.U }), // Up
+                new THREE.MeshBasicMaterial({ color: colors.D }), // Down
+                new THREE.MeshBasicMaterial({ color: colors.F }), // Front
+                new THREE.MeshBasicMaterial({ color: colors.B })  // Back
+            ];
+            const cube = new THREE.Mesh(geometry, materials);
+            cube.position.set(x * (cubeSize + gap), y * (cubeSize + gap), z * (cubeSize + gap));
+            scene.add(cube);
+            cubes.push(cube);
+        };
+
+        // Create the 3x3x3 Rubik's Cube
+        for (let x = -1; x <= 1; x++) {
+            for (let y = -1; y <= 1; y++) {
+                for (let z = -1; z <= 1; z++) {
+                    createCubelet(x, y, z);
+                }
+            }
+        }
+
+        camera.position.z = 5;
+
+        // Rotate the entire cube for better viewing
+        const rotateCube = (axis, angle) => {
+            const quaternion = new THREE.Quaternion();
+            quaternion.setFromAxisAngle(axis, angle);
+            cubes.forEach(cube => {
+                cube.applyQuaternion(quaternion);
+            });
+        };
+
+        // Animation loop
+        const animate = () => {
+            requestAnimationFrame(animate);
+            rotateCube(new THREE.Vector3(1, 1, 0), 0.01);
+            renderer.render(scene, camera);
+        };
+
+        animate();
+    </script>
+</body>
+</html>
