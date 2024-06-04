@@ -220,9 +220,9 @@ body,
     justify-content: space-between;
     margin-bottom: 5px;
   }
-
   .calculator input[type="button"],
   .calculator input[type="text"],
+  .calculator div[id="expression"],
   .calculator select{
     width: 30%;
     padding: 10px;
@@ -325,7 +325,7 @@ body,
    <br>
    <strong>Y-axis:</strong> Values of f(x)
 </div>
-  <input type="text" placeholder="expression" id="expression">
+  <div id="expression">
   <br>
   <div class="button-row">
     <input type="button" value="7" onclick="appendToExpression('7')">
