@@ -222,7 +222,6 @@ body,
   }
 
   .calculator input[type="button"],
-  .calculator div[id="expression"],
   .calculator select{
     width: 30%;
     padding: 10px;
@@ -231,7 +230,8 @@ body,
     border: 1px solid #ccc;
     background-color: #fff;
 }
-  .calculator input[id="expression"] {
+  .calculator div[id="expression"],
+  .calculator div[class="minMaxStep"]{
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
@@ -261,9 +261,9 @@ body,
   color: white;
 }
   .calculator input[value="Pi"],
-  .calculator input[value="minX"],
-  .calculator input[value="maxX"],
-  .calculator input[value="step"],
+  .calculator div[value="minX"],
+  .calculator div[value="maxX"],
+  .calculator div[value="step"],
   .calculator input[value="plot"],
   .calculator input[value="("],
   .calculator input[value=")"],
