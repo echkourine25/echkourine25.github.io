@@ -415,7 +415,7 @@ body,
 function calculateExpression() {
     let result;
     const base=document.getElementById('base').value;
-    console.log('expression='+document.getElementById('expression')+';base='+base);
+    console.log('expression='+document.getElementById('expression').contentText+';base='+base);
     
     
     result = eval(document.getElementById('expression').textContent); // Evaluate the expression
