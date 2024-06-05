@@ -423,7 +423,7 @@ function calculateExpression() {
     result = eval(document.getElementById('expression').textContent); // Evaluate the expression
      console.log(base);
         // Update the calculator display with the result
-        document.getElementById('expression').innerHTML = result;
+        document.getElementById('expression').contentText= result;
         document.getElementById('log').innerHTML += '=' + result + ';<br/>' + result;
         console.log('result = '+ result);
 }
@@ -434,7 +434,7 @@ selectDropdown.addEventListener('change', updateBaseMode);
     return decimalNumber.toString(16).toUpperCase();
 }
   document.getElementById('plotButton').addEventListener('click', function() {
-    let expression = document.getElementById('expression').innerHTML;
+    let expression = document.getElementById('expression').contentText;
     let minX=parseInt(document.getElementById('minX').value);
     let maxX=parseInt(document.getElementById('maxX').value);
     let step=parseInt(document.getElementById('step').value);
