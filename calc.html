@@ -230,13 +230,19 @@ body,
     border: 1px solid #ccc;
     background-color: #fff;
 }
-  .calculator div[id="expression"],
+  .calculator div[id="expression"]{
+   width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+  }
   .calculator div[class="minMaxStep"]{
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
     box-sizing: border-box;
-  }
+    cursor: pointer;
+   }
 
 /* Style pour les boutons de chiffres (0-9) */
 .calculator input[value="0"],
