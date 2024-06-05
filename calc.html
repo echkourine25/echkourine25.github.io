@@ -92,7 +92,7 @@ function decimalToBase64(decimalNumber) {
 // Update expression based on selected base mode
 function updateBaseMode() {
     const selectedMode = document.getElementById('base').value;
-    let currentExpression = document.getElementById('expression').innerHTML;
+    let currentExpression = document.getElementById('expression').textContent
     let updatedExpression = currentExpression;
 
     // Handle conversion of the current expression based on the selected base mode
@@ -141,7 +141,7 @@ function updateBaseMode() {
 
 // Function to evaluate the expression
 function calculateExpression() {
-    const expression = document.getElementById('expression').innerHTML;
+    const expression = document.getElementById('expression').textContent;
     let result;
     
     try {
@@ -428,7 +428,7 @@ function calculateExpression() {
     console.log('expression='+document.getElementById('expression')+';base='+base);
     
     
-    result = eval(document.getElementById('expression').innerHTML); // Evaluate the expression
+    result = eval(document.getElementById('expression').textContent); // Evaluate the expression
      console.log(base);
         // Update the calculator display with the result
         document.getElementById('expression').innerHTML = result;
