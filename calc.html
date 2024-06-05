@@ -92,7 +92,7 @@ function decimalToBase64(decimalNumber) {
 // Update expression based on selected base mode
 function updateBaseMode() {
     const selectedMode = document.getElementById('base').value;
-    let currentExpression = document.getElementById('expression').value;
+    let currentExpression = document.getElementById('expression').innerHTML;
     let updatedExpression = currentExpression;
 
     // Handle conversion of the current expression based on the selected base mode
@@ -135,13 +135,13 @@ function updateBaseMode() {
     }
 
     // Update the expression field with the converted expression
-    document.getElementById('expression').value = updatedExpression;
+    document.getElementById('expression') = updatedExpression;
     document.getElementById('log').innerHTML += ';<br/>Base:'+selectedMode+':'+updatedExpression;
 }
 
 // Function to evaluate the expression
 function calculateExpression() {
-    const expression = document.getElementById('expression').value;
+    const expression = document.getElementById('expression').innerHTML;
     let result;
     
     try {
@@ -417,13 +417,13 @@ body,
 <div id="log"></div>
 <script>
   function appendToExpression(value) {
-    document.getElementById('expression').value += value;
+    document.getElementById('expression').innerHTML += value;
     document.getElementById('log').innerHTML += value;
     console.log('appendToEpression'+value);
   }
 
   function clearExpression() {
-    document.getElementById('expression').value = '';
+    document.getElementById('expression').innerHTML = '';
     document.getElementById('log').innerHTML += ';<br/>';
     console.log('clear expression');
     }
@@ -431,10 +431,10 @@ body,
 function calculateExpression() {
     let result;
     const base=document.getElementById('base').value;
-    result = eval(document.getElementById('expression').value); // Evaluate the expression
+    result = eval(document.getElementById('expression').innerHTML); // Evaluate the expression
      console.log(base);
         // Update the calculator display with the result
-        document.getElementById('expression').value = result;
+        document.getElementById('expression').innerHTML = result;
         document.getElementById('log').innerHTML += '=' + result + ';<br/>' + result;
         console.log('result = '+ result);
 }
@@ -445,7 +445,7 @@ selectDropdown.addEventListener('change', updateBaseMode);
     return decimalNumber.toString(16).toUpperCase();
 }
   document.getElementById('plotButton').addEventListener('click', function() {
-    let expression = document.getElementById('expression').value;
+    let expression = document.getElementById('expression').innerHTML;
     let minX=parseInt(document.getElementById('minX').value);
     let maxX=parseInt(document.getElementById('maxX').value);
     let step=parseInt(document.getElementById('step').value);
