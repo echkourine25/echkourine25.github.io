@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+min<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -223,14 +223,6 @@ body,
 
   .calculator input[type="button"],
   .calculator select,
-  .calculator div[class="minMaxStep"]{
-    width: 30%;
-    padding: 10px;
-    cursor: pointer;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    background-color: #fff;
-}
   .calculator div[id="expression"]{
    width: 100%;
     padding: 10px;
@@ -365,9 +357,9 @@ body,
   </div>
   <div class="button-row">
     <input type="button" id="pi" value="Pi" onclick="appendToExpression('Math.PI')">
-    <input type="text" class="minMaxStep" id="minX" value="minX" placeholder="minX">
-    <input type="text" class="minMaxStep" id="maxX" value="maxX" placeholder="maxX">
-    <input type="text" class="minMaxStep" id="step" value="step" placeholder="step">  
+    <input type="number" id="minX" value="minX">
+    <input type="number" id="maxX" value="maxX">
+    <input type="number" id="step" value="step">  
   </div>
   <!-- Base16 (BASEadecimal) mode buttons -->
   <div class="button-row">
