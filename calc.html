@@ -130,13 +130,11 @@ function updateBaseMode() {
             });
             document.getElementById('base').value='10';
             break;
-        default:
-            break;
     }
 
     // Update the expression field with the converted expression
     document.getElementById('expression').innerHTML = updatedExpression;
-    document.getElementById('log').innerHTML += ';<br/>Base:'+selectedMode+':'+updatedExpression;
+    document.getElementById('log').innerHTML += 'updatedExpression=='+updatedExpression+';<br/>Base:'+selectedMode+':'+updatedExpression;
 }
 
 // Function to evaluate the expression
