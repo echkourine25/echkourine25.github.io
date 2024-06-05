@@ -251,10 +251,10 @@ body,
   background-color: blue;
   color: white;
 }
-  .calculator input[value="Pi"],
-  .calculator div[value="minX"],
-  .calculator div[value="maxX"],
-  .calculator div[value="step"],
+  .calculator input[id="Pi"],
+  .calculator input[id="minX"],
+  .calculator input[id="maxX"],
+  .calculator input[id="step"],
   .calculator input[value="plot"],
   .calculator input[value="("],
   .calculator input[value=")"],
@@ -357,9 +357,9 @@ body,
   </div>
   <div class="button-row">
     <input type="button" id="pi" value="Pi" onclick="appendToExpression('Math.PI')">
-    <input type="number" id="minX" value="minX">
-    <input type="number" id="maxX" value="maxX">
-    <input type="number" id="step" value="step">  
+    <input type="number" id="minX" value="minX" placeholder="minX">
+    <input type="number" id="maxX" value="maxX" placeholder="maxX">
+    <input type="number" id="step" value="step" placeholder="step">  
   </div>
   <!-- Base16 (BASEadecimal) mode buttons -->
   <div class="button-row">
