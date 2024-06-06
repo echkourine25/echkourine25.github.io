@@ -146,7 +146,7 @@ function calculateExpression() {
     
     try {
         result = eval(expression); // Evaluate the expression
-        document.getElementById('result').textContent = '= ' + result;
+        document.getElementById('result').innerHTML= '= ' + result;
     } catch (error) {
         console.error('Error evaluating expression:', error);
         document.getElementById('result').textContent = 'Error';
