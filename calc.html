@@ -98,13 +98,13 @@ function updateBaseMode() {
     // Handle conversion of the current expression based on the selected base mode
     switch (selectedMode) {
         case '2':
-            updatedExpression = currentExpression.replace(/\b\d+\b/g, function(match) {
+            updatedExpression = currentExpression.toString.replace(/\b\d+\b/g, function(match) {
                 return '0b'+decimalToBinary(parseInt(match));
             });
             document.getElementById('base').value='10';
             break;
         case '8':
-            updatedExpression = currentExpression.replace(/\b\d+\b/g, function(match) {
+            updatedExpression = currentExpression.toString.replace(/\b\d+\b/g, function(match) {
                 return '0o'+decimalToOctal(parseInt(match));
             });
             document.getElementById('base').value='10';
@@ -113,19 +113,19 @@ function updateBaseMode() {
             // Default to decimal representation (no conversion needed)
             break;
         case '16':
-            updatedExpression = currentExpression.replace(/\b\d+\b/g, function(match) {
+            updatedExpression = currentExpression.toString.replace(/\b\d+\b/g, function(match) {
                 return '0x' + decimalToHexadecimal(parseInt(match));
             });
             document.getElementById('base').value='10';
             break;
         case '32':
-            updatedExpression = currentExpression.replace(/\b\d+\b/g, function(match) {
+            updatedExpression = currentExpression.replace.toString(/\b\d+\b/g, function(match) {
                 return decimalToBase32(parseInt(match));
             });
             document.getElementById('base').value='10';
             break;
         case '64':
-            updatedExpression = currentExpression.replace(/\b\d+\b/g, function(match) {
+            updatedExpression = currentExpression.toString.replace(/\b\d+\b/g, function(match) {
                 return decimalToBase64(parseInt(match));
             });
             document.getElementById('base').value='10';
