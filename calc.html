@@ -98,7 +98,7 @@ function updateBaseMode() {
     // Handle conversion of the current expression based on the selected base mode
     switch (selectedMode) {
         case '2':
-            updatedExpression = currentExpression..toStringreplace(/\b\d+\b/g, function(match) {
+            updatedExpression = currentExpression.toString.replace(/\b\d+\b/g, function(match) {
                 return '0b'+decimalToBinary(parseInt(match));
             });
             document.getElementById('base').value='10';
