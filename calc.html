@@ -93,7 +93,7 @@ function decimalToBase64(decimalNumber) {
 function updateBaseMode() {
     const selectedMode = document.getElementById('base').value;
     var currentExpression = eval(document.getElementById('expression').textContent.toString);
-    var updatedExpression = currentExpression.toString;
+    var updatedExpression = currentExpression.toString();
 
     // Handle conversion of the current expression based on the selected base mode
     switch (selectedMode) {
@@ -119,7 +119,7 @@ function updateBaseMode() {
             document.getElementById('base').value='10';
             break;
         case '32':
-            updatedExpression = currentExpression.toString(/\b\d+\b/g, function(match) {
+            updatedExpression = currentExpression.replace(/\b\d+\b/g, function(match) {
                 return decimalToBase32(parseInt(match));
             });
             document.getElementById('base').value='10';
