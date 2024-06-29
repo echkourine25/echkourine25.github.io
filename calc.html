@@ -25,7 +25,8 @@ function plotGraph(expression, minX, maxX, step) {
         xValues.push(x);
         try {
             // Evaluate the expression at each x value
-            let y = eval(expression.replace(/x/g, x));
+            var currentExpression = eval(document.getElementById('expression').textContent.toString());
+            var y = eval(currentExpression.replace(/x/g, x));
             yValues.push(y);
         } catch (error) {
             console.error('Error evaluating expression:', error);
