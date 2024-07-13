@@ -30,13 +30,13 @@
         const macbook = 'http://[2a01:cb06:9019:af66:2826:cb95:f27f:de0b]:8080';
         // Function to get the latest proof and difficulty from the blockchain
         async function getLastProof() {
-            const response = await fetch(macbook'/mine_data');
+            const response = await fetch(macbook+'/mine_data');
             return await response.json();
         }
 
         // Function to submit the new proof of work
         async function submitProof(proof) {
-            const response = await fetch(macbook'/mine', {
+            const response = await fetch(macbook+'/mine', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
