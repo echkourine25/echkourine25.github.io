@@ -51,7 +51,7 @@
 
         // Function to perform the proof of work
         async function mine() {
-            document.getElementById('status').innerText = 'Fetching last proof...';
+            
             const data = await getLastProof();
             const lastProof = data.last_proof;
             const difficulty = data.difficulty;
@@ -65,9 +65,7 @@
                 const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
 
                 if (hashHex.startsWith('0'.repeat(difficulty))) {
-                    document.getElementById('status').innerText = 'Submitting proof...';
                     const result = await submitProof(proof);
-                    document.getElementById('status').innerText = 'Block mined: ' + JSON.stringify(result);
                     break;
                 } else {
                     proof++;
