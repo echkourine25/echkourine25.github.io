@@ -24,7 +24,16 @@
             text-align: center;
         }
     </style>
-        
+        <script>
+            var xhr = new XMLHttpRequest();
+xhr.open("GET", "http://[2a01:cb06:9019:af66:2826:cb95:f27f:de0b]:8080/mine", true);
+xhr.onreadystatechange = function() {
+  if (xhr.readyState === 4 && xhr.status === 200) {
+    console.log(xhr.responseText);
+  }
+};
+xhr.send();
+        </script>
     </head>
     <body>
 <header class="header">
