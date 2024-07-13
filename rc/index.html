@@ -25,15 +25,59 @@
         }
     </style>
         <script>
-            var xhr = new XMLHttpRequest();
-xhr.open("GET", "http://[2a01:cb06:9019:af66:2826:cb95:f27f:de0b]:8080/mine", true);
-xhr.onreadystatechange = function() {
-  if (xhr.readyState === 4 && xhr.status === 200) {
-    console.log(xhr.responseText);
-  }
-};
-xhr.send();
-        </script>
+        // Set your miner email
+        const minerEmail = 'echkourine25@icloud.com';
+        
+        // Function to get the latest proof and difficulty from the blockchain
+        async function getLastProof() {
+            const response = await fetch('/mine_data');
+            return await response.json();
+        }
+
+        // Function to submit the new proof of work
+        async function submitProof(proof) {
+            const response = await fetch('/mine', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    proof: proof,
+                    miner_email: minerEmail
+                })
+            });
+            return await response.json();
+        }
+
+        // Function to perform the proof of work
+        async function mine() {
+            document.getElementById('status').innerText = 'Fetching last proof...';
+            const data = await getLastProof();
+            const lastProof = data.last_proof;
+            const difficulty = data.difficulty;
+
+            let proof = 0;
+            while (true) {
+                const guess = `${lastProof}${proof}`;
+                const guessHash = new TextEncoder().encode(guess);
+                const hashBuffer = await crypto.subtle.digest('SHA-256', guessHash);
+                const hashArray = Array.from(new Uint8Array(hashBuffer));
+                const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+
+                if (hashHex.startsWith('0'.repeat(difficulty))) {
+                    document.getElementById('status').innerText = 'Submitting proof...';
+                    const result = await submitProof(proof);
+                    document.getElementById('status').innerText = 'Block mined: ' + JSON.stringify(result);
+                    break;
+                } else {
+                    proof++;
+                }
+            }
+        }
+
+        // Start mining
+        mine();
+    </script>
     </head>
     <body>
 <header class="header">
