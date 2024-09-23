@@ -88,10 +88,10 @@
                                                 <a href="#weather2" class="showMain dropdown__link">Meteo</a>
                                             </li>
                                             <li>
-                                                <a href="http://[2a01:cb06:3d0:c400:75df:4521:5212:9464]:8080/how" class="showMain dropdown__link">BlockChain - How this works</a>
+                                                <a id="ipv6-link1" href="#" class="showMain dropdown__link">BlockChain - How this works</a>
                                             </li>
                                             <li>
-                                                <a href="http://[2a01:cb06:3d0:c400:75df:4521:5212:9464]:8080/how2" class="showMain dropdown__link">BlockChain - Miner</a>
+                                                <a id="ipv6-link2" href="#" class="showMain dropdown__link">BlockChain - Miner</a>
                                             </li>
                                             <li>
                                                 <a href="#agenda" class="showMain dropdown__link">Agenda</a>
@@ -421,5 +421,28 @@ function getWeatherForecast(city) {
         }, 2000); // Adjust delay if necessary
     };
 </script>
+
+        <script>
+        // Fetch IPv6 address from server
+        fetch('/rc/myipv6.txt')
+        .then(response => response.text())
+        .then(ipv6 => {
+            // Strip any extra spaces or newlines
+            ipv6 = ipv6.trim();
+
+            // Create the new URLs with the IPv6 address
+            const link1 = `http://[${ipv6}]:8080/how`;
+            const link2 = `http://[${ipv6}]:8080/how2`;
+
+            // Update the href attributes of the two links
+            document.getElementById('ipv6-link1').href = link1;
+            document.getElementById('ipv6-link2').href = link2;
+
+            // Optionally, update the text content of the links to display the new URL
+            /*document.getElementById('ipv6-link1').textContent = link1;
+            document.getElementById('ipv6-link2').textContent = link2;*/
+        })
+        .catch(error => console.error('Error fetching IPv6:', error));
+    </script>
     </body>
 </html>
