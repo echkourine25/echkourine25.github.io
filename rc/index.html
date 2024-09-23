@@ -410,5 +410,16 @@ function getWeatherForecast(city) {
     };
 </script>
 <script id="intergram" type="text/javascript" src="https://www.intergram.xyz/js/widget.js"></script>
+<script>
+    // Auto-open chat after the page is fully loaded
+    window.onload = function() {
+        setTimeout(function() {
+            var chatButton = document.querySelector('.intergramRoot'); // Locate the chat widget
+            if (chatButton) {
+                chatButton.click(); // Simulate a click to open the chat window
+            }
+        }, 2000); // Adjust delay if necessary
+    };
+</script>
     </body>
 </html>
