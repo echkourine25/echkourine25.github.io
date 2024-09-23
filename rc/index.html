@@ -88,10 +88,13 @@
                                                 <a href="#weather2" class="showMain dropdown__link">Meteo</a>
                                             </li>
                                             <li>
-                                                <a id="ipv6-link1" href="#" class="showMain dropdown__link">BlockChain - How this works</a>
+                                                <a id="ipv6-link1" href="#" class="showMain dropdown__link">BlockChain - How to use</a>
                                             </li>
                                             <li>
                                                 <a id="ipv6-link2" href="#" class="showMain dropdown__link">BlockChain - Miner</a>
+                                            </li>
+                                            <li>
+                                                <a id="ipv6-link3' href="#" class="showMain dropdown__link">BlockChain - How to log</a>
                                             </li>
                                             <li>
                                                 <a href="#agenda" class="showMain dropdown__link">Agenda</a>
@@ -433,10 +436,12 @@ function getWeatherForecast(city) {
             // Create the new URLs with the IPv6 address
             const link1 = `http://[${ipv6}]:8080/how`;
             const link2 = `http://[${ipv6}]:8080/how2`;
+            const link3 = `http://[${ipv6}]:8080/howtolog`;
 
             // Update the href attributes of the two links
             document.getElementById('ipv6-link1').href = link1;
             document.getElementById('ipv6-link2').href = link2;
+            document.getElementById('ipv6-linK3').href = link3;
 
             // Optionally, update the text content of the links to display the new URL
             /*document.getElementById('ipv6-link1').textContent = link1;
