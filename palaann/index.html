@@ -51,7 +51,16 @@
         .product .price {
             font-size: 20px;
             font-weight: bold;
-            color: #e67e22;
+            background: linear-gradient(90deg, #ff5733, #e67e22, #f1c40f, #33ff57, #3380ff, #8e44ad, #ff5733);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientMove 8s infinite ease-in-out;
+        }
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         .buy-btn {
             display: inline-block;
@@ -90,7 +99,7 @@
 </head>
 <body>
     <div class="container">
-	<h1>PALAAN Market</h1>
+        <h1>PALAAN Market</h1>
         <h1>Bienvenue sur notre boutique</h1>
         <div class="products">
             <div class="product">
@@ -102,7 +111,7 @@
             </div>
             <div class="product">
                 <img src="drone2.jpg" />
-                <h2>Drone DJI 2</h2>
+                <h2>Drone 2</h2>
                 <p>Drone High-Tech.</p>
                 <p class="price">700€</p>
                 <button class="buy-btn" onclick="payer('Drone DJI 2', 700)">Acheter</button>
