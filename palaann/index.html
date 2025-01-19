@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boutique en ligne</title>
+    <script src="https://js.stripe.com/v3/"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            text-align: center;
+        }
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .product {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 15px;
+            padding: 15px;
+            width: 250px;
+            text-align: center;
+        }
+        .product img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .product h2 {
+            font-size: 18px;
+            color: #333;
+        }
+        .product p {
+            color: #666;
+        }
+        .product .price {
+            font-size: 20px;
+            font-weight: bold;
+            color: #e67e22;
+        }
+        .buy-btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .buy-btn:hover {
+            background: #218838;
+        }
+    </style>
+    <script>
+        var stripe = Stripe("your-public-key-here");
+        function payer(produit, prix) {
+            fetch("/create-checkout-session", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    produit: produit,
+                    prix: prix
+                })
+            })
+            .then(response => response.json())
+            .then(session => {
+                return stripe.redirectToCheckout({ sessionId: session.id });
+            })
+            .catch(error => console.error("Erreur:", error));
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+	<h1>PALAAN Market</h1>
+        <h1>Bienvenue sur notre boutique</h1>
+        <div class="products">
+            <div class="product">
+                <img src="drone1.webp" />
+                <h2>Drone</h2>
+                <p>Drone autonome.</p>
+                <p class="price">500€</p>
+                <button class="buy-btn" onclick="payer('Drone DJI 1', 500)">Acheter</button>
+            </div>
+            <div class="product">
+                <img src="drone2.jpg" />
+                <h2>Drone DJI 2</h2>
+                <p>Drone High-Tech.</p>
+                <p class="price">700€</p>
+                <button class="buy-btn" onclick="payer('Drone DJI 2', 700)">Acheter</button>
+            </div>
+            <div class="product">
+                <img src="mic1.webp" />
+                <h2>Microphone</h2>
+                <p>Microphone 2TX + 1RX</p>
+                <p class="price">180€</p>
+                <button class="buy-btn" onclick="payer('mic1', 180)">Acheter</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
