@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Graphic Calculator</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #f9f9f9;
+    }
+    .calculator {
+        width: 400px;
+        margin: 20px auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: white;
+    }
+    #display {
+        font-size: 20px;
+        margin-bottom: 10px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        background-color: #e9e9e9;
+        text-align: center;
+    }
+    .button-row input {
+        width: 23%;
+        padding: 10px;
+        margin: 5px;
+    }
+    canvas {
+        width: 100%;
+        height: 200px;
+    }
+</style>
+</head>
+<body>
+<div class="calculator">
+    <div id="display">0</div>
+    <canvas id="graph"></canvas>
+    <div>
+        <strong>X-axis:</strong> Values of x
+        <br>
+        <strong>Y-axis:</strong> Values of f(x)
+    </div>
+    <div class="button-row">
+        <input type="button" value="7" onclick="appendToExpression('7')">
+        <input type="button" value="8" onclick="appendToExpression('8')">
+        <input type="button" value="9" onclick="appendToExpression('9')">
+        <input type="button" value="/" onclick="appendToExpression('/')">
+    </div>
+    <div class="button-row">
+        <input type="button" value="4" onclick="appendToExpression('4')">
+        <input type="button" value="5" onclick="appendToExpression('5')">
+        <input type="button" value="6" onclick="appendToExpression('6')">
+        <input type="button" value="*" onclick="appendToExpression('*')">
+    </div>
+    <div class="button-row">
+        <input type="button" value="1" onclick="appendToExpression('1')">
+        <input type="button" value="2" onclick="appendToExpression('2')">
+        <input type="button" value="3" onclick="appendToExpression('3')">
+        <input type="button" value="-" onclick="appendToExpression('-')">
+    </div>
+    <div class="button-row">
+        <input type="button" value="0" onclick="appendToExpression('0')">
+        <input type="button" value="=" onclick="calculateExpression()">
+        <input type="button" value="." onclick="appendToExpression('.')">
+        <input type="button" value="+" onclick="appendToExpression('+')">
+    </div>
+    <div class="button-row">
+        <input type="button" value="plot" id="plotButton" title="Plot Graph">
+        <input type="number" id="minX" value="-10" placeholder="minX">
+        <input type="number" id="maxX" value="10" placeholder="maxX">
+        <input type="number" id="step" value="1" placeholder="step">  
+    </div>
+</div>
+<script>
+    let myChart = null;
+    function appendToExpression(value) {
+        let display = document.getElementById('display');
+        if (display.textContent === '0') {
+            display.textContent = value;
+        } else {
+            display.textContent += value;
+        }
+    }
+    function clearExpression() {
+        document.getElementById('display').textContent = '0';
+    }
+    function calculateExpression() {
+        let display = document.getElementById('display');
+        try {
+            let result = eval(display.textContent);
+            display.textContent = result;
+        } catch (error) {
+            display.textContent = 'Error';
+        }
+    }
+    function plotGraph() {
+        let expression = document.getElementById('display').textContent;
+        let minX = parseFloat(document.getElementById('minX').value);
+        let maxX = parseFloat(document.getElementById('maxX').value);
+        let step = parseFloat(document.getElementById('step').value);
+        let xValues = [], yValues = [];
+        for (let x = minX; x <= maxX; x += step) {
+            xValues.push(x);
+            try {
+                let y = eval(expression.replace(/x/g, x));
+                yValues.push(y);
+            } catch (error) {
+                yValues.push(null);
+            }
+        }
+        if (myChart) myChart.destroy();
+        let ctx = document.getElementById('graph').getContext('2d');
+        myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: xValues,
+                datasets: [{
+                    label: 'f(x)',
+                    data: yValues,
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 2,
+                    pointRadius: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: { type: 'linear', position: 'bottom' },
+                    y: { type: 'linear', position: 'left' }
+                }
+            }
+        });
+    }
+    document.getElementById('plotButton').addEventListener('click', plotGraph);
+</script>
+</body>
+</html>
