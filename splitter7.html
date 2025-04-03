@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>🧩 Split & Réassembleur de fichiers (.part)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 2rem;
+      background-color: #f9fafb;
+      color: #333;
+      max-width: 700px;
+      margin-inline: auto;
+    }
+
+    h2 {
+      margin-top: 2rem;
+      color: #2c3e50;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    input[type="file"],
+    input[type="number"] {
+      padding: 0.5rem;
+      font-size: 1rem;
+      width: 100%;
+      max-width: 400px;
+      margin-bottom: 1rem;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #3498db;
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 0.5rem;
+      transition: background 0.2s ease;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
+    .chunk-list a {
+      display: block;
+      margin: 5px 0;
+      text-decoration: none;
+      color: #2c3e50;
+      background: #ecf0f1;
+      padding: 0.4rem 0.6rem;
+      border-radius: 4px;
+    }
+
+    .chunk-list a:hover {
+      background-color: #d0dce4;
+    }
+
+    .output {
+      margin-top: 1rem;
+      padding: 1rem;
+      background: #eafaf1;
+      border-left: 4px solid #27ae60;
+      border-radius: 5px;
+    }
+
+    .output a {
+      color: #27ae60;
+      font-weight: bold;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 1rem;
+      }
+
+      button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h2>📦 Découper un fichier</h2>
+
+  <input type="file" id="fileInput" />
+
+  <label for="chunkSizeInput">Taille max des morceaux (en Kio) :</label>
+  <input type="number" id="chunkSizeInput" value="100" min="1" />
+
+  <button onclick="splitFile()">Découper</button>
+
+  <div id="linksContainer" class="chunk-list"></div>
+
+  <hr>
+
+  <h2>🔗 Réassembler un fichier</h2>
+
+  <input type="file" id="reassembleInput" multiple style="display:none;" />
+  <button onclick="document.getElementById('reassembleInput').click()">Choisir les fichiers .part</button>
+
+  <div class="output" id="downloadLinkContainer"></div>
+
+  <script>
+    // Fonction de découpe du fichier en morceaux .partXXX
+    function splitFile() {
+      const fileInput = document.getElementById('fileInput');
+      const chunkSizeKio = parseInt(document.getElementById('chunkSizeInput').value);
+      const chunkSize = chunkSizeKio * 1024;
+      const linksContainer = document.getElementById('linksContainer');
+      linksContainer.innerHTML = '';
+
+      const file = fileInput.files[0];
+      if (!file) {
+        alert("Veuillez sélectionner un fichier.");
+        return;
+      }
+
+      const reader = new FileReader();
+
+      reader.onload = function(e) {
+        const arrayBuffer = e.target.result;
+        const uint8Array = new Uint8Array(arrayBuffer);
+
+        for (let i = 0; i < uint8Array.length; i += chunkSize) {
+          const chunk = uint8Array.slice(i, i + chunkSize);
+          const blob = new Blob([chunk]);
+          const url = URL.createObjectURL(blob);
+          const partNumber = String(i / chunkSize).padStart(3, '0');
+
+          // Utilisation de l’extension classique `.partXXX`
+          const fileName = `${file.name}.part${partNumber}`;
+
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = fileName;
+          a.textContent = `📄 Télécharger ${fileName}`;
+
+          linksContainer.appendChild(a);
+        }
+
+        alert(`✅ Fichier découpé avec succès. Cliquez sur les liens pour les télécharger.`);
+      };
+
+      reader.readAsArrayBuffer(file);
+    }
+
+    // Réassemblage des fichiers .partXXX
+    document.getElementById('reassembleInput').addEventListener('change', async (event) => {
+      const files = Array.from(event.target.files);
+      const linkContainer = document.getElementById('downloadLinkContainer');
+      linkContainer.innerHTML = '';
+
+      if (files.length === 0) {
+        alert("Aucun fichier sélectionné.");
+        return;
+      }
+
+      // Trie par nom de fichier (.part000, .part001, ...)
+      files.sort((a, b) => a.name.localeCompare(b.name));
+
+      const chunks = await Promise.all(
+        files.map(file => new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => resolve(new Uint8Array(reader.result));
+          reader.onerror = reject;
+          reader.readAsArrayBuffer(file);
+        }))
+      );
+
+      const totalSize = chunks.reduce((acc, chunk) => acc + chunk.length, 0);
+      const merged = new Uint8Array(totalSize);
+      let offset = 0;
+
+      for (const chunk of chunks) {
+        merged.set(chunk, offset);
+        offset += chunk.length;
+      }
+
+      // Nom d’origine extrait du premier morceau
+      const firstName = files[0].name;
+      const originalName = firstName.split(".part")[0] || "fichier_reconstruit";
+
+      const blob = new Blob([merged]);
+      const url = URL.createObjectURL(blob);
+
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = originalName;
+      a.textContent = `⬇️ Télécharger le fichier reconstitué (${originalName})`;
+
+      linkContainer.appendChild(a);
+      alert("✅ Fichier reconstitué avec succès !");
+    });
+  </script>
+
+</body>
+</html>
