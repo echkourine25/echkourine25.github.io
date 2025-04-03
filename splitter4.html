@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Splitter & Réassembleur de fichiers (manuel)</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 20px;
+    }
+    .chunk-list a {
+      display: block;
+      margin: 5px 0;
+    }
+  </style>
+</head>
+<body>
+  <h2>🔹 Splitter un fichier</h2>
+
+  <input type="file" id="fileInput" />
+  <br><br>
+
+  <label for="chunkSizeInput">Taille max des chunks (en KiB) :</label>
+  <input type="number" id="chunkSizeInput" value="100" min="1" />
+
+  <br><br>
+  <button onclick="splitFile()">📦 Split</button>
+
+  <div id="linksContainer" class="chunk-list"></div>
+
+  <hr>
+
+  <h2>🔹 Réassembler un fichier</h2>
+  <button onclick="assembleChunks()">🔗 Réassembler</button>
+
+  <script>
+    let fileChunks = [];
+
+    function splitFile() {
+      const fileInput = document.getElementById('fileInput');
+      const file = fileInput.files[0];
+      const chunkSizeKiB = parseInt(document.getElementById('chunkSizeInput').value);
+      const chunkSize = chunkSizeKiB * 1024;
+      const linksContainer = document.getElementById('linksContainer');
+      linksContainer.innerHTML = "";
+
+      if (!file) return alert("Veuillez sélectionner un fichier.");
+      if (chunkSize <= 0) return alert("La taille doit être supérieure à 0.");
+
+      const reader = new FileReader();
+
+      reader.onload = function(e) {
+        const arrayBuffer = e.target.result;
+        const uint8Array = new Uint8Array(arrayBuffer);
+        fileChunks = [];
+
+        for (let i = 0; i < uint8Array.length; i += chunkSize) {
+          const chunk = uint8Array.slice(i, i + chunkSize);
+          fileChunks.push(chunk);
+
+          const blob = new Blob([chunk]);
+          const url = URL.createObjectURL(blob);
+
+          const partNumber = String(i / chunkSize).padStart(3, '0');
+          const fileName = `${file.name}.part${partNumber}`;
+
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = fileName;
+          a.textContent = `📄 Télécharger ${fileName}`;
+          a.style.color = 'blue';
+
+          linksContainer.appendChild(a);
+        }
+
+        alert(`✅ Fichier découpé en ${fileChunks.length} morceaux.`);
+      };
+
+      reader.readAsArrayBuffer(file);
+    }
+
+    function assembleChunks() {
+      const input = document.createElement('input');
+      input.type = 'file';
+      input.multiple = true;
+
+      input.onchange = () => {
+        const files = Array.from(input.files);
+        if (files.length === 0) return alert("Aucun fichier sélectionné.");
+
+        // Trie par nom de fichier .part000, .part001, ...
+        const sorted = files.sort((a, b) => a.name.localeCompare(b.name));
+
+        // Lecture des fichiers en tant que Uint8Array
+        const readers = sorted.map(file => {
+          return new Promise(resolve => {
+            const reader = new FileReader();
+            reader.onload = () => resolve(new Uint8Array(reader.result));
+            reader.readAsArrayBuffer(file);
+          });
+        });
+
+        // Après lecture complète
+        Promise.all(readers).then(chunks => {
+          const totalLength = chunks.reduce((sum, chunk) => sum + chunk.length, 0);
+          const merged = new Uint8Array(totalLength);
+          let offset = 0;
+
+          for (const chunk of chunks) {
+            merged.set(chunk, offset);
+            offset += chunk.length;
+          }
+
+          // Nom du fichier : extrait du premier morceau
+          const firstFileName = sorted[0].name;
+          const baseName = firstFileName.split(".part")[0];
+
+          // Création du blob final
+          const blob = new Blob([merged]);
+          const a = document.createElement('a');
+          a.href = URL.createObjectURL(blob);
+          a.download = baseName; // même nom que l'original
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+        });
+      };
+
+      input.click();
+    }
+  </script>
+</body>
+</html>
