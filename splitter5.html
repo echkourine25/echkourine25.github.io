@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Split et Réassembleur de fichiers</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 20px;
+    }
+    .chunk-list a {
+      display: block;
+      margin: 5px 0;
+    }
+    .output {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>📦 Splitter un fichier</h2>
+
+  <!-- Sélection du fichier à découper -->
+  <input type="file" id="fileInput" />
+
+  <br><br>
+
+  <!-- Choix de la taille des morceaux en KiB -->
+  <label for="chunkSizeInput">Taille max des morceaux (en KiB) :</label>
+  <input type="number" id="chunkSizeInput" value="100" min="1" />
+
+  <br><br>
+
+  <!-- Bouton pour découper -->
+  <button onclick="splitFile()">Découper</button>
+
+  <!-- Conteneur des liens de téléchargement des chunks -->
+  <div id="linksContainer" class="chunk-list"></div>
+
+  <hr>
+
+  <h2>🔗 Réassembler un fichier</h2>
+
+  <!-- Champ fichier caché pour sélectionner plusieurs morceaux -->
+  <input type="file" id="reassembleInput" multiple style="display:none;" />
+  <button onclick="document.getElementById('reassembleInput').click()">Choisir les fichiers .part</button>
+
+  <!-- Lien de téléchargement du fichier reconstitué -->
+  <div class="output">
+    <p id="downloadLinkContainer"></p>
+  </div>
+
+  <script>
+    // Fonction de découpage du fichier
+    function splitFile() {
+      const fileInput = document.getElementById('fileInput');
+      const chunkSizeKiB = parseInt(document.getElementById('chunkSizeInput').value);
+      const chunkSize = chunkSizeKiB * 1024;
+      const linksContainer = document.getElementById('linksContainer');
+      linksContainer.innerHTML = ''; // Vide les liens précédents
+
+      const file = fileInput.files[0];
+      if (!file) {
+        alert("Veuillez sélectionner un fichier.");
+        return;
+      }
+
+      const reader = new FileReader();
+
+      // Quand la lecture du fichier est terminée
+      reader.onload = function(e) {
+        const arrayBuffer = e.target.result;
+        const uint8Array = new Uint8Array(arrayBuffer);
+
+        // On découpe le fichier en morceaux
+        for (let i = 0; i < uint8Array.length; i += chunkSize) {
+          const chunk = uint8Array.slice(i, i + chunkSize);
+          const blob = new Blob([chunk]);
+          const url = URL.createObjectURL(blob);
+          const partNumber = String(i / chunkSize).padStart(3, '0');
+          const fileName = `${file.name}.part${partNumber}`;
+
+          // Crée un lien pour chaque morceau
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = fileName;
+          a.textContent = `📄 Télécharger ${fileName}`;
+          a.style.color = 'blue';
+
+          linksContainer.appendChild(a);
+        }
+
+        alert(`✅ Fichier découpé en morceaux. Cliquez sur chaque lien pour télécharger.`);
+      };
+
+      reader.readAsArrayBuffer(file); // Lit le fichier en binaire
+    }
+
+    // Réagit à la sélection des fichiers .part pour réassemblage
+    document.getElementById('reassembleInput').addEventListener('change', async (event) => {
+      const files = Array.from(event.target.files);
+      const linkContainer = document.getElementById('downloadLinkContainer');
+      linkContainer.innerHTML = '';
+
+      if (files.length === 0) {
+        alert("Aucun fichier sélectionné.");
+        return;
+      }
+
+      // Trie les fichiers par nom (.part000, .part001, ...)
+      files.sort((a, b) => a.name.localeCompare(b.name));
+
+      // Lit chaque chunk en Uint8Array
+      const chunks = await Promise.all(
+        files.map(file => new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => resolve(new Uint8Array(reader.result));
+          reader.onerror = reject;
+          reader.readAsArrayBuffer(file);
+        }))
+      );
+
+      // Fusionne tous les chunks
+      const totalSize = chunks.reduce((acc, chunk) => acc + chunk.length, 0);
+      const merged = new Uint8Array(totalSize);
+      let offset = 0;
+
+      for (const chunk of chunks) {
+        merged.set(chunk, offset);
+        offset += chunk.length;
+      }
+
+      // Nom d'origine extrait du premier morceau
+      const firstName = files[0].name;
+      const originalName = firstName.split(".part")[0] || "fichier_reconstruit";
+
+      // Création du blob final
+      const blob = new Blob([merged]);
+      const url = URL.createObjectURL(blob);
+
+      // Affichage d'un lien de téléchargement
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = originalName;
+      a.textContent = `⬇️ Télécharger le fichier reconstruit (${originalName})`;
+      a.style.color = 'green';
+
+      linkContainer.appendChild(a);
+      alert("✅ Fichier reconstitué. Cliquez sur le lien pour le télécharger.");
+    });
+  </script>
+
+</body>
+</html>
