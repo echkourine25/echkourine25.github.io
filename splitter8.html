@@ -89,6 +89,12 @@
         width: 100%;
       }
     }
+    button[onclick="resetPage()"] {
+  background-color: #e74c3c;
+}
+button[onclick="resetPage()"]:hover {
+  background-color: #c0392b;
+}
   </style>
 </head>
 <body>
@@ -97,7 +103,8 @@
 
   <!-- Choix du fichier -->
   <input type="file" id="fileInput" />
-
+  <!-- Bouton Réinitialiser -->
+  <button onclick="resetPage()" style="background-color:#e74c3c;">🔄 Réinitialiser</button>
   <!-- Taille du chunk -->
   <label for="chunkSizeInput">Taille des morceaux :</label>
   <input type="number" id="chunkSizeInput" value="100" min="1" />
@@ -228,6 +235,17 @@
       linkContainer.appendChild(a);
       alert("✅ Fichier reconstitué avec succès !");
     });
+    // Fonction de réinitialisation de la page
+function resetPage() {
+  document.getElementById('fileInput').value = "";
+  document.getElementById('chunkSizeInput').value = "100";
+  document.getElementById('unitSelect').value = "1024";
+  document.getElementById('linksContainer').innerHTML = "";
+  document.getElementById('reassembleInput').value = "";
+  document.getElementById('downloadLinkContainer').innerHTML = "";
+
+  alert("🧹 Tout a été réinitialisé !");
+}
   </script>
 
 </body>
